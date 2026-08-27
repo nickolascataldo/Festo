@@ -1,0 +1,479 @@
+:root {
+  --bg-stone: #15161b;
+  --shelf-wood-top: #5c3b1e;
+  --shelf-wood-front: #3d2410;
+  --shelf-shadow: #100a05;
+  --gold-text: #f7b131;
+  --gold-glow: rgba(247, 177, 49, 0.6);
+  --green-glow: #00ff66;
+  --purple-glow: #c042ff;
+  --cyan-glow: #00f0ff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  background-color: #08070a;
+  font-family: 'MedievalSharp', cursive, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #f0e2d0;
+  overflow-x: hidden;
+}
+
+/* Mobile Frame Replica */
+.apothecary-frame {
+  width: 100%;
+  max-width: 420px;
+  background-color: var(--bg-stone);
+  background-image:
+    radial-gradient(circle at 50% 20%, rgba(82, 67, 62, 0.22), transparent 48%),
+    repeating-linear-gradient(165deg, transparent 0 34px, rgba(0, 0, 0, 0.28) 35px 38px, transparent 39px 74px),
+    repeating-linear-gradient(12deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 3px 48px),
+    linear-gradient(145deg, #303034 0%, #15161b 48%, #090a0d 100%);
+  border: 10px solid #1a120b;
+  border-radius: 16px;
+  box-shadow: 0 0 30px #000, 0 0 15px rgba(192, 66, 255, 0.3);
+  position: relative;
+  padding: 10px 12px 20px;
+  overflow: hidden;
+}
+
+.mobile-header-title {
+  text-align: center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.68rem;
+  color: var(--gold-text);
+  text-shadow: 0 0 7px var(--gold-glow), 1px 1px 0 #000;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.mobile-header-title strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  color: #f3dfb1;
+  letter-spacing: 0.03em;
+}
+
+#atmosphere-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cabinet {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Header Plaque */
+.header-plaque {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #59391d 0%, #2e1a0b 100%);
+  border: 3px solid #8c5b2b;
+  border-radius: 6px;
+  padding: 6px 10px;
+  box-shadow: inset 0 0 8px #000, 0 4px 10px rgba(0,0,0,0.8);
+}
+
+.wooden-sign h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.15rem;
+  color: var(--gold-text);
+  text-shadow: 0 0 6px var(--gold-glow), 2px 2px 0 #000;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.wooden-sign h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #e6d3c0;
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* Candles */
+.candle-group {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.candle {
+  width: 8px;
+  background: #f0e6d2;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  box-shadow: inset -2px 0 3px #b5a489;
+}
+
+.candle.tall { height: 26px; }
+.candle.short { height: 18px; }
+
+.candle::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 1px;
+  width: 6px;
+  height: 8px;
+  background: #ffaa00;
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 8px #ff4400;
+  animation: flicker 0.15s infinite alternate;
+}
+
+/* Shelves Structure */
+.shelf {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.shelf-4::before,
+.shelf-4::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  bottom: 12px;
+  width: 22px;
+  border-left: 4px solid #26452b;
+  border-radius: 50%;
+  opacity: 0.95;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.shelf-4::before {
+  left: 2px;
+  transform: rotate(8deg);
+  box-shadow: 7px 20px 0 -5px #4d7a3d, -2px 45px 0 -6px #365f32, 8px 76px 0 -5px #4d7a3d;
+}
+
+.shelf-4::after {
+  right: 2px;
+  transform: rotate(-8deg);
+  box-shadow: -7px 20px 0 -5px #4d7a3d, 2px 45px 0 -6px #365f32, -8px 76px 0 -5px #4d7a3d;
+}
+
+.shelf-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  min-height: 80px;
+  padding: 0 10px;
+  position: relative;
+  z-index: 3;
+}
+
+.flex-center {
+  justify-content: center;
+}
+
+.shelf-board {
+  height: 14px;
+  background: linear-gradient(180deg, var(--shelf-wood-top) 0%, var(--shelf-wood-front) 100%);
+  border-top: 2px solid #82562d;
+  border-bottom: 3px solid #1a0f06;
+  box-shadow: 0 8px 12px var(--shelf-shadow);
+  border-radius: 2px;
+}
+
+.shelf-item {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, filter 0.2s ease;
+  color: inherit;
+  text-decoration: none;
+}
+
+.shelf-item:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.svg-graphic {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Shelf 1 Items */
+.grimoire-item { width: 150px; }
+.book-titles {
+  position: absolute;
+  inset: 25px 18px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page-title {
+  width: 100%;
+  font-size: 0.92rem;
+  color: #3b220c;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.bat-item {
+  width: 66px;
+  text-align: center;
+  align-self: center;
+}
+.bat-graphic {
+  display: block;
+  font-size: 3.1rem;
+  line-height: 1;
+  filter: drop-shadow(0 5px 5px #000) drop-shadow(0 0 7px #683b91);
+}
+.bat-label {
+  display: block;
+  margin-top: 5px;
+  color: var(--gold-text);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.55rem;
+  line-height: 1.15;
+  text-shadow: 0 0 5px var(--gold-glow), 1px 1px 2px #000;
+}
+
+.scroll-item { width: 90px; }
+.scroll-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.85rem;
+  color: #38230f;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+/* Shelf 2 Items */
+.cauldron-item { width: 110px; text-align: center; }
+.cauldron-label {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+  line-height: 1;
+}
+.cauldron-bubbles {
+  position: absolute;
+  top: 15px;
+  left: 35px;
+  width: 40px;
+  height: 10px;
+  background: radial-gradient(circle, var(--green-glow) 20%, transparent 70%);
+  box-shadow: 0 0 10px var(--green-glow);
+  border-radius: 50%;
+}
+
+.list-item { width: 110px; }
+.list-label {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  color: var(--gold-text);
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+/* Shelf 3 Items */
+.movie-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.apothecary-jars { display: flex; gap: 6px; align-items: flex-end; }
+.jar {
+  width: 18px;
+  height: 32px;
+  border-radius: 4px 4px 2px 2px;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+}
+.jar-purple { background: #9d26e0; }
+.jar-green { background: #19ba48; }
+.jar-amber { background: #d98218; }
+.jar-magenta { background: #d91880; }
+
+.film-reels { display: flex; gap: 6px; }
+.reel {
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle, #555 30%, #111 70%);
+  border: 3px solid #777;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px #000;
+}
+
+.gold-shelf-label {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.85rem;
+  color: var(--gold-text);
+  text-shadow: 0 0 5px var(--gold-glow), 1px 1px 2px #000;
+  text-align: center;
+  margin-top: 2px;
+}
+
+/* Shelf 4 Items */
+.carving-item { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.pumpkins-row { display: flex; width: 100%; justify-content: space-between; gap: 8px; align-items: flex-end; }
+.jack-lantern {
+  flex: 1 1 0;
+  max-width: 72px;
+  height: 54px;
+  background: #ff6600;
+  border-radius: 48% 48% 44% 44%;
+  box-shadow: inset -3px -3px 6px #993300, 0 0 8px #ff6600;
+  position: relative;
+}
+.jack-lantern::before {
+  content: '^ ^';
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: #ffff00;
+  font-weight: bold;
+}
+.jack-lantern.with-knives::after {
+  content: '🗡️';
+  position: absolute;
+  top: -10px;
+  right: -2px;
+  font-size: 0.7rem;
+}
+
+/* Shelf 5 Items */
+.costume-item, .music-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.costume-item { width: 120px; }
+.costume-mask {
+  width: 72px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  color: #e9d5ac;
+  font-size: 3.1rem;
+  background: radial-gradient(ellipse, #604b39 0 45%, #211a18 46% 65%, transparent 66%);
+  filter: drop-shadow(0 0 8px rgba(247, 177, 49, 0.55));
+}
+
+.pumpkin-clock-body {
+  width: 60px;
+  height: 52px;
+  background: #f76300;
+  border-radius: 45%;
+  box-shadow: inset -4px -4px 8px #822e00, 0 0 10px rgba(247, 99, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.analog-clock {
+  width: 34px;
+  height: 34px;
+  background: #f0e2c8;
+  border: 2px solid #54371a;
+  border-radius: 50%;
+  position: relative;
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  background: #111;
+  transform-origin: bottom center;
+}
+.hour-hand { width: 2px; height: 10px; transform: rotate(60deg); }
+.minute-hand { width: 2px; height: 14px; transform: rotate(0deg); }
+.center-pin {
+  width: 4px;
+  height: 4px;
+  background: #ff0000;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gramophone-wrapper {
+  position: relative;
+  width: 60px;
+  height: 50px;
+}
+.gramophone-base {
+  width: 40px;
+  height: 20px;
+  background: #5e3b18;
+  border: 2px solid #361f0a;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+}
+.brass-horn-svg {
+  width: 50px;
+  position: absolute;
+  top: -10px;
+  right: -5px;
+}
+.floating-notes {
+  position: absolute;
+  top: -15px;
+  left: 0;
+}
+.note {
+  color: var(--cyan-glow);
+  text-shadow: 0 0 6px var(--cyan-glow);
+  position: absolute;
+  animation: floatUp 1.8s infinite ease-in-out;
+}
+.note.n2 { animation-delay: 0.9s; left: 12px; }
+
+@keyframes flicker {
+  0% { opacity: 0.8; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-20px) scale(1.2); opacity: 0; }
+}

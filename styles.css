@@ -1,0 +1,471 @@
+/* ==========================================================================
+   Festo - Vibrant Seasonal Landing Page (Desktop & Mobile)
+   ========================================================================== */
+
+:root {
+  --bg-dark: #07090e;
+  --panel-bg: rgba(18, 22, 31, 0.7);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text-main: #ffffff;
+  --text-muted: #a0aec0;
+  
+  /* Vibrant Seasonal Accent Palette */
+  --accent-spring: #ff3385;
+  --accent-summer: #ffb700;
+  --accent-halloween: #ff5500;
+  --accent-christmas: #00e676;
+  
+  /* Dynamic Background Glows */
+  --glow-1: rgba(255, 183, 0, 0.18);
+  --glow-2: rgba(255, 51, 133, 0.15);
+  
+  --radius-lg: 24px;
+  --radius-md: 14px;
+  --transition-fast: 0.25s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Base Setup */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  overflow-x: hidden;
+}
+
+/* Main App Container with Dynamic Mesh Background */
+.festo-app {
+  width: 100%;
+  max-width: 1080px;
+  min-height: 760px;
+  background: 
+    radial-gradient(circle at 15% 20%, var(--glow-1) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, var(--glow-2) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, #121622 0%, #07090e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 32px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: background var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Animated Aura Effects */
+.festo-app::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03) 0%, transparent 60%);
+  animation: pulseAura 10s infinite alternate ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes pulseAura {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.1) rotate(5deg); }
+}
+
+/* Header Brand Bar */
+.brand-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 5;
+}
+
+.brand-logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  background: linear-gradient(135deg, #ffffff 30%, var(--text-muted) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.brand-tag {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 30px;
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   Hero & Seasonal Cards
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  margin-bottom: 28px;
+  z-index: 5;
+}
+
+/* Connected Horizontal Timeline Track */
+.timeline-track {
+  position: absolute;
+  top: 15px;
+  left: 12%;
+  right: 12%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--accent-spring) 0%, 
+    var(--accent-summer) 33%, 
+    var(--accent-halloween) 66%, 
+    var(--accent-christmas) 100%);
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.timeline-nodes {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.timeline-node {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #0f131a;
+  border: 2px solid var(--panel-border);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.timeline-node.active {
+  transform: scale(1.25);
+  border-color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* 3D Seasonal Theme Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.theme-card {
+  --card-accent: #ffffff;
+  --card-glow: rgba(255, 255, 255, 0.3);
+  
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 310px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.theme-card[data-season="spring"] {
+  --card-accent: var(--accent-spring);
+  --card-glow: rgba(255, 51, 133, 0.4);
+}
+
+.theme-card[data-season="summer"] {
+  --card-accent: var(--accent-summer);
+  --card-glow: rgba(255, 183, 0, 0.4);
+}
+
+.theme-card[data-season="halloween"] {
+  --card-accent: var(--accent-halloween);
+  --card-glow: rgba(255, 85, 0, 0.4);
+}
+
+.theme-card[data-season="christmas"] {
+  --card-accent: var(--accent-christmas);
+  --card-glow: rgba(0, 230, 118, 0.4);
+}
+
+.theme-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--card-accent);
+  box-shadow: 0 14px 28px -10px var(--card-glow);
+}
+
+.theme-card.active {
+  transform: translateY(-10px) scale(1.03);
+  border-color: var(--card-accent);
+  background: rgba(26, 32, 46, 0.85);
+  box-shadow: 0 20px 40px -10px var(--card-glow), inset 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.card-badge {
+  font-size: 2.2rem;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.card-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 1.35;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.theme-card.active .action-btn {
+  background: var(--card-accent);
+  color: #07090e;
+  box-shadow: 0 4px 15px var(--card-glow);
+}
+
+.card-links {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 10px;
+}
+
+.secondary-link {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.secondary-link:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Seasonal Controls Section
+   ========================================================================== */
+
+.controls-section {
+  background: rgba(14, 18, 25, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 5;
+}
+
+.controls-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.segmented-control {
+  display: inline-flex;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 40px;
+  border: 1px solid var(--panel-border);
+  margin-bottom: 12px;
+}
+
+.segment-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 10px 22px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.segment-btn.active {
+  background: #ffffff;
+  color: #07090e;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.controls-description {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.festo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--panel-border);
+  padding-top: 20px;
+  font-size: 0.78rem;
+  position: relative;
+  z-index: 5;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.footer-link:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Mobile & Phone Media Queries
+   ========================================================================== */
+
+/* Tablets and Large Smartphones */
+@media (max-width: 868px) {
+  body {
+    padding: 12px;
+  }
+
+  .festo-app {
+    padding: 24px 20px;
+    border-radius: 24px;
+    min-height: auto;
+  }
+
+  .timeline-track,
+  .timeline-nodes {
+    display: none; /* Hide visual timeline node bar on mobile screens */
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .theme-card {
+    min-height: 260px;
+    padding: 18px 14px;
+  }
+
+  .card-badge {
+    font-size: 1.8rem;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .controls-section {
+    padding: 18px;
+  }
+
+  .segmented-control {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .segment-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 14px;
+  }
+}
+
+/* Smartphones (Phones under 520px) */
+@media (max-width: 520px) {
+  .cards-grid {
+    grid-template-columns: 1fr; /* Single column stack for mobile phones */
+    gap: 16px;
+  }
+
+  .brand-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .theme-card.active {
+    transform: scale(1.01);
+  }
+
+  .festo-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .footer-nav {
+    gap: 12px 16px;
+  }
+}

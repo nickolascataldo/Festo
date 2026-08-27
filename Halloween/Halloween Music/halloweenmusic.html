@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halloween Music Playlists</title>
+  <!-- Stylesheet Reference -->
+  <link rel="stylesheet" href="Halloweenmusic.css">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="spooky-theme-body">
+
+  <!-- Atmospheric Background Ambient Elements -->
+  <div class="ambient-fog-layer" aria-hidden="true"></div>
+  <div class="full-moon-element" aria-hidden="true"></div>
+  <div class="graveyard-silhouette" aria-hidden="true"></div>
+  <div class="pumpkins-overlay" aria-hidden="true"></div>
+
+  <!-- Main Mobile App Frame -->
+  <main class="music-viewport-shell">
+    
+    <!-- Top Navigation Header -->
+    <nav class="app-nav-bar" aria-label="Playlist Navigation">
+      <a href="#back" class="nav-action-btn back-btn" aria-label="Go Back">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        <span class="nav-btn-text">back</span>
+      </a>
+      <h1 class="nav-title-logo">Spooky Sounds Playlist</h1>
+      <button class="nav-action-btn search-trigger-btn" aria-label="Search Tracks">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </button>
+    </nav>
+
+    <!-- Main Scrollable App Container -->
+    <div class="music-scroll-viewport" id="musicScrollViewport">
+
+      <!-- Active Hero Playlist Header Section -->
+      <section class="hero-playlist-banner" id="heroPlaylistBanner" aria-labelledby="hero-playlist-title">
+        <div class="hero-cover-container">
+          <img id="heroCoverArt" class="hero-cover-art" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80" alt="Active playlist cover art">
+          <div class="hero-cover-glow" aria-hidden="true"></div>
+        </div>
+
+        <div class="hero-meta-details">
+          <div class="hero-brand-heading">
+            <h2 id="hero-playlist-title" class="hero-playlist-name">SPOOKY SEASON</h2>
+            <span class="bats-flight-icon" aria-hidden="true">🦇</span>
+          </div>
+          <p id="heroCurator" class="hero-curator-tag">Curated by Moonlight Melodies</p>
+          <p id="heroStats" class="hero-stats-info">50 Songs | 3 hrs 14 mins</p>
+          
+          <div class="hero-controls-row">
+            <button class="btn-primary-play" id="mainPlaylistPlayBtn" aria-label="Play Entire Playlist">
+              <i class="fa-solid fa-play" aria-hidden="true"></i>
+              <span>PLAY</span>
+            </button>
+            <button class="btn-secondary-pill" id="followPlaylistBtn" aria-label="Follow Playlist">FOLLOW</button>
+            <button class="btn-secondary-pill" id="downloadPlaylistBtn" aria-label="Download Playlist">DOWNLOAD</button>
+            <button class="btn-icon-more" aria-label="More Playlist Options">
+              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 Pre-Made Playlists Carousel Selector -->
+      <section class="featured-playlists-section" aria-labelledby="heading-featured-playlists">
+        <div class="section-title-wrap">
+          <h3 id="heading-featured-playlists" class="section-title">Featured Playlists</h3>
+          <span class="playlist-counter-indicator" id="playlistCounter">4 Curations</span>
+        </div>
+
+        <div class="playlists-carousel-track" role="tablist" aria-label="Halloween Music Curations">
+          
+          <!-- Playlist 1: Kid-Friendly Halloween -->
+          <article class="playlist-pill-card active" role="tab" aria-selected="true" data-playlist-id="kids-halloween" tabindex="0">
+            <div class="playlist-card-thumbnail">
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=350&auto=format&fit=crop&q=80" alt="Kid-Friendly Halloween Playlist" class="playlist-thumb-img" loading="lazy">
+              <span class="badge-playlist-tag"><i class="fa-solid fa-face-smile" aria-hidden="true"></i> Kids</span>
+            </div>
+            <div class="playlist-card-info">
+              <h4 class="playlist-card-title">Monster Mashups</h4>
+              <p class="playlist-card-genre">Kid-Friendly Spooky Fun</p>
+            </div>
+          </article>
+
+          <!-- Playlist 2: Classic Halloween Music -->
+          <article class="playlist-pill-card" role="tab" aria-selected="false" data-playlist-id="classic-halloween" tabindex="0">
+            <div class="playlist-card-thumbnail">
+              <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=350&auto=format&fit=crop&q=80" alt="Classic Halloween Music Playlist" class="playlist-thumb-img" loading="lazy">
+              <span class="badge-playlist-tag"><i class="fa-solid fa-record-vinyl" aria-hidden="true"></i> Classics</span>
+            </div>
+            <div class="playlist-card-info">
+              <h4 class="playlist-card-title">Witching Hour Classics</h4>
+              <p class="playlist-card-genre">Golden Era Horror & Hits</p>
+            </div>
+          </article>
+
+          <!-- Playlist 3: Motivational / Dub Scary -->
+          <article class="playlist-pill-card" role="tab" aria-selected="false" data-playlist-id="dub-scary" tabindex="0">
+            <div class="playlist-card-thumbnail">
+              <img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=350&auto=format&fit=crop&q=80" alt="Motivational Dub Scary Playlist" class="playlist-thumb-img" loading="lazy">
+              <span class="badge-playlist-tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Bass</span>
+            </div>
+            <div class="playlist-card-info">
+              <h4 class="playlist-card-title">Haunted Bass & Dub</h4>
+              <p class="playlist-card-genre">High Energy Dark Beats</p>
+            </div>
+          </article>
+
+          <!-- Playlist 4: Background Scary / Ambient Music -->
+          <article class="playlist-pill-card" role="tab" aria-selected="false" data-playlist-id="ambient-scary" tabindex="0">
+            <div class="playlist-card-thumbnail">
+              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=350&auto=format&fit=crop&q=80" alt="Background Scary Ambient Music Playlist" class="playlist-thumb-img" loading="lazy">
+              <span class="badge-playlist-tag"><i class="fa-solid fa-wind" aria-hidden="true"></i> Ambient</span>
+            </div>
+            <div class="playlist-card-info">
+              <h4 class="playlist-card-title">Ambient Ghostly Whispers</h4>
+              <p class="playlist-card-genre">Atmospheric Dark Drone</p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Active Tracklist Container (Rendered Dynamically via JS) -->
+      <section class="tracklist-stream-section" aria-label="Playlist Songs">
+        <ol class="tracklist-ordered-stream" id="tracklistContainer">
+          <!-- Tracks populate from Halloweenmusic.js -->
+        </ol>
+      </section>
+
+    </div>
+
+    <!-- Mini Bottom Music Player (Floating persistent dock) -->
+    <aside class="mini-player-bar" id="miniPlayerBar" aria-label="Now Playing Bar">
+      <div class="player-progress-track" aria-hidden="true">
+        <div class="player-progress-bar-fill" id="miniProgressBarFill" style="width: 32%;"></div>
+      </div>
+
+      <div class="mini-player-content">
+        <div class="player-left-col">
+          <div class="player-album-wrap">
+            <img id="miniCoverArt" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=100&auto=format&fit=crop&q=80" alt="Now Playing Album Art" class="player-mini-cover">
+          </div>
+          <div class="player-song-meta">
+            <h4 id="miniSongTitle" class="player-title">Thriller</h4>
+            <div class="player-timing-indicators">
+              <span id="miniCurrentTime" class="player-time-current">1:24</span>
+              <span class="player-time-divider">/</span>
+              <span id="miniDuration" class="player-time-total">5:58</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="player-controls-right">
+          <button class="player-ctrl-btn prev-btn" id="prevTrackBtn" aria-label="Previous Track">
+            <i class="fa-solid fa-backward-step" aria-hidden="true"></i>
+          </button>
+          <button class="player-ctrl-btn main-playback-btn" id="globalPlayPauseBtn" aria-label="Play or Pause Track">
+            <i class="fa-solid fa-pause" id="globalPlayIcon" aria-hidden="true"></i>
+          </button>
+          <button class="player-ctrl-btn next-btn" id="nextTrackBtn" aria-label="Next Track">
+            <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Persistent Bottom Tab Bar Navigation -->
+    <nav class="app-dock-nav" aria-label="Primary Navigation">
+      <a href="../Landing Page/LandingPage.html" class="dock-tab-item" aria-label="Home">
+        <i class="fa-solid fa-house" aria-hidden="true"></i>
+      </a>
+      <a href="#search" class="dock-tab-item" aria-label="Search">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      </a>
+      <a href="#saved" class="dock-tab-item" aria-label="Saved Tracks">
+        <i class="fa-solid fa-bookmark" aria-hidden="true"></i>
+      </a>
+    </nav>
+
+  </main>
+
+  <!-- Application Logic Reference -->
+  <script src="Halloweenmusic.js"></script>
+</body>
+</html>

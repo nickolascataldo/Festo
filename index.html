@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo - Seasonal & Holiday Experiences</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Main App/Tablet Container -->
+  <main class="festo-app">
+    
+    <!-- Brand Header -->
+    <header class="brand-header">
+      <div class="brand-logo">Festo</div>
+      <div class="brand-tag">Lifestyle & Seasonal Journeys</div>
+    </header>
+
+    <!-- Hero & Interactive Seasonal Cards -->
+    <section class="hero-section">
+      <!-- Connected Horizontal Timeline Track -->
+      <div class="timeline-track"></div>
+      
+      <div class="timeline-nodes">
+        <button class="timeline-node" data-season="spring" aria-label="Spring Node"></button>
+        <button class="timeline-node active" data-season="summer" aria-label="Summer Node"></button>
+        <button class="timeline-node" data-season="halloween" aria-label="Halloween Node"></button>
+        <button class="timeline-node" data-season="christmas" aria-label="Christmas Node"></button>
+      </div>
+
+      <!-- 3D Seasonal Theme Cards Grid -->
+      <div class="cards-grid" role="listbox" aria-label="Seasonal Themes">
+        
+        <!-- Spring Card -->
+        <article class="theme-card" data-season="spring" role="option" aria-selected="false">
+          <div class="card-content">
+            <div class="card-badge">🌸</div>
+            <h2 class="card-title">Spring Renewal</h2>
+            <p class="card-subtitle">Flowers, Blooms & Gardens</p>
+          </div>
+          <div class="card-actions">
+            <button class="action-btn">Discover Spring</button>
+            <div class="card-links">
+              <a href="#" class="secondary-link">Learn More</a>
+              <a href="#" class="secondary-link">App Features</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Summer Card (Active Default) -->
+        <article class="theme-card active" data-season="summer" role="option" aria-selected="true">
+          <div class="card-content">
+            <div class="card-badge">🏖️</div>
+            <h2 class="card-title">Summer Adventures</h2>
+            <p class="card-subtitle">Beaches, Pools & Festivals</p>
+          </div>
+          <div class="card-actions">
+            <button class="action-btn">Experience Summer</button>
+            <div class="card-links">
+              <a href="#" class="secondary-link">Learn More</a>
+              <a href="#" class="secondary-link">App Features</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Halloween Card -->
+        <article class="theme-card" data-season="halloween" role="option" aria-selected="false">
+          <div class="card-content">
+            <div class="card-badge">🎃</div>
+            <h2 class="card-title">Halloween Central</h2>
+            <p class="card-subtitle">Spooky Maps & Costumes</p>
+          </div>
+          <div class="card-actions">
+            <a class="action-btn" href="/Halloween/Landing Page/LandingPage.html">Join Halloween</a>
+            <div class="card-links">
+              <a href="#" class="secondary-link">Learn More</a>
+              <a href="#" class="secondary-link">App Features</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Christmas Card -->
+        <article class="theme-card" data-season="christmas" role="option" aria-selected="false">
+          <div class="card-content">
+            <div class="card-badge">🎄</div>
+            <h2 class="card-title">Christmas Cheer</h2>
+            <p class="card-subtitle">Lights, Gifts & Markets</p>
+          </div>
+          <div class="card-actions">
+            <a class="action-btn" href="/Christmas/Christmas Landing/ChristmasLanding.html">Join Christmas</a>
+            <div class="card-links">
+              <a href="#" class="secondary-link">Learn More</a>
+              <a href="#" class="secondary-link">App Features</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Seasonal Selection Controls -->
+    <section class="controls-section">
+      <h3 class="controls-title">Set Your Default Season</h3>
+      
+      <div class="segmented-control" role="tablist" aria-label="Season selection controls">
+        <button class="segment-btn" data-season="spring" role="tab" aria-selected="false">Spring</button>
+        <button class="segment-btn active" data-season="summer" role="tab" aria-selected="true">✓ Summer</button>
+        <button class="segment-btn" data-season="halloween" role="tab" aria-selected="false">Halloween</button>
+        <button class="segment-btn" data-season="christmas" role="tab" aria-selected="false">Christmas</button>
+      </div>
+
+      <p class="controls-description">
+        Your chosen season automatically loads upon visiting Festo. You can seamlessly switch themes anytime using the timeline slider above.
+      </p>
+    </section>
+
+    <!-- Footer & Utility Navigation -->
+    <footer class="festo-footer">
+      <nav class="footer-nav primary-links" aria-label="Main Utility Links">
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Timeline Journey</a>
+        <a href="#" class="footer-link">Product Roadmap</a>
+        <a href="#" class="footer-link">Partner Program</a>
+        <a href="#" class="footer-link">Career Opportunities</a>
+      </nav>
+      
+      <nav class="footer-nav secondary-links" aria-label="Secondary Utility Links">
+        <a href="#" class="footer-link">FAQs</a>
+        <a href="#" class="footer-link">Legal Info</a>
+      </nav>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

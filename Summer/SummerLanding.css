@@ -1,0 +1,1022 @@
+/* ==========================================================================
+   THE SUN-DRENCHED COASTAL ODYSSEY — SUMMER MASTER STYLESHEET
+   File: SummerLanding.css
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens, Custom Properties & Palette Architecture
+   -------------------------------------------------------------------------- */
+:root {
+  /* Oceanic & Tropical Coastal Palette */
+  --bg-deep-ocean: #01243a;
+  --bg-turquoise-sea: #007a99;
+  --bg-glass-ui: rgba(4, 32, 54, 0.78);
+  --bg-glass-card: rgba(8, 44, 72, 0.92);
+  --bg-surface-hover: rgba(14, 68, 108, 0.95);
+
+  /* Vivid Summer Highlights */
+  --summer-gold: #ffb703;
+  --summer-sun-yellow: #ffd166;
+  --summer-sun-glow: rgba(255, 183, 3, 0.65);
+
+  --tropical-coral: #ff5e5b;
+  --tropical-coral-hover: #e04340;
+  --tropical-coral-glow: rgba(255, 94, 91, 0.6);
+
+  --coastal-cyan: #00f0ff;
+  --coastal-cyan-glow: rgba(0, 240, 255, 0.5);
+  --seafoam-green: #2ec4b6;
+  --warm-sand: #ffe8d6;
+
+  /* Borders & Aquatic Highlights */
+  --border-wave-foam: rgba(200, 245, 255, 0.3);
+  --border-sun-gold: rgba(255, 183, 3, 0.45);
+  --border-glass-edge: rgba(255, 255, 255, 0.18);
+
+  /* Typography Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #d4f1f9;
+  --text-muted: #88c5d8;
+  --text-sand: #fef0d6;
+
+  /* Font Stacks */
+  --font-display: 'Fredoka', cursive, sans-serif;
+  --font-script: 'Permanent Marker', cursive;
+  --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Geometry & Corner Radii */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Easing Curves */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Fullscreen Viewport Architecture
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overflow: hidden;
+  background-color: var(--bg-deep-ocean);
+  font-family: var(--font-main);
+  color: var(--text-primary);
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   3. WebGL Canvas & Background Lighting Overlays
+   -------------------------------------------------------------------------- */
+.webgl-canvas-viewport-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.webgl-viewport-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  outline: none;
+  cursor: grab;
+}
+
+.webgl-viewport-canvas:active {
+  cursor: grabbing;
+}
+
+/* Horizon Vignette & Sun Glare Layers */
+.ocean-horizon-vignette {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(1, 24, 42, 0.8) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tropical-sun-flare {
+  position: fixed;
+  top: -10%;
+  left: 20%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, rgba(255, 230, 150, 0.25) 0%, rgba(255, 183, 3, 0.08) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 2;
+  animation: sunFlareGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes sunFlareGlow {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.7; }
+  50% { transform: scale(1.1) translate(20px, 10px); opacity: 1; }
+  100% { transform: scale(0.95) translate(-10px, -10px); opacity: 0.8; }
+}
+
+.underwater-caustics-layer {
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 70% 80%, rgba(0, 240, 255, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 30% 90%, rgba(46, 196, 182, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   4. Cinematic Wave Splash Transition Overlay & Water Droplets
+   -------------------------------------------------------------------------- */
+.wave-splash-transition-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.wave-splash-transition-screen.splashing {
+  opacity: 1;
+  visibility: visible;
+}
+
+.wave-mesh-barrel {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.95) 0%, rgba(0, 122, 153, 0.98) 60%, rgba(1, 36, 58, 1) 100%);
+  transform: translateY(-100%);
+  box-shadow: 0 25px 80px rgba(0, 240, 255, 0.6);
+}
+
+.wave-splash-transition-screen.splashing .wave-mesh-barrel {
+  animation: waveCrashBarrel 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes waveCrashBarrel {
+  0% {
+    transform: translateY(-100%) scaleY(1.2);
+    filter: blur(0px);
+  }
+  45% {
+    transform: translateY(0%) scaleY(1);
+    filter: blur(2px);
+  }
+  75% {
+    transform: translateY(0%) scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%) scaleY(1.3);
+    opacity: 0;
+  }
+}
+
+.wave-crest-foam {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: radial-gradient(circle, #ffffff 40%, transparent 70%);
+  background-size: 40px 40px;
+  filter: blur(1px);
+}
+
+.screen-water-droplets {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+}
+
+.wave-splash-transition-screen.splashing .screen-water-droplets {
+  animation: dropletFadeOut 2.2s 0.6s ease-out forwards;
+}
+
+@keyframes dropletFadeOut {
+  0% { opacity: 1; transform: scale(1); }
+  60% { opacity: 0.8; transform: translateY(15px); }
+  100% { opacity: 0; transform: translateY(40px); }
+}
+
+.water-drip {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 240, 255, 0.5);
+  backdrop-filter: blur(3px);
+}
+
+.drip-1 { width: 34px; height: 38px; top: 18%; left: 22%; }
+.drip-2 { width: 48px; height: 56px; top: 32%; left: 68%; }
+.drip-3 { width: 26px; height: 28px; top: 62%; left: 14%; }
+.drip-4 { width: 58px; height: 64px; top: 54%; left: 78%; }
+.drip-5 { width: 38px; height: 42px; top: 78%; left: 45%; }
+.drip-6 { width: 22px; height: 26px; top: 25%; left: 48%; }
+
+/* --------------------------------------------------------------------------
+   5. Performance Preloader Curtain
+   -------------------------------------------------------------------------- */
+.experience-preloader-curtain {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #01243a 0%, #004d66 100%);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+}
+
+.experience-preloader-curtain.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-content-card {
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preloader-sun-spinner {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.sun-spinner-glyph {
+  font-size: 2.8rem;
+  animation: sunPulse 3s ease-in-out infinite alternate;
+}
+
+.sun-radiance-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px dashed var(--summer-gold);
+  animation: sunRadianceSpin 8s linear infinite;
+  box-shadow: 0 0 25px var(--summer-sun-glow);
+}
+
+@keyframes sunPulse {
+  0% { transform: scale(0.9); }
+  100% { transform: scale(1.15); }
+}
+
+@keyframes sunRadianceSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.preloader-brand-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 1.5px;
+  color: var(--summer-gold);
+  margin-bottom: 8px;
+  text-shadow: 0 2px 14px var(--summer-sun-glow);
+}
+
+.preloader-sub-status {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+  line-height: 1.45;
+}
+
+.preloader-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border-wave-foam);
+}
+
+.preloader-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--tropical-coral), var(--summer-gold), var(--coastal-cyan));
+  box-shadow: 0 0 14px var(--coastal-cyan);
+  transition: width 0.25s ease;
+}
+
+.preloader-percentage-readout {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--coastal-cyan);
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   6. Master UI HUD Layout
+   -------------------------------------------------------------------------- */
+.coastal-ui-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 22px 24px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* --------------------------------------------------------------------------
+   7. Top Header & Action Controls Bar
+   -------------------------------------------------------------------------- */
+.beach-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  pointer-events: auto;
+}
+
+.brand-signature-block {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.coastal-glyph {
+  font-size: 1.4rem;
+  animation: coastalBob 3s infinite alternate ease-in-out;
+}
+
+.coastal-glyph.right-glyph {
+  animation-delay: 1.5s;
+}
+
+@keyframes coastalBob {
+  0% { transform: translateY(0) rotate(-5deg); }
+  100% { transform: translateY(-5px) rotate(5deg); }
+}
+
+.brand-headings-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-main-title {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--summer-gold);
+  text-shadow: 0 2px 16px var(--summer-sun-glow), 0 0 30px rgba(255, 183, 3, 0.4);
+}
+
+.brand-tagline {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--coastal-cyan);
+  margin-top: 1px;
+}
+
+.hud-action-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-btn {
+  position: relative;
+  background: var(--bg-glass-ui);
+  border: 1px solid var(--border-wave-foam);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.5);
+  transition: var(--transition-fast);
+}
+
+.hud-btn:hover {
+  background: var(--bg-surface-hover);
+  color: #ffffff;
+  border-color: var(--summer-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 183, 3, 0.35);
+}
+
+.hud-btn.trigger-splash-btn {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(0, 122, 153, 0.6));
+  border-color: var(--coastal-cyan);
+  color: #ffffff;
+}
+
+.hud-btn.trigger-splash-btn:hover {
+  box-shadow: 0 0 20px var(--coastal-cyan-glow);
+}
+
+.hud-btn.reset-camera-btn {
+  background: var(--tropical-coral);
+  border-color: var(--tropical-coral);
+  color: #ffffff;
+  box-shadow: 0 0 18px var(--tropical-coral-glow);
+}
+
+.hud-btn.reset-camera-btn.hidden {
+  display: none !important;
+}
+
+.live-pulse-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--coastal-cyan);
+  box-shadow: 0 0 8px var(--coastal-cyan);
+  display: none;
+}
+
+.hud-btn.ocean-audio-btn.playing .live-pulse-indicator {
+  display: inline-block;
+  animation: pulseIndicator 1.5s infinite;
+}
+
+@keyframes pulseIndicator {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* --------------------------------------------------------------------------
+   8. Panoramic View Hero Dive Card
+   -------------------------------------------------------------------------- */
+.outward-hero-prompt {
+  align-self: center;
+  pointer-events: auto;
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+.outward-hero-prompt.hidden {
+  opacity: 0;
+  transform: scale(0.92) translateY(24px);
+  pointer-events: none;
+}
+
+.hero-prompt-card {
+  max-width: 420px;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-sun-gold);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 28px 30px;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.75), 0 0 45px rgba(255, 183, 3, 0.2);
+}
+
+.prompt-icon-badge {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.prompt-icon-emoji {
+  font-size: 2.8rem;
+  display: block;
+  animation: surferGlide 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes surferGlide {
+  0% { transform: translateY(0) rotate(-6deg); }
+  100% { transform: translateY(-8px) rotate(6deg); }
+}
+
+.prompt-headline {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--summer-gold);
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.prompt-description {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+
+.prompt-button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.enter-beach-btn {
+  position: relative;
+  background: linear-gradient(135deg, var(--tropical-coral), #d93835);
+  border: 1px solid #ff9290;
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  padding: 14px 32px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 24px var(--tropical-coral-glow);
+  transition: var(--transition-fast);
+  overflow: hidden;
+}
+
+.enter-beach-btn:hover {
+  transform: scale(1.03);
+  filter: brightness(1.15);
+  box-shadow: 0 8px 32px rgba(255, 94, 91, 0.8);
+}
+
+.quick-splash-sub-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-wave-foam);
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  padding: 8px 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.quick-splash-sub-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  border-color: var(--coastal-cyan);
+}
+
+.prompt-card-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.footer-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--coastal-cyan);
+  box-shadow: 0 0 6px var(--coastal-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   9. Projected 3D Landmark Tooltip & Coastal Telemetry HUD
+   -------------------------------------------------------------------------- */
+.three-landmark-tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -100%) translateY(-14px);
+  background: var(--bg-glass-card);
+  border: 1px solid var(--summer-gold);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 18px var(--summer-sun-glow);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 50;
+}
+
+.three-landmark-tooltip.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tooltip-icon-wrap {
+  font-size: 1.2rem;
+  color: var(--summer-gold);
+  display: flex;
+  align-items: center;
+}
+
+.tooltip-text-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.tooltip-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1px;
+}
+
+.tooltip-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--coastal-cyan);
+}
+
+.tooltip-status-tag {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+}
+
+.tooltip-pointer-arrow {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: var(--bg-glass-card);
+  border-right: 1px solid var(--summer-gold);
+  border-bottom: 1px solid var(--summer-gold);
+}
+
+/* In-Beach Coastal Telemetry HUD */
+.coastal-telemetry-hud {
+  align-self: center;
+  background: var(--bg-glass-ui);
+  border: 1px solid var(--border-wave-foam);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 7px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  pointer-events: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  transition: opacity 0.4s ease;
+}
+
+.coastal-telemetry-hud.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.telemetry-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.telemetry-label {
+  color: var(--text-muted);
+}
+
+.telemetry-value.text-gold { color: var(--summer-gold); }
+.telemetry-value.text-cyan { color: var(--coastal-cyan); }
+.telemetry-value.text-green { color: #38ef7d; }
+.telemetry-value.text-orange { color: #ff7e47; }
+
+.telemetry-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   10. Beach Navigation & Guide Modal
+   -------------------------------------------------------------------------- */
+.guide-info-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-smooth);
+  z-index: 110;
+}
+
+.guide-info-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 24, 42, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.guide-card-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-glass-card);
+  border: 1px solid var(--border-sun-gold);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 26px 24px;
+  z-index: 2;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95);
+}
+
+.modal-close-trigger {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-wave-foam);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: var(--transition-fast);
+  z-index: 10;
+}
+
+.modal-close-trigger:hover {
+  background: var(--tropical-coral);
+  transform: rotate(90deg);
+}
+
+.guide-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.guide-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--summer-gold);
+}
+
+.guide-grid-features {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.guide-feature-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.guide-icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 183, 3, 0.15);
+  border: 1px solid var(--summer-gold);
+  color: var(--summer-gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.guide-feature-text h5 {
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 2px;
+}
+
+.guide-feature-text p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.guide-confirm-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--summer-gold), #e09f00);
+  color: #01243a;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 13px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.guide-confirm-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 4px 20px var(--summer-sun-glow);
+}
+
+/* --------------------------------------------------------------------------
+   11. Persistent Bottom Beach Navigation Dock
+   -------------------------------------------------------------------------- */
+.beach-dock-bar {
+  display: flex;
+  align-items: center;
+  background: var(--bg-glass-ui);
+  border: 1px solid var(--border-wave-foam);
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 8px 16px;
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  pointer-events: auto;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  overflow-x: auto;
+  scrollbar-width: none;
+  gap: 6px;
+}
+
+.beach-dock-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.dock-btn {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 12px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.dock-icon-wrap {
+  font-size: 1.15rem;
+}
+
+.dock-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dock-btn.active,
+.dock-btn:hover {
+  color: var(--summer-gold);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 8px var(--summer-sun-glow));
+}
+
+/* --------------------------------------------------------------------------
+   12. Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (min-width: 1200px) {
+  .beach-dock-bar {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1024px) {
+  .brand-main-title {
+    font-size: 1.25rem;
+  }
+  .brand-tagline {
+    font-size: 0.58rem;
+  }
+  .hero-prompt-card {
+    max-width: 360px;
+    padding: 24px;
+  }
+  .coastal-telemetry-hud {
+    font-size: 0.66rem;
+    padding: 6px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .coastal-ui-overlay {
+    padding: 16px 14px;
+  }
+  .brand-main-title {
+    font-size: 1.1rem;
+  }
+  .brand-tagline {
+    font-size: 0.52rem;
+  }
+  .hud-btn .btn-text {
+    display: none;
+  }
+  .hud-btn {
+    padding: 8px 10px;
+  }
+  .hero-prompt-card {
+    max-width: 320px;
+    padding: 20px 18px;
+  }
+  .prompt-headline {
+    font-size: 1.2rem;
+  }
+  .prompt-description {
+    font-size: 0.8rem;
+  }
+  .enter-beach-btn {
+    padding: 12px 24px;
+    font-size: 0.85rem;
+  }
+  .coastal-telemetry-hud {
+    display: none;
+  }
+  .beach-dock-bar {
+    justify-content: flex-start;
+    padding: 6px 10px;
+  }
+  .dock-btn {
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand-signature-block {
+    gap: 6px;
+  }
+  .coastal-glyph {
+    font-size: 1.1rem;
+  }
+  .brand-main-title {
+    font-size: 0.95rem;
+  }
+  .hero-prompt-card {
+    max-width: 290px;
+    padding: 18px 14px;
+  }
+}

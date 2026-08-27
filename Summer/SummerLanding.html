@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ==========================================================================
+       THE SUN-DRENCHED COASTAL ODYSSEY — SUMMER BEACH LANDING INTERFACE
+       File: SummerLanding.html
+       Architecture: WebGL Three.js Wave Splash Transition & Tropical Beach 3D Hub
+       ========================================================================== -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>The Sun-Drenched Coastal Odyssey — Summer Beach Hub</title>
+
+  <!-- Open Graph & UI Engine Meta -->
+  <meta name="description" content="Immerse yourself in a sun-soaked 3D tropical beach with realistic ocean swells, palm trees, and coastal destinations: Surf Shop, Beach Reads, Sunset Cinema, Tiki Music Lounge, Coastal Map, Beach Games, and Surf Weather.">
+  <meta name="theme-color" content="#0388a6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Production Stylesheet -->
+  <link rel="stylesheet" href="SummerLanding.css">
+
+  <!-- Google Typography: Coastal Display, Island Script & High-Legibility Modern Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Pro/Free Iconography -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="summer-coastal-body">
+
+  <!-- ==========================================================================
+       1. WEBGL 3D VIEWPORT CANVAS
+       ========================================================================== -->
+  <div class="webgl-canvas-viewport-container" id="canvasContainer" aria-hidden="true">
+    <canvas id="webglCanvas" class="webgl-viewport-canvas"></canvas>
+  </div>
+
+  <!-- ==========================================================================
+       2. REALISTIC CINEMATIC WAVE SPLASH TRANSITION EFFECT OVERLAY
+       ========================================================================== -->
+  <div class="wave-splash-transition-screen" id="waveSplashOverlay" aria-hidden="true">
+    <div class="wave-mesh-barrel">
+      <div class="wave-crest-foam"></div>
+      <div class="wave-deep-water"></div>
+      <div class="wave-spray-droplets"></div>
+    </div>
+    <div class="screen-water-droplets" id="screenDropletsLayer">
+      <div class="water-drip drip-1"></div>
+      <div class="water-drip drip-2"></div>
+      <div class="water-drip drip-3"></div>
+      <div class="water-drip drip-4"></div>
+      <div class="water-drip drip-5"></div>
+      <div class="water-drip drip-6"></div>
+    </div>
+  </div>
+
+  <!-- Sun Flare, Ocean Vignette & Caustics Overlay -->
+  <div class="tropical-sun-flare" aria-hidden="true"></div>
+  <div class="ocean-horizon-vignette" aria-hidden="true"></div>
+  <div class="underwater-caustics-layer" aria-hidden="true"></div>
+
+  <!-- Performance Preloader Curtain -->
+  <div class="experience-preloader-curtain" id="experiencePreloader">
+    <div class="preloader-content-card">
+      <div class="preloader-sun-spinner">
+        <span class="sun-spinner-glyph">☀️</span>
+        <div class="sun-radiance-glow"></div>
+      </div>
+      <h2 class="preloader-brand-title">SURFING TO THE BEACH</h2>
+      <p class="preloader-sub-status" id="preloaderStatusText">Catching the wave, warming the sand & setting up the coast...</p>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+      </div>
+      <span class="preloader-percentage-readout" id="preloaderPercentage">0%</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       3. MASTER APPLICATION HUD & BEACH INTERACTION LAYER
+       ========================================================================== -->
+  <main class="coastal-ui-overlay" id="uiOverlay">
+
+    <!-- Top Floating Coastal Branding & HUD Header -->
+    <header class="beach-top-bar" role="banner">
+      <div class="brand-signature-block">
+        <span class="coastal-glyph left-glyph" aria-hidden="true">🌊</span>
+        <div class="brand-headings-col">
+          <h1 class="brand-main-title">SUN-DRENCHED COAST</h1>
+          <p class="brand-tagline">3D INTERACTIVE TROPICAL BEACH RETREAT</p>
+        </div>
+        <span class="coastal-glyph right-glyph" aria-hidden="true">🌺</span>
+      </div>
+
+      <!-- Top Action Controls -->
+      <nav class="hud-action-controls" aria-label="Beach Controls">
+        <button class="hud-btn ocean-audio-btn" id="audioToggleBtn" type="button" aria-label="Toggle Ocean Waves & Surf Music" title="Toggle Ocean Ambiance">
+          <i class="fa-solid fa-volume-xmark" id="audioIcon" aria-hidden="true"></i>
+          <span class="btn-text" id="audioTextLabel">Surf Beats</span>
+          <span class="live-pulse-indicator" id="audioLivePulse" aria-hidden="true"></span>
+        </button>
+
+        <button class="hud-btn trigger-splash-btn" id="triggerSplashBtn" type="button" aria-label="Splash Wave Animation" title="Trigger Ocean Wave Splash">
+          <i class="fa-solid fa-water" aria-hidden="true"></i>
+          <span class="btn-text">Catch Wave</span>
+        </button>
+
+        <button class="hud-btn reset-camera-btn hidden" id="resetCameraBtn" type="button" aria-label="Return to Panoramic Coast View" title="Panoramic Beach View">
+          <i class="fa-solid fa-compass" aria-hidden="true"></i>
+          <span class="btn-text">Beach View</span>
+        </button>
+
+        <button class="hud-btn info-guide-btn" id="infoHelpBtn" type="button" aria-label="Beach Guide & Navigation" title="Coastal Guide">
+          <i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i>
+          <span class="btn-text">Guide</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Outward Panoramic Perspective: Centered Wave Splash Invitation Card -->
+    <section class="outward-hero-prompt" id="heroPrompt" aria-labelledby="heroPromptTitle">
+      <div class="hero-prompt-card">
+        <div class="prompt-icon-badge" aria-hidden="true">
+          <span class="prompt-icon-emoji">🏄‍♂️</span>
+          <div class="prompt-badge-glow"></div>
+        </div>
+        <h2 class="prompt-headline" id="heroPromptTitle">Ready to Ride the Wave?</h2>
+        <p class="prompt-description">
+          A living, sun-soaked coastal oasis with turquoise waves, swaying palm trees, and an oceanfront boardwalk. Catch the incoming wave to splash onto the beach and explore 7 interactive summer destinations.
+        </p>
+        
+        <div class="prompt-button-group">
+          <button class="enter-beach-btn" id="diveInBtn" type="button">
+            <span class="btn-shimmer-span"></span>
+            <span class="btn-text-content">CATCH THE WAVE & ENTER</span>
+            <i class="fa-solid fa-water btn-icon-splash" aria-hidden="true"></i>
+          </button>
+          
+          <button class="quick-splash-sub-btn" id="quickSplashSubBtn" type="button">
+            <i class="fa-solid fa-droplet" aria-hidden="true"></i>
+            <span>Test Wave Splash</span>
+          </button>
+        </div>
+
+        <div class="prompt-card-footer">
+          <span class="footer-indicator-dot"></span>
+          <span class="footer-note-text">Live Ocean Swells • 7 Coastal Landmarks • 3D Boardwalk</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic 3D Projected Screen Tooltip (Tracks Clickable 3D Landmarks) -->
+    <div class="three-landmark-tooltip" id="threeTooltip" aria-hidden="true" role="tooltip">
+      <div class="tooltip-icon-wrap" id="tooltipIconWrap">
+        <i class="fa-solid fa-sun" id="tooltipIcon"></i>
+      </div>
+      <div class="tooltip-text-col">
+        <h4 class="tooltip-title" id="tooltipTitle">Beach Landmark</h4>
+        <div class="tooltip-meta-row">
+          <span class="tooltip-badge" id="tooltipBadge">Explore Point</span>
+          <span class="tooltip-status-tag" id="tooltipStatus">Beachfront 01</span>
+        </div>
+      </div>
+      <div class="tooltip-pointer-arrow"></div>
+    </div>
+
+    <!-- Live Coastal Telemetry HUD (Active On Shore) -->
+    <div class="coastal-telemetry-hud hidden" id="coastalTelemetryHud" aria-live="polite">
+      <div class="telemetry-item">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        <span class="telemetry-label">AIR TEMP:</span>
+        <span class="telemetry-value text-gold">86°F (30°C)</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <i class="fa-solid fa-water" aria-hidden="true"></i>
+        <span class="telemetry-label">WATER:</span>
+        <span class="telemetry-value text-cyan">76°F (24°C)</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <i class="fa-solid fa-wind" aria-hidden="true"></i>
+        <span class="telemetry-label">SURF SWELL:</span>
+        <span class="telemetry-value text-green">4-6 FT OFFSHORE</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        <span class="telemetry-label">UV INDEX:</span>
+        <span class="telemetry-value text-orange">9 VERY HIGH</span>
+      </div>
+    </div>
+
+    <!-- Beach Guide & Navigation Modal (No Ad Popups) -->
+    <aside class="guide-info-modal" id="guideInfoModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-scrim" id="guideScrim"></div>
+      <div class="guide-card-container">
+        <button class="modal-close-trigger" id="closeGuideBtn" type="button" aria-label="Close Guide">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <div class="guide-content-body">
+          <div class="guide-title-row">
+            <i class="fa-solid fa-umbrella-beach text-gold"></i>
+            <h3 class="guide-title">HOW TO NAVIGATE THE BEACH</h3>
+          </div>
+
+          <div class="guide-grid-features">
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-water"></i></div>
+              <div class="guide-feature-text">
+                <h5>The Wave Splash</h5>
+                <p>Press <strong>Catch the Wave</strong> to get hit by the incoming swell and transition directly onto the shore.</p>
+              </div>
+            </div>
+
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+              <div class="guide-feature-text">
+                <h5>3D Orbit & Panoramic Pan</h5>
+                <p>Drag or swipe anywhere to look 360° around the coast, boardwalk, ocean horizon, and palm coves.</p>
+              </div>
+            </div>
+
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="guide-feature-text">
+                <h5>7 Interactive Coastal Landmarks</h5>
+                <p>All 7 destinations on the shore and navigation bar are clickable anchor points across the beach.</p>
+              </div>
+            </div>
+
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-music"></i></div>
+              <div class="guide-feature-text">
+                <h5>Coastal Soundscapes</h5>
+                <p>Toggle <strong>Surf Beats</strong> on the top bar to hear beach chimes and synthesized ambient wave sounds.</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="guide-confirm-btn" id="guideConfirmBtn" type="button">SURF'S UP! BACK TO BEACH</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         4. PERSISTENT BOTTOM SUMMER BEACH DOCK NAVIGATION
+         Featuring: Store, Books, Movies, Music, Map, Games, Weather + Ocean View
+         ========================================================================== -->
+    <nav class="beach-dock-bar" role="navigation" aria-label="Coastal Navigation Dock">
+      
+      <!-- Dock Item 0: Panoramic Ocean View -->
+      <button class="dock-btn active" type="button" data-destination="ocean" aria-label="Panoramic Ocean View">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-water" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Ocean View</span>
+      </button>
+
+      <!-- Dock Item 1: Surf & Beach Store -->
+      <button class="dock-btn" type="button" data-destination="store" aria-label="Surf & Beach Shack Store">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Beach Store</span>
+      </button>
+
+      <!-- Dock Item 2: Summer Book List -->
+      <button class="dock-btn" type="button" data-destination="reads" aria-label="Summer Reads Hammock Library">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Beach Reads</span>
+      </button>
+
+      <!-- Dock Item 3: Summer Movie List -->
+      <button class="dock-btn" type="button" data-destination="movies" aria-label="Sunset Beach Cinema & Drive-In">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-film" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Movie List</span>
+      </button>
+
+      <!-- Dock Item 4: Beach Music Area -->
+      <button class="dock-btn" type="button" data-destination="music" aria-label="Tiki Bar Music Lounge & Bandstand">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-music" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Music Area</span>
+      </button>
+
+      <!-- Dock Item 5: Coastal Map -->
+      <button class="dock-btn" type="button" data-destination="map" aria-label="Coastal Island Navigator Map">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-map-location-dot" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Beach Map</span>
+      </button>
+
+      <!-- Dock Item 6: Beach Games Area -->
+      <button class="dock-btn" type="button" data-destination="game" aria-label="Boardwalk Volleyball & Arcade Games">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-volleyball" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Beach Games</span>
+      </button>
+
+      <!-- Dock Item 7: Surf & Marine Weather Station -->
+      <button class="dock-btn" type="button" data-destination="weather" aria-label="Surf & Weather Marine Observatory">
+        <div class="dock-icon-wrap">
+          <i class="fa-solid fa-cloud-sun" aria-hidden="true"></i>
+        </div>
+        <span class="dock-label">Surf Weather</span>
+      </button>
+
+    </nav>
+
+  </main>
+
+  <!-- ==========================================================================
+       5. 3D JAVASCRIPT LIBRARIES & PRODUCTION ENGINE
+       ========================================================================== -->
+  <!-- Three.js r128 Core -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- OrbitControls UMD -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  
+  <!-- GSAP Cinematic Tweening Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Master Coastal Application Script -->
+  <script src="SummerLanding.js"></script>
+</body>
+</html>

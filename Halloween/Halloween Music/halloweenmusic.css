@@ -1,0 +1,692 @@
+/* ==========================================================================
+   HALLOWEEN MUSIC STREAMER — MASTER STYLESHEET (Halloweenmusic.css)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Theme Variables (Deep Midnight Purple & Pumpkin Glow)
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-core: #130f1c;
+  --bg-deep: #0b0812;
+  --bg-surface: #1d172a;
+  --bg-surface-hover: #29203b;
+  --bg-glass: rgba(22, 17, 33, 0.88);
+
+  --accent-orange: #ff6a00;
+  --accent-orange-hover: #e05d00;
+  --accent-orange-glow: rgba(255, 106, 0, 0.45);
+  --accent-orange-subtle: rgba(255, 106, 0, 0.15);
+  
+  --purple-glow: rgba(142, 68, 255, 0.25);
+  --purple-border: rgba(168, 130, 255, 0.14);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a9a2be;
+  --text-muted: #6e6784;
+
+  --font-spooky: 'Creepster', cursive;
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Full-Screen Atmospheric Background
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-deep);
+}
+
+body.spooky-theme-body {
+  font-family: var(--font-main);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient Moon & Graveyard Fog Background Artwork */
+.ambient-fog-layer {
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(220, 210, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, rgba(255, 106, 0, 0.09) 0%, transparent 50%),
+    linear-gradient(180deg, #090610 0%, #161024 50%, #08050d 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.full-moon-element {
+  position: fixed;
+  top: 60px;
+  right: calc(50% - 360px);
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fffae8 0%, #d8d0ff 60%, rgba(200, 190, 255, 0) 100%);
+  box-shadow: 0 0 60px rgba(220, 210, 255, 0.35);
+  pointer-events: none;
+  opacity: 0.65;
+  z-index: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. Viewport Device Shell
+   -------------------------------------------------------------------------- */
+.music-viewport-shell {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 900px;
+  background: var(--bg-core);
+  border: 10px solid #201a2f;
+  border-radius: 46px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.95),
+    0 0 0 1px var(--purple-border),
+    0 0 45px rgba(255, 106, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   4. Top Navigation
+   -------------------------------------------------------------------------- */
+.app-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 14px;
+}
+
+.nav-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-orange);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.nav-action-btn:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px var(--accent-orange-glow));
+}
+
+.nav-btn-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-orange);
+}
+
+.nav-title-logo {
+  font-family: var(--font-spooky);
+  font-size: 1.6rem;
+  letter-spacing: 1.5px;
+  color: var(--accent-orange);
+  text-shadow: 0 2px 10px var(--accent-orange-glow);
+}
+
+/* --------------------------------------------------------------------------
+   5. Scrollable Area
+   -------------------------------------------------------------------------- */
+.music-scroll-viewport {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 140px;
+  scrollbar-width: none;
+}
+
+.music-scroll-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Playlist Header Banner
+   -------------------------------------------------------------------------- */
+.hero-playlist-banner {
+  margin: 6px 18px 20px;
+  background: linear-gradient(135deg, #241c38 0%, #151024 100%);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-lg);
+  padding: 18px 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+}
+
+.hero-cover-container {
+  position: relative;
+  width: 105px;
+  height: 105px;
+  flex-shrink: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--purple-border);
+}
+
+.hero-cover-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-meta-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-brand-heading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-playlist-name {
+  font-family: var(--font-spooky);
+  font-size: 1.5rem;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bats-flight-icon {
+  font-size: 1rem;
+  transform: rotate(12deg);
+}
+
+.hero-curator-tag {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-orange);
+  margin-top: 2px;
+}
+
+.hero-stats-info {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.hero-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-primary-play {
+  background: var(--accent-orange);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--accent-orange-glow);
+  transition: var(--transition-fast);
+}
+
+.btn-primary-play:hover {
+  background: var(--accent-orange-hover);
+  transform: scale(1.05);
+}
+
+.btn-secondary-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--purple-border);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  min-width: 88px;
+  padding: 6px 12px;
+  font-family: var(--font-main);
+  font-size: 0.64rem;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-secondary-pill:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.btn-icon-more {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* --------------------------------------------------------------------------
+   7. Featured Playlists Carousel
+   -------------------------------------------------------------------------- */
+.featured-playlists-section {
+  margin-bottom: 22px;
+}
+
+.section-title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 10px;
+}
+
+.section-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #f1f0f7;
+}
+
+.playlist-counter-indicator {
+  font-size: 0.72rem;
+  color: var(--accent-orange);
+  font-weight: 600;
+}
+
+.playlists-carousel-track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 4px 20px 8px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.playlists-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.playlist-pill-card {
+  flex: 0 0 135px;
+  scroll-snap-align: start;
+  background: var(--bg-surface);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.playlist-pill-card:hover,
+.playlist-pill-card.active {
+  background: var(--bg-surface-hover);
+  border-color: var(--accent-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4), 0 0 12px var(--accent-orange-subtle);
+}
+
+.playlist-card-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 115px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.playlist-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.badge-playlist-tag {
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+}
+
+.playlist-card-info {
+  margin-top: 8px;
+}
+
+.playlist-card-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.playlist-card-genre {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   8. Tracklist Rows & Songs Stream
+   -------------------------------------------------------------------------- */
+.tracklist-stream-section {
+  padding: 0 18px;
+}
+
+.tracklist-ordered-stream {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saved-empty-state {
+  padding: 32px 20px;
+  color: var(--text-secondary);
+  text-align: center;
+  font-size: 0.82rem;
+}
+
+.track-stream-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: rgba(29, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+}
+
+.track-stream-item:hover,
+.track-stream-item.playing {
+  background: var(--bg-surface);
+  border-color: var(--purple-border);
+}
+
+.track-stream-item.playing {
+  border-left: 4px solid var(--accent-orange);
+}
+
+.track-cover-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.track-details-col {
+  flex: 1;
+  min-width: 0;
+}
+
+.track-title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.track-number {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.track-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-stream-item.playing .track-name {
+  color: var(--accent-orange);
+}
+
+.track-artist {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+.track-duration-stamp {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.track-action-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition-fast);
+  padding: 4px;
+}
+
+.track-action-btn.like-btn.liked {
+  color: var(--accent-orange);
+}
+
+.track-play-bubble {
+  width: 32px;
+  height: 32px;
+  background: var(--accent-orange);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 2px 10px var(--accent-orange-glow);
+  transition: var(--transition-fast);
+}
+
+.track-play-bubble:hover {
+  transform: scale(1.1);
+  background: var(--accent-orange-hover);
+}
+
+/* --------------------------------------------------------------------------
+   9. Floating Mini Player Dock
+   -------------------------------------------------------------------------- */
+.mini-player-bar {
+  position: absolute;
+  bottom: 64px;
+  left: 12px;
+  right: 12px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--purple-glow);
+  z-index: 10;
+}
+
+.player-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.player-progress-bar-fill {
+  height: 100%;
+  background: var(--accent-orange);
+  box-shadow: 0 0 8px var(--accent-orange);
+  transition: width 0.1s linear;
+}
+
+.mini-player-content {
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.player-left-col {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.player-album-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.player-mini-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 140px;
+}
+
+.player-timing-indicators {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.player-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.player-ctrl-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.player-ctrl-btn:hover {
+  color: #fff;
+}
+
+.player-ctrl-btn.main-playback-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent-orange);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 10px var(--accent-orange-glow);
+}
+
+/* --------------------------------------------------------------------------
+   10. Persistent Bottom Navigation Dock
+   -------------------------------------------------------------------------- */
+.app-dock-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background: rgba(11, 8, 18, 0.95);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--purple-border);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 18px 8px;
+  z-index: 9;
+}
+
+.dock-tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition-fast);
+}
+
+.dock-tab-item.active {
+  color: var(--accent-orange);
+  filter: drop-shadow(0 0 6px var(--accent-orange-glow));
+}
+
+.dock-tab-item:hover {
+  color: var(--accent-orange);
+}

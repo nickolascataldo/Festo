@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>spookyreads.html</title>
+<link rel="stylesheet" href="spookyreads.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=IM+Fell+English+SC&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Mobile Viewport Shell -->
+<main class="app-viewport">
+
+<!-- Branding Header -->
+<header class="app-header">
+<div class="brand-bar">
+<div class="brand-title-wrap">
+<h1 class="brand-title">
+SPOOKY
+<span class="brand-subtitle">BOOK NOOK</span>
+</h1>
+<span class="bat-decor" aria-hidden="true">🦇</span>
+</div>
+</div>
+</header>
+
+<!-- Search Section -->
+<section class="search-section" aria-label="Book Search">
+<div class="search-box">
+<i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+<input type="search" id="searchInput" class="search-input" placeholder="Search horror novels, authors..." aria-label="Search books">
+</div>
+</section>
+
+<!-- Main Content: Rendered Book Carousels -->
+<div class="books-content" id="booksContainer" aria-live="polite">
+
+<!-- SECTION 1: CURRENTLY READING -->
+<section class="category-section" aria-labelledby="heading-currently-reading">
+<div class="section-header">
+<h2 id="heading-currently-reading" class="section-title">CURRENTLY READING</h2>
+<a href="#more-reading" class="see-all-btn" aria-label="See all currently reading books">
+<i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+</a>
+</div>
+
+<div class="horizontal-scroll wide-cards-row">
+
+<!-- Book 1 -->
+<article class="wide-card">
+<div class="wide-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235116-L.jpg" alt="The Shining book cover" class="card-thumb" loading="lazy">
+<span class="tag-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8</span>
+<span class="tag-progress">Page 312 of 447</span>
+</div>
+<div class="wide-card-body">
+<div class="card-meta-text">
+<h3 class="book-title">The Shining</h3>
+<p class="book-subtext">Stephen King • 1977</p>
+</div>
+<button class="read-action-btn" aria-label="Continue reading The Shining">
+<i class="fa-solid fa-book-open" aria-hidden="true"></i>
+</button>
+</div>
+</article>
+
+<!-- Book 2 -->
+<article class="wide-card">
+<div class="wide-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231856-L.jpg" alt="Pet Sematary book cover" class="card-thumb" loading="lazy">
+<span class="tag-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+<span class="tag-progress">Page 140 of 374</span>
+</div>
+<div class="wide-card-body">
+<div class="card-meta-text">
+<h3 class="book-title">Pet Sematary</h3>
+<p class="book-subtext">Stephen King • 1983</p>
+</div>
+<button class="read-action-btn" aria-label="Continue reading Pet Sematary">
+<i class="fa-solid fa-book-open" aria-hidden="true"></i>
+</button>
+</div>
+</article>
+
+<!-- Book 3 -->
+<article class="wide-card">
+<div class="wide-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/9255566-L.jpg" alt="Dracula book cover" class="card-thumb" loading="lazy">
+<span class="tag-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+<span class="tag-progress">Page 88 of 418</span>
+</div>
+<div class="wide-card-body">
+<div class="card-meta-text">
+<h3 class="book-title">Dracula</h3>
+<p class="book-subtext">Bram Stoker • 1897</p>
+</div>
+<button class="read-action-btn" aria-label="Continue reading Dracula">
+<i class="fa-solid fa-book-open" aria-hidden="true"></i>
+</button>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- SECTION 2: STEPHEN KING MASTERWORKS -->
+<section class="category-section" aria-labelledby="heading-king-masterworks">
+<div class="section-header">
+<h2 id="heading-king-masterworks" class="section-title">STEPHEN KING MASTERWORKS</h2>
+<a href="#more-king" class="see-all-link" aria-label="View all Stephen King Masterworks">
+<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</a>
+</div>
+
+<div class="horizontal-scroll poster-cards-row">
+
+<!-- Book 4 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231996-L.jpg" alt="IT by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">IT</h3>
+<button class="bookmark-btn active" aria-label="Bookmark IT"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1986)</p>
+<p class="poster-genre">Cosmic • Horror</p>
+</div>
+</article>
+
+<!-- Book 5 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235272-L.jpg" alt="Salem's Lot by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Salem's Lot</h3>
+<button class="bookmark-btn active" aria-label="Bookmark Salem's Lot"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1975)</p>
+<p class="poster-genre">Vampires • Gothic</p>
+</div>
+</article>
+
+<!-- Book 6 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231885-L.jpg" alt="Misery by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Misery</h3>
+<button class="bookmark-btn active" aria-label="Bookmark Misery"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1987)</p>
+<p class="poster-genre">Psychological • Thriller</p>
+</div>
+</article>
+
+<!-- Book 7 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231872-L.jpg" alt="Carrie by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Carrie</h3>
+<button class="bookmark-btn active" aria-label="Bookmark Carrie"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1974)</p>
+<p class="poster-genre">Supernatural • Horror</p>
+</div>
+</article>
+
+<!-- Book 8 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235288-L.jpg" alt="The Stand by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.9</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">The Stand</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Stand"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1978)</p>
+<p class="poster-genre">Apocalyptic • Dark Fantasy</p>
+</div>
+</article>
+
+<!-- Book 9 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231862-L.jpg" alt="Cujo by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Cujo</h3>
+<button class="bookmark-btn" aria-label="Bookmark Cujo"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1981)</p>
+<p class="poster-genre">Creature • Suspense</p>
+</div>
+</article>
+
+<!-- Book 10 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/7984916-L.jpg" alt="Doctor Sleep by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Doctor Sleep</h3>
+<button class="bookmark-btn" aria-label="Bookmark Doctor Sleep"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (2013)</p>
+<p class="poster-genre">Supernatural • Sequel</p>
+</div>
+</article>
+
+<!-- Book 11 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231860-L.jpg" alt="Christine by Stephen King" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Christine</h3>
+<button class="bookmark-btn" aria-label="Bookmark Christine"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Stephen King (1983)</p>
+<p class="poster-genre">Possession • Horror</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- SECTION 3: GOTHIC & CLASSIC NOVELS -->
+<section class="category-section" aria-labelledby="heading-gothic-classics">
+<div class="section-header">
+<h2 id="heading-gothic-classics" class="section-title">GOTHIC & CLASSIC NOVELS</h2>
+<a href="#more-gothic" class="see-all-link" aria-label="View all Gothic and Classic Novels">
+<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</a>
+</div>
+
+<div class="horizontal-scroll poster-cards-row">
+
+<!-- Book 12 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8744576-L.jpg" alt="Frankenstein by Mary Shelley" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Frankenstein</h3>
+<button class="bookmark-btn active" aria-label="Bookmark Frankenstein"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Mary Shelley (1818)</p>
+<p class="poster-genre">Gothic • Sci-Fi</p>
+</div>
+</article>
+
+<!-- Book 13 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8278326-L.jpg" alt="The Haunting of Hill House" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Hill House</h3>
+<button class="bookmark-btn active" aria-label="Bookmark Hill House"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Shirley Jackson (1959)</p>
+<p class="poster-genre">Haunted Mansion</p>
+</div>
+</article>
+
+<!-- Book 14 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/240726-L.jpg" alt="The Exorcist by William Peter Blatty" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">The Exorcist</h3>
+<button class="bookmark-btn active" aria-label="Bookmark The Exorcist"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">W. P. Blatty (1971)</p>
+<p class="poster-genre">Demonic Possession</p>
+</div>
+</article>
+
+<!-- Book 15 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6498516-L.jpg" alt="Rosemary's Baby by Ira Levin" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Rosemary's Baby</h3>
+<button class="bookmark-btn active" aria-label="Bookmark Rosemary's Baby"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Ira Levin (1967)</p>
+<p class="poster-genre">Occult • Thriller</p>
+</div>
+</article>
+
+<!-- Book 16 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8758836-L.jpg" alt="Something Wicked This Way Comes" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Wicked Comes</h3>
+<button class="bookmark-btn" aria-label="Bookmark Something Wicked This Way Comes"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Ray Bradbury (1962)</p>
+<p class="poster-genre">Dark Carnival</p>
+</div>
+</article>
+
+<!-- Book 17 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6408226-L.jpg" alt="Hell House by Richard Matheson" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Hell House</h3>
+<button class="bookmark-btn" aria-label="Bookmark Hell House"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">R. Matheson (1971)</p>
+<p class="poster-genre">Supernatural</p>
+</div>
+</article>
+
+<!-- Book 18 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235111-L.jpg" alt="I Am Legend by Richard Matheson" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">I Am Legend</h3>
+<button class="bookmark-btn" aria-label="Bookmark I Am Legend"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">R. Matheson (1954)</p>
+<p class="poster-genre">Vampire • Sci-Fi</p>
+</div>
+</article>
+
+<!-- Book 19 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/9255551-L.jpg" alt="The Picture of Dorian Gray" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Dorian Gray</h3>
+<button class="bookmark-btn" aria-label="Bookmark Dorian Gray"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Oscar Wilde (1890)</p>
+<p class="poster-genre">Gothic • Classic</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- SECTION 4: MODERN PSYCHOLOGICAL TERROR -->
+<section class="category-section" aria-labelledby="heading-modern-terror">
+<div class="section-header">
+<h2 id="heading-modern-terror" class="section-title">MODERN PSYCHOLOGICAL TERROR</h2>
+<a href="#more-modern" class="see-all-link" aria-label="View all Modern Psychological Terror books">
+<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</a>
+</div>
+
+<div class="horizontal-scroll poster-cards-row">
+
+<!-- Book 20 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8197776-L.jpg" alt="Bird Box by Josh Malerman" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Bird Box</h3>
+<button class="bookmark-btn" aria-label="Bookmark Bird Box"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Josh Malerman (2014)</p>
+<p class="poster-genre">Post-Apocalyptic</p>
+</div>
+</article>
+
+<!-- Book 21 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6498521-L.jpg" alt="Heart-Shaped Box by Joe Hill" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Heart-Shaped</h3>
+<button class="bookmark-btn" aria-label="Bookmark Heart-Shaped Box"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Joe Hill (2007)</p>
+<p class="poster-genre">Ghost Story • Rock</p>
+</div>
+</article>
+
+<!-- Book 22 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8316276-L.jpg" alt="The Troop by Nick Cutter" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">The Troop</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Troop"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Nick Cutter (2014)</p>
+<p class="poster-genre">Body Horror • Survival</p>
+</div>
+</article>
+
+<!-- Book 23 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/10389656-L.jpg" alt="Mexican Gothic by Silvia Moreno-Garcia" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Mexican Gothic</h3>
+<button class="bookmark-btn" aria-label="Bookmark Mexican Gothic"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">S. Moreno-Garcia (2020)</p>
+<p class="poster-genre">Gothic • Mystery</p>
+</div>
+</article>
+
+<!-- Book 24 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8584826-L.jpg" alt="The Fisherman by John Langan" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">The Fisherman</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Fisherman"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">John Langan (2016)</p>
+<p class="poster-genre">Cosmic • Dark Fantasy</p>
+</div>
+</article>
+
+<!-- Book 25 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6575126-L.jpg" alt="Ghost Story by Peter Straub" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Ghost Story</h3>
+<button class="bookmark-btn" aria-label="Bookmark Ghost Story"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Peter Straub (1979)</p>
+<p class="poster-genre">Supernatural • Winter</p>
+</div>
+</article>
+
+<!-- Book 26 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235121-L.jpg" alt="A Head Full of Ghosts by Paul Tremblay" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.1</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Head Full Ghosts</h3>
+<button class="bookmark-btn" aria-label="Bookmark A Head Full of Ghosts"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Paul Tremblay (2015)</p>
+<p class="poster-genre">Possession • Mystery</p>
+</div>
+</article>
+
+<!-- Book 27 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8904226-L.jpg" alt="The Cabin at the End of the World" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.0</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">The Cabin</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Cabin at the End of the World"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Paul Tremblay (2018)</p>
+<p class="poster-genre">Home Invasion</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- SECTION 5: NOSTALGIC NIGHTMARES & YA -->
+<section class="category-section" aria-labelledby="heading-nostalgic-ya">
+<div class="section-header">
+<h2 id="heading-nostalgic-ya" class="section-title">NOSTALGIC NIGHTMARES & YA</h2>
+<a href="#more-ya" class="see-all-link" aria-label="View all Nostalgic Nightmares and YA books">
+<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</a>
+</div>
+
+<div class="horizontal-scroll poster-cards-row">
+
+<!-- Book 28 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235118-L.jpg" alt="Coraline by Neil Gaiman" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Coraline</h3>
+<button class="bookmark-btn" aria-label="Bookmark Coraline"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Neil Gaiman (2002)</p>
+<p class="poster-genre">Dark Fantasy</p>
+</div>
+</article>
+
+<!-- Book 29 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6975226-L.jpg" alt="Scary Stories to Tell in the Dark" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Scary Stories</h3>
+<button class="bookmark-btn" aria-label="Bookmark Scary Stories"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Alvin Schwartz (1981)</p>
+<p class="poster-genre">Folklore • Chilling</p>
+</div>
+</article>
+
+<!-- Book 30 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8231922-L.jpg" alt="The Graveyard Book by Neil Gaiman" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Graveyard Book</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Graveyard Book"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Neil Gaiman (2008)</p>
+<p class="poster-genre">Ghosts • Fantasy</p>
+</div>
+</article>
+
+<!-- Book 31 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6498526-L.jpg" alt="The Thief of Always by Clive Barker" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Thief of Always</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Thief of Always"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Clive Barker (1992)</p>
+<p class="poster-genre">Dark Fable</p>
+</div>
+</article>
+
+<!-- Book 32 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6408231-L.jpg" alt="The Haunted Mask by R.L. Stine" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Haunted Mask</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Haunted Mask"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">R.L. Stine (1993)</p>
+<p class="poster-genre">Goosebumps • Spooky</p>
+</div>
+</article>
+
+<!-- Book 33 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6408236-L.jpg" alt="Monster Blood by R.L. Stine" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.1</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Monster Blood</h3>
+<button class="bookmark-btn" aria-label="Bookmark Monster Blood"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">R.L. Stine (1992)</p>
+<p class="poster-genre">Goosebumps • Creature</p>
+</div>
+</article>
+
+<!-- Book 34 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6408241-L.jpg" alt="Night of the Living Dummy by R.L. Stine" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Living Dummy</h3>
+<button class="bookmark-btn" aria-label="Bookmark Night of the Living Dummy"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">R.L. Stine (1993)</p>
+<p class="poster-genre">Goosebumps • Slappy</p>
+</div>
+</article>
+
+<!-- Book 35 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235126-L.jpg" alt="The Halloween Tree by Ray Bradbury" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Halloween Tree</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Halloween Tree"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Ray Bradbury (1972)</p>
+<p class="poster-genre">Halloween Classic</p>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- SECTION 6: DARK FANTASY & VISCERAL SCARES -->
+<section class="category-section" aria-labelledby="heading-visceral-scares">
+<div class="section-header">
+<h2 id="heading-visceral-scares" class="section-title">DARK FANTASY & VISCERAL SCARES</h2>
+<a href="#more-visceral" class="see-all-link" aria-label="View all Dark Fantasy and Visceral Scares">
+<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+</a>
+</div>
+
+<div class="horizontal-scroll poster-cards-row">
+
+<!-- Book 36 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6498531-L.jpg" alt="The Hellbound Heart by Clive Barker" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Hellbound Heart</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Hellbound Heart"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Clive Barker (1986)</p>
+<p class="poster-genre">Cenobites • Visceral</p>
+</div>
+</article>
+
+<!-- Book 37 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/6498536-L.jpg" alt="Books of Blood by Clive Barker" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Books of Blood</h3>
+<button class="bookmark-btn" aria-label="Bookmark Books of Blood"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Clive Barker (1984)</p>
+<p class="poster-genre">Splatterpunk • Horror</p>
+</div>
+</article>
+
+<!-- Book 38 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235131-L.jpg" alt="Interview with the Vampire by Anne Rice" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Vampire Interview</h3>
+<button class="bookmark-btn" aria-label="Bookmark Interview with the Vampire"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Anne Rice (1976)</p>
+<p class="poster-genre">Gothic • Vampires</p>
+</div>
+</article>
+
+<!-- Book 39 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235136-L.jpg" alt="The Vampire Lestat by Anne Rice" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Vampire Lestat</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Vampire Lestat"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Anne Rice (1985)</p>
+<p class="poster-genre">Gothic • Vampires</p>
+</div>
+</article>
+
+<!-- Book 40 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235141-L.jpg" alt="At the Mountains of Madness" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Mountains Madness</h3>
+<button class="bookmark-btn" aria-label="Bookmark At the Mountains of Madness"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">H.P. Lovecraft (1936)</p>
+<p class="poster-genre">Cosmic • Antarctica</p>
+</div>
+</article>
+
+<!-- Book 41 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235146-L.jpg" alt="The Call of Cthulhu" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Call of Cthulhu</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Call of Cthulhu"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">H.P. Lovecraft (1928)</p>
+<p class="poster-genre">Cosmic Mythos</p>
+</div>
+</article>
+
+<!-- Book 42 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235151-L.jpg" alt="The Ritual by Adam Nevill" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">The Ritual</h3>
+<button class="bookmark-btn" aria-label="Bookmark The Ritual"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">Adam Nevill (2011)</p>
+<p class="poster-genre">Folk Horror • Wilderness</p>
+</div>
+</article>
+
+<!-- Book 43 -->
+<article class="poster-card">
+<div class="poster-thumbnail-wrap">
+<img src="https://covers.openlibrary.org/b/id/8235156-L.jpg" alt="Let the Right One In" class="poster-img" loading="lazy">
+<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
+</div>
+<div class="poster-card-body">
+<div class="poster-header-row">
+<h3 class="poster-book-title">Right One In</h3>
+<button class="bookmark-btn" aria-label="Bookmark Let the Right One In"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
+</div>
+<p class="poster-meta">J. A. Lindqvist (2004)</p>
+<p class="poster-genre">Nordic Vampire Horror</p>
+</div>
+</article>
+
+</div>
+</section>
+
+</div>
+
+<!-- Persistent Bottom Navigation Dock -->
+<nav class="bottom-nav" aria-label="Primary Navigation">
+<a href="../Landing Page/LandingPage.html" class="nav-item active" aria-label="Home">
+<i class="fa-solid fa-house" aria-hidden="true"></i>
+</a>
+<a href="#search" class="nav-item" aria-label="Search">
+<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+</a>
+<a href="#library" class="nav-item" aria-label="My Bookshelf">
+<i class="fa-solid fa-book-bookmark" aria-hidden="true"></i>
+</a>
+</nav>
+
+</main>
+
+<script src="spookyreads.js"></script>
+</body>
+</html>

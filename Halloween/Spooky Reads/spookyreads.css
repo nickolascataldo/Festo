@@ -1,0 +1,627 @@
+/* ==========================================================================
+SPOOKY READS — MASTER STYLESHEET (style.css)
+========================================================================== */
+
+/* --------------------------------------------------------------------------
+1. Design System & CSS Variables
+-------------------------------------------------------------------------- */
+:root {
+--bg-core: #090a0c;
+--bg-surface-dark: #1b1412;
+--bg-card: #211816;
+--bg-card-hover: #30201d;
+--bg-glass: rgba(35, 22, 20, 0.9);
+
+--accent-crimson: #ff3344;
+--accent-orange: #ff6a00;
+--accent-orange-glow: rgba(255, 106, 0, 0.45);
+--accent-crimson-glow: rgba(255, 51, 68, 0.4);
+--accent-orange-subtle: rgba(255, 106, 0, 0.12);
+--ink-brown: #4b2a20;
+--parchment: #d4b58b;
+
+--gold-star: #ffb800;
+--border-subtle: rgba(255, 255, 255, 0.08);
+--border-focus: rgba(255, 106, 0, 0.45);
+
+--text-primary: #ffffff;
+--text-secondary: #9ea0b4;
+--text-muted: #656779;
+
+--badge-bg: rgba(0, 0, 0, 0.72);
+--badge-blur: blur(8px);
+
+--font-spooky: 'IM Fell English SC', Georgia, serif;
+--font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+--radius-sm: 8px;
+--radius-md: 14px;
+--radius-lg: 18px;
+--radius-pill: 9999px;
+
+--transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+--transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+2. Reset & Base Layout
+-------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+-webkit-tap-highlight-color: transparent;
+}
+
+html {
+font-size: 16px;
+background-color: #040406;
+}
+
+body {
+font-family: var(--font-main);
+background-color: #040406;
+color: var(--text-primary);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+padding: 24px 12px 60px;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+3. Device Shell (Mobile Viewport)
+-------------------------------------------------------------------------- */
+.app-viewport {
+position: relative;
+width: 100%;
+max-width: 440px;
+min-height: 900px;
+background: var(--bg-core);
+background-image:
+radial-gradient(circle at 20% 10%, rgba(143, 57, 31, 0.2) 0%, transparent 38%),
+repeating-linear-gradient(165deg, rgba(255, 255, 255, 0.018) 0 2px, transparent 3px 52px),
+linear-gradient(145deg, #2b201d 0%, #120d0d 52%, #080708 100%);
+border-radius: 46px;
+border: 10px solid #1a1a22;
+box-shadow:
+0 30px 80px rgba(0, 0, 0, 0.95),
+0 0 0 1px rgba(255, 255, 255, 0.06),
+0 0 50px rgba(255, 106, 0, 0.08);
+overflow: hidden;
+display: flex;
+flex-direction: column;
+}
+
+/* Spooky Spiderweb Ambient Texture */
+.app-viewport::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 160px;
+height: 160px;
+background:
+radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px) 0 0 / 14px 14px,
+radial-gradient(circle at 0 0, rgba(255, 106, 0, 0.12) 2px, transparent 2px) 0 0 / 28px 28px;
+mask-image: radial-gradient(circle at 0 0, black 25%, transparent 75%);
+-webkit-mask-image: radial-gradient(circle at 0 0, black 25%, transparent 75%);
+pointer-events: none;
+z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+4. Header & Top Status Bar
+-------------------------------------------------------------------------- */
+.app-header {
+position: relative;
+padding: 16px 22px 10px;
+z-index: 5;
+}
+
+.brand-bar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 4px 0 8px;
+}
+
+.brand-title-wrap {
+position: relative;
+display: inline-block;
+margin: 0 auto;
+text-align: center;
+}
+
+.brand-title {
+font-family: var(--font-spooky);
+font-size: 2.65rem;
+line-height: 0.88;
+letter-spacing: 3px;
+color: var(--parchment);
+text-shadow:
+0 2px 0 #2a120d,
+0 0 16px rgba(212, 181, 139, 0.28);
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.brand-subtitle {
+font-family: var(--font-spooky);
+font-size: 1.75rem;
+letter-spacing: 3px;
+color: #eee0c6;
+text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.bat-decor {
+position: absolute;
+right: -24px;
+top: -8px;
+font-size: 1.15rem;
+transform: rotate(18deg);
+filter: drop-shadow(0 2px 6px rgba(255, 106, 0, 0.5));
+animation: batFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes batFloat {
+0% { transform: translateY(0) rotate(18deg); }
+100% { transform: translateY(-4px) rotate(24deg); }
+}
+
+/* --------------------------------------------------------------------------
+5. Search Bar
+-------------------------------------------------------------------------- */
+.search-section {
+padding: 8px 20px 18px;
+position: relative;
+z-index: 5;
+}
+
+.search-box {
+background-color: var(--bg-surface-dark);
+border: 1px solid var(--border-subtle);
+border-radius: var(--radius-pill);
+padding: 12px 18px;
+display: flex;
+align-items: center;
+gap: 12px;
+box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+transition: var(--transition-fast);
+}
+
+.search-box:focus-within {
+border-color: var(--accent-orange);
+background-color: #17171e;
+box-shadow:
+inset 0 2px 6px rgba(0, 0, 0, 0.6),
+0 0 16px rgba(255, 106, 0, 0.2);
+}
+
+.search-icon {
+color: var(--text-muted);
+font-size: 0.95rem;
+transition: var(--transition-fast);
+}
+
+.search-box:focus-within .search-icon {
+color: var(--accent-orange);
+}
+
+.search-input {
+width: 100%;
+background: transparent;
+border: none;
+outline: none;
+font-family: var(--font-main);
+font-size: 0.9rem;
+font-weight: 500;
+color: var(--text-primary);
+}
+
+.search-input::placeholder {
+color: #555566;
+}
+
+/* --------------------------------------------------------------------------
+6. Books Scroll Content & Sections
+-------------------------------------------------------------------------- */
+.books-content {
+flex: 1;
+overflow-y: auto;
+overflow-x: hidden;
+padding-bottom: 110px;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+
+.books-content::-webkit-scrollbar {
+display: none;
+}
+
+.cover-loading {
+text-align: center;
+padding: 90px 20px;
+color: var(--parchment);
+font-family: var(--font-spooky);
+font-size: 1.1rem;
+}
+
+.cover-loading i {
+display: block;
+font-size: 2rem;
+margin-bottom: 10px;
+color: var(--accent-orange);
+}
+
+.category-section {
+margin-bottom: 26px;
+}
+
+.section-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 0 22px 12px;
+}
+
+.section-title {
+font-size: 0.85rem;
+font-weight: 800;
+letter-spacing: 0.6px;
+text-transform: uppercase;
+color: var(--parchment);
+font-family: var(--font-spooky);
+font-size: 1.05rem;
+letter-spacing: 1.2px;
+}
+
+.section-kicker {
+font-family: Georgia, serif;
+font-size: 0.68rem;
+font-style: italic;
+color: var(--text-secondary);
+}
+
+.best-sellers-section {
+border-top: 1px solid rgba(212, 181, 139, 0.18);
+padding-top: 14px;
+}
+
+.see-all-btn,
+.see-all-link {
+color: var(--text-muted);
+font-size: 0.85rem;
+text-decoration: none;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: var(--transition-fast);
+}
+
+.see-all-btn:hover,
+.see-all-link:hover {
+color: var(--accent-orange);
+transform: translateX(2px);
+}
+
+/* Horizontal Carousels */
+.horizontal-scroll {
+display: flex;
+gap: 15px;
+overflow-x: auto;
+padding: 4px 22px 10px;
+scroll-snap-type: x mandatory;
+scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+display: none;
+}
+
+/* --------------------------------------------------------------------------
+7. Wide Cards: Currently Reading
+-------------------------------------------------------------------------- */
+.wide-card {
+flex: 0 0 270px;
+scroll-snap-align: start;
+background: var(--bg-card);
+border: 1px solid var(--border-subtle);
+border-radius: var(--radius-lg);
+overflow: hidden;
+display: flex;
+flex-direction: column;
+transition: var(--transition-smooth);
+}
+
+.wide-card:hover {
+transform: translateY(-4px);
+border-color: rgba(255, 106, 0, 0.3);
+box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+.wide-thumbnail-wrap {
+position: relative;
+width: 100%;
+height: 145px;
+background-color: #0b0c10;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+
+.wide-thumbnail-wrap .card-thumb {
+width: 100%;
+height: 100%;
+object-fit: cover;
+filter: brightness(0.85);
+transition: transform 0.5s ease;
+}
+
+.wide-card:hover .card-thumb {
+transform: scale(1.06);
+}
+
+.tag-rating {
+position: absolute;
+top: 10px;
+left: 10px;
+background: var(--badge-bg);
+backdrop-filter: var(--badge-blur);
+-webkit-backdrop-filter: var(--badge-blur);
+border: 1px solid rgba(255, 255, 255, 0.08);
+padding: 4px 8px;
+border-radius: var(--radius-sm);
+font-size: 0.72rem;
+font-weight: 700;
+color: #ffffff;
+display: flex;
+align-items: center;
+gap: 4px;
+}
+
+.tag-rating i {
+color: var(--gold-star);
+font-size: 0.7rem;
+}
+
+.tag-progress {
+position: absolute;
+top: 10px;
+right: 10px;
+background: var(--badge-bg);
+backdrop-filter: var(--badge-blur);
+-webkit-backdrop-filter: var(--badge-blur);
+border: 1px solid rgba(255, 255, 255, 0.08);
+padding: 4px 8px;
+border-radius: var(--radius-sm);
+font-size: 0.7rem;
+font-weight: 600;
+color: var(--accent-orange);
+}
+
+.wide-card-body {
+padding: 12px 14px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: var(--bg-card);
+}
+
+.card-meta-text {
+flex: 1;
+min-width: 0;
+}
+
+.book-title {
+font-size: 0.95rem;
+font-weight: 700;
+color: var(--text-primary);
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+margin-bottom: 2px;
+}
+
+.book-subtext {
+font-size: 0.74rem;
+font-weight: 600;
+color: var(--text-secondary);
+}
+
+.read-action-btn {
+width: 40px;
+height: 40px;
+flex-shrink: 0;
+background: var(--accent-orange);
+border: none;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+color: #ffffff;
+font-size: 0.85rem;
+cursor: pointer;
+box-shadow: 0 4px 14px var(--accent-orange-glow);
+transition: var(--transition-fast);
+}
+
+.read-action-btn:hover {
+transform: scale(1.1);
+background-color: var(--accent-crimson);
+box-shadow: 0 6px 20px rgba(255, 51, 68, 0.55);
+}
+
+/* --------------------------------------------------------------------------
+8. Standard Book Poster Cards
+-------------------------------------------------------------------------- */
+.poster-card {
+flex: 0 0 130px;
+scroll-snap-align: start;
+display: flex;
+flex-direction: column;
+transition: var(--transition-smooth);
+}
+
+.poster-card:hover {
+transform: translateY(-4px);
+}
+
+.poster-thumbnail-wrap {
+position: relative;
+width: 130px;
+height: 195px;
+border-radius: var(--radius-md);
+overflow: hidden;
+background-color: var(--bg-surface-dark);
+border: 1px solid var(--border-subtle);
+box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+.poster-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.poster-card:hover .poster-img {
+transform: scale(1.07);
+}
+
+.poster-badge-rating {
+position: absolute;
+bottom: 8px;
+left: 8px;
+background: var(--badge-bg);
+backdrop-filter: var(--badge-blur);
+-webkit-backdrop-filter: var(--badge-blur);
+border: 1px solid rgba(255, 255, 255, 0.08);
+padding: 3px 6px;
+border-radius: 6px;
+font-size: 0.68rem;
+font-weight: 700;
+color: #ffffff;
+display: flex;
+align-items: center;
+gap: 3px;
+}
+
+.poster-badge-rating i {
+color: var(--gold-star);
+font-size: 0.65rem;
+}
+
+.poster-card-body {
+padding: 8px 2px 2px;
+}
+
+.poster-header-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 4px;
+}
+
+.poster-book-title {
+font-size: 0.84rem;
+font-weight: 700;
+color: #eeeeee;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+max-width: 98px;
+}
+
+.bookmark-btn {
+background: transparent;
+border: none;
+color: var(--text-muted);
+cursor: pointer;
+font-size: 0.85rem;
+padding: 2px;
+transition: var(--transition-fast);
+}
+
+.bookmark-btn.active,
+.bookmark-btn:hover {
+color: var(--accent-orange);
+transform: scale(1.15);
+}
+
+.poster-meta {
+font-size: 0.68rem;
+font-weight: 600;
+color: var(--text-secondary);
+margin-top: 2px;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.poster-genre {
+font-size: 0.64rem;
+font-weight: 500;
+color: var(--text-muted);
+margin-top: 1px;
+}
+
+/* --------------------------------------------------------------------------
+9. Bottom Dock Navigation
+-------------------------------------------------------------------------- */
+.bottom-nav {
+position: absolute;
+bottom: 0;
+left: 0;
+width: 100%;
+background: rgba(10, 10, 14, 0.94);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border-top: 1px solid var(--border-subtle);
+display: flex;
+justify-content: space-around;
+align-items: center;
+padding: 16px 12px 22px;
+z-index: 10;
+}
+
+.nav-item {
+position: relative;
+color: var(--text-muted);
+font-size: 1.25rem;
+text-decoration: none;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 44px;
+height: 44px;
+border-radius: 50%;
+transition: var(--transition-fast);
+}
+
+.nav-item.active {
+color: var(--accent-orange);
+}
+
+.nav-item.active::after {
+content: '';
+position: absolute;
+bottom: 2px;
+width: 5px;
+height: 5px;
+background-color: var(--accent-orange);
+border-radius: 50%;
+box-shadow: 0 0 8px var(--accent-orange);
+}
+
+.nav-item:hover {
+color: var(--accent-orange);
+transform: translateY(-2px);
+}

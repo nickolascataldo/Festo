@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- ==========================================================================
+       THE ENCHANTED 3D SNOWGLOBE VILLAGE — PRODUCTION MASTER PORTAL
+       File: ChristmasLanding.html
+       ========================================================================== -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>The Enchanted 3D Snowglobe Village — Holiday Odyssey</title>
+
+  <!-- Open Graph & UI Meta -->
+  <meta name="description" content="Explore a living 3D Christmas village inside an interactive snowglobe with 9 fully realized 3D buildings, moving holiday train, windmill, and Santa's sleigh.">
+  <meta name="theme-color" content="#030712">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- Production Stylesheet -->
+  <link rel="stylesheet" href="ChristmasLanding.css">
+
+  <!-- Google Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Mountains+of+Christmas:wght@700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="globe-wonderland-body">
+
+  <!-- ==========================================================================
+       1. WEBGL 3D CANVAS VIEWPORT
+       ========================================================================== -->
+  <div class="webgl-canvas-viewport-container" id="canvasContainer">
+    <canvas id="webglCanvas" class="webgl-viewport-canvas"></canvas>
+  </div>
+
+  <!-- Atmospheric Vignette Overlay -->
+  <div class="cinematic-vignette" aria-hidden="true"></div>
+  <div class="aurora-borealis-ambient-layer" aria-hidden="true"></div>
+
+  <!-- Loading Screen & Asset Initializer -->
+  <div class="experience-preloader-curtain" id="experiencePreloader">
+    <div class="preloader-content-card">
+      <div class="preloader-magic-spinner">
+        <span class="snowflake-spinner-glyph">❄️</span>
+        <div class="spinner-orbital-glow"></div>
+      </div>
+      <h2 class="preloader-brand-title">WAKING THE SNOWGLOBE</h2>
+      <p class="preloader-sub-status" id="preloaderStatusText">Constructing 3D village models & cobblestone streets...</p>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
+      </div>
+      <span class="preloader-percentage-readout" id="preloaderPercentage">0%</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. MASTER APPLICATION HUD & INTERACTION LAYER
+       ========================================================================== -->
+  <main class="globe-ui-overlay" id="uiOverlay">
+
+    <!-- Top Cinematic Header -->
+    <header class="globe-top-bar" role="banner">
+      <div class="brand-signature-block">
+        <span class="sparkle-glyph left-glyph" aria-hidden="true">✨</span>
+        <div class="brand-headings-col">
+          <h1 class="brand-main-title">THE ENCHANTED GLOBE</h1>
+          <p class="brand-tagline">3D LIVING CHRISTMAS WONDERLAND ODYSSEY</p>
+        </div>
+        <span class="sparkle-glyph right-glyph" aria-hidden="true">✨</span>
+      </div>
+
+      <!-- Action Navigation Controls -->
+      <nav class="hud-action-controls" aria-label="Global Controls">
+        <button class="hud-btn audio-toggle-btn" id="audioToggleBtn" type="button" aria-label="Toggle Holiday Carols and Music">
+          <i class="fa-solid fa-volume-xmark" id="audioIcon" aria-hidden="true"></i>
+          <span class="btn-text" id="audioTextLabel">Holiday Music</span>
+          <span class="live-pulse-indicator" id="audioLivePulse" aria-hidden="true"></span>
+        </button>
+
+        <button class="hud-btn shake-globe-btn" id="shakeGlobeBtn" type="button" aria-label="Shake the Snowglobe">
+          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
+          <span class="btn-text">Shake Globe</span>
+        </button>
+
+        <button class="hud-btn reset-zoom-btn hidden" id="resetCameraBtn" type="button" aria-label="Return to Snowglobe Orbit View">
+          <i class="fa-solid fa-compress" aria-hidden="true"></i>
+          <span class="btn-text">Orbit View</span>
+        </button>
+
+        <button class="hud-btn info-modal-btn" id="infoHelpBtn" type="button" aria-label="Village Guide">
+          <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+          <span class="btn-text">Guide</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Outward View Floating Hero Invitation Prompt -->
+    <section class="outward-hero-prompt" id="heroPrompt" aria-labelledby="heroPromptTitle">
+      <div class="hero-prompt-card">
+        <div class="prompt-icon-badge" aria-hidden="true">
+          <span class="prompt-icon-emoji">❄️</span>
+          <div class="prompt-badge-glow"></div>
+        </div>
+        <h2 class="prompt-headline" id="heroPromptTitle">Step Inside the Living Village</h2>
+        <p class="prompt-description">
+          A bustling 3D Christmas village with an active train, rotating windmill, and Santa's sleigh. Touch the globe or click below to fly inside and view all 9 interactive realms.
+        </p>
+        
+        <div class="prompt-button-group">
+          <button class="enter-village-btn" id="diveInBtn" type="button">
+            <span class="btn-glow-span"></span>
+            <span class="btn-text-content">ENTER 3D VILLAGE</span>
+            <i class="fa-solid fa-arrow-right-long btn-icon-arrow" aria-hidden="true"></i>
+          </button>
+          
+          <button class="quick-shake-sub-btn" id="quickShakeSubBtn" type="button">
+            <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
+            <span>Flurry Blizzard</span>
+          </button>
+        </div>
+
+        <div class="prompt-card-footer">
+          <span class="footer-indicator-dot"></span>
+          <span class="footer-note-text">Active Toy Train • Windmill • Sleigh Radar • 9 3D Buildings</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dynamic 3D Projected Screen Tooltip -->
+    <div class="three-landmark-tooltip" id="threeTooltip" aria-hidden="true" role="tooltip">
+      <div class="tooltip-icon-wrap" id="tooltipIconWrap">
+        <i class="fa-solid fa-sparkles" id="tooltipIcon"></i>
+      </div>
+      <div class="tooltip-text-col">
+        <h4 class="tooltip-title" id="tooltipTitle">Village Destination</h4>
+        <div class="tooltip-meta-row">
+          <span class="tooltip-badge" id="tooltipBadge">Click to Open</span>
+          <span class="tooltip-distance-tag" id="tooltipDistance">Sector 01</span>
+        </div>
+      </div>
+      <div class="tooltip-pointer-arrow"></div>
+    </div>
+
+    <!-- Live Telemetry HUD Bar (Active when inside village) -->
+    <div class="village-telemetry-hud hidden" id="villageTelemetryHud" aria-live="polite">
+      <div class="telemetry-item">
+        <i class="fa-solid fa-temperature-snowflake" aria-hidden="true"></i>
+        <span class="telemetry-label">TEMP:</span>
+        <span class="telemetry-value">24°F (-4°C)</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <i class="fa-solid fa-wind" aria-hidden="true"></i>
+        <span class="telemetry-label">BLIZZARD:</span>
+        <span class="telemetry-value" id="telemetryWindSpeed">14 MPH GUSTS</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <i class="fa-solid fa-train-subway" aria-hidden="true"></i>
+        <span class="telemetry-label">EXPRESS TRAIN:</span>
+        <span class="telemetry-value text-green">ON TRACK</span>
+      </div>
+      <div class="telemetry-divider"></div>
+      <div class="telemetry-item">
+        <i class="fa-solid fa-sleigh" aria-hidden="true"></i>
+        <span class="telemetry-label">SANTA RADAR:</span>
+        <span class="telemetry-value text-gold">IN ORBIT</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         3. LANDMARK DESTINATION DETAIL MODAL
+         ========================================================================== -->
+    <aside class="destination-portal-modal" id="destinationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle">
+      <div class="modal-scrim" id="modalScrim"></div>
+      
+      <div class="modal-surface-card" id="modalSurfaceCard">
+        <button class="modal-close-trigger" id="closeModalBtn" type="button" aria-label="Close Window">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <div class="modal-content-stream" id="modalDynamicBody">
+          <div class="modal-hero-cover-wrap">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80" alt="Destination Preview" class="modal-hero-cover" id="modalCoverImg">
+            <span class="modal-category-pill" id="modalCategoryPill">
+              <i class="fa-solid fa-film" id="modalCategoryIcon"></i>
+              <span id="modalCategoryText">ENTERTAINMENT REALM</span>
+            </span>
+          </div>
+
+          <div class="modal-header-meta">
+            <h3 class="modal-title" id="modalDestTitle">Christmas Cinema & Drive-In</h3>
+            <p class="modal-tagline" id="modalDestTagline">
+              <i class="fa-solid fa-sparkles"></i> 24/7 Holiday Screenings & Spiced Cocoa
+            </p>
+          </div>
+
+          <div class="modal-stats-ribbon" id="modalStatsRibbon">
+            <div class="stat-bubble">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">MOVIES</span>
+            </div>
+            <div class="stat-bubble">
+              <span class="stat-number">4K</span>
+              <span class="stat-label">STREAMING</span>
+            </div>
+            <div class="stat-bubble">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">FESTIVE</span>
+            </div>
+          </div>
+
+          <p class="modal-desc" id="modalDestDesc">
+            Step into the snow-dusted cinema hall screening seasonal favorites from Home Alone to The Polar Express with a crackling fireplace and warm peppermint cocoa on tap.
+          </p>
+
+          <div class="modal-feature-highlights-box" id="modalHighlightsBox">
+            <h5 class="highlights-heading">REALM HIGHLIGHTS:</h5>
+            <ul class="highlights-list" id="modalHighlightsList">
+              <li><i class="fa-solid fa-check"></i> Curated Holiday Playlists & Watchlists</li>
+              <li><i class="fa-solid fa-check"></i> Vintage Black-and-White Classics Collection</li>
+              <li><i class="fa-solid fa-check"></i> Kids & Family Animation Screenings</li>
+            </ul>
+          </div>
+
+          <div class="modal-actions-dock">
+            <button class="modal-enter-action-btn" id="portalEnterActionBtn" type="button" data-key="movies">
+              <span class="btn-sparkle-fx"></span>
+              <i class="fa-solid fa-door-open" aria-hidden="true"></i>
+              <span id="modalActionBtnText">OPEN CHRISTMAS MOVIES</span>
+            </button>
+            <button class="modal-bookmark-action-btn" id="portalBookmarkBtn" type="button" aria-label="Bookmark this destination">
+              <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Guide / Instructions Modal -->
+    <aside class="guide-info-modal" id="guideInfoModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-scrim" id="guideScrim"></div>
+      <div class="guide-card-container">
+        <button class="modal-close-trigger" id="closeGuideBtn" type="button" aria-label="Close Guide">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+
+        <div class="guide-content-body">
+          <div class="guide-title-row">
+            <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
+            <h3 class="guide-title">HOW TO NAVIGATE THE VILLAGE</h3>
+          </div>
+
+          <div class="guide-grid-features">
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-hand-pointer"></i></div>
+              <div class="guide-feature-text">
+                <h5>Tap or Click Glass</h5>
+                <p>Click directly on the snowglobe sphere or use the <strong>Enter 3D Village</strong> button to glide inside.</p>
+              </div>
+            </div>
+
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+              <div class="guide-feature-text">
+                <h5>3D Orbit & Pan</h5>
+                <p>Drag or swipe anywhere on the screen to rotate 360° around the village and zoom with pinch/scroll.</p>
+              </div>
+            </div>
+
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-landmark"></i></div>
+              <div class="guide-feature-text">
+                <h5>9 Themed 3D Landmarks</h5>
+                <p>Hover and click on any custom 3D building, tower, or windmill to launch its interactive destination modal.</p>
+              </div>
+            </div>
+
+            <div class="guide-feature-item">
+              <div class="guide-icon-wrap"><i class="fa-solid fa-wind"></i></div>
+              <div class="guide-feature-text">
+                <h5>Blizzard Physics</h5>
+                <p>Press the <strong>Shake Globe</strong> button anytime to trigger an intensified swirling snowflake flurry.</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="guide-confirm-btn" id="guideConfirmBtn" type="button">GOT IT! EXPLORE VILLAGE</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==========================================================================
+         4. PERSISTENT BOTTOM VILLAGE QUICK NAVIGATOR DOCK
+         ========================================================================== -->
+    <nav class="village-dock-bar" role="navigation" aria-label="Quick Village Navigator">
+      <button class="dock-btn active" type="button" data-destination="globe" aria-label="Outer Snowglobe View">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
+        <span class="dock-label">Globe View</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="movies" aria-label="Christmas Movies Cinema">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-film" aria-hidden="true"></i></div>
+        <span class="dock-label">Movies</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="reads" aria-label="Christmas Reads Library">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-book-bookmark" aria-hidden="true"></i></div>
+        <span class="dock-label">Reads</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="store" aria-label="Toy Emporium Store">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-gift" aria-hidden="true"></i></div>
+        <span class="dock-label">Store</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="map" aria-label="Christmas Town Radar Map">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></div>
+        <span class="dock-label">Town Map</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="music" aria-label="Christmas Music Pavilion">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-music" aria-hidden="true"></i></div>
+        <span class="dock-label">Music</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="game" aria-label="Elf Workshop Games">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></div>
+        <span class="dock-label">Games</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="tracker" aria-label="Santa Sleigh Flight Tracker">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i></div>
+        <span class="dock-label">Tracker</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="letters" aria-label="Write a Letter to Santa Depot">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
+        <span class="dock-label">Letters</span>
+      </button>
+
+      <button class="dock-btn" type="button" data-destination="bakery" aria-label="Gingerbread Sweets & Cocoa Mill">
+        <div class="dock-icon-wrap"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i></div>
+        <span class="dock-label">Bakery</span>
+      </button>
+    </nav>
+
+  </main>
+
+  <!-- ==========================================================================
+       5. SCRIPT DEPENDENCIES (Stable Three.js r128 Ecosystem)
+       ========================================================================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="ChristmasLanding.js"></script>
+</body>
+</html>
