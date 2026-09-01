@@ -1,361 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ==========================================================================
-       THE ENCHANTED 3D SNOWGLOBE VILLAGE — PRODUCTION MASTER PORTAL
-       File: ChristmasLanding.html
-       ========================================================================== -->
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>The Enchanted 3D Snowglobe Village — Holiday Odyssey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Festo — Christmas Sanctuary Navigation Vault</title>
 
-  <!-- Open Graph & UI Meta -->
-  <meta name="description" content="Explore a living 3D Christmas village inside an interactive snowglobe with 9 fully realized 3D buildings, moving holiday train, windmill, and Santa's sleigh.">
-  <meta name="theme-color" content="#030712">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- Google Fonts: Festive Script, Display Serif & Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;900&family=Mountains+of+Christmas:wght@700&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Production Stylesheet -->
   <link rel="stylesheet" href="ChristmasLanding.css">
-
-  <!-- Google Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Mountains+of+Christmas:wght@700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="globe-wonderland-body">
+<body class="christmas-vault-body">
 
-  <!-- ==========================================================================
-       1. WEBGL 3D CANVAS VIEWPORT
-       ========================================================================== -->
-  <div class="webgl-canvas-viewport-container" id="canvasContainer">
-    <canvas id="webglCanvas" class="webgl-viewport-canvas"></canvas>
-  </div>
+  <!-- Winter Cabin Backdrop & Snow Canvas -->
+  <div class="winter-cabin-bg" aria-hidden="true"></div>
+  <div class="falling-snow-layer" aria-hidden="true"></div>
+  <div class="hearth-warm-glow" aria-hidden="true"></div>
+  <canvas id="floatingSnowCanvas" class="floating-snow-canvas" aria-hidden="true"></canvas>
 
-  <!-- Atmospheric Vignette Overlay -->
-  <div class="cinematic-vignette" aria-hidden="true"></div>
-  <div class="aurora-borealis-ambient-layer" aria-hidden="true"></div>
+  <!-- Holly & Garland Vignette Borders -->
+  <div class="festive-border top-left-holly" aria-hidden="true"></div>
+  <div class="festive-border top-right-holly" aria-hidden="true"></div>
+  <div class="festive-border side-garland-left" aria-hidden="true"></div>
+  <div class="festive-border side-garland-right" aria-hidden="true"></div>
 
-  <!-- Loading Screen & Asset Initializer -->
-  <div class="experience-preloader-curtain" id="experiencePreloader">
-    <div class="preloader-content-card">
-      <div class="preloader-magic-spinner">
-        <span class="snowflake-spinner-glyph">❄️</span>
-        <div class="spinner-orbital-glow"></div>
+  <!-- Main Sticky App Header -->
+  <header class="christmas-header">
+    <div class="brand-block">
+      <span class="brand-emblem" id="userAvatarDisplay">🎄</span>
+      <div class="brand-text">
+        <span class="brand-script" id="greetingDisplay">Welcome to Festo</span>
+        <h1 class="brand-title">CHRISTMAS SANCTUARY</h1>
       </div>
-      <h2 class="preloader-brand-title">WAKING THE SNOWGLOBE</h2>
-      <p class="preloader-sub-status" id="preloaderStatusText">Constructing 3D village models & cobblestone streets...</p>
-      <div class="preloader-progress-track">
-        <div class="preloader-progress-fill" id="preloaderProgressFill"></div>
-      </div>
-      <span class="preloader-percentage-readout" id="preloaderPercentage">0%</span>
     </div>
-  </div>
 
-  <!-- ==========================================================================
-       2. MASTER APPLICATION HUD & INTERACTION LAYER
-       ========================================================================== -->
-  <main class="globe-ui-overlay" id="uiOverlay">
-
-    <!-- Top Cinematic Header -->
-    <header class="globe-top-bar" role="banner">
-      <div class="brand-signature-block">
-        <span class="sparkle-glyph left-glyph" aria-hidden="true">✨</span>
-        <div class="brand-headings-col">
-          <h1 class="brand-main-title">THE ENCHANTED GLOBE</h1>
-          <p class="brand-tagline">3D LIVING CHRISTMAS WONDERLAND ODYSSEY</p>
+    <div class="header-right">
+      <!-- Daily Yuletide Trivia Card -->
+      <aside class="daily-fact-card" id="dailyFactWidget">
+        <div class="fact-card-header">
+          <div class="fact-badge">
+            <i class="fa-solid fa-snowflake"></i>
+            <span>Yuletide Lore #<strong id="factIndexNum">01</strong></span>
+          </div>
+          <button class="fact-cycle-btn" id="nextFactBtn" title="Next Holiday Lore" aria-label="Cycle Fact">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
         </div>
-        <span class="sparkle-glyph right-glyph" aria-hidden="true">✨</span>
-      </div>
+        <p class="fact-card-body" id="factDisplayArea">Gathering festive fireside lore...</p>
+      </aside>
 
-      <!-- Action Navigation Controls -->
-      <nav class="hud-action-controls" aria-label="Global Controls">
-        <button class="hud-btn audio-toggle-btn" id="audioToggleBtn" type="button" aria-label="Toggle Holiday Carols and Music">
-          <i class="fa-solid fa-volume-xmark" id="audioIcon" aria-hidden="true"></i>
-          <span class="btn-text" id="audioTextLabel">Holiday Music</span>
-          <span class="live-pulse-indicator" id="audioLivePulse" aria-hidden="true"></span>
-        </button>
+      <!-- Settings / Preferences Gear Button -->
+      <button class="btn-settings-gear" id="openSettingsBtn" title="Open Sanctuary Settings" aria-label="Open Settings">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+    </div>
+  </header>
 
-        <button class="hud-btn shake-globe-btn" id="shakeGlobeBtn" type="button" aria-label="Shake the Snowglobe">
-          <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
-          <span class="btn-text">Shake Globe</span>
-        </button>
+  <!-- Main Viewport Content -->
+  <main class="vault-shell">
 
-        <button class="hud-btn reset-zoom-btn hidden" id="resetCameraBtn" type="button" aria-label="Return to Snowglobe Orbit View">
-          <i class="fa-solid fa-compress" aria-hidden="true"></i>
-          <span class="btn-text">Orbit View</span>
-        </button>
-
-        <button class="hud-btn info-modal-btn" id="infoHelpBtn" type="button" aria-label="Village Guide">
-          <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
-          <span class="btn-text">Guide</span>
-        </button>
-      </nav>
-    </header>
-
-    <!-- Outward View Floating Hero Invitation Prompt -->
-    <section class="outward-hero-prompt" id="heroPrompt" aria-labelledby="heroPromptTitle">
-      <div class="hero-prompt-card">
-        <div class="prompt-icon-badge" aria-hidden="true">
-          <span class="prompt-icon-emoji">❄️</span>
-          <div class="prompt-badge-glow"></div>
-        </div>
-        <h2 class="prompt-headline" id="heroPromptTitle">Step Inside the Living Village</h2>
-        <p class="prompt-description">
-          A bustling 3D Christmas village with an active train, rotating windmill, and Santa's sleigh. Touch the globe or click below to fly inside and view all 9 interactive realms.
+    <!-- Sanctuary Hero Banner with Live Countdown -->
+    <section class="sanctuary-banner">
+      <div class="banner-plaque">
+        <span class="plaque-tag">❄️ Yuletide Grand Directory</span>
+        <h2 class="banner-heading">The Fireside Portals & <em>Archives</em></h2>
+        <p class="banner-desc">
+          Gather by the roaring hearth to explore classic holiday cinema reels, cozy fireside literature, gift workshops, and winter acoustic soundscapes.
         </p>
-        
-        <div class="prompt-button-group">
-          <button class="enter-village-btn" id="diveInBtn" type="button">
-            <span class="btn-glow-span"></span>
-            <span class="btn-text-content">ENTER 3D VILLAGE</span>
-            <i class="fa-solid fa-arrow-right-long btn-icon-arrow" aria-hidden="true"></i>
-          </button>
-          
-          <button class="quick-shake-sub-btn" id="quickShakeSubBtn" type="button">
-            <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
-            <span>Flurry Blizzard</span>
-          </button>
+
+        <!-- Live Christmas Countdown Telemetry Ticker -->
+        <div class="christmas-countdown-container">
+          <div class="countdown-header-tag">
+            <i class="fa-solid fa-sleigh"></i>
+            <span>COUNTDOWN TO CHRISTMAS DAY</span>
+          </div>
+          <div class="countdown-digits-grid">
+            <div class="countdown-unit">
+              <span class="digit-value" id="countDays">00</span>
+              <span class="digit-label">Days</span>
+            </div>
+            <span class="countdown-colon">:</span>
+            <div class="countdown-unit">
+              <span class="digit-value" id="countHours">00</span>
+              <span class="digit-label">Hours</span>
+            </div>
+            <span class="countdown-colon">:</span>
+            <div class="countdown-unit">
+              <span class="digit-value" id="countMins">00</span>
+              <span class="digit-label">Mins</span>
+            </div>
+            <span class="countdown-colon">:</span>
+            <div class="countdown-unit">
+              <span class="digit-value" id="countSecs">00</span>
+              <span class="digit-label">Secs</span>
+            </div>
+          </div>
         </div>
 
-        <div class="prompt-card-footer">
-          <span class="footer-indicator-dot"></span>
-          <span class="footer-note-text">Active Toy Train • Windmill • Sleigh Radar • 9 3D Buildings</span>
+        <!-- Category Shelf Switcher -->
+        <div class="shelf-filter-bar">
+          <span class="filter-label"><i class="fa-solid fa-filter"></i> Realms:</span>
+          <div class="filter-pills">
+            <button class="pill-btn active" data-filter="all">🎄 All Volumes</button>
+            <button class="pill-btn" data-filter="leisure">Leisure & Hearth</button>
+            <button class="pill-btn" data-filter="explore">Explore & Frost</button>
+            <button class="pill-btn" data-filter="shop">Lifestyle & Bazaar</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Dynamic 3D Projected Screen Tooltip -->
-    <div class="three-landmark-tooltip" id="threeTooltip" aria-hidden="true" role="tooltip">
-      <div class="tooltip-icon-wrap" id="tooltipIconWrap">
-        <i class="fa-solid fa-sparkles" id="tooltipIcon"></i>
-      </div>
-      <div class="tooltip-text-col">
-        <h4 class="tooltip-title" id="tooltipTitle">Village Destination</h4>
-        <div class="tooltip-meta-row">
-          <span class="tooltip-badge" id="tooltipBadge">Click to Open</span>
-          <span class="tooltip-distance-tag" id="tooltipDistance">Sector 01</span>
-        </div>
-      </div>
-      <div class="tooltip-pointer-arrow"></div>
-    </div>
-
-    <!-- Live Telemetry HUD Bar (Active when inside village) -->
-    <div class="village-telemetry-hud hidden" id="villageTelemetryHud" aria-live="polite">
-      <div class="telemetry-item">
-        <i class="fa-solid fa-temperature-snowflake" aria-hidden="true"></i>
-        <span class="telemetry-label">TEMP:</span>
-        <span class="telemetry-value">24°F (-4°C)</span>
-      </div>
-      <div class="telemetry-divider"></div>
-      <div class="telemetry-item">
-        <i class="fa-solid fa-wind" aria-hidden="true"></i>
-        <span class="telemetry-label">BLIZZARD:</span>
-        <span class="telemetry-value" id="telemetryWindSpeed">14 MPH GUSTS</span>
-      </div>
-      <div class="telemetry-divider"></div>
-      <div class="telemetry-item">
-        <i class="fa-solid fa-train-subway" aria-hidden="true"></i>
-        <span class="telemetry-label">EXPRESS TRAIN:</span>
-        <span class="telemetry-value text-green">ON TRACK</span>
-      </div>
-      <div class="telemetry-divider"></div>
-      <div class="telemetry-item">
-        <i class="fa-solid fa-sleigh" aria-hidden="true"></i>
-        <span class="telemetry-label">SANTA RADAR:</span>
-        <span class="telemetry-value text-gold">IN ORBIT</span>
-      </div>
-    </div>
-
-    <!-- ==========================================================================
-         3. LANDMARK DESTINATION DETAIL MODAL
-         ========================================================================== -->
-    <aside class="destination-portal-modal" id="destinationModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalDestTitle">
-      <div class="modal-scrim" id="modalScrim"></div>
+    <!-- 3D Volumes Polished Mahogany Bookshelf Section -->
+    <section class="vault-library-section">
       
-      <div class="modal-surface-card" id="modalSurfaceCard">
-        <button class="modal-close-trigger" id="closeModalBtn" type="button" aria-label="Close Window">
-          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-        </button>
-
-        <div class="modal-content-stream" id="modalDynamicBody">
-          <div class="modal-hero-cover-wrap">
-            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&auto=format&fit=crop&q=80" alt="Destination Preview" class="modal-hero-cover" id="modalCoverImg">
-            <span class="modal-category-pill" id="modalCategoryPill">
-              <i class="fa-solid fa-film" id="modalCategoryIcon"></i>
-              <span id="modalCategoryText">ENTERTAINMENT REALM</span>
-            </span>
-          </div>
-
-          <div class="modal-header-meta">
-            <h3 class="modal-title" id="modalDestTitle">Christmas Cinema & Drive-In</h3>
-            <p class="modal-tagline" id="modalDestTagline">
-              <i class="fa-solid fa-sparkles"></i> 24/7 Holiday Screenings & Spiced Cocoa
-            </p>
-          </div>
-
-          <div class="modal-stats-ribbon" id="modalStatsRibbon">
-            <div class="stat-bubble">
-              <span class="stat-number">50+</span>
-              <span class="stat-label">MOVIES</span>
-            </div>
-            <div class="stat-bubble">
-              <span class="stat-number">4K</span>
-              <span class="stat-label">STREAMING</span>
-            </div>
-            <div class="stat-bubble">
-              <span class="stat-number">100%</span>
-              <span class="stat-label">FESTIVE</span>
-            </div>
-          </div>
-
-          <p class="modal-desc" id="modalDestDesc">
-            Step into the snow-dusted cinema hall screening seasonal favorites from Home Alone to The Polar Express with a crackling fireplace and warm peppermint cocoa on tap.
-          </p>
-
-          <div class="modal-feature-highlights-box" id="modalHighlightsBox">
-            <h5 class="highlights-heading">REALM HIGHLIGHTS:</h5>
-            <ul class="highlights-list" id="modalHighlightsList">
-              <li><i class="fa-solid fa-check"></i> Curated Holiday Playlists & Watchlists</li>
-              <li><i class="fa-solid fa-check"></i> Vintage Black-and-White Classics Collection</li>
-              <li><i class="fa-solid fa-check"></i> Kids & Family Animation Screenings</li>
-            </ul>
-          </div>
-
-          <div class="modal-actions-dock">
-            <button class="modal-enter-action-btn" id="portalEnterActionBtn" type="button" data-key="movies">
-              <span class="btn-sparkle-fx"></span>
-              <i class="fa-solid fa-door-open" aria-hidden="true"></i>
-              <span id="modalActionBtnText">OPEN CHRISTMAS MOVIES</span>
-            </button>
-            <button class="modal-bookmark-action-btn" id="portalBookmarkBtn" type="button" aria-label="Bookmark this destination">
-              <i class="fa-regular fa-bookmark" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
+      <div class="shelf-title-strip">
+        <h3 class="shelf-title"><i class="fa-solid fa-gift"></i> Yuletide Collection</h3>
+        <span class="shelf-stats">7 Standalone Editions Active</span>
       </div>
-    </aside>
 
-    <!-- Guide / Instructions Modal -->
-    <aside class="guide-info-modal" id="guideInfoModal" aria-hidden="true" role="dialog" aria-modal="true">
-      <div class="modal-scrim" id="guideScrim"></div>
-      <div class="guide-card-container">
-        <button class="modal-close-trigger" id="closeGuideBtn" type="button" aria-label="Close Guide">
-          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-        </button>
+      <!-- 3D Volumes Grid -->
+      <div class="vault-bookshelf-grid" id="volumesGrid">
 
-        <div class="guide-content-body">
-          <div class="guide-title-row">
-            <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
-            <h3 class="guide-title">HOW TO NAVIGATE THE VILLAGE</h3>
-          </div>
-
-          <div class="guide-grid-features">
-            <div class="guide-feature-item">
-              <div class="guide-icon-wrap"><i class="fa-solid fa-hand-pointer"></i></div>
-              <div class="guide-feature-text">
-                <h5>Tap or Click Glass</h5>
-                <p>Click directly on the snowglobe sphere or use the <strong>Enter 3D Village</strong> button to glide inside.</p>
+        <!-- 1. Christmas Reads (Updated Path) -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Book List/ChristmasBook.html" class="book-volume tome-pine">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-reads">
+                <div class="art-foil-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+                <div class="foil-badge">Literature</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. I</span>
+                <h4 class="volume-title">Fireside Reads</h4>
+                <p class="volume-desc">Timeless holiday classics, snowy winter romances, and fireside poetry.</p>
+                <span class="open-portal-tag">Open Bookshelf <i class="fa-solid fa-arrow-right"></i></span>
               </div>
             </div>
-
-            <div class="guide-feature-item">
-              <div class="guide-icon-wrap"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
-              <div class="guide-feature-text">
-                <h5>3D Orbit & Pan</h5>
-                <p>Drag or swipe anywhere on the screen to rotate 360° around the village and zoom with pinch/scroll.</p>
-              </div>
-            </div>
-
-            <div class="guide-feature-item">
-              <div class="guide-icon-wrap"><i class="fa-solid fa-landmark"></i></div>
-              <div class="guide-feature-text">
-                <h5>9 Themed 3D Landmarks</h5>
-                <p>Hover and click on any custom 3D building, tower, or windmill to launch its interactive destination modal.</p>
-              </div>
-            </div>
-
-            <div class="guide-feature-item">
-              <div class="guide-icon-wrap"><i class="fa-solid fa-wind"></i></div>
-              <div class="guide-feature-text">
-                <h5>Blizzard Physics</h5>
-                <p>Press the <strong>Shake Globe</strong> button anytime to trigger an intensified swirling snowflake flurry.</p>
-              </div>
-            </div>
-          </div>
-
-          <button class="guide-confirm-btn" id="guideConfirmBtn" type="button">GOT IT! EXPLORE VILLAGE</button>
+          </a>
         </div>
+
+        <!-- 2. Christmas Movie List (Updated Path) -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Movie List/ChristmasMovie.html" class="book-volume tome-crimson">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-movies">
+                <div class="art-foil-icon"><i class="fa-solid fa-film"></i></div>
+                <div class="foil-badge">Cinema</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. II</span>
+                <h4 class="volume-title">Holiday Cinema</h4>
+                <p class="volume-desc">Classic festive films, heartwarming animated specials, and snowy marathons.</p>
+                <span class="open-portal-tag">Watch Movies <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3. Activity Wheel -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../ActivityWheel/ActivityWheel.html" class="book-volume tome-gold">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-wheel">
+                <div class="art-foil-icon"><i class="fa-solid fa-dharmachakra"></i></div>
+                <div class="foil-badge">Interactive</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. III</span>
+                <h4 class="volume-title">Activity Wheel</h4>
+                <p class="volume-desc">Gingerbread contests, cookie baking quests, and festive winter games.</p>
+                <span class="open-portal-tag">Spin Wheel <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4. Gift Workshop / Arcade -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Christmas Game/ChristmasGame.html" class="book-volume tome-berry">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-game">
+                <div class="art-foil-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <div class="foil-badge">Workshop</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. IV</span>
+                <h4 class="volume-title">Santa's Workshop</h4>
+                <p class="volume-desc">Interactive holiday ornament decorator, trivia games, and toy crafting.</p>
+                <span class="open-portal-tag">Enter Workshop <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 5. Holiday Light Radar Map -->
+        <div class="book-tome-wrapper" data-category="explore">
+          <a href="../Christmas Map/ChristmasMap.html" class="book-volume tome-frost">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-map">
+                <div class="art-foil-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="foil-badge">Navigation</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. V</span>
+                <h4 class="volume-title">Holiday Light Radar</h4>
+                <p class="volume-desc">Neighborhood light show trails, ice skating rinks, and Christmas markets.</p>
+                <span class="open-portal-tag">Explore Map <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 6. Christmas Store -->
+        <div class="book-tome-wrapper" data-category="shop">
+          <a href="../Christmas Store/christmasstore.html" class="book-volume tome-amber">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-store">
+                <div class="art-foil-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="foil-badge">Bazaar</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VI</span>
+                <h4 class="volume-title">Yuletide Bazaar</h4>
+                <p class="volume-desc">Handcrafted ornaments, wool scarves, scented candles, and artisan cocoa.</p>
+                <span class="open-portal-tag">Shop Bazaar <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 7. Winter Weather & Frost Telemetry -->
+        <div class="book-tome-wrapper" data-category="explore">
+          <a href="../Weather/Weather.html" class="book-volume tome-cyan">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-weather">
+                <div class="art-foil-icon"><i class="fa-solid fa-snowflake"></i></div>
+                <div class="foil-badge">Telemetry</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VII</span>
+                <h4 class="volume-title">Frost & Snow Weather</h4>
+                <p class="volume-desc">Live snowfall trackers, blizzard radar, and hearth chill indexes.</p>
+                <span class="open-portal-tag">Check Weather <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
       </div>
-    </aside>
 
-    <!-- ==========================================================================
-         4. PERSISTENT BOTTOM VILLAGE QUICK NAVIGATOR DOCK
-         ========================================================================== -->
-    <nav class="village-dock-bar" role="navigation" aria-label="Quick Village Navigator">
-      <button class="dock-btn active" type="button" data-destination="globe" aria-label="Outer Snowglobe View">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-globe" aria-hidden="true"></i></div>
-        <span class="dock-label">Globe View</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="movies" aria-label="Christmas Movies Cinema">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-film" aria-hidden="true"></i></div>
-        <span class="dock-label">Movies</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="reads" aria-label="Christmas Reads Library">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-book-bookmark" aria-hidden="true"></i></div>
-        <span class="dock-label">Reads</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="store" aria-label="Toy Emporium Store">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-gift" aria-hidden="true"></i></div>
-        <span class="dock-label">Store</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="map" aria-label="Christmas Town Radar Map">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i></div>
-        <span class="dock-label">Town Map</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="music" aria-label="Christmas Music Pavilion">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-music" aria-hidden="true"></i></div>
-        <span class="dock-label">Music</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="game" aria-label="Elf Workshop Games">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-gamepad" aria-hidden="true"></i></div>
-        <span class="dock-label">Games</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="tracker" aria-label="Santa Sleigh Flight Tracker">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i></div>
-        <span class="dock-label">Tracker</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="letters" aria-label="Write a Letter to Santa Depot">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
-        <span class="dock-label">Letters</span>
-      </button>
-
-      <button class="dock-btn" type="button" data-destination="bakery" aria-label="Gingerbread Sweets & Cocoa Mill">
-        <div class="dock-icon-wrap"><i class="fa-solid fa-cookie-bite" aria-hidden="true"></i></div>
-        <span class="dock-label">Bakery</span>
-      </button>
-    </nav>
+      <!-- Polished Mahogany Hardwood Shelf Planks Base -->
+      <div class="hardwood-shelf">
+        <div class="shelf-top-face"></div>
+        <div class="shelf-front-bevel"></div>
+      </div>
+    </section>
 
   </main>
 
-  <!-- ==========================================================================
-       5. SCRIPT DEPENDENCIES (Stable Three.js r128 Ecosystem)
-       ========================================================================== -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Persistent Bottom Dock Navigation (Updated Paths) -->
+  <nav class="vault-dock" aria-label="Quick Hub Switcher">
+    <a href="ChristmasLanding.html" class="dock-item active">
+      <i class="fa-solid fa-house"></i>
+      <span>Sanctuary</span>
+    </a>
+    <a href="../Book List/ChristmasBook.html" class="dock-item">
+      <i class="fa-solid fa-book-bookmark"></i>
+      <span>Reads</span>
+    </a>
+    <a href="../Movie List/ChristmasMovie.html" class="dock-item">
+      <i class="fa-solid fa-film"></i>
+      <span>Cinema</span>
+    </a>
+    <a href="../ActivityWheel/ActivityWheel.html" class="dock-item">
+      <i class="fa-solid fa-dharmachakra"></i>
+      <span>Wheel</span>
+    </a>
+    <a href="../Christmas Game/ChristmasGame.html" class="dock-item">
+      <i class="fa-solid fa-wand-magic-sparkles"></i>
+      <span>Workshop</span>
+    </a>
+    <a href="../Christmas Map/ChristmasMap.html" class="dock-item">
+      <i class="fa-solid fa-map-location-dot"></i>
+      <span>Map</span>
+    </a>
+    <a href="../Christmas Store/christmasstore.html" class="dock-item">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>Store</span>
+    </a>
+    <a href="../Weather/Weather.html" class="dock-item">
+      <i class="fa-solid fa-snowflake"></i>
+      <span>Weather</span>
+    </a>
+  </nav>
+
+  <!-- Profile & Sanctuary Settings Modal (Includes Season Switcher) -->
+  <div id="settingsModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h3 class="modal-heading"><i class="fa-solid fa-sliders"></i> Sanctuary Settings</h3>
+        <button class="modal-close" id="closeSettingsBtn">&times;</button>
+      </div>
+      <div class="modal-content">
+        
+        <!-- PROMINENT SWITCH SEASONS BUTTON -->
+        <div class="setting-group highlight-season-box">
+          <label class="setting-title">Change Current Season</label>
+          <a href="../../index.html" class="btn-master-switch-seasons">
+            <i class="fa-solid fa-compass"></i>
+            <span>SWITCH SEASONS</span>
+          </a>
+          <p class="setting-hint">Return to the Master Portal to jump into Spring, Summer, or Halloween.</p>
+        </div>
+
+        <!-- Profile Moniker -->
+        <div class="setting-group">
+          <label class="setting-title" for="usernameInput">Explorer Moniker</label>
+          <input type="text" id="usernameInput" class="setting-input" placeholder="Enter your name..." maxlength="24">
+        </div>
+
+        <!-- Emblem Picker -->
+        <div class="setting-group">
+          <label class="setting-title">Festive Emblem</label>
+          <div class="avatar-picker" id="avatarPicker">
+            <button type="button" class="avatar-option active" data-avatar="🎄">🎄</button>
+            <button type="button" class="avatar-option" data-avatar="🎅">🎅</button>
+            <button type="button" class="avatar-option" data-avatar="⛄">⛄</button>
+            <button type="button" class="avatar-option" data-avatar="❄️">❄️</button>
+            <button type="button" class="avatar-option" data-avatar="🎁">🎁</button>
+            <button type="button" class="avatar-option" data-avatar="🦌">🦌</button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-save-settings" id="saveSettingsBtn">Save Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Controller Script -->
   <script src="ChristmasLanding.js"></script>
 </body>
 </html>

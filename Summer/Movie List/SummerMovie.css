@@ -1,0 +1,762 @@
+/* ==========================================================================
+   FESTO SUMMER VAULT — RETRO 80s/90s MIAMI SYNTHWAVE THEME
+   Pure Standard CSS (Zero -webkit- Vendor Rules)
+   ========================================================================== */
+:root {
+  --bg-deep: #080314;
+  --bg-card: #130924;
+  --bg-surface: #1b0e33;
+  --neon-pink: #ff007f;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #9d00ff;
+  --neon-yellow: #ffe600;
+  --sunset-orange: #ff5e00;
+  --text-main: #ffffff;
+  --text-muted: #a395be;
+  --glow-pink: 0 0 15px rgba(255, 0, 127, 0.5);
+  --glow-cyan: 0 0 15px rgba(0, 240, 255, 0.5);
+  --font-retro: 'Orbitron', sans-serif;
+  --font-marker: 'Permanent Marker', cursive;
+  --font-body: 'Rajdhani', sans-serif;
+  --transition-smooth: cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-weight: 600;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Pure Standard Scrollbars */
+html, body, .summer-scroll, .movie-slider, .modal-card {
+  scrollbar-width: thin;
+  scrollbar-color: var(--neon-pink) var(--bg-deep);
+}
+
+/* Retro Glowing Synthwave Sun */
+.synthwave-sun {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #ffe600 0%, #ff007f 60%, transparent 80%);
+  filter: blur(75px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 80s Perspective Laser Grid */
+.synthwave-grid {
+  position: fixed;
+  inset: 0;
+  background: 
+    linear-gradient(rgba(255, 0, 127, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR & PORTAL RETURN
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: rgba(8, 3, 20, 0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 2px solid var(--neon-pink);
+  box-shadow: 0 4px 25px rgba(255, 0, 127, 0.3);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn-return {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(0, 240, 255, 0.2));
+  border: 1.5px solid var(--neon-cyan);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-retro);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: all 0.3s var(--transition-smooth);
+  box-shadow: var(--glow-cyan);
+}
+
+.btn-return .icon {
+  font-size: 1.1rem;
+}
+
+.btn-return:hover {
+  background: linear-gradient(135deg, var(--neon-pink), var(--sunset-orange));
+  border-color: #fff;
+  box-shadow: var(--glow-pink);
+  transform: translateY(-2px);
+}
+
+.brand-title {
+  font-family: var(--font-retro);
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--neon-cyan);
+  background: linear-gradient(180deg, #ffffff 0%, var(--neon-cyan) 60%, var(--neon-pink) 100%);
+  background-clip: text;
+  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.7));
+  user-select: none;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.1rem;
+  color: var(--neon-yellow);
+  pointer-events: none;
+}
+
+#searchInput {
+  width: 350px;
+  padding: 0.75rem 2.8rem 0.75rem 2.8rem;
+  background: rgba(19, 9, 36, 0.9);
+  border: 1.5px solid rgba(0, 240, 255, 0.4);
+  border-radius: 4px;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  width: 420px;
+  border-color: var(--neon-pink);
+  box-shadow: var(--glow-pink);
+  background: #1b0e33;
+}
+
+.btn-clear {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* ==========================================================================
+   HERO BANNER
+   ========================================================================== */
+.hero-banner {
+  position: relative;
+  padding: 4.5rem 3rem 2.5rem;
+  z-index: 2;
+  border-bottom: 1px solid rgba(255, 0, 127, 0.2);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 850px;
+}
+
+.summer-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(255, 0, 127, 0.15);
+  border: 1px solid var(--neon-pink);
+  border-radius: 4px;
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--neon-yellow);
+  margin-bottom: 1rem;
+  box-shadow: var(--glow-pink);
+}
+
+.hero-heading {
+  font-family: var(--font-retro);
+  font-size: 3.2rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, #ffffff 0%, var(--neon-cyan) 50%, var(--neon-pink) 100%);
+  background-clip: text;
+  text-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+}
+
+.hero-subtext {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-box strong {
+  font-family: var(--font-retro);
+  font-size: 1.8rem;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.stat-box span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+}
+
+/* ==========================================================================
+   CATEGORY RAILS
+   ========================================================================== */
+.main-vault {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.category-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.category-title {
+  font-family: var(--font-retro);
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 4px solid var(--neon-pink);
+  text-shadow: var(--glow-pink);
+}
+
+.movie-slider {
+  display: flex;
+  gap: 1.4rem;
+  overflow-x: auto;
+  padding: 0.8rem 0.4rem 1.4rem;
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   MOVIE CARD DESIGN (SYNTHWAVE VHS CASE)
+   ========================================================================== */
+.movie-card {
+  min-width: 195px;
+  max-width: 195px;
+  background: var(--bg-card);
+  border: 1.5px solid rgba(0, 240, 255, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.35s var(--transition-smooth), 
+              border-color 0.35s ease, 
+              box-shadow 0.35s ease;
+  position: relative;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  border-color: var(--neon-pink);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9), var(--glow-pink);
+}
+
+.poster-box {
+  width: 100%;
+  height: 280px;
+  position: relative;
+  background: linear-gradient(110deg, #130924 8%, #26114a 18%, #130924 33%);
+  background-size: 200% 100%;
+  animation: pulseShimmer 1.8s infinite linear;
+  overflow: hidden;
+}
+
+@keyframes pulseShimmer {
+  to {
+    background-position-x: -200%;
+  }
+}
+
+.official-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+.official-poster.loaded {
+  opacity: 1;
+}
+
+.movie-card:hover .official-poster {
+  transform: scale(1.08);
+}
+
+.card-rating-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(8, 3, 20, 0.9);
+  border: 1px solid var(--neon-yellow);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-family: var(--font-retro);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--neon-yellow);
+  box-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
+}
+
+.card-details {
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.card-btn-hint {
+  color: var(--neon-cyan);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.empty-results {
+  text-align: center;
+  padding: 5rem 0;
+  color: var(--text-muted);
+}
+
+.empty-results h3 {
+  font-family: var(--font-retro);
+  font-size: 1.8rem;
+  color: var(--neon-pink);
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================================================
+   CINEMA MODAL
+   ========================================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 1, 10, 0.92);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal.active {
+  display: flex;
+  animation: modalFadeIn 0.3s var(--transition-smooth);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--neon-pink);
+  border-radius: 8px;
+  width: 100%;
+  max-width: 920px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 0 60px rgba(255, 0, 127, 0.4);
+  padding: 2.2rem;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--neon-cyan);
+  width: 38px;
+  height: 38px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background: var(--neon-pink);
+  border-color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-inner {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2.2rem;
+}
+
+.modal-poster-side {
+  position: relative;
+}
+
+.modal-poster-wrapper {
+  width: 100%;
+  height: 380px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #130924;
+  border: 1.5px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.modal-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.modal-poster-img.loaded {
+  opacity: 1;
+}
+
+.modal-rating-badge {
+  margin-top: 0.8rem;
+  text-align: center;
+  background: rgba(255, 230, 0, 0.15);
+  border: 1px solid var(--neon-yellow);
+  color: var(--neon-yellow);
+  padding: 0.45rem;
+  border-radius: 4px;
+  font-family: var(--font-retro);
+  font-size: 0.85rem;
+}
+
+.modal-details-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.modal-header-meta {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.modal-cat-tag {
+  background: rgba(255, 0, 127, 0.2);
+  border: 1px solid var(--neon-pink);
+  color: var(--neon-pink);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+}
+
+.modal-year-tag {
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+}
+
+.modal-title {
+  font-family: var(--font-retro);
+  font-size: 1.9rem;
+  line-height: 1.2;
+}
+
+.cast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cast-header {
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--neon-cyan);
+}
+
+.cast-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.cast-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 4px;
+  font-size: 0.88rem;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cast-badge:hover {
+  background: rgba(255, 0, 127, 0.3);
+  border-color: var(--neon-pink);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-pink);
+}
+
+.modal-desc {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.trailer-wrapper {
+  margin-top: 0.4rem;
+}
+
+.trailer-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.trailer-title {
+  font-family: var(--font-retro);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--neon-yellow);
+}
+
+.link-yt-fallback {
+  color: var(--neon-cyan);
+  font-family: var(--font-retro);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link-yt-fallback:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  background: #000;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--neon-pink);
+  box-shadow: var(--glow-pink);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-watch-stream {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.3rem;
+  background: linear-gradient(135deg, var(--neon-pink), var(--sunset-orange));
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-retro);
+  font-size: 0.85rem;
+  border-radius: 4px;
+  box-shadow: var(--glow-pink);
+  transition: all 0.25s ease;
+}
+
+.btn-watch-stream:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+
+.btn-wiki-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.65rem 1.2rem;
+  background: #130924;
+  color: #fff;
+  text-decoration: none;
+  font-family: var(--font-retro);
+  font-size: 0.85rem;
+  border-radius: 4px;
+  border: 1px solid var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+  transition: all 0.25s ease;
+}
+
+.btn-wiki-link:hover {
+  background: #1f0e38;
+  border-color: var(--neon-pink);
+  color: var(--neon-pink);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.app-footer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: #040108;
+  border-top: 2px solid var(--neon-pink);
+}
+
+.footer-festo {
+  font-family: var(--font-retro);
+  font-size: 1rem;
+  color: var(--neon-cyan);
+  letter-spacing: 2px;
+  margin-bottom: 0.4rem;
+}
+
+.footer-wiki {
+  font-size: 0.85rem;
+  color: #6a5d85;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .modal-inner {
+    grid-template-columns: 1fr;
+  }
+  .modal-poster-side {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+  }
+  .nav-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .search-wrapper, #searchInput {
+    width: 100%;
+  }
+  #searchInput:focus {
+    width: 100%;
+  }
+  .hero-banner {
+    padding: 2.5rem 1.5rem 1.5rem;
+  }
+  .hero-heading {
+    font-size: 2.2rem;
+  }
+  .main-vault {
+    padding: 1.5rem 1rem 4rem;
+  }
+}

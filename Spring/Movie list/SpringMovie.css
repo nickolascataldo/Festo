@@ -1,0 +1,905 @@
+/* ==========================================================================
+   FESTO SPRING CINEMA — BOTANICAL WILDFLOWER MEADOW
+   Design System: Deep Forest Flora, Sakura Rose, Daffodil Gold & Dewy Surfaces
+   ========================================================================== */
+
+:root {
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Authentic Botanical Palette */
+  --deep-forest: #064e3b;
+  --leaf-emerald: #047857;
+  --sprout-green: #10b981;
+  --mint-tint: #ecfdf5;
+  --mint-border: #a7f3d0;
+
+  --sakura-pink: #f472b6;
+  --wild-rose: #fb7185;
+  --petal-blush: #fff1f2;
+  --petal-border: #fecdd3;
+  --berry-magenta: #9f1239;
+
+  --daffodil-gold: #facc15;
+  --amber-warm: #d97706;
+  --buttercup-soft: #fef08a;
+
+  --text-dark: #064e3b;
+  --text-body: #1e293b;
+  --text-muted: #64748b;
+
+  /* Translucent Dew Surfaces (High-Visibility Glass) */
+  --surface-card: rgba(255, 255, 255, 0.93);
+  --surface-card-hover: #ffffff;
+  --border-card: rgba(251, 113, 133, 0.35);
+
+  --shadow-ambient: 0 8px 24px rgba(6, 78, 59, 0.08), 0 2px 6px rgba(244, 114, 182, 0.12);
+  --shadow-hover: 0 16px 36px rgba(244, 114, 182, 0.28), 0 0 16px rgba(250, 204, 21, 0.22);
+
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.meadow-body {
+  color: var(--text-body);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  background-color: #f0fdf4;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   1. FIXED RAINBOW MEADOW CANVAS & SUN WASH
+   ========================================================================== */
+.meadow-bg-fixed {
+  position: fixed;
+  inset: 0;
+  /* Verified CC0/Public-Domain high-res rainbow flower plateau */
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Fioritura_a_Castelluccio_di_Norcia_-_panoramio.jpg/2560px-Fioritura_a_Castelluccio_di_Norcia_-_panoramio.jpg');
+  background-size: cover;
+  background-position: center 65%;
+  background-repeat: no-repeat;
+  z-index: -2;
+  filter: brightness(1.05) saturate(1.25);
+  will-change: transform;
+}
+
+.sunlight-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 18% 12%, rgba(254, 240, 138, 0.35) 0%, transparent 60%),
+              linear-gradient(180deg, rgba(240, 249, 255, 0.35) 0%, rgba(240, 253, 244, 0.20) 45%, rgba(255, 241, 242, 0.35) 100%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.6);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--sakura-pink);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--wild-rose);
+}
+
+/* ==========================================================================
+   2. FLOATING PORCELAIN NAVBAR
+   ========================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 3rem;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 2px solid rgba(244, 114, 182, 0.35);
+  box-shadow: 0 4px 20px rgba(6, 78, 59, 0.05);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.btn-return {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 1.25rem;
+  background: #ffffff;
+  border: 1.5px solid var(--sakura-pink);
+  border-radius: 999px;
+  color: var(--berry-magenta);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 800;
+  box-shadow: 0 3px 10px rgba(244, 114, 182, 0.18);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease, background 0.2s ease;
+}
+
+.btn-return:hover {
+  background: var(--sakura-pink);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(244, 114, 182, 0.35);
+}
+
+.brand-badge {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--wild-rose) 0%, var(--amber-warm) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.brand-sub {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--leaf-emerald);
+  margin-top: 0.2rem;
+}
+
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.15rem;
+  font-size: 1rem;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+#searchInput {
+  width: 390px;
+  padding: 0.75rem 2.8rem;
+  background: #ffffff;
+  border: 2px solid var(--mint-border);
+  border-radius: 999px;
+  color: var(--deep-forest);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  outline: none;
+  box-shadow: 0 3px 10px rgba(6, 78, 59, 0.04);
+  transition: width 0.3s var(--ease-spring), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#searchInput:focus {
+  width: 470px;
+  border-color: var(--sakura-pink);
+  box-shadow: 0 0 16px rgba(244, 114, 182, 0.3);
+}
+
+.btn-clear {
+  position: absolute;
+  right: 1.15rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   3. BOTANICAL HERO CANOPY
+   ========================================================================== */
+.hero-banner {
+  position: relative;
+  padding: 2.8rem 3rem 1.6rem;
+  z-index: 2;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.season-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.1rem;
+  background: #ffffff;
+  border: 1.5px solid var(--daffodil-gold);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #a16207;
+  margin-bottom: 0.9rem;
+  box-shadow: 0 3px 10px rgba(250, 204, 21, 0.22);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--sprout-green);
+  border-radius: 50%;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.hero-heading {
+  font-family: var(--font-heading);
+  font-size: 3.3rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--deep-forest);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.95);
+  margin-bottom: 0.85rem;
+}
+
+.hero-subtext {
+  color: #064e3b;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.65;
+  margin-bottom: 1.8rem;
+  max-width: 840px;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
+}
+
+/* Botanical Counters */
+.hero-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--petal-border);
+  box-shadow: 0 4px 14px rgba(6, 78, 59, 0.06);
+}
+
+.stat-icon {
+  font-size: 1.3rem;
+}
+
+.stat-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-meta strong {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.1;
+  color: var(--wild-rose);
+}
+
+.stat-meta span {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--leaf-emerald);
+  letter-spacing: 0.8px;
+}
+
+/* ==========================================================================
+   4. CONTROLS: PETAL PILLS & JUMP SELECTOR
+   ========================================================================== */
+.filter-controls-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.filter-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill-btn {
+  padding: 0.55rem 1.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--mint-border);
+  border-radius: 999px;
+  color: var(--deep-forest);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(6, 78, 59, 0.04);
+  transition: all 0.25s var(--ease-spring);
+}
+
+.pill-btn:hover {
+  background: #ffffff;
+  border-color: var(--sakura-pink);
+  color: var(--wild-rose);
+  transform: translateY(-2px);
+}
+
+.pill-btn.active {
+  background: linear-gradient(135deg, var(--sakura-pink) 0%, var(--daffodil-gold) 100%);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(244, 114, 182, 0.4);
+}
+
+.jump-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--deep-forest);
+}
+
+.select-styled-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+#categoryJumpSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0.6rem 2.4rem 0.6rem 1.2rem;
+  background: #ffffff;
+  border: 2px solid var(--mint-border);
+  border-radius: 12px;
+  color: var(--deep-forest);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+  min-width: 380px;
+  box-shadow: 0 3px 10px rgba(6, 78, 59, 0.04);
+  transition: border-color 0.2s ease;
+}
+
+#categoryJumpSelect:focus {
+  border-color: var(--sakura-pink);
+}
+
+.select-arrow {
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+  color: var(--leaf-emerald);
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   5. MAIN RAILS & SUNLIT BOTANICAL PLAQUES
+   ========================================================================== */
+.main-vault {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem 3rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.4rem;
+}
+
+.category-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: var(--deep-forest);
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.45rem 1.3rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  border-left: 6px solid var(--sakura-pink);
+  box-shadow: 0 4px 16px rgba(6, 78, 59, 0.08);
+  width: fit-content;
+}
+
+.movie-slider {
+  display: flex;
+  gap: 1.4rem;
+  overflow-x: auto;
+  padding: 0.6rem 0.4rem 1.4rem;
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   6. THE SPRING MOVIE CARD
+   ========================================================================== */
+.movie-card {
+  min-width: 215px;
+  max-width: 215px;
+  background: var(--surface-card);
+  border: 1.5px solid var(--border-card);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-spring), box-shadow 0.3s ease, border-color 0.3s ease, background 0.2s ease;
+  position: relative;
+  box-shadow: var(--shadow-ambient);
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: var(--surface-card-hover);
+  border-color: var(--sakura-pink);
+  box-shadow: var(--shadow-hover);
+}
+
+.poster-box {
+  width: 100%;
+  height: 290px;
+  position: relative;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.official-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.4s var(--ease-spring);
+}
+
+.official-poster.loaded {
+  opacity: 1;
+}
+
+.movie-card:hover .official-poster {
+  transform: scale(1.06);
+}
+
+.card-rating-badge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  background: #ffffff;
+  border: 1px solid rgba(250, 204, 21, 0.6);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--amber-warm);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-details {
+  padding: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--deep-forest);
+}
+
+.card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.card-btn-hint {
+  color: var(--wild-rose);
+  font-weight: 800;
+}
+
+/* Petal Tag Chips */
+.card-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.card-tag-pill {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 0.18rem 0.55rem;
+  background: var(--petal-blush);
+  border: 1px solid var(--petal-border);
+  border-radius: 999px;
+  color: var(--berry-magenta);
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+/* ==========================================================================
+   7. HIGH-DEFINITION CONSERVATORY MODAL
+   ========================================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 78, 59, 0.6);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal.active {
+  display: flex;
+  animation: modalPop 0.25s var(--ease-spring);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-card {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(6, 78, 59, 0.35);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: #ffffff;
+  border: 1.5px solid #cbd5e1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--deep-forest);
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s var(--ease-spring);
+  z-index: 20;
+}
+
+.modal-close-btn:hover {
+  background: var(--sakura-pink);
+  color: #ffffff;
+  border-color: var(--sakura-pink);
+  transform: rotate(90deg) scale(1.1);
+}
+
+.modal-hero-backdrop {
+  position: relative;
+  width: 100%;
+  height: 330px;
+  background-color: var(--deep-forest);
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+}
+
+.backdrop-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(6, 78, 59, 0.15) 0%, rgba(6, 78, 59, 0.75) 60%, rgba(6, 78, 59, 0.95) 100%);
+}
+
+.backdrop-content {
+  position: relative;
+  z-index: 2;
+  padding: 1.8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-header-meta {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.modal-cat-tag {
+  background: var(--sakura-pink);
+  color: #ffffff;
+  padding: 0.22rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.modal-year-tag {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  padding: 0.22rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.modal-rating-badge {
+  background: var(--daffodil-gold);
+  color: #713f12;
+  padding: 0.22rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: #ffffff;
+}
+
+.modal-hero-actions {
+  display: flex;
+  gap: 0.85rem;
+  margin-top: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.3rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 800;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-spring);
+  text-decoration: none;
+}
+
+.btn-like {
+  background: #ffffff;
+  border: 2px solid var(--sakura-pink);
+  color: var(--berry-magenta);
+}
+
+.btn-like.active {
+  background: var(--sakura-pink);
+  color: #ffffff;
+}
+
+.btn-watchlist {
+  background: var(--daffodil-gold);
+  border: 2px solid var(--daffodil-gold);
+  color: #713f12;
+}
+
+.btn-watchlist.active {
+  background: var(--sprout-green);
+  border-color: var(--sprout-green);
+  color: #ffffff;
+}
+
+.btn-stream {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+}
+
+.modal-body-content {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.modal-section-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.section-micro-header {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  color: var(--wild-rose);
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sub-hint {
+  font-size: 0.74rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.tag-cloud-list, .cast-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.modal-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  background: var(--petal-blush);
+  border: 1.5px solid var(--petal-border);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--berry-magenta);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-spring);
+}
+
+.modal-tag-chip .weight-pip {
+  font-size: 0.72rem;
+  color: var(--wild-rose);
+  font-weight: 800;
+}
+
+.modal-tag-chip:hover {
+  background: var(--sakura-pink);
+  border-color: var(--sakura-pink);
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.modal-tag-chip:hover .weight-pip {
+  color: #ffffff;
+}
+
+.cast-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  background: var(--mint-tint);
+  border: 1.5px solid var(--mint-border);
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--deep-forest);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-spring);
+}
+
+.cast-badge:hover {
+  background: var(--sprout-green);
+  border-color: var(--sprout-green);
+  color: #ffffff;
+  transform: translateY(-2px) scale(1.05);
+}
+
+.modal-desc {
+  color: var(--text-body);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.modal-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1.5px solid #f1f5f9;
+  padding-top: 1rem;
+}
+
+.btn-wiki-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.55rem 1.1rem;
+  background: #f8fafc;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.btn-wiki-link:hover {
+  border-color: var(--sakura-pink);
+  color: var(--berry-magenta);
+}
+
+/* ==========================================================================
+   8. FOOTER
+   ========================================================================== */
+.app-footer {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 2px solid rgba(244, 114, 182, 0.3);
+}
+
+.footer-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.footer-festo {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--wild-rose);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+}
+
+.footer-wiki {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}

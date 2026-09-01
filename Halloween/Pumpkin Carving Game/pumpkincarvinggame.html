@@ -2,89 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jack-o'-Lantern Studio & Idea Board</title>
-  <!-- Stylesheet Link -->
-  <link rel="stylesheet" href="pumpkincarvinggame.css">
-  <!-- Google Fonts & Font Awesome Icons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Festo — Jack-o'-Lantern Studio</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="pumpkincarvinggame.css">
 </head>
 <body class="spooky-studio-body">
 
-  <!-- Ambient Animated Background Decor -->
-  <div class="ambient-moon-fog" aria-hidden="true"></div>
-  <div class="ambient-bats" aria-hidden="true">
-    <span class="bat b1">🦇</span>
-    <span class="bat b2">🦇</span>
-    <span class="bat b3">🦇</span>
-  </div>
+  <div class="haunted-manor-bg" aria-hidden="true"></div>
+  <div class="drifting-fog-layer" aria-hidden="true"></div>
+  <div class="blood-moon-glow" aria-hidden="true"></div>
 
-  <!-- Master Application Viewport -->
+  <div class="spooky-border top-left-web" aria-hidden="true"></div>
+  <div class="spooky-border top-right-web" aria-hidden="true"></div>
+  <div class="spooky-border side-ember-left" aria-hidden="true"></div>
+  <div class="spooky-border side-ember-right" aria-hidden="true"></div>
+
   <main class="studio-app-shell">
     
-    <!-- Top System & Branding Header -->
     <header class="studio-header">
-      <div class="brand-bar">
-        <div class="brand-title-wrap">
-          <h1 class="brand-title">
-            PUMPKIN CARVER
-            <span class="brand-subtitle">IDEA STUDIO</span>
-          </h1>
-          <span class="brand-bat" aria-hidden="true">🎃</span>
+      <div class="header-left">
+        <a href="../Halloween Landing page/HalloweenLanding.html" class="btn-portal" title="Return to Halloween Hollow">
+          <span class="icon">⮌</span>
+          <span class="text">Hollow</span>
+        </a>
+        <div class="brand-text-group">
+          <span class="brand-script">Coven Workshop</span>
+          <h1 class="brand-title">PUMPKIN CARVER</h1>
         </div>
-        <button class="header-action-btn" id="helpModalBtn" aria-label="Game Help & Ideas">
+      </div>
+
+      <div class="header-right">
+        <button class="header-action-btn" id="helpModalBtn" aria-label="Game Help & Ideas" title="Studio Guide">
           <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
         </button>
       </div>
     </header>
 
-    <!-- Main Workspace Container -->
     <div class="studio-workspace">
 
-      <!-- Interactive Canvas & Stage Section -->
       <section class="pumpkin-stage-section" aria-label="Pumpkin Canvas Stage">
         
-        <!-- Controls Bar for Stage (Candle, Day/Night, Shuffle, Reset) -->
         <div class="stage-toolbar">
-          <button class="tool-btn toggle-light-btn" id="toggleLightBtn" aria-label="Light Candle Inside">
+          <button class="tool-btn toggle-light-btn" id="toggleLightBtn" aria-label="Light Candle Inside" title="Light Candle">
             <i class="fa-solid fa-fire-flame-curved" aria-hidden="true"></i>
-            <span class="btn-tooltip">Candle Glow</span>
+            <span class="btn-label">Candle</span>
           </button>
           
-          <button class="tool-btn toggle-room-btn" id="toggleRoomBtn" aria-label="Toggle Night Room Mode">
+          <button class="tool-btn toggle-room-btn" id="toggleRoomBtn" aria-label="Toggle Night Room Mode" title="Night Mode">
             <i class="fa-solid fa-moon" aria-hidden="true"></i>
-            <span class="btn-tooltip">Night Mode</span>
+            <span class="btn-label">Night</span>
           </button>
 
-          <button class="tool-btn random-idea-btn" id="randomIdeaBtn" aria-label="Generate Random Idea">
+          <button class="tool-btn random-idea-btn" id="randomIdeaBtn" aria-label="Generate Random Idea" title="Randomize Stencil">
             <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
-            <span class="btn-tooltip">Random Idea</span>
+            <span class="btn-label">Random</span>
           </button>
 
-          <button class="tool-btn reset-stage-btn" id="resetStageBtn" aria-label="Clear All Carvings">
+          <button class="tool-btn reset-stage-btn" id="resetStageBtn" aria-label="Clear All Carvings" title="Reset Pumpkin">
             <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
-            <span class="btn-tooltip">Reset</span>
+            <span class="btn-label">Reset</span>
           </button>
         </div>
 
-        <!-- The Pumpkin Dynamic Visual Canvas -->
         <div class="pumpkin-viewport" id="pumpkinViewport">
           
-          <!-- Inner Glow Layer (For Candle Flicker) -->
           <div class="candle-glow-underlay" id="candleGlowUnderlay" aria-hidden="true"></div>
 
-          <!-- Base Pumpkin Vector Graphic Stage -->
           <div class="pumpkin-body-wrapper" id="pumpkinBodyWrapper" data-shape="classic-round">
-            <!-- Stem with Optional Props -->
             <div class="pumpkin-stem" id="pumpkinStem"></div>
             
-            <!-- SVG Base Pumpkin Skin with dynamic ribs -->
             <svg class="pumpkin-svg-mesh" viewBox="0 0 340 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <defs>
-                <!-- Pumpkin Skin Gradients -->
                 <radialGradient id="pumpkinSkinClassic" cx="50%" cy="50%" r="50%">
                   <stop offset="0%" stop-color="#ff8c1a"/>
                   <stop offset="65%" stop-color="#e65c00"/>
@@ -102,7 +97,6 @@
                 </radialGradient>
               </defs>
 
-              <!-- Rib Layering for Depth -->
               <g class="pumpkin-ribs" id="pumpkinRibsGroup">
                 <ellipse cx="70" cy="165" rx="55" ry="115" fill="url(#pumpkinSkinClassic)" opacity="0.95"/>
                 <ellipse cx="270" cy="165" rx="55" ry="115" fill="url(#pumpkinSkinClassic)" opacity="0.95"/>
@@ -112,7 +106,6 @@
               </g>
             </svg>
 
-            <!-- Carving Layers (Eyes, Nose, Mouth, Extras, Knick-Knacks) -->
             <div class="carving-mount-layer" id="carvingMountLayer">
               <div class="slot-stem-accessory" id="slotStemAccessory"></div>
               <div class="slot-head-accessory" id="slotHeadAccessory"></div>
@@ -126,32 +119,28 @@
 
           </div>
 
-          <!-- Stencil Stamping Overlay Notification -->
           <div class="stencil-flash" id="stencilFlash" aria-hidden="true"></div>
         </div>
 
-        <!-- Quick Snapshot & Print Idea Export -->
         <div class="stage-footer-actions">
           <button class="stage-action-pill share-design-btn" id="copyIdeaCodeBtn" aria-label="Share Pumpkin Design">
             <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
-            <span>Share Design</span>
+            <span>Share</span>
           </button>
           <button class="stage-action-pill primary-save" id="exportIdeaCardBtn" aria-label="Save Idea Stencil">
             <i class="fa-solid fa-camera" aria-hidden="true"></i>
-            <span>Save Idea Card</span>
+            <span>Snapshot</span>
           </button>
         </div>
 
       </section>
 
-      <!-- Carving Catalog & Feature Selection Toolbox -->
       <section class="toolbox-section" aria-label="Carving Feature Catalog">
         
-        <!-- Category Segmented Tabs -->
         <nav class="catalog-category-bar" role="tablist" aria-label="Carving Categories">
           <button class="cat-tab-btn active" role="tab" aria-selected="true" data-category="shapes" tabindex="0">
             <i class="fa-solid fa-shapes" aria-hidden="true"></i>
-            <span>Pumpkins</span>
+            <span>Gourds</span>
           </button>
 
           <button class="cat-tab-btn" role="tab" aria-selected="false" data-category="eyes" tabindex="0">
@@ -171,72 +160,77 @@
 
           <button class="cat-tab-btn" role="tab" aria-selected="false" data-category="ears" tabindex="0">
             <i class="fa-solid fa-ear-listen" aria-hidden="true"></i>
-            <span>Ears & Brows</span>
+            <span>Brows</span>
           </button>
 
           <button class="cat-tab-btn" role="tab" aria-selected="false" data-category="props" tabindex="0">
             <i class="fa-solid fa-hat-wizard" aria-hidden="true"></i>
-            <span>Knick-Knacks</span>
+            <span>Props</span>
           </button>
         </nav>
 
-        <!-- Dynamic Category Header Banner -->
         <div class="toolbox-header-row">
           <div class="header-text-group">
             <h3 class="toolbox-category-title" id="toolboxCategoryTitle">PUMPKIN SHAPES & SKINS</h3>
             <p class="toolbox-category-subtitle" id="toolboxCategorySubtitle">Choose your raw canvas gourd</p>
           </div>
-          <span class="item-count-badge" id="categoryItemCount">6 Variations</span>
+          <span class="item-count-badge" id="categoryItemCount">6 Options</span>
         </div>
 
-        <!-- Options Grid (Populated Dynamically / Click-To-Mount) -->
         <div class="options-grid-container" id="optionsGridContainer" role="region" aria-live="polite">
-          <!-- Items injected via script.js -->
-        </div>
+          </div>
 
       </section>
 
     </div>
 
-    <!-- Idea Preset Inspiration Carousel Drawer (Collapsible bottom bar) -->
     <aside class="preset-drawer" id="presetDrawer" aria-label="Curated Pumpkin Face Ideas">
       <div class="drawer-header" id="drawerHeaderToggle">
         <div class="drawer-drag-handle" aria-hidden="true"></div>
         <div class="drawer-title-row">
-          <i class="fa-solid fa-book-open-reader" aria-hidden="true"></i>
-          <h4>Curated Face Inspiration (Premade Sets)</h4>
+          <i class="fa-solid fa-book-skull" aria-hidden="true"></i>
+          <h4>Grimoire Presets</h4>
           <i class="fa-solid fa-chevron-up drawer-chevron" id="drawerChevron" aria-hidden="true"></i>
         </div>
       </div>
 
       <div class="preset-cards-carousel" id="presetCardsCarousel">
-        <!-- Preset Cards populated via script.js -->
-      </div>
+        </div>
     </aside>
 
-    <!-- Persistent App Dock Navigation -->
-    <nav class="app-dock-nav" aria-label="Application Dock">
-      <a href="#studio" class="dock-item active" aria-label="Studio Canvas">
-        <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
-        <span class="dock-label">Home</span>
+    <nav class="vault-dock" aria-label="Quick Hub Switcher">
+      <a href="../Halloween Landing page/HalloweenLanding.html" class="dock-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Hollow</span>
       </a>
-      <a href="#stencils" class="dock-item" aria-label="Stencils Gallery">
-        <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-        <span class="dock-label">Stencils</span>
+      <a href="../Spooky Reads/spookyreads.html" class="dock-item">
+        <i class="fa-solid fa-book-skull"></i>
+        <span>Reads</span>
       </a>
-      <a href="#ideas" class="dock-item" aria-label="Idea Book">
-        <i class="fa-solid fa-book-skull" aria-hidden="true"></i>
-        <span class="dock-label">Ideas</span>
+      <a href="../Halloween Movie List/HalloweenMovie.html" class="dock-item">
+        <i class="fa-solid fa-film"></i>
+        <span>Cinema</span>
       </a>
-      <a href="#gallery" class="dock-item" aria-label="Saved Pumpkins">
-        <i class="fa-solid fa-box-archive" aria-hidden="true"></i>
-        <span class="dock-label">Saved</span>
+      <a href="pumpkincarvinggame.html" class="dock-item active">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Carving</span>
+      </a>
+      <a href="../Spectral Map/spectralmap.html" class="dock-item">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <span>Map</span>
+      </a>
+      <a href="../Halloween Store/halloweenstore.html" class="dock-item">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span>Store</span>
+      </a>
+      <a href="../Weather/Weather.html" class="dock-item">
+        <i class="fa-solid fa-moon"></i>
+        <span>Weather</span>
       </a>
     </nav>
 
   </main>
 
-  <!-- Script Reference (Separated for next steps) -->
   <script src="pumpkincarvinggame.js"></script>
 </body>
 </html>

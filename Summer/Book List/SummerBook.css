@@ -1,0 +1,838 @@
+/* ==========================================================================
+   FESTO SUMMER SOLSTICE BOOK VAULT — 3D DRIFTWOOD BOOKSHELF & OCEAN THEME
+   Features realistic sun-bleached teak shelves, ocean-cyan glassmorphism,
+   gold solar gradients, and coastal sunburst vignettes.
+   ========================================================================== */
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+
+  /* Summer & Coastal Color Palette */
+  --solar-gold: #ffb703;
+  --sunburst-amber: #fb8500;
+  --ocean-cyan: #00b4d8;
+  --deep-ocean: #023e8a;
+  --lagoon-teal: #0077b6;
+  --sand-cream: #fbf8f1;
+  --sand-tint: #f4ecdc;
+  
+  /* Sun-Bleached Teak & Coastal Driftwood Shelves */
+  --shelf-top: #c2a688;
+  --shelf-face: #8c7355;
+  --shelf-edge: #dfcaa8;
+  --shelf-shadow: rgba(8, 22, 36, 0.65);
+
+  --transition: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body.bookshelf-body.summer-theme {
+  background-color: #07131e;
+  color: #2b2b2b;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   COASTAL OCEAN SHORE & SUNBEAM BACKDROP
+   ========================================================================== */
+.coastal-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2560&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -3;
+  filter: brightness(0.6) saturate(1.25) contrast(1.05);
+}
+
+.sunbeam-wash {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% -10%, rgba(255, 214, 10, 0.35) 0%, rgba(0, 180, 216, 0.18) 45%, rgba(4, 18, 30, 0.85) 85%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* ==========================================================================
+   PALM FROND & SUNBURST BORDER ACCENTS
+   ========================================================================== */
+.summer-border {
+  position: fixed;
+  pointer-events: none;
+  z-index: 90;
+}
+
+.top-left-sunburst {
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 240px;
+  background: radial-gradient(circle at 10% 10%, rgba(255, 183, 3, 0.8) 0%, rgba(0, 180, 216, 0.45) 35%, transparent 70%);
+  filter: drop-shadow(0 0 16px rgba(255, 183, 3, 0.45));
+}
+
+.top-right-sunburst {
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 240px;
+  background: radial-gradient(circle at 90% 10%, rgba(255, 183, 3, 0.8) 0%, rgba(0, 180, 216, 0.45) 35%, transparent 70%);
+  filter: drop-shadow(0 0 16px rgba(255, 183, 3, 0.45));
+}
+
+.side-wave-left, .side-wave-right {
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: linear-gradient(180deg, var(--solar-gold) 0%, var(--ocean-cyan) 50%, var(--sunburst-amber) 100%);
+  box-shadow: 0 0 18px rgba(0, 180, 216, 0.65);
+}
+.side-wave-left { left: 0; }
+.side-wave-right { right: 0; }
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+.library-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3.5rem;
+  background: rgba(7, 24, 38, 0.9);
+  backdrop-filter: blur(18px);
+  border-bottom: 2px solid var(--solar-gold);
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.6);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn-portal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.3rem;
+  background: linear-gradient(135deg, rgba(255, 183, 3, 0.25), rgba(0, 180, 216, 0.25));
+  border: 1.5px solid var(--solar-gold);
+  border-radius: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(255, 183, 3, 0.35);
+  transition: all 0.3s var(--transition);
+}
+
+.btn-portal:hover {
+  background: linear-gradient(135deg, var(--sunburst-amber), var(--ocean-cyan));
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(255, 183, 3, 0.75);
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--solar-gold) 60%, var(--ocean-cyan) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1.1rem;
+  font-size: 0.95rem;
+}
+
+#searchInput {
+  width: 410px;
+  padding: 0.8rem 3rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 183, 3, 0.45);
+  border-radius: 30px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  width: 470px;
+  background: rgba(6, 20, 32, 0.92);
+  border-color: var(--solar-gold);
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.55);
+}
+
+.btn-clear {
+  position: absolute;
+  right: 1.1rem;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none;
+}
+
+/* ==========================================================================
+   SANCTUARY HERO PLAQUE & FILTERS
+   ========================================================================== */
+.sanctuary-hero {
+  position: relative;
+  z-index: 2;
+  padding: 3.5rem 3.5rem 2rem;
+}
+
+.hero-plaque {
+  background: rgba(10, 28, 44, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1.5px solid rgba(255, 183, 3, 0.4);
+  border-radius: 20px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.65);
+  max-width: 960px;
+}
+
+.plaque-badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  background: rgba(0, 180, 216, 0.2);
+  border: 1px solid var(--ocean-cyan);
+  border-radius: 20px;
+  color: var(--solar-gold);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.8rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 3.1rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 2px 18px rgba(255, 183, 3, 0.45);
+}
+
+.hero-desc {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  color: #e5edf5;
+  line-height: 1.7;
+  margin-bottom: 1.8rem;
+}
+
+.hero-counters {
+  display: flex;
+  gap: 2rem;
+}
+
+.counter-box {
+  background: rgba(4, 16, 26, 0.6);
+  border: 1px solid rgba(255, 183, 3, 0.35);
+  border-radius: 12px;
+  padding: 0.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.counter-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--solar-gold);
+}
+
+.counter-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #cfdce8;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.shelf-controls {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.shelf-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.pill-btn {
+  padding: 0.55rem 1.2rem;
+  background: rgba(10, 28, 44, 0.85);
+  border: 1.5px solid rgba(0, 180, 216, 0.35);
+  border-radius: 20px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease;
+}
+
+.pill-btn:hover {
+  background: rgba(0, 180, 216, 0.3);
+  border-color: var(--solar-gold);
+  transform: translateY(-2px);
+}
+
+.pill-btn.active {
+  background: linear-gradient(135deg, var(--sunburst-amber), var(--ocean-cyan));
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 18px rgba(0, 180, 216, 0.65);
+}
+
+.shelf-jump {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+#categoryJumpSelect {
+  padding: 0.6rem 1.2rem;
+  background: rgba(8, 22, 34, 0.95);
+  border: 1.5px solid var(--solar-gold);
+  border-radius: 10px;
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+  max-width: 480px;
+}
+
+/* ==========================================================================
+   SUN-BLEACHED TEAK & DRIFTWOOD BOOKSHELF VAULT
+   ========================================================================== */
+.bookshelf-vault {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 3.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+}
+
+.shelf-section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.shelf-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+  padding: 0 1rem;
+}
+
+.shelf-label {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.shelf-count {
+  font-size: 0.85rem;
+  color: var(--solar-gold);
+  font-weight: 800;
+}
+
+.shelf-book-slider {
+  display: flex;
+  gap: 1.8rem;
+  overflow-x: auto;
+  padding: 1.5rem 1.2rem 1.2rem;
+  scroll-behavior: smooth;
+  align-items: flex-end;
+}
+
+/* Sun-Bleached Teak Planks */
+.shelf-plank {
+  height: 22px;
+  background: linear-gradient(180deg, var(--shelf-top) 0%, var(--shelf-face) 100%);
+  border-top: 2px solid var(--shelf-edge);
+  border-radius: 4px;
+  box-shadow: 0 10px 25px var(--shelf-shadow), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  margin-top: -6px;
+  position: relative;
+}
+
+.shelf-plank::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  filter: blur(4px);
+}
+
+/* ==========================================================================
+   3D HARDCOVER BOOK CARDS
+   ========================================================================== */
+.book-volume-card {
+  min-width: 200px;
+  max-width: 200px;
+  background: var(--sand-cream);
+  border-radius: 4px 12px 12px 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -6px 8px 18px rgba(0, 0, 0, 0.65), 0 2px 6px rgba(0, 0, 0, 0.4);
+  transition: transform 0.35s var(--transition), box-shadow 0.35s ease;
+  border-left: 6px solid var(--deep-ocean); /* Coastal Navy Spine */
+  overflow: hidden;
+}
+
+.book-volume-card:hover {
+  transform: translateY(-14px) rotate(1deg) scale(1.04);
+  box-shadow: -10px 18px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 180, 216, 0.6);
+}
+
+.book-jacket-box {
+  width: 100%;
+  height: 275px;
+  position: relative;
+  background: #0d2235;
+  overflow: hidden;
+}
+
+.book-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+
+.book-cover-img.loaded {
+  opacity: 1;
+}
+
+.book-price-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  background: rgba(5, 20, 32, 0.92);
+  border: 1px solid var(--solar-gold);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--solar-gold);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.book-rating-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--sunburst-amber);
+}
+
+.book-details {
+  padding: 0.85rem;
+  background: var(--sand-cream);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 1px solid #e7dcce;
+}
+
+.book-title {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #0c1c28;
+}
+
+.book-author-meta {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #586978;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+.book-tag-chip {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  background: var(--sand-tint);
+  border: 1px solid #dfd2be;
+  border-radius: 8px;
+  color: #4a5965;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+
+/* ==========================================================================
+   MODAL VOLUME VIEW
+   ========================================================================== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 14, 22, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal.active {
+  display: flex;
+  animation: modalFadeIn 0.3s var(--transition);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-card {
+  background: var(--sand-cream);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 880px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  border: 2px solid var(--solar-gold);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.4rem;
+  background: rgba(5, 20, 32, 0.75);
+  border: 1px solid var(--solar-gold);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+  z-index: 20;
+}
+
+.modal-close-btn:hover {
+  background: var(--solar-gold);
+  color: #07131e;
+  transform: rotate(90deg);
+}
+
+.modal-book-header {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background-color: #07131e;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  align-items: flex-end;
+}
+
+.backdrop-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 19, 30, 0.3) 0%, rgba(7, 19, 30, 0.85) 65%, var(--sand-cream) 100%);
+}
+
+.backdrop-content {
+  position: relative;
+  z-index: 2;
+  padding: 2.2rem 2.2rem 1.4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.modal-meta-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meta-tag {
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.cat-tag { background: var(--ocean-cyan); color: #fff; }
+.price-tag { background: var(--solar-gold); color: #07131e; font-weight: 900; }
+.pages-tag, .year-tag { background: rgba(5, 20, 32, 0.7); color: #fff; }
+.rating-tag { background: #fff; color: var(--sunburst-amber); border: 1px solid #ddd; }
+
+.modal-title {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #07131e;
+  line-height: 1.15;
+}
+
+.modal-author {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #586978;
+}
+
+.modal-actions-row {
+  display: flex;
+  gap: 0.9rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.35rem;
+  border-radius: 30px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-like {
+  background: #fff;
+  border: 1.5px solid var(--solar-gold);
+  color: var(--sunburst-amber);
+}
+
+.btn-like.active {
+  background: var(--solar-gold);
+  color: #07131e;
+}
+
+.btn-readlist {
+  background: var(--lagoon-teal);
+  border: 1.5px solid var(--lagoon-teal);
+  color: #fff;
+}
+
+.btn-link {
+  background: rgba(10, 28, 44, 0.85);
+  border: 1px solid var(--solar-gold);
+  color: var(--solar-gold);
+}
+
+.modal-body-content {
+  padding: 2rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  background: var(--sand-cream);
+}
+
+.block-title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--ocean-cyan);
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+}
+
+.hint {
+  font-size: 0.74rem;
+  color: #888;
+  font-weight: 400;
+  margin-left: 0.4rem;
+  text-transform: none;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.modal-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.8rem;
+  background: var(--sand-tint);
+  border: 1px solid #dfd2be;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #3b4d5a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.modal-tag-chip:hover {
+  background: var(--ocean-cyan);
+  border-color: var(--ocean-cyan);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.author-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.author-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  background: #fff;
+  border: 1.5px solid var(--lagoon-teal);
+  border-radius: 20px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--lagoon-teal);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.author-badge:hover {
+  background: var(--lagoon-teal);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.book-synopsis {
+  font-family: var(--font-serif);
+  color: #273642;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.modal-footer-row {
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #e7dcce;
+  padding-top: 1.2rem;
+}
+
+.btn-wiki {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--sand-tint);
+  color: #586978;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid #dfd2be;
+  transition: all 0.25s ease;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.library-footer {
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  background: rgba(5, 18, 28, 0.95);
+  border-top: 2px solid var(--solar-gold);
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--solar-gold);
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+}
+
+.footer-sub {
+  font-size: 0.8rem;
+  color: #9ab4c7;
+}

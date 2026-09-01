@@ -1,0 +1,1347 @@
+/**
+ * FESTO CHRISTMAS CINEMA VAULT — DATA PART 8 (FINALE)
+ * Categories 36 through 40: Slavic Fairytales, Forest Critters, Military Homecomings & Hallmark/Lifetime Romances.
+ */
+window.christmasData = window.christmasData || [];
+
+window.christmasData.push(
+  // =========================================================================
+  // 36. Soviet, Russian & Slavic Winter Fairytales (20)
+  // =========================================================================
+  {
+    id: 2701,
+    title: "Morozko (Father Frost / Jack Frost)",
+    year: "1964",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 6.5,
+    wikiSlug: "Jack_Frost_(1964_film)",
+    cast: ["Aleksandr Khvylya", "Natalya Sedykh", "Eduard Izotov", "Inna Churikova", "Pavel Pavlenko", "Georgi Millyar"],
+    youtubeTrailerKey: "4h3U2m9yV3E"
+  },
+  {
+    id: 2702,
+    title: "The Irony of Fate (Ironiya sudby)",
+    year: "1975",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 8.2,
+    wikiSlug: "The_Irony_of_Fate",
+    cast: ["Andrey Myagkov", "Barbara Brylska", "Yury Yakovlev", "Lyubov Dobrzhanskaya", "Aleksandr Shirvindt", "Liya Akhedzhakova"],
+    youtubeTrailerKey: "ohF5UGSUap0"
+  },
+  {
+    id: 2703,
+    title: "The Irony of Fate 2",
+    year: "2007",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 5.1,
+    wikiSlug: "The_Irony_of_Fate_2",
+    cast: ["Konstantin Khabenskiy", "Elizaveta Boyarskaya", "Sergey Bezrukov", "Andrey Myagkov", "Barbara Brylska"],
+    youtubeTrailerKey: "wvwVkllXT80"
+  },
+  {
+    id: 2704,
+    title: "The Snow Maiden (Snegurochka)",
+    year: "1968",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.1,
+    wikiSlug: "The_Snow_Maiden_(1968_film)",
+    cast: ["Yevgeniya Filonova", "Yevgeny Zharikov", "Boris Khimichev", "Irina Gubanova", "Pavel Pavlenko"],
+    youtubeTrailerKey: "0Vsy5KzsieQ"
+  },
+  {
+    id: 2705,
+    title: "Twelve Months (Dvenadtsat mesyatsev)",
+    year: "1956",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.6,
+    wikiSlug: "The_Twelve_Months_(1956_film)",
+    cast: ["Larisa Kronberg", "Tatyana Pelttser", "Leonid Pirogov", "Georgiy Vitsin", "Aleksey Gribov"],
+    youtubeTrailerKey: "3u48Wz4m_kQ"
+  },
+  {
+    id: 2706,
+    title: "The Night Before Christmas (Noch pered Rozhdestvom)",
+    year: "1961",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.8,
+    wikiSlug: "The_Night_Before_Christmas_(1961_film)",
+    cast: ["Aleksandr Khvylya", "Lyudmila Myznikova", "Yuri Tavrov", "Lyudmila Khityaeva", "Georgi Millyar"],
+    youtubeTrailerKey: "N1K5V0y5h0s"
+  },
+  {
+    id: 2707,
+    title: "Carnival Night (Karnavalnaya noch)",
+    year: "1956",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.6,
+    wikiSlug: "Carnival_Night",
+    cast: ["Igor Ilyinsky", "Lyudmila Gurchenko", "Yuri Belov", "Georgi Kulikov", "Sergey Filippov"],
+    youtubeTrailerKey: "Z1BCujX3pw8"
+  },
+  {
+    id: 2708,
+    title: "The Snow Queen (Snezhnaya koroleva)",
+    year: "1957",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.6,
+    wikiSlug: "The_Snow_Queen_(1957_film)",
+    cast: ["Yanina Zhejmo", "Sergei Martinson", "Anna Komolova", "Mariya Babanova", "Tatyana Linnik"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2709,
+    title: "Evenings on a Farm Near Dikanka",
+    year: "1961",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.7,
+    wikiSlug: "The_Night_Before_Christmas_(1961_film)",
+    cast: ["Aleksandr Khvylya", "Lyudmila Myznikova", "Yuri Tavrov", "Lyudmila Khityaeva", "Georgi Millyar"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2710,
+    title: "Charodei (The Magicians)",
+    year: "1982",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.7,
+    wikiSlug: "Charodei",
+    cast: ["Aleksandr Abdulov", "Aleksandra Yakovleva", "Yekaterina Vasilyeva", "Valentin Gaft", "Yevgeny Vesnik", "Mikhail Svetin"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2711,
+    title: "Three Wishes for Cinderella (1973 Slavic Classic)",
+    year: "1973",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.7,
+    wikiSlug: "T%C5%99i_o%C5%99%C3%AD%C5%A1ky_pro_Popelku",
+    cast: ["Libuše Šafránková", "Pavel Trávníček", "Carola Braunbock", "Rolf Hoppe", "Karin Lesch"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2712,
+    title: "The Silver Skates (Serebryanye konki)",
+    year: "2020",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.1,
+    wikiSlug: "The_Silver_Skates_(film)",
+    cast: ["Fedor Fedotov", "Sonya Priss", "Aleksey Guskov", "Severija Janusauskaite", "Kirill Zaytsev", "Yuriy Borisov"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2713,
+    title: "Snow White and the Russian Bride",
+    year: "1999",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 5.6,
+    wikiSlug: "Snow_White_and_the_Russian_Bride",
+    cast: ["Michelle Collins", "Gerry Cowper", "David Calder", "Sergei Bodrov Jr."],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2714,
+    title: "Old Khottabych",
+    year: "1956",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 7.3,
+    wikiSlug: "Old_Khottabych",
+    cast: ["Nikolai Volkov", "Aleksei Litvinov", "Gennadi Khudyakov", "Lev Kovalchuk"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2715,
+    title: "Gentlemen of Fortune",
+    year: "1971",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 8.4,
+    wikiSlug: "Gentlemen_of_Fortune",
+    cast: ["Yevgeny Leonov", "Georgi Vitsin", "Saveli Kramarov", "Radner Muratov", "Erast Garin", "Natalya Fateyeva"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2716,
+    title: "Operation Y and Shurik's Other Adventures",
+    year: "1965",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 8.4,
+    wikiSlug: "Operation_Y_and_Shurik's_Other_Adventures",
+    cast: ["Aleksandr Demyanenko", "Aleksei Smirnov", "Mikhail Pugovkin", "Vladimir Basov", "Georgi Vitsin", "Yuri Nikulin", "Yevgeny Morgunov"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2717,
+    title: "The Wizard of the Emerald City",
+    year: "1994",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 6.2,
+    wikiSlug: "The_Wizard_of_the_Emerald_City_(1994_film)",
+    cast: ["Katia Gorina", "Vyacheslav Nevinny", "Valeri Nosik", "Viktor Pavlov", "Boris Romanov"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2718,
+    title: "The Snow Queen (2012 Animation)",
+    year: "2012",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 5.4,
+    wikiSlug: "The_Snow_Queen_(2012_film)",
+    cast: ["Nyusha", "Ivan Okhlobystin", "Galina Tyunina", "Dmitry Nagiyev", "Anna Shurochkina"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2719,
+    title: "The Snow Queen 2: The Snow King",
+    year: "2014",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 5.6,
+    wikiSlug: "The_Snow_Queen_2:_The_Snow_King",
+    cast: ["Ivan Okhlobystin", "Nyusha", "Anna Khilkevich", "Aleksandr Uman", "Igor Vernik"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2720,
+    title: "The Snow Queen 3: Fire and Ice",
+    year: "2016",
+    category: "slavic-fairytales",
+    categoryLabel: "36. Soviet, Russian & Slavic Winter Fairytales",
+    rating: 5.8,
+    wikiSlug: "The_Snow_Queen_3:_Fire_and_Ice",
+    cast: ["Dee Bradley Baker", "Lori Gardner", "Devin Bailey Griffin", "Jason Griffith", "Graham Halstead"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+
+  // =========================================================================
+  // 37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters (20)
+  // =========================================================================
+  {
+    id: 2721,
+    title: "Prancer (Reindeer Healing)",
+    year: "1989",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.4,
+    wikiSlug: "Prancer_(film)",
+    cast: ["Sam Elliott", "Cloris Leachman", "Abe Vigoda", "Michael Constantine", "Rutanya Alda", "Rebecca Harrell"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2722,
+    title: "Prancer: A Christmas Tale",
+    year: "2022",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.2,
+    wikiSlug: "Prancer:_A_Christmas_Tale",
+    cast: ["James Cromwell", "Darcey Ewart", "Sarah-Jane Potts", "Aaron McCusker", "Florisa Kamara"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2723,
+    title: "Rudolph the Red-Nosed Reindeer: The Movie",
+    year: "1998",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 5.9,
+    wikiSlug: "Rudolph_the_Red-Nosed_Reindeer:_The_Movie",
+    cast: ["Kathleen Barr", "John Goodman", "Whoopi Goldberg", "Debbie Reynolds", "Bob Newhart", "Eric Idle"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2724,
+    title: "Niko & The Way to the Stars (Flight Before Christmas)",
+    year: "2008",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.1,
+    wikiSlug: "The_Flight_Before_Christmas_(2008_film)",
+    cast: ["Olli Jantunen", "Hannu-Pekka Björkman", "Vuokko Hovatta", "Vesa Vierikko", "Jussi Lampi"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2725,
+    title: "Niko 2: Little Brother, Big Trouble",
+    year: "2012",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 5.8,
+    wikiSlug: "Little_Brother,_Big_Trouble:_A_Christmas_Adventure",
+    cast: ["Erik Carlson", "Mikko Kivinen", "Vuokko Hovatta", "Juha Veijonen", "Kari Ketonen"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2726,
+    title: "Niko: Beyond the Northern Lights",
+    year: "2024",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.3,
+    wikiSlug: "Niko_-_Beyond_the_Northern_Lights",
+    cast: ["Pauli Halonen", "Hannu-Pekka Björkman", "Vuokko Hovatta", "Petteri Summanen"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2727,
+    title: "The Star (Bo the Donkey & Reindeer)",
+    year: "2017",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.3,
+    wikiSlug: "The_Star_(2017_film)",
+    cast: ["Steven Yeun", "Gina Rodriguez", "Zachary Levi", "Keegan-Michael Key", "Kelly Clarkson", "Patricia Heaton"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2728,
+    title: "The Flight of the Reindeer",
+    year: "2000",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.4,
+    wikiSlug: "The_Christmas_Secret_(2000_film)",
+    cast: ["Richard Thomas", "Beau Bridges", "Maria Pitillo", "Jan Rubes", "John Franklin"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2729,
+    title: "Blizzard",
+    year: "2003",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 5.6,
+    wikiSlug: "Blizzard_(film)",
+    cast: ["Paul Bates", "Brenda Blethyn", "Brittany Bristow", "LeVar Burton", "Christopher Plummer", "Whoopi Goldberg"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2730,
+    title: "Reindeer Games (2003 Animated)",
+    year: "2003",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 5.2,
+    wikiSlug: "Reindeer_Games",
+    cast: ["Dan Castellaneta", "Nancy Cartwright", "Tress MacNeille", "Tom Kenny"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2731,
+    title: "Santa's Dog",
+    year: "2015",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 4.8,
+    wikiSlug: "Santa's_Little_Helper_(film)",
+    cast: ["The Miz", "Paige", "AnnaLynne McCord", "Eric Keenleyside", "Kathryn Kirkpatrick"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2732,
+    title: "Olive, the Other Reindeer",
+    year: "1999",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 7.0,
+    wikiSlug: "Olive,_the_Other_Reindeer",
+    cast: ["Drew Barrymore", "Dan Castellaneta", "Joe Pantoliano", "Peter MacNicol", "Michael Stipe", "Tim Meadows"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2733,
+    title: "Annabelle's Wish (Calf with Wings)",
+    year: "1997",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 7.1,
+    wikiSlug: "Annabelle's_Wish",
+    cast: ["Randy Travis", "Kath Soucie", "Jerry Van Dyke", "Jim Varney", "Rue McClanahan", "Cloris Leachman"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2734,
+    title: "The Great Rupert (A Christmas Wish - Squirrel)",
+    year: "1950",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 6.8,
+    wikiSlug: "The_Great_Rupert",
+    cast: ["Jimmy Durante", "Terry Moore", "Tom Drake", "Frank Orth", "Sara Haden"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2735,
+    title: "The Small One (Donkey to Bethlehem)",
+    year: "1978",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 7.6,
+    wikiSlug: "The_Small_One",
+    cast: ["Sean Marshall", "William Woodson", "Olan Soule", "Hal Smith", "Joe Higgins"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2736,
+    title: "Nestor, the Long-Eared Christmas Donkey (Winter Steed)",
+    year: "1977",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 7.1,
+    wikiSlug: "Nestor,_the_Long-Eared_Christmas_Donkey",
+    cast: ["Roger Miller", "Brenda Vaccaro", "Paul Frees", "Don Messick", "Linda Gary"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2737,
+    title: "The Bears' Famous Invasion of Sicily",
+    year: "2019",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 7.1,
+    wikiSlug: "The_Bears'_Famous_Invasion_of_Sicily_(film)",
+    cast: ["Leïla Bekhti", "Thomas Bidegain", "Jean-Claude Carrière", "Arthur Dupont"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2738,
+    title: "A Mouse Tale",
+    year: "2012",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 4.8,
+    wikiSlug: "A_Mouse_Tale",
+    cast: ["Miranda Cosgrove", "Drake Bell", "Jon Lovitz", "Cary Elwes", "Jon Heder", "Tom Arnold"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2739,
+    title: "The Magic Crystal",
+    year: "2011",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 5.4,
+    wikiSlug: "The_Magic_Crystal",
+    cast: ["Jukka Rasila", "Pamela Tola", "Aarre Karén", "Kari Ketonen", "Veeti Kallio"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2740,
+    title: "Little Brother, Big Trouble",
+    year: "2012",
+    category: "animal-helpers",
+    categoryLabel: "37. Santa's Animal Helpers, Sleigh Steeds & Forest Critters",
+    rating: 5.8,
+    wikiSlug: "Little_Brother,_Big_Trouble:_A_Christmas_Adventure",
+    cast: ["Erik Carlson", "Mikko Kivinen", "Vuokko Hovatta", "Juha Veijonen"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+
+  // =========================================================================
+  // 38. Holiday Military Homecomings & Letters to Santa (20)
+  // =========================================================================
+  {
+    id: 2741,
+    title: "The Christmas Card",
+    year: "2006",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.9,
+    wikiSlug: "The_Christmas_Card",
+    cast: ["John Newton", "Alice Evans", "Edward Asner", "Peter Jason", "Lois Nettleton", "Ben Weber"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2742,
+    title: "A Veteran's Christmas (Homecoming Miracle)",
+    year: "2018",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.0,
+    wikiSlug: "A_Veteran's_Christmas",
+    cast: ["Eloise Mumford", "Sean Faris", "Mary Long", "Amanda Lisman", "Richard Waugh"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2743,
+    title: "Operation Christmas",
+    year: "2016",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.0,
+    wikiSlug: "Operation_Christmas",
+    cast: ["Tricia Helfer", "Marc Blucas", "Lisa Durupt", "Gabrielle Rose", "Benjamin Wosk"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2744,
+    title: "Home for Christmas Day",
+    year: "2017",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.7,
+    wikiSlug: "Home_for_Christmas_Day",
+    cast: ["Catherine Bell", "Victor Webster", "Gwynyth Walsh", "Anthony Konechny"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2745,
+    title: "Operation Christmas Drop",
+    year: "2020",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 5.8,
+    wikiSlug: "Operation_Christmas_Drop_(film)",
+    cast: ["Kat Graham", "Alexander Ludwig", "Virginia Madsen", "Janet Kidder", "Jeffrey Joseph"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2746,
+    title: "A Homecoming for the Holidays",
+    year: "2019",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.8,
+    wikiSlug: "A_Homecoming_for_the_Holidays",
+    cast: ["Laura Osnes", "Stephen Huszar", "P. Lynn Johnson", "Janie Woods-Morris"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2747,
+    title: "Time for Me to Come Home for Christmas",
+    year: "2018",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.9,
+    wikiSlug: "Time_for_Me_to_Come_Home_for_Christmas",
+    cast: ["Megan Park", "Josh Henderson", "Lindsay Maxwell", "Paul McGillion"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2748,
+    title: "Time for Us to Come Home for Christmas",
+    year: "2020",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.1,
+    wikiSlug: "Time_for_Us_to_Come_Home_for_Christmas",
+    cast: ["Lacey Chabert", "Stephen Huszar", "Lini Evans", "Peter Kelamis"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2749,
+    title: "Time for Him to Come Home for Christmas",
+    year: "2022",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.2,
+    wikiSlug: "Time_for_Him_to_Come_Home_for_Christmas",
+    cast: ["Holland Roden", "Tyler Hynes", "Tenille Townes", "Steve Bacic"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2750,
+    title: "Write Before Christmas (Letters of Hope)",
+    year: "2019",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.7,
+    wikiSlug: "Write_Before_Christmas",
+    cast: ["Torrey DeVitto", "Chad Michael Murray", "Lolita Davidovich", "Grant Show"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2751,
+    title: "The Christmas Note",
+    year: "2015",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.0,
+    wikiSlug: "The_Christmas_Note",
+    cast: ["Jamie-Lynn Sigler", "Leah Gibson", "Greg Evigan", "Dylan Kingwell"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2752,
+    title: "The Christmas Secret (Family Letters)",
+    year: "2014",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.3,
+    wikiSlug: "The_Christmas_Secret_(2014_film)",
+    cast: ["Bethany Joy Lenz", "John Reardon", "Susan Hogan", "Michael Hogan"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2753,
+    title: "Deliver by Christmas",
+    year: "2020",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.8,
+    wikiSlug: "Deliver_by_Christmas",
+    cast: ["Alvina August", "Eion Bailey", "Kesler Donovan", "Nadeen Lightbody"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2754,
+    title: "USS Christmas",
+    year: "2020",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.8,
+    wikiSlug: "USS_Christmas",
+    cast: ["Jen Lilley", "Trevor Donovan", "Barbara Niven", "Stefanie Butler"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2755,
+    title: "Christmas Homecoming",
+    year: "2017",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.8,
+    wikiSlug: "Christmas_Homecoming",
+    cast: ["Julie Benz", "Michael Shanks", "Kirsten Robek", "Toby Levins"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2756,
+    title: "Holiday for Heroes",
+    year: "2019",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.1,
+    wikiSlug: "Holiday_for_Heroes",
+    cast: ["Melissa Claire Egan", "Marc Blucas", "Patti Murin", "Cassie Brennan"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2757,
+    title: "Military Wives",
+    year: "2019",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 6.5,
+    wikiSlug: "Military_Wives_(film)",
+    cast: ["Kristin Scott Thomas", "Sharon Horgan", "Jason Flemyng", "Greg Wise", "Emma Lowndes"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2758,
+    title: "Joyeux Noël (WWI Christmas Truce)",
+    year: "2005",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.7,
+    wikiSlug: "Joyeux_No%C3%ABl",
+    cast: ["Diane Kruger", "Benno Fürmann", "Guillaume Canet", "Gary Lewis", "Daniel Brühl"],
+    youtubeTrailerKey: "4h3U2m9yV3E"
+  },
+  {
+    id: 2759,
+    title: "A Midnight Clear",
+    year: "1992",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.1,
+    wikiSlug: "A_Midnight_Clear",
+    cast: ["Peter Berg", "Kevin Dillon", "Arye Gross", "Ethan Hawke", "Gary Sinise", "Frank Whaley"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2760,
+    title: "Silent Night (2002 WWII Miracle)",
+    year: "2002",
+    category: "military-homecomings",
+    categoryLabel: "38. Holiday Military Homecomings & Letters to Santa",
+    rating: 7.5,
+    wikiSlug: "Silent_Night_(2002_film)",
+    cast: ["Linda Hamilton", "Matthew Harbour", "Romano Orzari", "Alain Goulem", "Michael Sinelnikoff"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+
+  // =========================================================================
+  // 39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics) (30)
+  // =========================================================================
+  {
+    id: 2761,
+    title: "Christmas Under Wraps",
+    year: "2014",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.5,
+    wikiSlug: "Christmas_Under_Wraps",
+    cast: ["Candace Cameron Bure", "David O'Donnell", "Robert Pine", "Kendra Mylnechuk", "Brian Doyle-Murray"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2762,
+    title: "The Christmas Ornament",
+    year: "2013",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.9,
+    wikiSlug: "The_Christmas_Ornament",
+    cast: ["Kellie Martin", "Cameron Mathison", "Jewel Staite", "Brendan Meyer"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2763,
+    title: "Crown for Christmas",
+    year: "2015",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.0,
+    wikiSlug: "Crown_for_Christmas",
+    cast: ["Danica McKellar", "Rupert Penry-Jones", "Ellie Botterill", "Cristian Bota"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2764,
+    title: "Matchmaker Santa",
+    year: "2012",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.1,
+    wikiSlug: "Matchmaker_Santa",
+    cast: ["Lacey Chabert", "Adam Mayfield", "Donovan Scott", "Florence Henderson", "John Ratzenberger"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2765,
+    title: "A Royal Christmas",
+    year: "2014",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.6,
+    wikiSlug: "A_Royal_Christmas",
+    cast: ["Lacey Chabert", "Stephen Hagan", "Jane Seymour", "Katherine Flynn"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2766,
+    title: "Christmas at Cartwright's",
+    year: "2014",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.4,
+    wikiSlug: "Christmas_at_Cartwright's",
+    cast: ["Alicia Witt", "Gabriel Hogan", "Wallace Shawn", "T.J. McGibbon"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2767,
+    title: "A Bride for Christmas",
+    year: "2012",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.4,
+    wikiSlug: "A_Bride_for_Christmas",
+    cast: ["Arielle Kebbel", "Andrew Walker", "Kimberley Sustad", "Sage Brocklebank"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2768,
+    title: "Switched for Christmas",
+    year: "2017",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.5,
+    wikiSlug: "Switched_for_Christmas",
+    cast: ["Candace Cameron Bure", "Eion Bailey", "Mark Deklin", "Natasha Bure"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2769,
+    title: "A Christmas Detour",
+    year: "2015",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.3,
+    wikiSlug: "A_Christmas_Detour",
+    cast: ["Candace Cameron Bure", "Paul Greene", "Sarah Strange", "David Lewis"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2770,
+    title: "Christmas in Tahoe",
+    year: "2021",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.2,
+    wikiSlug: "Christmas_in_Tahoe",
+    cast: ["Laura Osnes", "Kyle Selig", "Pat Monahan", "George Lopez"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2771,
+    title: "The Most Wonderful Time of the Year",
+    year: "2008",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.4,
+    wikiSlug: "The_Most_Wonderful_Time_of_the_Year_(film)",
+    cast: ["Brooke Burns", "Henry Winkler", "Warren Christie", "Connor Levins"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2772,
+    title: "The Nine Lives of Christmas",
+    year: "2014",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.1,
+    wikiSlug: "The_Nine_Lives_of_Christmas",
+    cast: ["Brandon Routh", "Kimberley Sustad", "Stephanie Bennett", "Chelsea Hobbs"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2773,
+    title: "The Nine Kittens of Christmas",
+    year: "2021",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.8,
+    wikiSlug: "The_Nine_Kittens_of_Christmas",
+    cast: ["Brandon Routh", "Kimberley Sustad", "Gregory Harrison", "Victoria Sly"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2774,
+    title: "An Unexpected Christmas",
+    year: "2021",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.1,
+    wikiSlug: "An_Unexpected_Christmas",
+    cast: ["Bethany Joy Lenz", "Tyler Hynes", "Paul McGillion", "Alison Wandzura"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2775,
+    title: "Three Wise Men and a Baby",
+    year: "2022",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.6,
+    wikiSlug: "Three_Wise_Men_and_a_Baby",
+    cast: ["Paul Campbell", "Tyler Hynes", "Andrew Walker", "Margaret Colin", "Ali Liebert"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2776,
+    title: "Three Wiser Men and a Boy",
+    year: "2024",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.4,
+    wikiSlug: "Three_Wiser_Men_and_a_Boy",
+    cast: ["Paul Campbell", "Tyler Hynes", "Andrew Walker", "Margaret Colin"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2777,
+    title: "A Kiss Before Christmas",
+    year: "2021",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.8,
+    wikiSlug: "A_Kiss_Before_Christmas",
+    cast: ["James Denton", "Teri Hatcher", "Marilu Henner", "John B. Lowe"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2778,
+    title: "Christmas at the Plaza",
+    year: "2019",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.6,
+    wikiSlug: "Christmas_at_the_Plaza",
+    cast: ["Elizabeth Henstridge", "Ryan Paevey", "Bruce Davison", "Julia Duffy"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2779,
+    title: "On the 12th Date of Christmas",
+    year: "2020",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.7,
+    wikiSlug: "On_the_12th_Date_of_Christmas",
+    cast: ["Mallory Jansen", "Tyler Hynes", "Zoe Fish", "Lara Amersey"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2780,
+    title: "The Christmas House",
+    year: "2020",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.5,
+    wikiSlug: "The_Christmas_House",
+    cast: ["Robert Buckley", "Ana Ayora", "Jonathan Bennett", "Sharon Lawrence", "Treat Williams"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2781,
+    title: "The Christmas House 2: Deck Those Halls",
+    year: "2021",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.3,
+    wikiSlug: "The_Christmas_House_2:_Deck_Those_Halls",
+    cast: ["Robert Buckley", "Ana Ayora", "Jonathan Bennett", "Sharon Lawrence", "Treat Williams"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2782,
+    title: "Picture a Perfect Christmas",
+    year: "2019",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.8,
+    wikiSlug: "Picture_a_Perfect_Christmas",
+    cast: ["Merritt Patterson", "Jon Cor", "Luke Roessler", "Paula Giroday"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2783,
+    title: "Christmas Getaway",
+    year: "2017",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.7,
+    wikiSlug: "Christmas_Getaway",
+    cast: ["Bridget Regan", "Travis Van Winkle", "Raven Stewart", "Teryl Rothery"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2784,
+    title: "Project Christmas Wish",
+    year: "2020",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 7.0,
+    wikiSlug: "Project_Christmas_Wish",
+    cast: ["Amanda Schull", "Travis Van Winkle", "Averie Peters", "Amy Groening"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2785,
+    title: "With Love, Christmas",
+    year: "2017",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.4,
+    wikiSlug: "With_Love,_Christmas",
+    cast: ["Emilie Ullerup", "Aaron O'Connell", "Rebecca Davis", "Lindy Booth"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2786,
+    title: "Miss Christmas",
+    year: "2017",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.5,
+    wikiSlug: "Miss_Christmas",
+    cast: ["Brooke D'Orsay", "Marc Blucas", "Erin Boyes", "Greg Kean"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2787,
+    title: "Finding Santa",
+    year: "2017",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.3,
+    wikiSlug: "Finding_Santa",
+    cast: ["Jodie Sweetin", "Eric Winter", "Kate Hastings", "Jay Brazeau"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2788,
+    title: "Christmas Connection",
+    year: "2017",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.6,
+    wikiSlug: "Christmas_Connection",
+    cast: ["Brooke Burns", "Tom Everett Scott", "Sophie Neudorf", "Micheline Marchildon"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2789,
+    title: "A Shoe Addict's Christmas",
+    year: "2018",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.3,
+    wikiSlug: "A_Shoe_Addict's_Christmas",
+    cast: ["Candace Cameron Bure", "Luke Macfarlane", "Jean Smart", "Tenika Davis"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2790,
+    title: "Pride, Prejudice, and Mistletoe",
+    year: "2018",
+    category: "hallmark-classics",
+    categoryLabel: "39. Hallmark & Lifetime Modern Romance Canon (Part 1: The Essential Classics)",
+    rating: 6.0,
+    wikiSlug: "Pride,_Prejudice,_and_Mistletoe",
+    cast: ["Lacey Chabert", "Brendan Penny", "Sherry Miller", "Art Hindle"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+
+  // =========================================================================
+  // 40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance) (30)
+  // =========================================================================
+  {
+    id: 2791,
+    title: "Christmas in Rome",
+    year: "2019",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.7,
+    wikiSlug: "Christmas_in_Rome",
+    cast: ["Lacey Chabert", "Sam Page", "Franco Nero", "Holly Mumford", "Fernanda Diniz"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2792,
+    title: "Christmas in Vienna",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.5,
+    wikiSlug: "Christmas_in_Vienna",
+    cast: ["Sarah Drew", "Brennan Elliott", "Alina Fritsch", "Stefan Gorski"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2793,
+    title: "A Scottish Love Scheme",
+    year: "2024",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.9,
+    wikiSlug: "A_Scottish_Love_Scheme",
+    cast: ["Erica Durance", "Jordan Young", "Jack Ashton", "Jo Cameron Brown"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2794,
+    title: "A Merry Scottish Christmas",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.2,
+    wikiSlug: "A_Merry_Scottish_Christmas",
+    cast: ["Lacey Chabert", "Scott Wolf", "Fiona Bell", "James Robinson"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2795,
+    title: "Jolly Good Christmas",
+    year: "2022",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.8,
+    wikiSlug: "Jolly_Good_Christmas",
+    cast: ["Reshma Shetty", "Will Kemp", "Callum Blue", "Sophie Hopkins"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2796,
+    title: "Christmas at Castle Hart",
+    year: "2021",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.2,
+    wikiSlug: "Christmas_at_Castle_Hart",
+    cast: ["Lacey Chabert", "Stuart Townsend", "Ali Hardiman", "Kate O'Toole"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2797,
+    title: "A Heidelberg Holiday",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.0,
+    wikiSlug: "A_Heidelberg_Holiday",
+    cast: ["Ginna Claire Mason", "Frédéric Brossier", "Serena Posadino", "Nick Wilder"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2798,
+    title: "Christmas in Notting Hill",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.6,
+    wikiSlug: "Christmas_in_Notting_Hill",
+    cast: ["Sarah Ramos", "William Moseley", "Peter Wingfield", "Kate O'Flynn"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2799,
+    title: "Never Been Chris'd",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.1,
+    wikiSlug: "Never_Been_Chris'd",
+    cast: ["Janel Parrish", "Pascal Lamothe-Kipnes", "Tyler Hynes", "Linda Kash"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2800,
+    title: "A Biltmore Christmas",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.8,
+    wikiSlug: "A_Biltmore_Christmas",
+    cast: ["Bethany Joy Lenz", "Kristoffer Polaha", "Jonathan Frakes", "Robert Picardo"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2801,
+    title: "Catch Me If You Claus",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.2,
+    wikiSlug: "Catch_Me_If_You_Claus",
+    cast: ["Italia Ricci", "Luke Macfarlane", "Maureen Thomas", "Samantha Cole"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2802,
+    title: "Haul Out the Holly",
+    year: "2022",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.6,
+    wikiSlug: "Haul_Out_the_Holly",
+    cast: ["Lacey Chabert", "Wes Brown", "Stephen Tobolowsky", "Melissa Peterman", "Ellen Travolta"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2803,
+    title: "Haul Out the Holly: Lit Up",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.5,
+    wikiSlug: "Haul_Out_the_Holly:_Lit_Up",
+    cast: ["Lacey Chabert", "Wes Brown", "Stephen Tobolowsky", "Melissa Peterman", "Seth Morris"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2804,
+    title: "Holiday Hotline",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.3,
+    wikiSlug: "Holiday_Hotline",
+    cast: ["Emily Tennant", "Niall Matter", "Margo Kane", "Michael Teigen"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2805,
+    title: "Sealed with a List",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.8,
+    wikiSlug: "Sealed_with_a_List",
+    cast: ["Katie Findlay", "Evan Roderick", "Madonna Gonzalez", "Daylin Willis"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2806,
+    title: "Checkin' It Twice",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.6,
+    wikiSlug: "Checkin'_It_Twice",
+    cast: ["Kim Matula", "Kevin McGarry", "Brittany Bristow", "Derry Robinson"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2807,
+    title: "Navigating Christmas",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.7,
+    wikiSlug: "Navigating_Christmas",
+    cast: ["Chelsea Hobbs", "Stephen Huszar", "Everett Andres", "Bobby Stewart"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2808,
+    title: "Where Are You, Christmas?",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.9,
+    wikiSlug: "Where_Are_You,_Christmas%3F",
+    cast: ["Lyndsy Fonseca", "Michael Rady", "Jim O'Heir", "Julie Warner"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2809,
+    title: "Mystery on Mistletoe Lane",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.2,
+    wikiSlug: "Mystery_on_Mistletoe_Lane",
+    cast: ["Erica Cerra", "Victor Webster", "Fred Henderson", "Mary-Beth Manning"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  },
+  {
+    id: 2810,
+    title: "A World Record Christmas",
+    year: "2023",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.4,
+    wikiSlug: "A_World_Record_Christmas",
+    cast: ["Nikki DeLoach", "Lucas Bryant", "Aias Dalman", "Miranda Edwards"],
+    youtubeTrailerKey: "xT7eP3tH0pQ"
+  },
+  {
+    id: 2811,
+    title: "To Ghoul with Love",
+    year: "2022",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.2,
+    wikiSlug: "To_Ghoul_with_Love",
+    cast: ["Kimberley Sustad", "Brooks Darnell", "Markian Tarasiuk", "Rebecca Staab"],
+    youtubeTrailerKey: "2nO48A3C8v8"
+  },
+  {
+    id: 2812,
+    title: "Christmas by Starlight",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.2,
+    wikiSlug: "Christmas_by_Starlight",
+    cast: ["Kimberley Sustad", "Paul Campbell", "Bruce Dawson", "Malcolm Stewart"],
+    youtubeTrailerKey: "4q2t6qN4A1I"
+  },
+  {
+    id: 2813,
+    title: "Five Star Christmas",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.3,
+    wikiSlug: "Five_Star_Christmas",
+    cast: ["Bethany Joy Lenz", "Victor Webster", "Robert Wisden", "Laura Soltis"],
+    youtubeTrailerKey: "Bsqf8_m4v2A"
+  },
+  {
+    id: 2814,
+    title: "Good Morning Christmas!",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.8,
+    wikiSlug: "Good_Morning_Christmas!",
+    cast: ["Alison Sweeney", "Marc Blucas", "Nicole Oliver", "Jay Brazeau"],
+    youtubeTrailerKey: "T_wK4m3h8uI"
+  },
+  {
+    id: 2815,
+    title: "Meet Me at Christmas",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.7,
+    wikiSlug: "Meet_Me_at_Christmas",
+    cast: ["Catherine Bell", "Mark Deklin", "Luke Bilyk", "Sage Kitchen"],
+    youtubeTrailerKey: "7N8wkVA4_8s"
+  },
+  {
+    id: 2816,
+    title: "Cranberry Christmas",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.8,
+    wikiSlug: "Cranberry_Christmas",
+    cast: ["Nikki DeLoach", "Benjamin Ayres", "Marci T. House", "Greg Rogers"],
+    youtubeTrailerKey: "3sP8u1A5Q_E"
+  },
+  {
+    id: 2817,
+    title: "Holly & Ivy",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.2,
+    wikiSlug: "Holly_%26_Ivy",
+    cast: ["Janel Parrish", "Jeremy Jordan", "Marisol Nichols", "Sadie Coleman"],
+    youtubeTrailerKey: "9X7o4eT5A5w"
+  },
+  {
+    id: 2818,
+    title: "One Royal Holiday (Castle Destination)",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 7.1,
+    wikiSlug: "One_Royal_Holiday",
+    cast: ["Laura Osnes", "Aaron Tveit", "Victoria Clark", "Tom McGowan", "Krystal Joy Brown"],
+    youtubeTrailerKey: "oZ0vG1wP5mY"
+  },
+  {
+    id: 2819,
+    title: "USS Christmas (Navy Holiday Cruise)",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.8,
+    wikiSlug: "USS_Christmas",
+    cast: ["Jen Lilley", "Trevor Donovan", "Barbara Niven", "Stefanie Butler"],
+    youtubeTrailerKey: "9X6v4K3M_0E"
+  },
+  {
+    id: 2820,
+    title: "Chateau Christmas",
+    year: "2020",
+    category: "destination-romance",
+    categoryLabel: "40. Hallmark, Lifetime & GAF Holiday Romances (Part 2: Destination & Festival Romance)",
+    rating: 6.6,
+    wikiSlug: "Chateau_Christmas",
+    cast: ["Merritt Patterson", "Luke Macfarlane", "Jesse Moss", "Julia Benson"],
+    youtubeTrailerKey: "Xqqej9T2gqI"
+  }
+);

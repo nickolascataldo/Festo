@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — Spring Sanctuary Navigation Vault</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Lora:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="SpringLanding.css">
+</head>
+<body class="spring-vault-body">
+
+  <div class="greenhouse-bg" aria-hidden="true"></div>
+  <div class="sunbeam-wash" aria-hidden="true"></div>
+  <canvas id="fallingPetalsCanvas" class="falling-petals-canvas" aria-hidden="true"></canvas>
+
+  <div class="sakura-border top-left-vine" aria-hidden="true"></div>
+  <div class="sakura-border top-right-vine" aria-hidden="true"></div>
+  <div class="sakura-border side-vine-left" aria-hidden="true"></div>
+  <div class="sakura-border side-vine-right" aria-hidden="true"></div>
+
+  <header class="vault-header">
+    <div class="header-left">
+      <div class="brand-block">
+        <span class="brand-emblem" id="userAvatarDisplay">🌸</span>
+        <div class="brand-text">
+          <span class="brand-script" id="greetingDisplay">Welcome to Festo</span>
+          <h1 class="brand-title">SPRING HAVEN</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <aside class="daily-fact-card" id="dailyFactWidget">
+        <div class="fact-card-header">
+          <div class="fact-badge">
+            <i class="fa-solid fa-seedling"></i>
+            <span>Fact #<strong id="factIndexNum">01</strong></span>
+          </div>
+          <button class="fact-cycle-btn" id="nextFactBtn" title="Next Fact" aria-label="Cycle Spring Fact">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
+        </div>
+        <p class="fact-card-body" id="factDisplayArea">Loading botanical archive...</p>
+      </aside>
+
+      <button class="btn-settings-gear" id="openSettingsBtn" title="Open Sanctuary Profile & Settings" aria-label="Open Settings">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="vault-shell">
+
+    <section class="sanctuary-banner">
+      <div class="banner-plaque">
+        <span class="plaque-tag">Master Grand Directory</span>
+        <h2 class="banner-heading">The Vernal Portals & <em>Archives</em></h2>
+        <p class="banner-desc">
+          Select any volume from the collection below to transition into dedicated spring exhibits, tools, and entertainment pavilions.
+        </p>
+
+        <div class="shelf-filter-bar">
+          <span class="filter-label"><i class="fa-solid fa-filter"></i> Realms:</span>
+          <div class="filter-pills">
+            <button class="pill-btn active" data-filter="all">All Volumes</button>
+            <button class="pill-btn" data-filter="leisure">Leisure & Fun</button>
+            <button class="pill-btn" data-filter="explore">Explore & Outdoors</button>
+            <button class="pill-btn" data-filter="shop">Lifestyle & Garden</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vault-library-section">
+      
+      <div class="shelf-title-strip">
+        <h3 class="shelf-title"><i class="fa-solid fa-book-bookmark"></i> Botanical Collection</h3>
+        <span class="shelf-stats">7 Standalone Editions Active</span>
+      </div>
+
+      <div class="vault-bookshelf-grid" id="volumesGrid">
+
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Activity Wheel/Activitywheel.html" class="book-volume tome-crimson">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-wheel">
+                <div class="art-foil-icon"><i class="fa-solid fa-dharmachakra"></i></div>
+                <div class="foil-badge">Interactive</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. I</span>
+                <h4 class="volume-title">Activity Wheel</h4>
+                <p class="volume-desc">Picnic challenges, flower pressing, and daily vernal quests.</p>
+                <span class="open-portal-tag">Launch Portal <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Book List/SpringBook.html" class="book-volume tome-emerald">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-books">
+                <div class="art-foil-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <div class="foil-badge">Literature</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. II</span>
+                <h4 class="volume-title">Spring Reads</h4>
+                <p class="volume-desc">Curated cottagecore literature, poetry, and memoirs.</p>
+                <span class="open-portal-tag">Open Shelf <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Movie list/SpringMovie.html" class="book-volume tome-gold">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-movies">
+                <div class="art-foil-icon"><i class="fa-solid fa-film"></i></div>
+                <div class="foil-badge">Cinema</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. III</span>
+                <h4 class="volume-title">Movie Gallery</h4>
+                <p class="volume-desc">Uplifting floral films, nature animations, and classics.</p>
+                <span class="open-portal-tag">View Reel <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Music area/Musicarea.html" class="book-volume tome-purple">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-music">
+                <div class="art-foil-icon"><i class="fa-solid fa-music"></i></div>
+                <div class="foil-badge">Acoustics</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. IV</span>
+                <h4 class="volume-title">Meadow Music</h4>
+                <p class="volume-desc">Indie folk, birdsong soundscapes, and acoustic melodies.</p>
+                <span class="open-portal-tag">Play Audio <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="book-tome-wrapper" data-category="explore">
+          <a href="../Springmap/Springmap.html" class="book-volume tome-cyan">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-map">
+                <div class="art-foil-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="foil-badge">Cartography</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. V</span>
+                <h4 class="volume-title">Spring Radar</h4>
+                <p class="volume-desc">Botanical trails, arboretums, and cherry blossom paths.</p>
+                <span class="open-portal-tag">View Map <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="book-tome-wrapper" data-category="shop">
+          <a href="../Store/Store.html" class="book-volume tome-rose">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-store">
+                <div class="art-foil-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="foil-badge">Boutique</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VI</span>
+                <h4 class="volume-title">Garden Boutique</h4>
+                <p class="volume-desc">Heirloom seeds, terracotta, planters, teas, and gardening tools.</p>
+                <span class="open-portal-tag">Enter Store <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="book-tome-wrapper" data-category="explore">
+          <a href="../Weather/Weather.html" class="book-volume tome-amber">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-weather">
+                <div class="art-foil-icon"><i class="fa-solid fa-cloud-sun-rain"></i></div>
+                <div class="foil-badge">Telemetry</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VII</span>
+                <h4 class="volume-title">Pollen & Sun</h4>
+                <p class="volume-desc">Live weather indexes, UV tracking, and precipitation radars.</p>
+                <span class="open-portal-tag">Open Radar <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hardwood-shelf">
+        <div class="shelf-top-face"></div>
+        <div class="shelf-front-bevel"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="vault-dock" aria-label="Quick Hub Switcher">
+    <a href="../../index.html" class="dock-item dock-seasons-item">
+      <i class="fa-solid fa-rotate"></i>
+      <span>All Seasons</span>
+    </a>
+    <a href="SpringLanding.html" class="dock-item active">
+      <i class="fa-solid fa-house"></i>
+      <span>Sanctuary</span>
+    </a>
+    <a href="../Activity Wheel/Activitywheel.html" class="dock-item">
+      <i class="fa-solid fa-dharmachakra"></i>
+      <span>Wheel</span>
+    </a>
+    <a href="../Book List/SpringBook.html" class="dock-item">
+      <i class="fa-solid fa-book"></i>
+      <span>Books</span>
+    </a>
+    <a href="../Movie list/SpringMovie.html" class="dock-item">
+      <i class="fa-solid fa-film"></i>
+      <span>Cinema</span>
+    </a>
+    <a href="../Music area/Musicarea.html" class="dock-item">
+      <i class="fa-solid fa-music"></i>
+      <span>Audio</span>
+    </a>
+    <a href="../Springmap/Springmap.html" class="dock-item">
+      <i class="fa-solid fa-map"></i>
+      <span>Map</span>
+    </a>
+    <a href="../Store/Store.html" class="dock-item">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>Boutique</span>
+    </a>
+    <a href="../Weather/Weather.html" class="dock-item">
+      <i class="fa-solid fa-cloud-sun"></i>
+      <span>Weather</span>
+    </a>
+  </nav>
+
+  <div id="settingsModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h3 class="modal-heading"><i class="fa-solid fa-sliders"></i> Sanctuary Settings & Profile</h3>
+        <button class="modal-close" id="closeSettingsBtn">&times;</button>
+      </div>
+      <div class="modal-content">
+        
+        <div class="setting-group highlight-season-box">
+          <label class="setting-title">Change Current Season</label>
+          <a href="../../index.html" class="btn-master-switch-seasons">
+            <i class="fa-solid fa-compass"></i>
+            <span>SWITCH SEASONS</span>
+          </a>
+          <p class="setting-hint">Return to the Master Portal to jump into Summer, Halloween, or Christmas.</p>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-title" for="usernameInput">Explorer Name</label>
+          <input type="text" id="usernameInput" class="setting-input" placeholder="Enter your name or moniker..." maxlength="24">
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-title">Botanical Emblem</label>
+          <div class="avatar-picker" id="avatarPicker">
+            <button type="button" class="avatar-option active" data-avatar="🌸">🌸</button>
+            <button type="button" class="avatar-option" data-avatar="🌷">🌷</button>
+            <button type="button" class="avatar-option" data-avatar="🌿">🌿</button>
+            <button type="button" class="avatar-option" data-avatar="🦋">🦋</button>
+            <button type="button" class="avatar-option" data-avatar="🌼">🌼</button>
+            <button type="button" class="avatar-option" data-avatar="🍃">🍃</button>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <label class="setting-title" for="petalDensitySelect">Blossom Drift Density</label>
+          <select id="petalDensitySelect" class="setting-input">
+            <option value="15">Gentle Breeze (Low)</option>
+            <option value="35" selected>Spring Gale (Balanced)</option>
+            <option value="65">Blossom Shower (Dense)</option>
+          </select>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-save-settings" id="saveSettingsBtn">Save Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="SpringLanding.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — The Spring Blossom Bookshelf</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="SpringBook.css">
+</head>
+<body class="bookshelf-body">
+
+  <div class="greenhouse-bg" aria-hidden="true"></div>
+  <div class="sunbeam-wash" aria-hidden="true"></div>
+
+  <div class="sakura-border top-left-vine" aria-hidden="true"></div>
+  <div class="sakura-border top-right-vine" aria-hidden="true"></div>
+  <div class="sakura-border side-vine-left" aria-hidden="true"></div>
+  <div class="sakura-border side-vine-right" aria-hidden="true"></div>
+
+  <header class="library-header">
+    <div class="header-left">
+      <a href="../SpringLanding/SpringLanding.html" class="btn-portal" title="Return to Spring Portal">
+        <span class="icon">🌸</span>
+        <span class="text">Spring Portal</span>
+      </a>
+      <h1 class="brand-title">FESTO BOOKS</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search 1,000+ books, authors, #tags (e.g. #cottagecore)..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="sanctuary-hero">
+    <div class="hero-plaque">
+      <span class="plaque-badge">🌿 50-Shelf Curated Library</span>
+      <h2 class="hero-title">THE SPRING BOOKSHELF</h2>
+      <p class="hero-desc">
+        A sanctuary of 1,000 springtime works displayed across handcrafted botanical shelves. Browse prices, inspect bindings, and build your seasonal reading list.
+      </p>
+
+      <div class="hero-counters">
+        <div class="counter-box">
+          <span class="counter-num">50</span>
+          <span class="counter-label">Shelves</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="totalBookCount">1,000+</span>
+          <span class="counter-label">Volumes</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="readingListCount">0</span>
+          <span class="counter-label">Saved to Read</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shelf-controls">
+      <div class="shelf-pills" id="filterPills">
+        <button class="pill-btn active" data-filter="all">🌸 All Shelves</button>
+        <button class="pill-btn" data-filter="recommended">🎯 Curated For You</button>
+        <button class="pill-btn" data-filter="readinglist">📚 My Reading List</button>
+        <button class="pill-btn" data-filter="romance">💐 Garden Romance</button>
+        <button class="pill-btn" data-filter="botanical">🌱 Botanical & Nature</button>
+        <button class="pill-btn" data-filter="classics">📜 Period Classics</button>
+        <button class="pill-btn" data-filter="academia">🏛️ Dark Academia</button>
+        <button class="pill-btn" data-filter="folklore">✨ Myth & Folklore</button>
+      </div>
+
+      <div class="shelf-jump">
+        <label for="categoryJumpSelect">Direct Shelf Jump:</label>
+        <select id="categoryJumpSelect">
+          <option value="">-- Jump to Shelf (1 to 50) --</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <main id="categoryContainer" class="bookshelf-vault">
+    </main>
+
+  <div id="bookModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Volume">&times;</button>
+      
+      <div class="modal-book-header" id="modalBackdrop">
+        <div class="backdrop-gradient"></div>
+        <div class="backdrop-content">
+          <div class="modal-meta-row">
+            <span id="modalCategory" class="meta-tag cat-tag">Category</span>
+            <span id="modalPrice" class="meta-tag price-tag">$14.99</span>
+            <span id="modalPages" class="meta-tag pages-tag">320 Pages</span>
+            <span id="modalYear" class="meta-tag year-tag">Year</span>
+            <span id="modalRatingTag" class="meta-tag rating-tag">★ 0.0</span>
+          </div>
+          <h2 id="modalTitle" class="modal-title">Book Title</h2>
+          <p id="modalAuthorHeader" class="modal-author">by Author Name</p>
+
+          <div class="modal-actions-row">
+            <button id="btnToggleLike" class="btn-action btn-like">
+              <span id="likeIcon">💖</span>
+              <span id="likeText">Loved This Book</span>
+            </button>
+            <button id="btnToggleReadingList" class="btn-action btn-readlist">
+              <span id="listIcon">📚</span>
+              <span id="listText">Add to Reading List</span>
+            </button>
+            <a id="modalGoodreadsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-link">
+              <span>Find on Goodreads ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body-content">
+        <div class="content-block">
+          <h4 class="block-title">Literary Tropes & Mood DNA <span class="hint">(Click tag to filter library)</span></h4>
+          <div id="modalTagCloud" class="tag-cloud"></div>
+        </div>
+
+        <div class="content-block">
+          <h4 class="block-title">Author Profile</h4>
+          <div id="modalAuthorList" class="author-list"></div>
+        </div>
+
+        <div class="content-block">
+          <h4 class="block-title">Synopsis & Literary Background</h4>
+          <p id="modalOverview" class="book-synopsis">Retrieving archival records from Open Library and Wikipedia...</p>
+        </div>
+
+        <div class="modal-footer-row">
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki">
+            📖 Read Full History on Wikipedia ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="library-footer">
+    <p class="footer-title">FESTO SPRING LITERARY VAULT // 50-SHELF BOTANICAL SANCTUARY &copy; 2026</p>
+    <p class="footer-sub">Book jacket artwork and metadata retrieved via Open Library and Wikipedia under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <script src="Book Data/SpringBook_Data1.js"></script>
+  <script src="Book Data/SpringBook_Data2.js"></script>
+  <script src="Book Data/SpringBook_Data3.js"></script>
+  <script src="Book Data/SpringBook_Data4.js"></script>
+  <script src="Book Data/SpringBook_Data5.js"></script>
+  <script src="Book Data/SpringBook_Data6.js"></script>
+  <script src="Book Data/SpringBook_Data7.js"></script>
+  <script src="Book Data/SpringBook_Data8.js"></script>
+  <script src="Book Data/SpringBook_Data9.js"></script>
+  <script src="Book Data/SpringBook_Data10.js"></script>
+
+  <script src="SpringBook.js"></script>
+</body>
+</html>

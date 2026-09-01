@@ -1,0 +1,984 @@
+/* ==========================================================================
+   FESTO — UNIFIED FOUR-SEASON OS (MASTER STYLESHEET)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Design Tokens & Seasonal Realm Palette
+   -------------------------------------------------------------------------- */
+:root {
+  /* Typography Systems */
+  --font-display: 'Cinzel', serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Universal Dark Luxe Surfaces */
+  --bg-core: #07090d;
+  --bg-surface: #0f141c;
+  --bg-card: rgba(18, 24, 34, 0.72);
+  --bg-card-hover: rgba(26, 34, 48, 0.88);
+  --bg-glass-hud: rgba(15, 20, 28, 0.82);
+
+  /* Gold Core Accents */
+  --gold-accent: #e5b869;
+  --gold-glow: rgba(229, 184, 105, 0.45);
+  --gold-subtle: rgba(229, 184, 105, 0.18);
+
+  /* Spring Palette (Realm 01) */
+  --spring-sakura: #ff8fa3;
+  --spring-rose: #ff4d6d;
+  --spring-glow: rgba(255, 143, 163, 0.45);
+  --spring-border: rgba(255, 143, 163, 0.35);
+
+  /* Summer Palette (Realm 02) */
+  --summer-solar: #ffb703;
+  --summer-amber: #fb8500;
+  --summer-cyan: #00b4d8;
+  --summer-glow: rgba(255, 183, 3, 0.45);
+  --summer-border: rgba(255, 183, 3, 0.35);
+
+  /* Halloween Palette (Realm 03) */
+  --halloween-pumpkin: #f77f00;
+  --halloween-crimson: #d62828;
+  --halloween-purple: #7b2cbf;
+  --halloween-glow: rgba(247, 127, 0, 0.45);
+  --halloween-border: rgba(247, 127, 0, 0.35);
+
+  /* Christmas Palette (Realm 04) */
+  --christmas-ruby: #e63946;
+  --christmas-pine: #2a9d8f;
+  --christmas-frost: #a8dadc;
+  --christmas-glow: rgba(230, 57, 70, 0.45);
+  --christmas-border: rgba(230, 57, 70, 0.35);
+
+  /* Global Neutral Typography */
+  --text-primary: #ffffff;
+  --text-secondary: #d4dde8;
+  --text-muted: #8292a4;
+
+  /* Spatial Geometry & Transitions */
+  --radius-xs: 6px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 9999px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* --------------------------------------------------------------------------
+   2. Reset & Viewport Base
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-core);
+}
+
+body.festo-os-body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-core);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------------------------------
+   3. Ambient Mesh Atmosphere & Canvas Noise
+   -------------------------------------------------------------------------- */
+.ambient-mesh-canvas {
+  position: fixed;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 10% 15%, rgba(255, 143, 163, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(255, 183, 3, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(247, 127, 0, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 15% 85%, rgba(230, 57, 70, 0.12) 0%, transparent 50%),
+    linear-gradient(180deg, #06080b 0%, #0c1117 50%, #06080b 100%);
+  pointer-events: none;
+  z-index: 0;
+  animation: meshPulse 18s ease-in-out infinite alternate;
+}
+
+@keyframes meshPulse {
+  0% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.05) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(-1deg); opacity: 0.9; }
+}
+
+.noise-texture-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.45;
+}
+
+.ambient-particles {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   4. App Viewport Shell (Mobile-First Frame)
+   -------------------------------------------------------------------------- */
+.festo-app-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 480px;
+  padding: 1.25rem 1.15rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Master Header & Monogram Lockup with Brand Asset
+   -------------------------------------------------------------------------- */
+.master-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.2rem;
+}
+
+.brand-monogram-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.brand-sigil {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, rgba(229, 184, 105, 0.2), rgba(255, 255, 255, 0.05));
+  border: 1.5px solid var(--gold-accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0 0 20px var(--gold-glow);
+  position: relative;
+}
+
+.brand-sigil-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.brand-sigil:hover .brand-sigil-img {
+  transform: scale(1.08);
+}
+
+.sigil-icon-fallback {
+  font-size: 1.5rem;
+}
+
+.brand-text-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-micro-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gold-accent);
+}
+
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-size: 2.15rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--gold-accent) 60%, #b8860b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.orbit-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(15, 20, 28, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-pill);
+  backdrop-filter: blur(12px);
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--gold-accent);
+  box-shadow: 0 0 10px var(--gold-accent);
+  animation: pulseLight 2s infinite alternate;
+}
+
+@keyframes pulseLight {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+.orbit-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+}
+
+.icon-hud-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--gold-accent);
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.icon-hud-btn:hover {
+  background: var(--gold-accent);
+  color: var(--bg-core);
+  transform: rotate(45deg);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* --------------------------------------------------------------------------
+   6. Hero Glass Plaque & Realtime Calendar Match
+   -------------------------------------------------------------------------- */
+.hero-glass-plate {
+  background: var(--bg-glass-hud);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(229, 184, 105, 0.28);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.4rem;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.hero-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--gold-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.realtime-clock {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.hero-core-title {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #ffffff;
+}
+
+.hero-core-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold-accent);
+}
+
+.hero-core-sub {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+.calendar-match-pill {
+  margin-top: 0.4rem;
+  background: rgba(229, 184, 105, 0.1);
+  border: 1px solid rgba(229, 184, 105, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.match-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.match-left strong {
+  color: #ffffff;
+}
+
+.btn-fast-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  background: linear-gradient(135deg, var(--gold-accent), #c28b2a);
+  border-radius: var(--radius-pill);
+  color: var(--bg-core);
+  text-decoration: none;
+  font-size: 0.72rem;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.btn-fast-enter:hover {
+  transform: translateX(3px);
+  box-shadow: 0 0 16px var(--gold-glow);
+}
+
+/* --------------------------------------------------------------------------
+   7. Tactile Realm Switcher Filter Strip
+   -------------------------------------------------------------------------- */
+.realm-filter-strip {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.3rem 0.2rem;
+  scrollbar-width: none;
+}
+
+.realm-filter-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.realm-filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.95rem;
+  background: rgba(18, 24, 34, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.realm-filter-tab:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.realm-filter-tab.active {
+  background: rgba(229, 184, 105, 0.18);
+  border-color: var(--gold-accent);
+  color: var(--gold-accent);
+  box-shadow: 0 0 14px rgba(229, 184, 105, 0.25);
+}
+
+/* --------------------------------------------------------------------------
+   8. Master Seasonal Showcase Deck (4 Realms)
+   -------------------------------------------------------------------------- */
+.realms-deck-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.realm-card {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.realm-card:hover {
+  transform: translateY(-4px);
+  background: var(--bg-card-hover);
+}
+
+.realm-card.hidden {
+  display: none !important;
+}
+
+.card-ambient-glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+  opacity: 0.35;
+}
+
+/* Realm Specific Accents */
+.spring-card { border-color: var(--spring-border); }
+.spring-card:hover { box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 35px var(--spring-glow); }
+.spring-card .card-ambient-glow { background: var(--spring-sakura); }
+.btn-spring { background: linear-gradient(135deg, var(--spring-rose), #c9184a); }
+
+.summer-card { border-color: var(--summer-border); }
+.summer-card:hover { box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 35px var(--summer-glow); }
+.summer-card .card-ambient-glow { background: var(--summer-solar); }
+.btn-summer { background: linear-gradient(135deg, var(--summer-solar), var(--summer-amber)); color: #0a0e14; }
+
+.halloween-card { border-color: var(--halloween-border); }
+.halloween-card:hover { box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 35px var(--halloween-glow); }
+.halloween-card .card-ambient-glow { background: var(--halloween-pumpkin); }
+.btn-halloween { background: linear-gradient(135deg, var(--halloween-pumpkin), var(--halloween-crimson)); }
+
+.christmas-card { border-color: var(--christmas-border); }
+.christmas-card:hover { box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7), 0 0 35px var(--christmas-glow); }
+.christmas-card .card-ambient-glow { background: var(--christmas-ruby); }
+.btn-christmas { background: linear-gradient(135deg, var(--christmas-ruby), var(--christmas-pine)); }
+
+/* Card Visual Header */
+.card-visual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.realm-emblem-bubble {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.realm-status-cluster {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.realm-index-tag {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
+.default-season-badge {
+  display: none;
+  background: var(--gold-accent);
+  color: #07090d;
+  font-size: 0.62rem;
+  font-weight: 900;
+  padding: 0.25rem 0.55rem;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.8px;
+  box-shadow: 0 0 12px var(--gold-glow);
+}
+
+.default-season-badge.visible {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Card Content & Features */
+.card-meta-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.realm-sub-heading {
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--gold-accent);
+}
+
+.realm-main-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.realm-description {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.realm-feature-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.realm-feature-chips .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 0.3rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+/* Action Docks */
+.card-actions-dock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.4rem;
+}
+
+.btn-enter-realm {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.95rem 1.4rem;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition: var(--transition-fast);
+}
+
+.btn-enter-realm:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.card-secondary-row {
+  display: flex;
+  gap: 0.55rem;
+}
+
+.btn-inspect-realm,
+.btn-bookmark-realm {
+  flex: 1;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-inspect-realm:hover,
+.btn-bookmark-realm:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   9. Master Config / Preference Hub
+   -------------------------------------------------------------------------- */
+.master-config-panel {
+  background: var(--bg-surface);
+  border: 1.5px solid rgba(229, 184, 105, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.config-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.config-title-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+
+.config-icon {
+  font-size: 1.4rem;
+  color: var(--gold-accent);
+  margin-top: 0.2rem;
+}
+
+.config-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.config-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 0.2rem;
+}
+
+.config-pills-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.config-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 0.9rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.config-pill-btn .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+}
+
+.config-pill-btn.active {
+  background: rgba(229, 184, 105, 0.15);
+  border-color: var(--gold-accent);
+  color: var(--gold-accent);
+  box-shadow: 0 0 14px rgba(229, 184, 105, 0.25);
+}
+
+.config-pill-btn.active .dot {
+  background: var(--gold-accent);
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 8px var(--gold-accent);
+}
+
+.config-footer-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   10. Master App Footer
+   -------------------------------------------------------------------------- */
+.master-app-footer {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+}
+
+.footer-monogram {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--gold-accent);
+}
+
+.footer-tagline {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.footer-directory-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.9rem;
+}
+
+.footer-nav-item {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.footer-nav-item:hover {
+  color: var(--gold-accent);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   11. Interactive Modals & Preview Drawers
+   -------------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 5, 8, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+  animation: modalFadeIn 0.25s var(--transition-fast);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-card-drawer,
+.modal-card-doc {
+  background: var(--bg-surface);
+  border: 1.5px solid rgba(229, 184, 105, 0.35);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  padding: 1.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+}
+
+.drawer-header,
+.doc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.85rem;
+}
+
+.drawer-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.drawer-icon {
+  font-size: 2rem;
+}
+
+.drawer-title,
+.doc-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: #ffffff;
+}
+
+.drawer-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.drawer-close-btn,
+.doc-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.drawer-close-btn:hover,
+.doc-close-btn:hover {
+  color: #ffffff;
+}
+
+.drawer-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.stat-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xs);
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.stat-val {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--gold-accent);
+}
+
+.stat-key {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.drawer-summary,
+.doc-body {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.btn-drawer-launch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--gold-accent), #c28b2a);
+  border-radius: var(--radius-sm);
+  color: var(--bg-core);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   12. Desktop & Tablet Responsive Extensions
+   -------------------------------------------------------------------------- */
+@media (min-width: 960px) {
+  .festo-app-container {
+    max-width: 1140px;
+    padding: 2.5rem 2rem 5rem;
+    gap: 2.5rem;
+  }
+
+  .portal-hero-hero {
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-glass-plate {
+    padding: 2.2rem 2.5rem;
+  }
+
+  .hero-core-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-core-sub {
+    font-size: 1rem;
+    max-width: 780px;
+  }
+
+  .realms-deck-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .realm-card {
+    padding: 2rem 1.8rem;
+  }
+
+  .config-pills-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

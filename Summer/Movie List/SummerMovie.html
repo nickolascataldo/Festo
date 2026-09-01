@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — The Summer Vault</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;600;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="SummerMovie.css">
+</head>
+<body class="summer-scroll">
+
+  <div class="sunbeam-overlay" aria-hidden="true"></div>
+  <div class="wave-overlay" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="../Summer Landing/SummerLanding.html" class="btn-return" title="Return to Summer Portal">
+        <span class="icon">🏝️</span>
+        <span class="btn-text">Summer Portal</span>
+      </a>
+      <h1 class="brand-title">FESTO</h1>
+    </div>
+
+    <div class="nav-right">
+      <div class="search-wrapper">
+        <span class="search-icon">☀️</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search blockbusters, beach classics, actors, years..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-sun-glow"></div>
+    <div class="hero-content">
+      <span class="summer-badge">🌊 Endless Summer Cinema</span>
+      <h2 class="hero-heading">THE SUMMER VAULT</h2>
+      <p class="hero-subtext">
+        Dive into sun-soaked road trips, legendary summer blockbusters, beachside camp adventures, and nostalgic vacation classics. Search by titles, release years, or your favorite stars.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-box"><strong>20+</strong><span>Chambers</span></div>
+        <div class="stat-box"><strong>600+</strong><span>Adventures</span></div>
+        <div class="stat-box"><strong>4K</strong><span>Sunshine</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="categoryContainer" class="main-vault">
+    </main>
+
+  <div id="movieModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Summer Card">&times;</button>
+      
+      <div class="modal-inner">
+        <div class="modal-poster-side">
+          <div class="modal-poster-wrapper">
+            <img id="modalPoster" src="" alt="Movie Poster" class="modal-poster-img">
+          </div>
+          <div id="modalRatingTag" class="modal-rating-badge">★ 0.0</div>
+        </div>
+
+        <div class="modal-details-side">
+          <div class="modal-header-meta">
+            <span id="modalCategory" class="modal-cat-tag">Category</span>
+            <span id="modalYear" class="modal-year-tag">Year</span>
+          </div>
+
+          <h2 id="modalTitle" class="modal-title">Title</h2>
+          
+          <div class="cast-container">
+            <h4 class="cast-header">Starring Cast & Voices</h4>
+            <div id="modalCastList" class="cast-badges-list">
+              </div>
+          </div>
+
+          <p id="modalOverview" class="modal-desc">Loading official summer archives from Wikipedia...</p>
+
+          <div class="trailer-wrapper">
+            <div class="trailer-header-row">
+              <h4 class="trailer-title">Official Footage & Trailer</h4>
+              <a id="modalYtDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="link-yt-fallback">
+                Open on YouTube ↗
+              </a>
+            </div>
+            <div class="video-container">
+              <iframe 
+                id="modalIframe" 
+                src="" 
+                title="Movie Trailer" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-watch-stream">
+              🍿 Where to Stream / Rent ↗
+            </a>
+            <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
+              Read on Wikipedia ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p class="footer-festo">FESTO SUMMER CINEMA &copy; 2026</p>
+    <p class="footer-wiki">Metadata and theatrical posters retrieved via Wikipedia and Wikimedia Commons under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <script src="Movie Data/SummerData_Part1.js"></script>
+  <script src="Movie Data/SummerData_Part2.js"></script>
+  <script src="Movie Data/SummerData_Part3.js"></script>
+  <script src="Movie Data/SummerData_Part4.js"></script>
+  <script src="Movie Data/SummerData_Part5.js"></script>
+
+  <script src="SummerMovie.js"></script>
+</body>
+</html>

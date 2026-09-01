@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Festo — Summer Solstice Navigation Vault</title>
+
+  <!-- Google Fonts: Display Serif, Classic Roman & Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Production Stylesheet -->
+  <link rel="stylesheet" href="SummerLanding.css">
+</head>
+<body class="summer-vault-body">
+
+  <!-- Coastal Ocean & Sunbeam Backdrop -->
+  <div class="coastal-bg" aria-hidden="true"></div>
+  <div class="sunbeam-wash" aria-hidden="true"></div>
+  <canvas id="floatingPollenCanvas" class="floating-solar-canvas" aria-hidden="true"></canvas>
+
+  <!-- Sunburst Vignette Borders -->
+  <div class="summer-border top-left-sunburst" aria-hidden="true"></div>
+  <div class="summer-border top-right-sunburst" aria-hidden="true"></div>
+  <div class="summer-border side-wave-left" aria-hidden="true"></div>
+  <div class="summer-border side-wave-right" aria-hidden="true"></div>
+
+  <!-- Main Sticky App Header -->
+  <header class="summer-header">
+    <div class="brand-block">
+      <span class="brand-emblem" id="userAvatarDisplay">☀️</span>
+      <div class="brand-text">
+        <span class="brand-script" id="greetingDisplay">Welcome to Festo</span>
+        <h1 class="brand-title">SUMMER HAVEN</h1>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <!-- Daily Summer Trivia Card -->
+      <aside class="daily-fact-card" id="dailyFactWidget">
+        <div class="fact-card-header">
+          <div class="fact-badge">
+            <i class="fa-solid fa-sun"></i>
+            <span>Solstice Fact #<strong id="factIndexNum">01</strong></span>
+          </div>
+          <button class="fact-cycle-btn" id="nextFactBtn" title="Next Solstice Fact" aria-label="Cycle Fact">
+            <i class="fa-solid fa-rotate"></i>
+          </button>
+        </div>
+        <p class="fact-card-body" id="factDisplayArea">Loading coastal trivia...</p>
+      </aside>
+
+      <!-- Settings / Preferences Gear Button -->
+      <button class="btn-settings-gear" id="openSettingsBtn" title="Open Sanctuary Settings" aria-label="Open Settings">
+        <i class="fa-solid fa-gear"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Viewport Content -->
+  <main class="vault-shell">
+
+    <!-- Sanctuary Hero Banner -->
+    <section class="sanctuary-banner">
+      <div class="banner-plaque">
+        <span class="plaque-tag">🌴 Solstice Grand Directory</span>
+        <h2 class="banner-heading">The Coastal Portals & <em>Pavilions</em></h2>
+        <p class="banner-desc">
+          Select any volume below to launch coastal excursions, poolside cinema reels, beach games, and summer music waves.
+        </p>
+
+        <!-- Category Shelf Switcher -->
+        <div class="shelf-filter-bar">
+          <span class="filter-label"><i class="fa-solid fa-filter"></i> Realms:</span>
+          <div class="filter-pills">
+            <button class="pill-btn active" data-filter="all">☀️ All Volumes</button>
+            <button class="pill-btn" data-filter="leisure">Leisure & Fun</button>
+            <button class="pill-btn" data-filter="explore">Explore & Waves</button>
+            <button class="pill-btn" data-filter="shop">Lifestyle & Gear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Volumes Driftwood Bookshelf Section -->
+    <section class="vault-library-section">
+      
+      <div class="shelf-title-strip">
+        <h3 class="shelf-title"><i class="fa-solid fa-compass"></i> Solstice Collection</h3>
+        <span class="shelf-stats">8 Standalone Editions Active</span>
+      </div>
+
+      <!-- 3D Volumes Grid -->
+      <div class="vault-bookshelf-grid" id="volumesGrid">
+
+        <!-- 1. Activity Wheel -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../ActivityWheel/ActivityWheel.html" class="book-volume tome-amber">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-wheel">
+                <div class="art-foil-icon"><i class="fa-solid fa-dharmachakra"></i></div>
+                <div class="foil-badge">Interactive</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. I</span>
+                <h4 class="volume-title">Activity Wheel</h4>
+                <p class="volume-desc">Beach quests, poolside games, and sunny outdoor challenges.</p>
+                <span class="open-portal-tag">Spin Wheel <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 2. Book List -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Book List/SummerBook.html" class="book-volume tome-teal">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-books">
+                <div class="art-foil-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+                <div class="foil-badge">Literature</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. II</span>
+                <h4 class="volume-title">Beach Bookshelf</h4>
+                <p class="volume-desc">Sun-drenched coastal romances, thrillers, and warm travel memoirs.</p>
+                <span class="open-portal-tag">Open Bag <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3. Summer Game -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Game/Summer.html" class="book-volume tome-gold">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-game">
+                <div class="art-foil-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="foil-badge">Playground</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. III</span>
+                <h4 class="volume-title">Summer Arcade</h4>
+                <p class="volume-desc">Solstice beach minigames, trivia showdowns, and high-score quests.</p>
+                <span class="open-portal-tag">Launch Game <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4. Movie List -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Movie List/SummerMovie.html" class="book-volume tome-sunset">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-movies">
+                <div class="art-foil-icon"><i class="fa-solid fa-film"></i></div>
+                <div class="foil-badge">Cinema</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. IV</span>
+                <h4 class="volume-title">Summer Cinema</h4>
+                <p class="volume-desc">Poolside feel-good films, surf adventures, and open-air classics.</p>
+                <span class="open-portal-tag">Watch Movies <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 5. Summer Store -->
+        <div class="book-tome-wrapper" data-category="shop">
+          <a href="../Store/SummerStore.html" class="book-volume tome-coral">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-store">
+                <div class="art-foil-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                <div class="foil-badge">Boutique</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. V</span>
+                <h4 class="volume-title">Solstice Store</h4>
+                <p class="volume-desc">Beach totes, coastal apparel, sunglasses, towels, and sun essentials.</p>
+                <span class="open-portal-tag">Shop Gear <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 6. Summer Beats -->
+        <div class="book-tome-wrapper" data-category="leisure">
+          <a href="../Summer Beats/SummerBeats.html" class="book-volume tome-ocean">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-beats">
+                <div class="art-foil-icon"><i class="fa-solid fa-music"></i></div>
+                <div class="foil-badge">Audio</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VI</span>
+                <h4 class="volume-title">Summer Beats</h4>
+                <p class="volume-desc">Tropical house, acoustic sunsets, wave rhythms, and party playlists.</p>
+                <span class="open-portal-tag">Play Beats <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 7. Summer Map -->
+        <div class="book-tome-wrapper" data-category="explore">
+          <a href="../Summer Map/SummerMap.html" class="book-volume tome-lagoon">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-map">
+                <div class="art-foil-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                <div class="foil-badge">Navigation</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VII</span>
+                <h4 class="volume-title">Coastal Radar Map</h4>
+                <p class="volume-desc">Interactive beach trail finder, water parks, boardwalks, and swimming holes.</p>
+                <span class="open-portal-tag">Explore Map <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 8. Summer Weather -->
+        <div class="book-tome-wrapper" data-category="explore">
+          <a href="../Weather/Weather.html" class="book-volume tome-solar">
+            <div class="book-spine-accent"></div>
+            <div class="book-front-cover">
+              <div class="cover-art-plate art-weather">
+                <div class="art-foil-icon"><i class="fa-solid fa-cloud-sun"></i></div>
+                <div class="foil-badge">Telemetry</div>
+              </div>
+              <div class="cover-typography">
+                <span class="volume-index">Vol. VIII</span>
+                <h4 class="volume-title">UV & Solstice Weather</h4>
+                <p class="volume-desc">Real-time solar daylight tracking, tide forecasts, and heat telemetry.</p>
+                <span class="open-portal-tag">Check Weather <i class="fa-solid fa-arrow-right"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Sun-Bleached Teak Planks Base -->
+      <div class="hardwood-shelf">
+        <div class="shelf-top-face"></div>
+        <div class="shelf-front-bevel"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Persistent Bottom Dock Navigation -->
+  <nav class="vault-dock" aria-label="Quick Hub Switcher">
+    <a href="SummerLanding.html" class="dock-item active">
+      <i class="fa-solid fa-house"></i>
+      <span>Summer</span>
+    </a>
+    <a href="../ActivityWheel/ActivityWheel.html" class="dock-item">
+      <i class="fa-solid fa-dharmachakra"></i>
+      <span>Wheel</span>
+    </a>
+    <a href="../Book List/SummerBook.html" class="dock-item">
+      <i class="fa-solid fa-book"></i>
+      <span>Books</span>
+    </a>
+    <a href="../Game/Summer.html" class="dock-item">
+      <i class="fa-solid fa-gamepad"></i>
+      <span>Arcade</span>
+    </a>
+    <a href="../Movie List/SummerMovie.html" class="dock-item">
+      <i class="fa-solid fa-film"></i>
+      <span>Cinema</span>
+    </a>
+    <a href="../Store/SummerStore.html" class="dock-item">
+      <i class="fa-solid fa-bag-shopping"></i>
+      <span>Store</span>
+    </a>
+    <a href="../Summer Beats/SummerBeats.html" class="dock-item">
+      <i class="fa-solid fa-music"></i>
+      <span>Beats</span>
+    </a>
+    <a href="../Summer Map/SummerMap.html" class="dock-item">
+      <i class="fa-solid fa-map"></i>
+      <span>Map</span>
+    </a>
+    <a href="../Weather/Weather.html" class="dock-item">
+      <i class="fa-solid fa-cloud-sun"></i>
+      <span>Weather</span>
+    </a>
+  </nav>
+
+  <!-- Profile & Sanctuary Settings Modal (Includes Season Switcher) -->
+  <div id="settingsModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-window">
+      <div class="modal-top">
+        <h3 class="modal-heading"><i class="fa-solid fa-sliders"></i> Sanctuary Settings</h3>
+        <button class="modal-close" id="closeSettingsBtn">&times;</button>
+      </div>
+      <div class="modal-content">
+        
+        <!-- PROMINENT SWITCH SEASONS BUTTON -->
+        <div class="setting-group highlight-season-box">
+          <label class="setting-title">Change Current Season</label>
+          <a href="../../index.html" class="btn-master-switch-seasons">
+            <i class="fa-solid fa-compass"></i>
+            <span>SWITCH SEASONS</span>
+          </a>
+          <p class="setting-hint">Return to the Master Portal to jump into Spring, Halloween, or Christmas.</p>
+        </div>
+
+        <!-- Profile Moniker -->
+        <div class="setting-group">
+          <label class="setting-title" for="usernameInput">Explorer Moniker</label>
+          <input type="text" id="usernameInput" class="setting-input" placeholder="Enter your name..." maxlength="24">
+        </div>
+
+        <!-- Emblem Picker -->
+        <div class="setting-group">
+          <label class="setting-title">Solstice Emblem</label>
+          <div class="avatar-picker" id="avatarPicker">
+            <button type="button" class="avatar-option active" data-avatar="☀️">☀️</button>
+            <button type="button" class="avatar-option" data-avatar="🏖️">🏖️</button>
+            <button type="button" class="avatar-option" data-avatar="🌊">🌊</button>
+            <button type="button" class="avatar-option" data-avatar="🍹">🍹</button>
+            <button type="button" class="avatar-option" data-avatar="🌴">🌴</button>
+            <button type="button" class="avatar-option" data-avatar="🏄">🏄</button>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-save-settings" id="saveSettingsBtn">Save Preferences</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Controller Script -->
+  <script src="SummerLanding.js"></script>
+</body>
+</html>

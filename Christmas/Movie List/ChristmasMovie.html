@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — The Christmas Vault</title>
+  
+  <!-- Festive & Modern Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Mountains+of+Christmas:wght@700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="ChristmasMovie.css">
+</head>
+<body class="holiday-scroll">
+
+  <!-- Atmospheric Ambient Layers -->
+  <div class="hearth-glow" aria-hidden="true"></div>
+  <div class="snow-layer layer-back" aria-hidden="true"></div>
+  <div class="snow-layer layer-mid" aria-hidden="true"></div>
+  <div class="snow-layer layer-front" aria-hidden="true"></div>
+  <div class="frost-vignette" aria-hidden="true"></div>
+
+  <!-- Yuletide Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="../Christmas Landing/ChristmasLanding.html" class="btn-return" title="Return to Christmas Portal">
+        <span class="icon">🎄</span>
+        <span class="btn-text">Christmas Portal</span>
+      </a>
+      <h1 class="brand-title">FESTO</h1>
+    </div>
+
+    <div class="nav-right">
+      <div class="search-wrapper">
+        <span class="search-icon">❄️</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search 1,000+ blockbusters, animations, stars..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Golden Hearth & Snowy Lodge Hero Section -->
+  <section class="hero-banner">
+    <div class="hero-ribbon"></div>
+    <div class="hero-content">
+      <span class="holiday-badge">⭐ Curated Holiday Experience</span>
+      <h2 class="hero-heading">THE CHRISTMAS VAULT</h2>
+      <p class="hero-subtext">
+        Explore 50 curated holiday chambers. Discover blockbusters, nostalgic 80s/90s family favorites, winter animations, and build your personalized Holiday Watchlist.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-box"><strong>50</strong><span>Chambers</span></div>
+        <div class="stat-box"><strong id="totalMovieCount">1,000+</strong><span>Holiday Titles</span></div>
+        <div class="stat-box"><strong id="watchlistCount">0</strong><span>On Watchlist</span></div>
+      </div>
+    </div>
+
+    <!-- Quick Category Filter & Chamber Jump Selector -->
+    <div class="filter-controls-wrapper">
+      <div class="filter-pills-row" id="filterPills">
+        <button class="pill-btn active" data-filter="all">🌟 All Chambers</button>
+        <button class="pill-btn" data-filter="watchlist">⭐ My Watchlist</button>
+        <button class="pill-btn" data-filter="blockbuster">⭐ Modern Blockbusters</button>
+        <button class="pill-btn" data-filter="animation">🎨 Animated Classics</button>
+        <button class="pill-btn" data-filter="roadtrip">🚗 Holiday Road Trips</button>
+        <button class="pill-btn" data-filter="family">🎄 80s/90s Family Nostalgia</button>
+        <button class="pill-btn" data-filter="action">💥 Action & Sieges</button>
+        <button class="pill-btn" data-filter="classics">🎞️ Vintage Hollywood</button>
+        <button class="pill-btn" data-filter="romance">💖 Holiday Romance</button>
+      </div>
+
+      <div class="jump-select-wrapper">
+        <label for="categoryJumpSelect">Direct Chamber Jump:</label>
+        <select id="categoryJumpSelect">
+          <option value="">-- Jump to a Specific Category --</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dynamic Holiday Category Rails Container -->
+  <main id="categoryContainer" class="main-vault">
+    <!-- Populated dynamically via ChristmasMovie.js -->
+  </main>
+
+  <!-- Premium Cinematic Movie Details Modal -->
+  <div id="movieModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Card">&times;</button>
+      
+      <!-- Backdrop Hero Header -->
+      <div class="modal-hero-backdrop" id="modalBackdrop">
+        <div class="backdrop-gradient"></div>
+        <div class="backdrop-content">
+          <div class="modal-header-meta">
+            <span id="modalCategory" class="modal-cat-tag">Category</span>
+            <span id="modalYear" class="modal-year-tag">Year</span>
+            <span id="modalRatingTag" class="modal-rating-badge">★ 0.0</span>
+          </div>
+          <h2 id="modalTitle" class="modal-title">Title</h2>
+          
+          <!-- In-App Engagement & Stream Action Hub -->
+          <div class="modal-hero-actions">
+            <button id="btnToggleWatchlist" class="btn-watchlist-hero">
+              <span id="watchlistIcon">⭐</span>
+              <span id="watchlistText">Add to Watchlist</span>
+            </button>
+            <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-stream-hero">
+              <span class="stream-icon">🎁</span>
+              <span>Where to Stream / Rent ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Body Content -->
+      <div class="modal-body-content">
+        <!-- Cast Badges -->
+        <div class="cast-container">
+          <h4 class="section-micro-header">Starring Cast & Voice Talent <span class="sub-hint">(Click actor to filter)</span></h4>
+          <div id="modalCastList" class="cast-badges-list"></div>
+        </div>
+
+        <!-- Synopsis -->
+        <div class="synopsis-container">
+          <h4 class="section-micro-header">Synopsis & Background</h4>
+          <p id="modalOverview" class="modal-desc">Retrieving official records from Wikipedia archives...</p>
+        </div>
+
+        <!-- Secondary Meta / Wiki Link -->
+        <div class="modal-footer-actions">
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
+            📖 Read Full History on Wikipedia ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <p class="footer-festo">FESTO YULETIDE CINEMA // CURATED GRAND VAULT &copy; 2026</p>
+    <p class="footer-wiki">Metadata and theatrical posters retrieved via Wikipedia and Wikimedia Commons under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <!-- Modular Christmas Data Manifests (Parts 1–10) -->
+  <script src="Movie Data/ChristmasData_Part1.js"></script>
+  <script src="Movie Data/ChristmasData_Part2.js"></script>
+  <script src="Movie Data/ChristmasData_Part3.js"></script>
+  <script src="Movie Data/ChristmasData_Part4.js"></script>
+  <script src="Movie Data/ChristmasData_Part5.js"></script>
+  <script src="Movie Data/ChristmasData_Part6.js"></script>
+  <script src="Movie Data/ChristmasData_Part7.js"></script>
+  <script src="Movie Data/ChristmasData_Part8.js"></script>
+  <script src="Movie Data/ChristmasData_Part9.js"></script>
+  <script src="Movie Data/ChristmasData_Part10.js"></script>
+
+  <!-- Performance Engine Controller -->
+  <script src="ChristmasMovie.js"></script>
+</body>
+</html>

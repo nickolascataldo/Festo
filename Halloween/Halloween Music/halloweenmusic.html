@@ -1,193 +1,154 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halloween Music Playlists</title>
-  <!-- Stylesheet Reference -->
-  <link rel="stylesheet" href="Halloweenmusic.css">
-  <!-- Fonts & Icons -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Festo — The Spooky Sound Vault & Top 100 Anthems</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="halloweenmusic.css">
 </head>
-<body class="spooky-theme-body">
+<body class="spooky-audio-vault">
 
-  <!-- Atmospheric Background Ambient Elements -->
-  <div class="ambient-fog-layer" aria-hidden="true"></div>
-  <div class="full-moon-element" aria-hidden="true"></div>
-  <div class="graveyard-silhouette" aria-hidden="true"></div>
-  <div class="pumpkins-overlay" aria-hidden="true"></div>
+  <div class="haunted-audio-bg" aria-hidden="true"></div>
+  <div class="audio-fog-layer" aria-hidden="true"></div>
+  <div class="pumpkin-ember-glow" aria-hidden="true"></div>
 
-  <!-- Main Mobile App Frame -->
-  <main class="music-viewport-shell">
-    
-    <!-- Top Navigation Header -->
-    <nav class="app-nav-bar" aria-label="Playlist Navigation">
-      <a href="#back" class="nav-action-btn back-btn" aria-label="Go Back">
-        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
-        <span class="nav-btn-text">back</span>
+  <!-- Navigation Header -->
+  <header class="music-header">
+    <div class="header-left">
+      <a href="../Halloween Landing/HalloweenLanding.html" class="btn-portal" title="Return to Portal">
+        <span class="icon">🎃</span>
+        <span class="text">Spooky Portal</span>
       </a>
-      <h1 class="nav-title-logo">Spooky Sounds Playlist</h1>
-      <button class="nav-action-btn search-trigger-btn" aria-label="Search Tracks">
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      </button>
-    </nav>
-
-    <!-- Main Scrollable App Container -->
-    <div class="music-scroll-viewport" id="musicScrollViewport">
-
-      <!-- Active Hero Playlist Header Section -->
-      <section class="hero-playlist-banner" id="heroPlaylistBanner" aria-labelledby="hero-playlist-title">
-        <div class="hero-cover-container">
-          <img id="heroCoverArt" class="hero-cover-art" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=500&auto=format&fit=crop&q=80" alt="Active playlist cover art">
-          <div class="hero-cover-glow" aria-hidden="true"></div>
-        </div>
-
-        <div class="hero-meta-details">
-          <div class="hero-brand-heading">
-            <h2 id="hero-playlist-title" class="hero-playlist-name">SPOOKY SEASON</h2>
-            <span class="bats-flight-icon" aria-hidden="true">🦇</span>
-          </div>
-          <p id="heroCurator" class="hero-curator-tag">Curated by Moonlight Melodies</p>
-          <p id="heroStats" class="hero-stats-info">50 Songs | 3 hrs 14 mins</p>
-          
-          <div class="hero-controls-row">
-            <button class="btn-primary-play" id="mainPlaylistPlayBtn" aria-label="Play Entire Playlist">
-              <i class="fa-solid fa-play" aria-hidden="true"></i>
-              <span>PLAY</span>
-            </button>
-            <button class="btn-secondary-pill" id="followPlaylistBtn" aria-label="Follow Playlist">FOLLOW</button>
-            <button class="btn-secondary-pill" id="downloadPlaylistBtn" aria-label="Download Playlist">DOWNLOAD</button>
-            <button class="btn-icon-more" aria-label="More Playlist Options">
-              <i class="fa-solid fa-ellipsis-vertical" aria-hidden="true"></i>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 4 Pre-Made Playlists Carousel Selector -->
-      <section class="featured-playlists-section" aria-labelledby="heading-featured-playlists">
-        <div class="section-title-wrap">
-          <h3 id="heading-featured-playlists" class="section-title">Featured Playlists</h3>
-          <span class="playlist-counter-indicator" id="playlistCounter">4 Curations</span>
-        </div>
-
-        <div class="playlists-carousel-track" role="tablist" aria-label="Halloween Music Curations">
-          
-          <!-- Playlist 1: Kid-Friendly Halloween -->
-          <article class="playlist-pill-card active" role="tab" aria-selected="true" data-playlist-id="kids-halloween" tabindex="0">
-            <div class="playlist-card-thumbnail">
-              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=350&auto=format&fit=crop&q=80" alt="Kid-Friendly Halloween Playlist" class="playlist-thumb-img" loading="lazy">
-              <span class="badge-playlist-tag"><i class="fa-solid fa-face-smile" aria-hidden="true"></i> Kids</span>
-            </div>
-            <div class="playlist-card-info">
-              <h4 class="playlist-card-title">Monster Mashups</h4>
-              <p class="playlist-card-genre">Kid-Friendly Spooky Fun</p>
-            </div>
-          </article>
-
-          <!-- Playlist 2: Classic Halloween Music -->
-          <article class="playlist-pill-card" role="tab" aria-selected="false" data-playlist-id="classic-halloween" tabindex="0">
-            <div class="playlist-card-thumbnail">
-              <img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=350&auto=format&fit=crop&q=80" alt="Classic Halloween Music Playlist" class="playlist-thumb-img" loading="lazy">
-              <span class="badge-playlist-tag"><i class="fa-solid fa-record-vinyl" aria-hidden="true"></i> Classics</span>
-            </div>
-            <div class="playlist-card-info">
-              <h4 class="playlist-card-title">Witching Hour Classics</h4>
-              <p class="playlist-card-genre">Golden Era Horror & Hits</p>
-            </div>
-          </article>
-
-          <!-- Playlist 3: Motivational / Dub Scary -->
-          <article class="playlist-pill-card" role="tab" aria-selected="false" data-playlist-id="dub-scary" tabindex="0">
-            <div class="playlist-card-thumbnail">
-              <img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=350&auto=format&fit=crop&q=80" alt="Motivational Dub Scary Playlist" class="playlist-thumb-img" loading="lazy">
-              <span class="badge-playlist-tag"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Bass</span>
-            </div>
-            <div class="playlist-card-info">
-              <h4 class="playlist-card-title">Haunted Bass & Dub</h4>
-              <p class="playlist-card-genre">High Energy Dark Beats</p>
-            </div>
-          </article>
-
-          <!-- Playlist 4: Background Scary / Ambient Music -->
-          <article class="playlist-pill-card" role="tab" aria-selected="false" data-playlist-id="ambient-scary" tabindex="0">
-            <div class="playlist-card-thumbnail">
-              <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=350&auto=format&fit=crop&q=80" alt="Background Scary Ambient Music Playlist" class="playlist-thumb-img" loading="lazy">
-              <span class="badge-playlist-tag"><i class="fa-solid fa-wind" aria-hidden="true"></i> Ambient</span>
-            </div>
-            <div class="playlist-card-info">
-              <h4 class="playlist-card-title">Ambient Ghostly Whispers</h4>
-              <p class="playlist-card-genre">Atmospheric Dark Drone</p>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-      <!-- Active Tracklist Container (Rendered Dynamically via JS) -->
-      <section class="tracklist-stream-section" aria-label="Playlist Songs">
-        <ol class="tracklist-ordered-stream" id="tracklistContainer">
-          <!-- Tracks populate from Halloweenmusic.js -->
-        </ol>
-      </section>
-
+      <h1 class="brand-title">HALLOWEEN SOUND VAULT</h1>
     </div>
 
-    <!-- Mini Bottom Music Player (Floating persistent dock) -->
-    <aside class="mini-player-bar" id="miniPlayerBar" aria-label="Now Playing Bar">
-      <div class="player-progress-track" aria-hidden="true">
-        <div class="player-progress-bar-fill" id="miniProgressBarFill" style="width: 32%;"></div>
+    <div class="header-right">
+      <div class="search-box">
+        <span class="search-icon">🕯️</span>
+        <input 
+          type="text" 
+          id="musicSearchInput" 
+          placeholder="Search 30 playlists, top 100 songs, artists..." 
+          autocomplete="off"
+        >
+        <button id="clearMusicSearch" class="btn-clear" title="Clear Search">&times;</button>
       </div>
 
-      <div class="mini-player-content">
-        <div class="player-left-col">
-          <div class="player-album-wrap">
-            <img id="miniCoverArt" src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=100&auto=format&fit=crop&q=80" alt="Now Playing Album Art" class="player-mini-cover">
-          </div>
-          <div class="player-song-meta">
-            <h4 id="miniSongTitle" class="player-title">Thriller</h4>
-            <div class="player-timing-indicators">
-              <span id="miniCurrentTime" class="player-time-current">1:24</span>
-              <span class="player-time-divider">/</span>
-              <span id="miniDuration" class="player-time-total">5:58</span>
-            </div>
-          </div>
-        </div>
+      <button id="btnConnectSpotify" class="btn-spotify-auth" title="Connect to Spotify">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.503 17.308c-.218.358-.684.474-1.042.256-2.858-1.746-6.457-2.14-10.697-1.171-.409.094-.817-.162-.911-.571-.094-.409.162-.817.571-.911 4.604-1.054 8.571-.606 11.737 1.332.358.218.474.684.256 1.042zm1.468-3.262c-.275.447-.864.593-1.311.318-3.272-2.012-8.26-2.595-12.13-1.42-.505.153-1.04-.132-1.193-.637s.132-1.04.637-1.193c4.428-1.344 9.921-.692 13.679 1.621.447.275.593.864.318 1.311zm.126-3.41c-3.924-2.33-10.39-2.545-14.154-1.402-.601.182-1.238-.158-1.42-.759-.182-.601.158-1.238.759-1.42 4.317-1.311 11.455-1.058 15.98 1.63.541.321.716 1.025.395 1.566-.321.541-1.025.716-1.566.395z"/>
+        </svg>
+        <span id="spotifyAuthStatus">Connect Spotify</span>
+      </button>
+    </div>
+  </header>
 
-        <div class="player-controls-right">
-          <button class="player-ctrl-btn prev-btn" id="prevTrackBtn" aria-label="Previous Track">
-            <i class="fa-solid fa-backward-step" aria-hidden="true"></i>
+  <!-- Hero Player Stage -->
+  <section class="sanctuary-hero">
+    <div class="active-deck-card">
+      <div class="deck-info">
+        <span class="deck-badge" id="activeDeckBadge">🔮 Now Summoning on Spotify</span>
+        <h2 class="deck-title" id="activeDeckTitle">Halloween Party Anthems</h2>
+        <p class="deck-desc" id="activeDeckDesc">
+          The ultimate collection of monster classics, dancefloor thrillers, and spooky pop anthems featuring Michael Jackson, Ray Parker Jr., Rockwell, and Bobby "Boris" Pickett.
+        </p>
+
+        <div class="deck-actions">
+          <button id="btnSaveToMySpotify" class="btn-action-music primary">
+            <span class="btn-icon">➕</span> Save to My Spotify Library
           </button>
-          <button class="player-ctrl-btn main-playback-btn" id="globalPlayPauseBtn" aria-label="Play or Pause Track">
-            <i class="fa-solid fa-pause" id="globalPlayIcon" aria-hidden="true"></i>
-          </button>
-          <button class="player-ctrl-btn next-btn" id="nextTrackBtn" aria-label="Next Track">
-            <i class="fa-solid fa-forward-step" aria-hidden="true"></i>
-          </button>
+          <a id="btnOpenSpotifyApp" href="https://open.spotify.com/playlist/37i9dQZF1DX6R7QUWePReA" target="_blank" rel="noopener noreferrer" class="btn-action-music secondary">
+            Open in Spotify App ↗
+          </a>
         </div>
       </div>
-    </aside>
 
-    <!-- Persistent Bottom Tab Bar Navigation -->
-    <nav class="app-dock-nav" aria-label="Primary Navigation">
-      <a href="../Landing Page/LandingPage.html" class="dock-tab-item" aria-label="Home">
-        <i class="fa-solid fa-house" aria-hidden="true"></i>
-      </a>
-      <a href="#search" class="dock-tab-item" aria-label="Search">
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      </a>
-      <a href="#saved" class="dock-tab-item" aria-label="Saved Tracks">
-        <i class="fa-solid fa-bookmark" aria-hidden="true"></i>
-      </a>
-    </nav>
+      <!-- Main Spotify Player Embed -->
+      <div class="embed-wrapper">
+        <iframe 
+          id="spotifyEmbedFrame"
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DX6R7QUWePReA?utm_source=generator&theme=0" 
+          width="100%" 
+          height="352" 
+          frameBorder="0" 
+          allowfullscreen="" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Dual Tab Switcher -->
+    <div class="vault-tabs-bar">
+      <button class="vault-tab-btn active" id="tabPlaylists" data-tab="playlists">
+        📻 30 Curated Playlists
+      </button>
+      <button class="vault-tab-btn" id="tabTopSongs" data-tab="songs">
+        🏆 Top 100 Halloween Songs
+      </button>
+    </div>
+
+    <!-- Mood Filter Pills -->
+    <div class="mood-filter-container" id="moodFilterContainer">
+      <div class="mood-pills-row" id="moodPillBar">
+        <button class="mood-pill active" data-mood="all">🎃 All Vibes</button>
+        <button class="mood-pill" data-mood="party">🕺 Party & Pop</button>
+        <button class="mood-pill" data-mood="gothic">🏰 Dark Gothic & Organs</button>
+        <button class="mood-pill" data-mood="witchy">🔮 Witchy Autumn Vibes</button>
+        <button class="mood-pill" data-mood="soundtrack">🎬 Horror Soundtracks</button>
+        <button class="mood-pill" data-mood="ambient">🌲 Haunted Woods & Rain</button>
+        <button class="mood-pill" data-mood="rock">🎸 Slasher Rock & Metal</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Stage -->
+  <main class="vault-main-stage">
+    
+    <!-- Section A: 30 Curated Playlists Professional Card Grid -->
+    <section id="playlistsSection" class="stage-view active">
+      <div class="section-title-row">
+        <h3 class="section-heading">Curated Halloween Playlists</h3>
+        <span class="section-sub" id="playlistCountSub">30 Playlists</span>
+      </div>
+      <div class="playlists-grid" id="playlistGrid"></div>
+    </section>
+
+    <!-- Section B: Top 100 Songs -->
+    <section id="songsSection" class="stage-view">
+      <div class="section-title-row">
+        <h3 class="section-heading">Top 100 Halloween Songs of All Time</h3>
+        <span class="section-sub">Ranked by stream popularity & Halloween icon status</span>
+      </div>
+      <div class="top-songs-table-container">
+        <table class="songs-table">
+          <thead>
+            <tr>
+              <th class="col-rank">#</th>
+              <th class="col-title">Title & Artist</th>
+              <th class="col-album">Album / Movie</th>
+              <th class="col-year">Year</th>
+              <th class="col-action">Summon</th>
+            </tr>
+          </thead>
+          <tbody id="topSongsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
 
   </main>
 
-  <!-- Application Logic Reference -->
-  <script src="Halloweenmusic.js"></script>
+  <footer class="library-footer">
+    <p class="footer-title">FESTO SPOOKY SOUND VAULT // 30 PLAYLISTS &amp; TOP 100 HALLOWEEN ANTHEMS &copy; 2026</p>
+    <p class="footer-sub">Integrated with official Spotify Embed Widgets.</p>
+  </footer>
+
+  <script src="Playlist.js"></script>
+  <script src="halloweenmusic.js"></script>
 </body>
 </html>

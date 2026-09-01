@@ -1,842 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Halloween Movie List</title>
-<link rel="stylesheet" href="halloweenmovie.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — The Halloween Vault</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="HalloweenMovie.css">
 </head>
-<body>
-
-<!-- Mobile Viewport Shell -->
-<main class="app-viewport">
-
-<!-- App Branding Header -->
-<header class="app-header">
-<div class="brand-bar">
-<div class="brand-title-wrap">
-<h1 class="brand-title">
-HALLOWEEN
-<span class="brand-subtitle">MOVIE LIST</span>
-</h1>
-<span class="bat-decor" aria-hidden="true">🦇</span>
-</div>
-</div>
-</header>
-
-<!-- Search Bar -->
-<section class="search-section" aria-label="Movie Search">
-<div class="search-box">
-<i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-<input type="search" id="searchInput" class="search-input" placeholder="Search Halloween movies..." aria-label="Search movies">
-</div>
-</section>
-
-<!-- Main Content: Categorized Movie Carousels -->
-<div class="movies-content" id="moviesContainer">
-
-<!-- SECTION 1: CURRENTLY WATCHING -->
-<section class="category-section" aria-labelledby="heading-currently-watching">
-<div class="section-header">
-<h2 id="heading-currently-watching" class="section-title">CURRENTLY WATCHING</h2>
-<a href="#more-watching" class="see-all-btn" aria-label="See all currently watching movies">
-<i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
-</a>
-</div>
-
-<div class="horizontal-scroll wide-cards-row">
-
-<!-- Movie 1 -->
-<article class="wide-card">
-<div class="wide-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600&auto=format&fit=crop&q=80" alt="Halloweentown movie still" class="card-thumb" loading="lazy">
-<span class="tag-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
-<span class="tag-duration">24m left</span>
-</div>
-<div class="wide-card-body">
-<div class="card-meta-text">
-<h3 class="movie-title">Halloweentown</h3>
-<p class="movie-subtext">1998 • 1h 24m</p>
-<p class="movie-tags"><i class="fa-solid fa-star text-gold" aria-hidden="true"></i> 4.5</p>
-</div>
-<button class="play-action-btn" aria-label="Resume Halloweentown">
-<i class="fa-solid fa-play" aria-hidden="true"></i>
-</button>
-</div>
-</article>
-
-<!-- Movie 2 -->
-<article class="wide-card">
-<div class="wide-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&auto=format&fit=crop&q=80" alt="Practical Magic movie still" class="card-thumb" loading="lazy">
-<span class="tag-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
-<span class="tag-duration">24m left</span>
-</div>
-<div class="wide-card-body">
-<div class="card-meta-text">
-<h3 class="movie-title">Practical Magic</h3>
-<p class="movie-subtext">1998 • 1h 44m</p>
-<p class="movie-tags"><i class="fa-solid fa-star text-gold" aria-hidden="true"></i> 4.3</p>
-</div>
-<button class="play-action-btn" aria-label="Resume Practical Magic">
-<i class="fa-solid fa-play" aria-hidden="true"></i>
-</button>
-</div>
-</article>
-
-<!-- Movie 3 -->
-<article class="wide-card">
-<div class="wide-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=600&auto=format&fit=crop&q=80" alt="Sleepy Hollow movie still" class="card-thumb" loading="lazy">
-<span class="tag-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
-<span class="tag-duration">18m left</span>
-</div>
-<div class="wide-card-body">
-<div class="card-meta-text">
-<h3 class="movie-title">Sleepy Hollow</h3>
-<p class="movie-subtext">1999 • 1h 45m</p>
-<p class="movie-tags"><i class="fa-solid fa-star text-gold" aria-hidden="true"></i> 4.6</p>
-</div>
-<button class="play-action-btn" aria-label="Resume Sleepy Hollow">
-<i class="fa-solid fa-play" aria-hidden="true"></i>
-</button>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- SECTION 2: ESSENTIAL CLASSICS -->
-<section class="category-section" aria-labelledby="heading-essential-classics">
-<div class="section-header">
-<h2 id="heading-essential-classics" class="section-title">ESSENTIAL CLASSICS</h2>
-<a href="#more-classics" class="see-all-link" aria-label="View all Essential Classics">
-<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-</a>
-</div>
-
-<div class="horizontal-scroll poster-cards-row">
-
-<!-- Movie 4 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop&q=80" alt="Halloween (1978) Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Halloween</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Halloween"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1978 • 1h 31m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 5 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=400&auto=format&fit=crop&q=80" alt="Trick 'r Treat Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.1</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Trick 'r Treat</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Trick 'r Treat"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2007 • 1h 22m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 6 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80" alt="The Exorcist Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Exorcist</h3>
-<button class="bookmark-btn active" aria-label="Bookmark The Exorcist"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1973 • 2h 02m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 7 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&auto=format&fit=crop&q=80" alt="Psycho Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Psycho</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Psycho"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1960 • 1h 49m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 8 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80" alt="The Shining Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Shining</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Shining"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1980 • 2h 26m</p>
-<p class="poster-genre">Psychological • Horror</p>
-</div>
-</article>
-
-<!-- Movie 9 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" alt="A Nightmare on Elm Street Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Elm Street</h3>
-<button class="bookmark-btn" aria-label="Bookmark Elm Street"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1984 • 1h 31m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 10 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=400&auto=format&fit=crop&q=80" alt="Friday the 13th Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Friday 13th</h3>
-<button class="bookmark-btn" aria-label="Bookmark Friday the 13th"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1980 • 1h 35m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 11 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80" alt="Texas Chain Saw Massacre Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Texas Chainsaw</h3>
-<button class="bookmark-btn" aria-label="Bookmark Texas Chainsaw"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1974 • 1h 23m</p>
-<p class="poster-genre">Horror • Cult</p>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- SECTION 3: FAMILY & KIDS -->
-<section class="category-section" aria-labelledby="heading-family-kids">
-<div class="section-header">
-<h2 id="heading-family-kids" class="section-title">FAMILY & KIDS</h2>
-<a href="#more-family" class="see-all-link" aria-label="View all Family and Kids movies">
-<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-</a>
-</div>
-
-<div class="horizontal-scroll poster-cards-row">
-
-<!-- Movie 12 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=400&auto=format&fit=crop&q=80" alt="Hocus Pocus Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Hocus Pocus</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Hocus Pocus"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1993 • 1h 36m</p>
-<p class="poster-genre">Family • Animation</p>
-</div>
-</article>
-
-<!-- Movie 13 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" alt="Corpse Bride Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Corpse Bride</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Corpse Bride"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2005 • 1h 17m</p>
-<p class="poster-genre">Family • Animation</p>
-</div>
-</article>
-
-<!-- Movie 14 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80" alt="Monster House Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.0</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Monster House</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Monster House"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2006 • 1h 31m</p>
-<p class="poster-genre">Family • Animation</p>
-</div>
-</article>
-
-<!-- Movie 15 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80" alt="Casper Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 3.8</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Casper</h3>
-<button class="bookmark-btn active" aria-label="Bookmark Casper"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1995 • 1h 40m</p>
-<p class="poster-genre">Family • Animation</p>
-</div>
-</article>
-
-<!-- Movie 16 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80" alt="The Nightmare Before Christmas Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Nightmare X-mas</h3>
-<button class="bookmark-btn" aria-label="Bookmark Nightmare Before Christmas"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1993 • 1h 16m</p>
-<p class="poster-genre">Musical • Family</p>
-</div>
-</article>
-
-<!-- Movie 17 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop&q=80" alt="Coraline Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Coraline</h3>
-<button class="bookmark-btn" aria-label="Bookmark Coraline"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2009 • 1h 40m</p>
-<p class="poster-genre">Fantasy • Animation</p>
-</div>
-</article>
-
-<!-- Movie 18 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=400&auto=format&fit=crop&q=80" alt="The Addams Family Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Addams Family</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Addams Family"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1991 • 1h 39m</p>
-<p class="poster-genre">Comedy • Spooky</p>
-</div>
-</article>
-
-<!-- Movie 19 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" alt="Frankenweenie Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.1</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Frankenweenie</h3>
-<button class="bookmark-btn" aria-label="Bookmark Frankenweenie"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2012 • 1h 27m</p>
-<p class="poster-genre">Family • Animation</p>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- SECTION 4: MODERN HORROR -->
-<section class="category-section" aria-labelledby="heading-modern-horror">
-<div class="section-header">
-<h2 id="heading-modern-horror" class="section-title">MODERN HORROR</h2>
-<a href="#more-modern" class="see-all-link" aria-label="View all Modern Horror movies">
-<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-</a>
-</div>
-
-<div class="horizontal-scroll poster-cards-row">
-
-<!-- Movie 20 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80" alt="Hereditary Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Hereditary</h3>
-<button class="bookmark-btn" aria-label="Bookmark Hereditary"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2018 • 2h 07m</p>
-<p class="poster-genre">Supernatural • Drama</p>
-</div>
-</article>
-
-<!-- Movie 21 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80" alt="Scream (2022) Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Scream (2022)</h3>
-<button class="bookmark-btn" aria-label="Bookmark Scream"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2022 • 1h 54m</p>
-<p class="poster-genre">Horror • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 22 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop&q=80" alt="Barbarian Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Barbarian</h3>
-<button class="bookmark-btn" aria-label="Bookmark Barbarian"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2022 • 1h 42m</p>
-<p class="poster-genre">Thriller • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 23 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80" alt="X Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.1</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">X</h3>
-<button class="bookmark-btn" aria-label="Bookmark X"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2022 • 1h 45m</p>
-<p class="poster-genre">Slasher • Horror</p>
-</div>
-</article>
-
-<!-- Movie 24 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=400&auto=format&fit=crop&q=80" alt="Midsommar Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Midsommar</h3>
-<button class="bookmark-btn" aria-label="Bookmark Midsommar"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2019 • 2h 28m</p>
-<p class="poster-genre">Folk Horror • Drama</p>
-</div>
-</article>
-
-<!-- Movie 25 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=400&auto=format&fit=crop&q=80" alt="Talk to Me Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Talk to Me</h3>
-<button class="bookmark-btn" aria-label="Bookmark Talk to Me"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2023 • 1h 35m</p>
-<p class="poster-genre">Supernatural • Thriller</p>
-</div>
-</article>
-
-<!-- Movie 26 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" alt="The Conjuring Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Conjuring</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Conjuring"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2013 • 1h 52m</p>
-<p class="poster-genre">Horror • Paranormal</p>
-</div>
-</article>
-
-<!-- Movie 27 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80" alt="Get Out Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.8</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Get Out</h3>
-<button class="bookmark-btn" aria-label="Bookmark Get Out"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2017 • 1h 44m</p>
-<p class="poster-genre">Psychological • Mystery</p>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- SECTION 5: 90S NOSTALGIA & CULT -->
-<section class="category-section" aria-labelledby="heading-nostalgia-cult">
-<div class="section-header">
-<h2 id="heading-nostalgia-cult" class="section-title">90S NOSTALGIA & CULT</h2>
-<a href="#more-nostalgia" class="see-all-link" aria-label="View all 90s Nostalgia and Cult movies">
-<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-</a>
-</div>
-
-<div class="horizontal-scroll poster-cards-row">
-
-<!-- Movie 28 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=400&auto=format&fit=crop&q=80" alt="The Craft Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.2</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Craft</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Craft"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1996 • 1h 41m</p>
-<p class="poster-genre">Drama • Fantasy</p>
-</div>
-</article>
-
-<!-- Movie 29 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop&q=80" alt="Scream (1996) Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.7</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Scream</h3>
-<button class="bookmark-btn" aria-label="Bookmark Scream"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1996 • 1h 51m</p>
-<p class="poster-genre">Horror • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 30 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80" alt="Beetlejuice Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Beetlejuice</h3>
-<button class="bookmark-btn" aria-label="Bookmark Beetlejuice"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1988 • 1h 32m</p>
-<p class="poster-genre">Comedy • Fantasy</p>
-</div>
-</article>
-
-<!-- Movie 31 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80" alt="The Faculty Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 3.9</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Faculty</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Faculty"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1998 • 1h 44m</p>
-<p class="poster-genre">Sci-Fi • Horror</p>
-</div>
-</article>
-
-<!-- Movie 32 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=400&auto=format&fit=crop&q=80" alt="The Blair Witch Project Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.0</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Blair Witch</h3>
-<button class="bookmark-btn" aria-label="Bookmark Blair Witch"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1999 • 1h 21m</p>
-<p class="poster-genre">Horror • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 33 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80" alt="I Know What You Did Last Summer Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 3.8</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Last Summer</h3>
-<button class="bookmark-btn" aria-label="Bookmark Last Summer"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1997 • 1h 41m</p>
-<p class="poster-genre">Mystery • Slasher</p>
-</div>
-</article>
-
-<!-- Movie 34 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" alt="Idle Hands Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 3.9</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Idle Hands</h3>
-<button class="bookmark-btn" aria-label="Bookmark Idle Hands"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1999 • 1h 32m</p>
-<p class="poster-genre">Comedy • Horror</p>
-</div>
-</article>
-
-<!-- Movie 35 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1514539079130-25950c84af65?w=400&auto=format&fit=crop&q=80" alt="Buffy the Vampire Slayer Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 3.7</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Buffy Slayer</h3>
-<button class="bookmark-btn" aria-label="Bookmark Buffy Slayer"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1992 • 1h 26m</p>
-<p class="poster-genre">Action • Comedy</p>
-</div>
-</article>
-
-</div>
-</section>
-
-<!-- SECTION 6: GOTHIC & SUPERNATURAL -->
-<section class="category-section" aria-labelledby="heading-gothic-supernatural">
-<div class="section-header">
-<h2 id="heading-gothic-supernatural" class="section-title">GOTHIC & SUPERNATURAL</h2>
-<a href="#more-gothic" class="see-all-link" aria-label="View all Gothic and Supernatural movies">
-<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
-</a>
-</div>
-
-<div class="horizontal-scroll poster-cards-row">
-
-<!-- Movie 36 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80" alt="Bram Stoker's Dracula Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.5</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Dracula</h3>
-<button class="bookmark-btn" aria-label="Bookmark Dracula"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1992 • 2h 08m</p>
-<p class="poster-genre">Gothic • Romance</p>
-</div>
-</article>
-
-<!-- Movie 37 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop&q=80" alt="Crimson Peak Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.1</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Crimson Peak</h3>
-<button class="bookmark-btn" aria-label="Bookmark Crimson Peak"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2015 • 1h 59m</p>
-<p class="poster-genre">Gothic • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 38 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400&auto=format&fit=crop&q=80" alt="The Ring Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Ring</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Ring"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2002 • 1h 55m</p>
-<p class="poster-genre">Horror • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 39 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1572293007244-8b60335d2b7d?w=400&auto=format&fit=crop&q=80" alt="Insidious Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Insidious</h3>
-<button class="bookmark-btn" aria-label="Bookmark Insidious"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2010 • 1h 43m</p>
-<p class="poster-genre">Horror • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 40 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&auto=format&fit=crop&q=80" alt="The Others Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.6</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Others</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Others"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2001 • 1h 44m</p>
-<p class="poster-genre">Mystery • Supernatural</p>
-</div>
-</article>
-
-<!-- Movie 41 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=400&auto=format&fit=crop&q=80" alt="Sinister Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.3</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Sinister</h3>
-<button class="bookmark-btn" aria-label="Bookmark Sinister"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2012 • 1h 50m</p>
-<p class="poster-genre">Horror • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 42 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?w=400&auto=format&fit=crop&q=80" alt="The Witch Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">The Witch</h3>
-<button class="bookmark-btn" aria-label="Bookmark The Witch"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">2015 • 1h 32m</p>
-<p class="poster-genre">Folk Horror • Mystery</p>
-</div>
-</article>
-
-<!-- Movie 43 -->
-<article class="poster-card">
-<div class="poster-thumbnail-wrap">
-<img src="https://images.unsplash.com/photo-1509557965875-b88c97052f0e?w=400&auto=format&fit=crop&q=80" alt="Poltergeist Poster" class="poster-img" loading="lazy">
-<span class="poster-badge-rating"><i class="fa-solid fa-star" aria-hidden="true"></i> 4.4</span>
-</div>
-<div class="poster-card-body">
-<div class="poster-header-row">
-<h3 class="poster-movie-title">Poltergeist</h3>
-<button class="bookmark-btn" aria-label="Bookmark Poltergeist"><i class="fa-regular fa-bookmark" aria-hidden="true"></i></button>
-</div>
-<p class="poster-meta">1982 • 1h 54m</p>
-<p class="poster-genre">Horror • Classic</p>
-</div>
-</article>
-
-</div>
-</section>
-
-</div>
-
-<!-- Persistent Bottom Navigation Dock -->
-<nav class="bottom-nav" aria-label="Primary Navigation">
-<a href="../Landing Page/LandingPage.html" class="nav-item active" aria-label="Home">
-<i class="fa-solid fa-house" aria-hidden="true"></i>
-</a>
-<a href="#search" class="nav-item" aria-label="Search">
-<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-</a>
-<a href="#library" class="nav-item" aria-label="Library">
-<i class="fa-solid fa-layer-group" aria-hidden="true"></i>
-</a>
-</nav>
-
-</main>
-
-<script src="halloweenmovie.js"></script>
+<body class="spooky-scroll">
+
+  <div class="fog-overlay" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="../Halloween Landing page/HalloweenLanding.html" class="btn-return" title="Return to Festo Portal">
+        <span class="icon">⮌</span>
+        <span class="btn-text">Portal Return</span>
+      </a>
+      <h1 class="brand-title">FESTO</h1>
+    </div>
+
+    <div class="nav-right">
+      <div class="search-wrapper">
+        <span class="search-icon">🎃</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search movies, actors, voice stars, years..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-backdrop-glow"></div>
+    <div class="hero-content">
+      <span class="spooky-badge">🕸️ Official Archival Vault</span>
+      <h2 class="hero-heading">THE HALLOWEEN VAULT</h2>
+      <p class="hero-subtext">
+        Explore 20 chambers of iconic slashers, animated family specials, and psychological thrillers. Search by titles, release years, or legendary horror actors and voice stars.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-box"><strong>20</strong><span>Chambers</span></div>
+        <div class="stat-box"><strong>600</strong><span>Horrors</span></div>
+        <div class="stat-box"><strong>Wiki</strong><span>Verified Art</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="categoryContainer" class="main-vault">
+    </main>
+
+  <div id="movieModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Vault Card">&times;</button>
+      
+      <div class="modal-inner">
+        <div class="modal-poster-side">
+          <div class="modal-poster-wrapper">
+            <img id="modalPoster" src="" alt="Movie Poster" class="modal-poster-img">
+          </div>
+          <div id="modalRatingTag" class="modal-rating-badge">★ 0.0</div>
+        </div>
+
+        <div class="modal-details-side">
+          <div class="modal-header-meta">
+            <span id="modalCategory" class="modal-cat-tag">Category</span>
+            <span id="modalYear" class="modal-year-tag">Year</span>
+          </div>
+
+          <h2 id="modalTitle" class="modal-title">Title</h2>
+          
+          <div class="cast-container">
+            <h4 class="cast-header">Starring & Voice Cast</h4>
+            <div id="modalCastList" class="cast-badges-list">
+              </div>
+          </div>
+
+          <p id="modalOverview" class="modal-desc">Loading official overview from Wikipedia...</p>
+
+          <div class="trailer-wrapper">
+            <div class="trailer-header-row">
+              <h4 class="trailer-title">Official Archival Footage</h4>
+              <a id="modalYtDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="link-yt-fallback">
+                Open on YouTube ↗
+              </a>
+            </div>
+            <div class="video-container">
+              <iframe 
+                id="modalIframe" 
+                src="" 
+                title="Movie Trailer" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-watch-stream">
+              🍿 Stream / Rent Options ↗
+            </a>
+            <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
+              Read on Wikipedia ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p class="footer-festo">FESTO CINEMA VAULT &copy; 2026</p>
+    <p class="footer-wiki">Metadata and theatrical posters retrieved via Wikipedia and Wikimedia Commons under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <script src="HalloweenData.js"></script>
+  <script src="HalloweenMovie.js"></script>
 </body>
 </html>

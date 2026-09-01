@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — The Summer Solstice Bookshelf</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="SummerBook.css">
+</head>
+<body class="bookshelf-body summer-theme">
+
+  <div class="coastal-bg" aria-hidden="true"></div>
+  <div class="sunbeam-wash" aria-hidden="true"></div>
+
+  <div class="summer-border top-left-sunburst" aria-hidden="true"></div>
+  <div class="summer-border top-right-sunburst" aria-hidden="true"></div>
+  <div class="summer-border side-wave-left" aria-hidden="true"></div>
+  <div class="summer-border side-wave-right" aria-hidden="true"></div>
+
+  <header class="library-header">
+    <div class="header-left">
+      <a href="../Summer Landing/SummerLanding.html" class="btn-portal" title="Return to Summer Portal">
+        <span class="icon">☀️</span>
+        <span class="text">Summer Portal</span>
+      </a>
+      <h1 class="brand-title">FESTO SUMMER</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="search-box">
+        <span class="search-icon">🌊</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search 1,000+ beach reads, authors, #tags (e.g. #beach-romance)..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="sanctuary-hero">
+    <div class="hero-plaque">
+      <span class="plaque-badge">🌴 50-Shelf Sun-Bleached Driftwood Vault</span>
+      <h2 class="hero-title">THE SUMMER BOOKSHELF</h2>
+      <p class="hero-desc">
+        A sun-drenched sanctuary of 1,000 coastal escapes, poolside thrillers, and warm solstice epics resting upon sun-bleached teak and driftwood shelves. Inspect bindings, browse prices, and build your seasonal reading bag.
+      </p>
+
+      <div class="hero-counters">
+        <div class="counter-box">
+          <span class="counter-num">50</span>
+          <span class="counter-label">Shelves</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="totalBookCount">1,000+</span>
+          <span class="counter-label">Beach Volumes</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="readingListCount">0</span>
+          <span class="counter-label">Beach Bag Reads</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="shelf-controls">
+      <div class="shelf-pills" id="filterPills">
+        <button class="pill-btn active" data-filter="all">☀️ All Shelves</button>
+        <button class="pill-btn" data-filter="recommended">🎯 Curated For You</button>
+        <button class="pill-btn" data-filter="readinglist">🏖️ My Beach Bag</button>
+        <button class="pill-btn" data-filter="beach-read">🍹 Beach Romance</button>
+        <button class="pill-btn" data-filter="thriller">🌊 Coastal Thriller</button>
+        <button class="pill-btn" data-filter="travel">✈️ Summer Travels</button>
+        <button class="pill-btn" data-filter="solstice">🌞 Solstice Fantasy</button>
+        <button class="pill-btn" data-filter="cozy-summer">🍉 Warm & Nostalgic</button>
+      </div>
+
+      <div class="shelf-jump">
+        <label for="categoryJumpSelect">Direct Shelf Jump:</label>
+        <select id="categoryJumpSelect">
+          <option value="">-- Jump to Shelf (1 to 50) --</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <main id="categoryContainer" class="bookshelf-vault">
+    </main>
+
+  <div id="bookModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Volume">&times;</button>
+      
+      <div class="modal-book-header" id="modalBackdrop">
+        <div class="backdrop-gradient"></div>
+        <div class="backdrop-content">
+          <div class="modal-meta-row">
+            <span id="modalCategory" class="meta-tag cat-tag">Category</span>
+            <span id="modalPrice" class="meta-tag price-tag">$14.99</span>
+            <span id="modalPages" class="meta-tag pages-tag">320 Pages</span>
+            <span id="modalYear" class="meta-tag year-tag">Year</span>
+            <span id="modalRatingTag" class="meta-tag rating-tag">★ 0.0</span>
+          </div>
+          <h2 id="modalTitle" class="modal-title">Book Title</h2>
+          <p id="modalAuthorHeader" class="modal-author">by Author Name</p>
+
+          <div class="modal-actions-row">
+            <button id="btnToggleLike" class="btn-action btn-like">
+              <span id="likeIcon">💛</span>
+              <span id="likeText">Loved This Book</span>
+            </button>
+            <button id="btnToggleReadingList" class="btn-action btn-readlist">
+              <span id="listIcon">🏖️</span>
+              <span id="listText">Add to Beach Bag</span>
+            </button>
+            <a id="modalGoodreadsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-link">
+              <span>Find on Goodreads ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body-content">
+        <div class="content-block">
+          <h4 class="block-title">Literary Tropes & Solstice DNA <span class="hint">(Click tag to filter library)</span></h4>
+          <div id="modalTagCloud" class="tag-cloud"></div>
+        </div>
+
+        <div class="content-block">
+          <h4 class="block-title">Author Profile</h4>
+          <div id="modalAuthorList" class="author-list"></div>
+        </div>
+
+        <div class="content-block">
+          <h4 class="block-title">Synopsis & Literary Background</h4>
+          <p id="modalOverview" class="book-synopsis">Retrieving archival records from Open Library and Wikipedia...</p>
+        </div>
+
+        <div class="modal-footer-row">
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki">
+            📖 Read Full History on Wikipedia ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="library-footer">
+    <p class="footer-title">FESTO SUMMER LITERARY VAULT // 50-SHELF COASTAL SANCTUARY &copy; 2026</p>
+    <p class="footer-sub">Book jacket artwork and metadata retrieved via Open Library and Wikipedia under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <script src="Book Data/SummerBook_Data1.js"></script>
+  <script src="Book Data/SummerBook_Data2.js"></script>
+  <script src="Book Data/SummerBook_Data3.js"></script>
+  <script src="Book Data/SummerBook_Data4.js"></script>
+  <script src="Book Data/SummerBook_Data5.js"></script>
+  <script src="Book Data/SummerBook_Data6.js"></script>
+  <script src="Book Data/SummerBook_Data7.js"></script>
+  <script src="Book Data/SummerBook_Data8.js"></script>
+  <script src="Book Data/SummerBook_Data9.js"></script>
+  <script src="Book Data/SummerBook_Data10.js"></script>
+
+  <script src="SummerBook.js"></script>
+</body>
+</html>

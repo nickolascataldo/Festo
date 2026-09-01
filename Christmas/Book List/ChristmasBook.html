@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Festo — The Cozy Holiday & Christmas Book Sanctuary</title>
+  
+  <!-- Holiday, Festive Serif & High-Readability Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Mountains+of+Christmas:wght@700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="ChristmasBook.css">
+</head>
+<body class="bookshelf-body christmas-theme">
+
+  <!-- Layered Falling Snow & Warm Cabin Backdrop -->
+  <div class="winter-cabin-bg" aria-hidden="true"></div>
+  <div class="falling-snow-layer" aria-hidden="true"></div>
+  <div class="hearth-warm-glow" aria-hidden="true"></div>
+
+  <!-- Decorative Corner Holly & Pine Garlands -->
+  <div class="festive-border top-left-holly" aria-hidden="true"></div>
+  <div class="festive-border top-right-holly" aria-hidden="true"></div>
+  <div class="festive-border side-garland-left" aria-hidden="true"></div>
+  <div class="festive-border side-garland-right" aria-hidden="true"></div>
+
+  <!-- Holiday Library Navigation Header -->
+  <header class="library-header">
+    <div class="header-left">
+      <a href="../Christmas Landing/ChristmasLanding.html" class="btn-portal" title="Return to Holiday Portal">
+        <span class="icon">🎄</span>
+        <span class="text">Holiday Portal</span>
+      </a>
+      <h1 class="brand-title">CHRISTMAS READS</h1>
+    </div>
+
+    <div class="header-right">
+      <div class="search-box">
+        <span class="search-icon">❄️</span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search holiday romances, winter mysteries, #tags (e.g. #cozy)..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Winter Welcome & Sanctuary Metrics -->
+  <section class="sanctuary-hero">
+    <div class="hero-plaque">
+      <span class="plaque-badge">✨ Festive Curated Winter Volumes</span>
+      <h2 class="hero-title">THE CHRISTMAS BOOK NOOK</h2>
+      <p class="hero-desc">
+        A snowlit sanctuary of heartwarming holiday romances, cozy winter whodunits, classic festive fables, and fireside page-turners arranged across warm mahogany shelves in tidy groups of 10. Inspect seasonal jackets, check editions, and curate your winter fireside reading list.
+      </p>
+
+      <div class="hero-counters">
+        <div class="counter-box">
+          <span class="counter-num">100</span>
+          <span class="counter-label">Shelves (10s)</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="totalBookCount">1,000+</span>
+          <span class="counter-label">Volumes</span>
+        </div>
+        <div class="counter-box">
+          <span class="counter-num" id="readingListCount">0</span>
+          <span class="counter-label">Fireside List</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Filters -->
+    <div class="shelf-controls">
+      <div class="shelf-pills" id="filterPills">
+        <button class="pill-btn active" data-filter="all">🎄 All Shelves</button>
+        <button class="pill-btn" data-filter="recommended">⭐ Warm Recommendations</button>
+        <button class="pill-btn" data-filter="readinglist">🧣 My Fireside List</button>
+        <button class="pill-btn" data-filter="holiday-romance">❤️ Holiday Romance</button>
+        <button class="pill-btn" data-filter="winter-mystery">🔍 Cozy Mystery</button>
+        <button class="pill-btn" data-filter="festive-fable">🦌 Classic Fables</button>
+        <button class="pill-btn" data-filter="small-town">🏘️ Small Town Magic</button>
+        <button class="pill-btn" data-filter="comforting">☕ Comfort Reads</button>
+      </div>
+
+      <div class="shelf-jump">
+        <label for="categoryJumpSelect">Direct Shelf Jump:</label>
+        <select id="categoryJumpSelect">
+          <option value="">-- Jump to Shelf Group (Groups of 10) --</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bookshelves Container (Populated dynamically in groups of 10) -->
+  <main id="categoryContainer" class="bookshelf-vault"></main>
+
+  <!-- Hardcover Detail Inspection Modal -->
+  <div id="bookModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Tome">&times;</button>
+      
+      <!-- Top Book Header -->
+      <div class="modal-book-header" id="modalBackdrop">
+        <div class="backdrop-gradient"></div>
+        <div class="backdrop-content">
+          <div class="modal-meta-row">
+            <span id="modalCategory" class="meta-tag cat-tag">Category</span>
+            <span id="modalPrice" class="meta-tag price-tag">$14.99</span>
+            <span id="modalPages" class="meta-tag pages-tag">320 Pages</span>
+            <span id="modalYear" class="meta-tag year-tag">Year</span>
+            <span id="modalRatingTag" class="meta-tag rating-tag">★ 0.0</span>
+          </div>
+          <h2 id="modalTitle" class="modal-title">Book Title</h2>
+          <p id="modalAuthorHeader" class="modal-author">by Author Name</p>
+
+          <!-- Interactive Action Buttons -->
+          <div class="modal-actions-row">
+            <button id="btnToggleLike" class="btn-action btn-like">
+              <span id="likeIcon">💚</span>
+              <span id="likeText">Favorite Book</span>
+            </button>
+            <button id="btnToggleReadingList" class="btn-action btn-readlist">
+              <span id="listIcon">🧣</span>
+              <span id="listText">Add to Fireside List</span>
+            </button>
+            <a id="modalGoodreadsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-link">
+              <span>Find on Goodreads ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Information Body -->
+      <div class="modal-body-content">
+        <!-- Tags Cloud -->
+        <div class="content-block">
+          <h4 class="block-title">Literary Tropes & Festive Themes <span class="hint">(Click tag to filter library)</span></h4>
+          <div id="modalTagCloud" class="tag-cloud"></div>
+        </div>
+
+        <!-- Author Information -->
+        <div class="content-block">
+          <h4 class="block-title">Author Profile</h4>
+          <div id="modalAuthorList" class="author-list"></div>
+        </div>
+
+        <!-- Synopsis & Excerpt -->
+        <div class="content-block">
+          <h4 class="block-title">Synopsis & Archival Record</h4>
+          <p id="modalOverview" class="book-synopsis">Retrieving archival records from Open Library and Wikipedia...</p>
+        </div>
+
+        <!-- Wikipedia Reference -->
+        <div class="modal-footer-row">
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki">
+            📖 Read Full History on Wikipedia ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Library Footer -->
+  <footer class="library-footer">
+    <p class="footer-title">FESTO CHRISTMAS NOOK // 100-SHELF HOLIDAY ARCHIVE &copy; 2026</p>
+    <p class="footer-sub">Book jackets and metadata retrieved via Open Library and Wikipedia under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <!-- 10 Partitioned Christmas Reads Manifests -->
+  <script src="Data List/ChristmasReads_Data1.js"></script>
+  <script src="Data List/ChristmasReads_Data2.js"></script>
+  <script src="Data List/ChristmasReads_Data3.js"></script>
+  <script src="Data List/ChristmasReads_Data4.js"></script>
+  <script src="Data List/ChristmasReads_Data5.js"></script>
+  <script src="Data List/ChristmasReads_Data6.js"></script>
+  <script src="Data List/ChristmasReads_Data7.js"></script>
+  <script src="Data List/ChristmasReads_Data8.js"></script>
+  <script src="Data List/ChristmasReads_Data9.js"></script>
+  <script src="Data List/ChristmasReads_Data10.js"></script>
+
+  <!-- Performance Engine -->
+  <script src="ChristmasBook.js"></script>
+</body>
+</html>

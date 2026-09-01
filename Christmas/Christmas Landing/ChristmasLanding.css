@@ -1,1150 +1,907 @@
 /* ==========================================================================
-   THE ENCHANTED 3D SNOWGLOBE VILLAGE — PRODUCTION MASTER STYLESHEET
-   File: ChristmasLanding.css
+   FESTO CHRISTMAS SANCTUARY — MASTER NAVIGATION HUB STYLESHEET
+   Features polished mahogany 3D shelves, pine & cranberry winter palette,
+   hearth glow atmosphere, and fluid responsive grid mechanics.
    ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. Design Tokens & Palette System
-   -------------------------------------------------------------------------- */
 :root {
-  --bg-space: #030712;
-  --bg-deep-night: #050b18;
-  --bg-glass-ui: rgba(7, 16, 34, 0.84);
-  --bg-glass-card: rgba(11, 23, 48, 0.94);
-  --bg-surface-hover: rgba(22, 42, 80, 0.96);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-gothic: 'Cinzel Decorative', serif;
+  --font-festive: 'Mountains of Christmas', cursive, serif;
+  --font-display: 'Cinzel', serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
 
-  --holiday-crimson: #d42426;
-  --holiday-crimson-hover: #b0181a;
-  --holiday-crimson-glow: rgba(212, 36, 38, 0.65);
+  /* Festive Winter & Yuletide Palette */
+  --crimson-red: #c1121f;
+  --berry-red: #780000;
+  --pine-green: #2d6a4f;
+  --forest-green: #1b4332;
+  --gold-warm: #ffb703;
+  --gold-amber: #e0a96d;
+  --snow-cream: #fdfbf7;
+  --snow-tint: #f0eade;
+  --frost-cyan: #00b4d8;
+  
+  /* Polished Mahogany & Rich Wood Shelves */
+  --shelf-top: #3d1c14;
+  --shelf-face: #200d08;
+  --shelf-edge: #5a2c20;
+  --shelf-shadow: rgba(0, 0, 0, 0.85);
 
-  --holiday-gold: #f4c430;
-  --holiday-gold-light: #ffea85;
-  --holiday-gold-glow: rgba(244, 196, 48, 0.6);
-
-  --holiday-cyan: #8be5ff;
-  --holiday-cyan-glow: rgba(139, 229, 255, 0.45);
-  --holiday-pine-green: #165b33;
-
-  --border-ice: rgba(180, 230, 255, 0.22);
-  --border-ice-highlight: rgba(220, 245, 255, 0.45);
-  --border-gold: rgba(244, 196, 48, 0.45);
-
-  --text-primary: #ffffff;
-  --text-secondary: #cce3ff;
-  --text-muted: #85a5cb;
-  --text-gold: #f4c430;
-
-  --font-display: 'Cinzel Decorative', cursive;
-  --font-script: 'Mountains of Christmas', cursive;
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 24px;
-  --radius-pill: 9999px;
-
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* --------------------------------------------------------------------------
-   2. Reset & Fullscreen Architecture
-   -------------------------------------------------------------------------- */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+*, *::before, *::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
+body.christmas-vault-body {
+  background-color: #08120d;
+  color: #2b2b2b;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
   min-height: 100vh;
-  min-height: -webkit-fill-available;
-  overflow: hidden;
-  background-color: var(--bg-space);
-  font-family: var(--font-main);
-  color: var(--text-primary);
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
 }
 
-/* --------------------------------------------------------------------------
-   3. WebGL Canvas & Background Layers
-   -------------------------------------------------------------------------- */
-.webgl-canvas-viewport-container {
+/* ==========================================================================
+   WINTER CABIN & SNOW LAYER BACKDROP
+   ========================================================================== */
+.winter-cabin-bg {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(180deg, rgba(8, 18, 13, 0.45) 0%, rgba(14, 8, 7, 0.92) 100%),
+    url('https://images.unsplash.com/photo-1543258103-a62bdc069871?q=80&w=2560&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: -3;
+  filter: brightness(0.75) contrast(1.15) saturate(1.2);
+}
+
+.falling-snow-layer {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 50% -10%, rgba(255, 183, 3, 0.28) 0%, rgba(193, 18, 31, 0.18) 45%, rgba(8, 18, 13, 0.92) 85%);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.hearth-warm-glow {
+  position: fixed;
+  top: -10vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(90vw, 700px);
+  height: min(60vw, 450px);
+  background: radial-gradient(circle, rgba(255, 183, 3, 0.22) 0%, rgba(193, 18, 31, 0.15) 45%, transparent 75%);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(40px);
+}
+
+.floating-snow-canvas {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
+  pointer-events: none;
   z-index: 1;
-  overflow: hidden;
 }
 
-.webgl-viewport-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  outline: none;
-  cursor: grab;
-}
-
-.webgl-viewport-canvas:active {
-  cursor: grabbing;
-}
-
-.cinematic-vignette {
+/* ==========================================================================
+   HOLLY & GARLAND VIGNETTE BORDERS
+   ========================================================================== */
+.festive-border {
   position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 38%, rgba(3, 7, 18, 0.88) 100%);
   pointer-events: none;
-  z-index: 2;
+  z-index: 90;
 }
 
-.aurora-borealis-ambient-layer {
-  position: fixed;
-  inset: 0;
-  background: 
-    radial-gradient(ellipse at 50% -10%, rgba(22, 91, 51, 0.38) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 15%, rgba(139, 229, 255, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 15% 25%, rgba(212, 36, 38, 0.12) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-  animation: auroraEtherealShift 14s ease-in-out infinite alternate;
-}
-
-@keyframes auroraEtherealShift {
-  0% {
-    filter: hue-rotate(0deg) brightness(0.9);
-    transform: scale(1);
-  }
-  50% {
-    filter: hue-rotate(25deg) brightness(1.2);
-    transform: scale(1.04);
-  }
-  100% {
-    filter: hue-rotate(-20deg) brightness(1);
-    transform: scale(1);
-  }
-}
-
-/* --------------------------------------------------------------------------
-   4. Preloader Curtain
-   -------------------------------------------------------------------------- */
-.experience-preloader-curtain {
-  position: fixed;
-  inset: 0;
-  background: linear-gradient(180deg, #030712 0%, #08152a 100%);
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
-}
-
-.experience-preloader-curtain.loaded {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.preloader-content-card {
-  max-width: 360px;
-  width: 90%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.preloader-magic-spinner {
-  position: relative;
-  width: 76px;
-  height: 76px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.snowflake-spinner-glyph {
-  font-size: 2.4rem;
-  animation: spinSnowflake 4s linear infinite;
-}
-
-.spinner-orbital-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  border-top-color: var(--holiday-gold);
-  border-bottom-color: var(--holiday-cyan);
-  animation: orbitalSpin 1.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
-  box-shadow: 0 0 20px var(--holiday-gold-glow);
-}
-
-@keyframes spinSnowflake {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes orbitalSpin {
-  0% { transform: rotate(0deg) scale(0.9); }
-  50% { transform: rotate(180deg) scale(1.1); }
-  100% { transform: rotate(360deg) scale(0.9); }
-}
-
-.preloader-brand-title {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  letter-spacing: 2px;
-  color: var(--holiday-gold);
-  margin-bottom: 8px;
-  text-shadow: 0 2px 14px var(--holiday-gold-glow);
-}
-
-.preloader-sub-status {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-  line-height: 1.4;
-}
-
-.preloader-progress-track {
-  width: 100%;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-pill);
-  overflow: hidden;
-  position: relative;
-  border: 1px solid var(--border-ice);
-}
-
-.preloader-progress-fill {
-  position: absolute;
+.top-left-holly {
   top: 0;
   left: 0;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--holiday-crimson), var(--holiday-gold), var(--holiday-cyan));
-  box-shadow: 0 0 12px var(--holiday-gold);
-  transition: width 0.25s ease;
+  width: 340px;
+  height: 260px;
+  background: radial-gradient(circle at 10% 10%, rgba(193, 18, 31, 0.75) 0%, rgba(45, 106, 79, 0.35) 35%, transparent 70%);
+  filter: drop-shadow(0 0 16px rgba(255, 183, 3, 0.45));
 }
 
-.preloader-percentage-readout {
-  font-size: 0.74rem;
-  font-weight: 800;
-  color: var(--holiday-cyan);
-  margin-top: 8px;
+.top-right-holly {
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 260px;
+  background: radial-gradient(circle at 90% 10%, rgba(193, 18, 31, 0.75) 0%, rgba(45, 106, 79, 0.35) 35%, transparent 70%);
+  filter: drop-shadow(0 0 16px rgba(255, 183, 3, 0.45));
 }
 
-/* --------------------------------------------------------------------------
-   5. Master UI HUD Overlay
-   -------------------------------------------------------------------------- */
-.globe-ui-overlay {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 22px 24px;
-  pointer-events: none;
-  z-index: 10;
+.side-garland-left, .side-garland-right {
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: linear-gradient(180deg, var(--crimson-red) 0%, var(--pine-green) 50%, var(--gold-warm) 100%);
+  box-shadow: 0 0 16px rgba(255, 183, 3, 0.65);
 }
+.side-garland-left { left: 0; }
+.side-garland-right { right: 0; }
 
-/* --------------------------------------------------------------------------
-   6. Top Header & Global Action Controls
-   -------------------------------------------------------------------------- */
-.globe-top-bar {
+/* ==========================================================================
+   STICKY APP HEADER
+   ========================================================================== */
+.christmas-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  pointer-events: auto;
-}
-
-.brand-signature-block {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.sparkle-glyph {
-  font-size: 1.35rem;
-  color: var(--holiday-gold);
-  animation: sparkleTwinkle 2.8s infinite alternate ease-in-out;
-}
-
-.sparkle-glyph.right-glyph {
-  animation-delay: 1.4s;
-}
-
-@keyframes sparkleTwinkle {
-  0% { transform: scale(0.75) rotate(0deg); opacity: 0.45; }
-  100% { transform: scale(1.3) rotate(45deg); opacity: 1; filter: drop-shadow(0 0 10px var(--holiday-gold-glow)); }
-}
-
-.brand-headings-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-main-title {
-  font-family: var(--font-display);
-  font-size: 1.42rem;
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: var(--holiday-gold);
-  text-shadow: 
-    0 2px 16px var(--holiday-gold-glow),
-    0 0 35px rgba(244, 196, 48, 0.4);
-}
-
-.brand-tagline {
-  font-size: 0.64rem;
-  font-weight: 800;
-  letter-spacing: 2.2px;
-  color: var(--holiday-cyan);
-  margin-top: 1px;
-}
-
-.hud-action-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.hud-btn {
-  position: relative;
-  background: var(--bg-glass-ui);
-  border: 1px solid var(--border-ice);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  color: var(--text-secondary);
-  border-radius: var(--radius-pill);
-  padding: 9px 18px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.6);
-  transition: var(--transition-fast);
-}
-
-.hud-btn:hover {
-  background: var(--bg-surface-hover);
-  color: #ffffff;
-  border-color: var(--holiday-gold);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(244, 196, 48, 0.35);
-}
-
-.hud-btn.reset-zoom-btn {
-  background: var(--holiday-crimson);
-  border-color: var(--holiday-crimson);
-  color: #ffffff;
-  box-shadow: 0 0 18px var(--holiday-crimson-glow);
-}
-
-.hud-btn.reset-zoom-btn.hidden {
-  display: none !important;
-}
-
-.live-pulse-indicator {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background-color: var(--holiday-cyan);
-  box-shadow: 0 0 8px var(--holiday-cyan);
-  display: none;
-}
-
-.hud-btn.audio-toggle-btn.playing .live-pulse-indicator {
-  display: inline-block;
-  animation: pulseIndicator 1.5s infinite;
-}
-
-@keyframes pulseIndicator {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(1.4); }
-}
-
-/* --------------------------------------------------------------------------
-   7. Outward View Hero Card
-   -------------------------------------------------------------------------- */
-.outward-hero-prompt {
-  align-self: center;
-  pointer-events: auto;
-  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
-}
-
-.outward-hero-prompt.hidden {
-  opacity: 0;
-  transform: scale(0.92) translateY(24px);
-  pointer-events: none;
-}
-
-.hero-prompt-card {
-  max-width: 410px;
-  background: var(--bg-glass-card);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 28px 30px;
-  text-align: center;
-  box-shadow: 
-    0 24px 70px rgba(0, 0, 0, 0.85),
-    0 0 45px rgba(244, 196, 48, 0.22);
-}
-
-.prompt-icon-badge {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
-.prompt-icon-emoji {
-  font-size: 2.6rem;
-  display: block;
-  animation: floatOrb 3.2s ease-in-out infinite alternate;
-}
-
-@keyframes floatOrb {
-  0% { transform: translateY(0) rotate(0deg); }
-  100% { transform: translateY(-8px) rotate(8deg); }
-}
-
-.prompt-headline {
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 900;
-  color: var(--holiday-gold);
-  margin-bottom: 10px;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-}
-
-.prompt-description {
-  font-size: 0.84rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
-  margin-bottom: 22px;
-}
-
-.prompt-button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.enter-village-btn {
-  position: relative;
-  background: linear-gradient(135deg, var(--holiday-crimson), #9b0e10);
-  border: 1px solid #ff7b7d;
-  color: #ffffff;
-  border-radius: var(--radius-pill);
-  padding: 14px 32px;
-  font-size: 0.92rem;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-  box-shadow: 0 6px 24px var(--holiday-crimson-glow);
-  transition: var(--transition-fast);
-  overflow: hidden;
-}
-
-.enter-village-btn:hover {
-  transform: scale(1.03);
-  filter: brightness(1.15);
-  box-shadow: 0 8px 32px rgba(212, 36, 38, 0.85);
-}
-
-.quick-shake-sub-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-ice);
-  color: var(--text-secondary);
-  border-radius: var(--radius-pill);
-  padding: 8px 20px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.quick-shake-sub-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: #ffffff;
-  border-color: var(--holiday-gold);
-}
-
-.prompt-card-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.footer-indicator-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--holiday-gold);
-  box-shadow: 0 0 6px var(--holiday-gold);
-}
-
-/* --------------------------------------------------------------------------
-   8. Projected 3D Tooltip & Telemetry HUD
-   -------------------------------------------------------------------------- */
-.three-landmark-tooltip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, -100%) translateY(-14px);
-  background: var(--bg-glass-card);
-  border: 1px solid var(--holiday-gold);
-  border-radius: var(--radius-md);
+  padding: 1.1rem 3rem;
+  background: rgba(14, 25, 20, 0.94);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  padding: 8px 14px;
+  border-bottom: 2px solid var(--crimson-red);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.85);
+  gap: 1.5rem;
+}
+
+.brand-block {
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.85),
-    0 0 18px var(--holiday-gold-glow);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 50;
+  gap: 0.8rem;
 }
 
-.three-landmark-tooltip.visible {
-  opacity: 1;
-  pointer-events: auto;
+.brand-emblem {
+  font-size: 2.2rem;
 }
 
-.tooltip-icon-wrap {
-  font-size: 1.15rem;
-  color: var(--holiday-gold);
-  display: flex;
-  align-items: center;
-}
-
-.tooltip-text-col {
+.brand-text {
   display: flex;
   flex-direction: column;
 }
 
-.tooltip-title {
-  font-size: 0.86rem;
-  font-weight: 800;
-  color: #ffffff;
-  white-space: nowrap;
+.brand-script {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--gold-warm);
 }
 
-.tooltip-meta-row {
+.brand-title {
+  font-family: var(--font-gothic);
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--gold-warm) 60%, var(--crimson-red) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.header-right {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 1px;
+  gap: 1rem;
 }
 
-.tooltip-badge {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--holiday-cyan);
-}
-
-.tooltip-distance-tag {
-  font-size: 0.62rem;
-  color: var(--text-muted);
-}
-
-.tooltip-pointer-arrow {
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 10px;
-  height: 10px;
-  background: var(--bg-glass-card);
-  border-right: 1px solid var(--holiday-gold);
-  border-bottom: 1px solid var(--holiday-gold);
-}
-
-.village-telemetry-hud {
-  align-self: center;
-  background: var(--bg-glass-ui);
-  border: 1px solid var(--border-ice);
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  padding: 6px 18px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  pointer-events: auto;
+/* Daily Yuletide Fact Card */
+.daily-fact-card {
+  background: rgba(10, 18, 14, 0.88);
+  border: 1.5px solid rgba(255, 183, 3, 0.45);
+  border-radius: 12px;
+  padding: 0.65rem 1.1rem;
+  max-width: 420px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
-  margin-bottom: 10px;
-  transition: opacity 0.4s ease;
-}
-
-.village-telemetry-hud.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.telemetry-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.telemetry-label {
-  color: var(--text-muted);
-}
-
-.telemetry-value {
-  color: var(--text-primary);
-}
-
-.telemetry-value.text-green { color: #34d399; }
-.telemetry-value.text-gold { color: var(--holiday-gold); }
-
-.telemetry-divider {
-  width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-/* --------------------------------------------------------------------------
-   9. Destination Detail Modal
-   -------------------------------------------------------------------------- */
-.destination-portal-modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-smooth);
-  z-index: 100;
-}
-
-.destination-portal-modal.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-scrim {
-  position: absolute;
-  inset: 0;
-  background: rgba(2, 6, 16, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.modal-surface-card {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  background: linear-gradient(180deg, #0d1e38 0%, #061022 100%);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-lg);
-  padding: 26px 24px 28px;
-  overflow-y: auto;
-  max-height: 88vh;
-  box-shadow: 
-    0 28px 90px rgba(0, 0, 0, 0.95),
-    0 0 45px var(--holiday-gold-glow);
-  z-index: 2;
-  transform: scale(0.94);
-  transition: transform var(--transition-smooth);
-  scrollbar-width: thin;
-  scrollbar-color: var(--holiday-gold) transparent;
-}
-
-.destination-portal-modal.open .modal-surface-card {
-  transform: scale(1);
-}
-
-.modal-close-trigger {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-ice);
-  color: #ffffff;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  transition: var(--transition-fast);
-  z-index: 10;
-}
-
-.modal-close-trigger:hover {
-  background: var(--holiday-crimson);
-  transform: rotate(90deg);
-}
-
-.modal-hero-cover-wrap {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin-bottom: 16px;
-  border: 1px solid var(--border-gold);
-}
-
-.modal-hero-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.modal-category-pill {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(3, 7, 18, 0.88);
-  border: 1px solid var(--holiday-cyan);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-pill);
-  padding: 4px 10px;
-  font-size: 0.65rem;
-  font-weight: 800;
-  color: var(--holiday-cyan);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.modal-header-meta {
-  margin-bottom: 14px;
-}
-
-.modal-title {
-  font-family: var(--font-display);
-  font-size: 1.45rem;
-  font-weight: 900;
-  color: var(--holiday-gold);
-}
-
-.modal-tagline {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--holiday-cyan);
-  margin-top: 3px;
-}
-
-.modal-stats-ribbon {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border-ice);
-  border-radius: var(--radius-md);
-  padding: 10px;
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.stat-bubble {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 }
 
-.stat-number {
-  font-size: 1.15rem;
-  font-weight: 900;
-  color: #ffffff;
+.fact-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.stat-label {
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  letter-spacing: 0.8px;
-}
-
-.modal-desc {
-  font-size: 0.86rem;
-  line-height: 1.6;
-  color: var(--text-secondary);
-  margin-bottom: 18px;
-}
-
-.modal-feature-highlights-box {
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  margin-bottom: 22px;
-}
-
-.highlights-heading {
+.fact-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.72rem;
   font-weight: 800;
-  color: var(--holiday-gold);
-  letter-spacing: 1px;
-  margin-bottom: 8px;
+  color: var(--gold-warm);
+  text-transform: uppercase;
 }
 
-.highlights-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.highlights-list li {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.highlights-list li i {
-  color: var(--holiday-cyan);
-  font-size: 0.7rem;
-}
-
-.modal-actions-dock {
-  display: flex;
-  gap: 10px;
-}
-
-.modal-enter-action-btn {
-  flex: 1;
-  background: linear-gradient(135deg, var(--holiday-crimson), #9b0e10);
-  border: 1px solid #ff7b7d;
-  border-radius: var(--radius-pill);
-  padding: 13px;
-  color: #ffffff;
-  font-size: 0.94rem;
-  font-weight: 800;
+.fact-cycle-btn {
+  background: transparent;
+  border: none;
+  color: var(--snow-cream);
   cursor: pointer;
-  box-shadow: 0 4px 22px var(--holiday-crimson-glow);
-  transition: var(--transition-fast);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
 }
 
-.modal-enter-action-btn:hover {
-  transform: scale(1.02);
-  filter: brightness(1.15);
+.fact-cycle-btn:hover {
+  transform: rotate(180deg);
+  color: var(--gold-warm);
 }
 
-.modal-bookmark-action-btn {
-  width: 48px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid var(--border-ice);
-  border-radius: var(--radius-pill);
-  color: var(--text-secondary);
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: var(--transition-fast);
+.fact-card-body {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #f0eade;
+  transition: opacity 0.2s ease;
 }
 
-.modal-bookmark-action-btn:hover {
-  color: var(--holiday-gold);
-  border-color: var(--holiday-gold);
-}
-
-/* --------------------------------------------------------------------------
-   10. Village Guide Modal
-   -------------------------------------------------------------------------- */
-.guide-info-modal {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-smooth);
-  z-index: 110;
-}
-
-.guide-info-modal.open {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.guide-card-container {
-  position: relative;
-  width: 100%;
-  max-width: 480px;
-  background: var(--bg-glass-card);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-lg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 26px 24px;
-  z-index: 2;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95);
-}
-
-.guide-title-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.guide-title {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  color: var(--holiday-gold);
-}
-
-.guide-grid-features {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-
-.guide-feature-item {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
-
-.guide-icon-wrap {
-  width: 36px;
-  height: 36px;
+/* Settings Gear Button */
+.btn-settings-gear {
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(244, 196, 48, 0.12);
-  border: 1px solid var(--holiday-gold);
-  color: var(--holiday-gold);
+  background: rgba(10, 18, 14, 0.88);
+  border: 1.5px solid var(--gold-warm);
+  color: var(--gold-warm);
+  font-size: 1.15rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
   flex-shrink: 0;
 }
 
-.guide-feature-text h5 {
-  font-size: 0.84rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin-bottom: 2px;
+.btn-settings-gear:hover {
+  background: var(--gold-warm);
+  color: #08120d;
+  transform: rotate(45deg);
+  box-shadow: 0 0 18px var(--gold-warm);
 }
 
-.guide-feature-text p {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
+/* ==========================================================================
+   MAIN VIEWPORT SHELL & HERO BANNER
+   ========================================================================== */
+.vault-shell {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 3.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  flex: 1;
 }
 
-.guide-confirm-btn {
+.sanctuary-banner {
+  display: flex;
+  justify-content: center;
+}
+
+.banner-plaque {
+  background: rgba(18, 30, 24, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 183, 3, 0.45);
+  border-radius: 20px;
+  padding: 2.2rem 3rem;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85);
+  max-width: 980px;
   width: 100%;
-  background: var(--holiday-gold);
-  color: #030712;
-  border: none;
-  border-radius: var(--radius-pill);
-  padding: 12px;
-  font-size: 0.86rem;
+  text-align: center;
+}
+
+.plaque-tag {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  background: rgba(193, 18, 31, 0.25);
+  border: 1px solid var(--crimson-red);
+  border-radius: 20px;
+  color: #ff9b9b;
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.7rem;
 }
 
-.guide-confirm-btn:hover {
-  filter: brightness(1.15);
-  box-shadow: 0 4px 20px var(--holiday-gold-glow);
+.banner-heading {
+  font-family: var(--font-gothic);
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 0.8rem;
 }
 
-/* --------------------------------------------------------------------------
-   11. Bottom Quick Navigator Dock
-   -------------------------------------------------------------------------- */
-.village-dock-bar {
+.banner-heading em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--gold-warm);
+}
+
+.banner-desc {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: #f0eade;
+  line-height: 1.65;
+  max-width: 780px;
+  margin: 0 auto 1.4rem;
+}
+
+/* ==========================================================================
+   REAL-TIME COUNTDOWN TO CHRISTMAS TICKER
+   ========================================================================== */
+.christmas-countdown-container {
+  background: rgba(10, 18, 14, 0.85);
+  border: 1.5px solid var(--gold-warm);
+  border-radius: 16px;
+  padding: 0.9rem 1.4rem;
+  max-width: 520px;
+  margin: 0 auto 1.8rem;
+  box-shadow: inset 0 0 20px rgba(255, 183, 3, 0.2), 0 8px 24px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.countdown-header-tag {
   display: flex;
   align-items: center;
-  background: var(--bg-glass-ui);
-  border: 1px solid var(--border-ice);
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  padding: 8px 16px;
-  max-width: 760px;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--gold-warm);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.countdown-digits-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.8vw, 1.2rem);
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.digit-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(255, 183, 3, 0.8);
+  line-height: 1;
+}
+
+.digit-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: #c4b9aa;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.countdown-colon {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--crimson-red);
+  font-weight: 900;
+  margin-bottom: 0.8rem;
+}
+
+/* Shelf Filter Buttons */
+.shelf-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-label {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--gold-warm);
+  text-transform: uppercase;
+}
+
+.filter-pills {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.pill-btn {
+  padding: 0.5rem 1.1rem;
+  background: rgba(20, 36, 28, 0.85);
+  border: 1.5px solid rgba(255, 183, 3, 0.35);
+  border-radius: 20px;
+  color: #f0eade;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+.pill-btn:hover {
+  background: rgba(193, 18, 31, 0.35);
+  border-color: var(--gold-warm);
+  transform: translateY(-2px);
+}
+
+.pill-btn.active {
+  background: linear-gradient(135deg, var(--crimson-red), var(--pine-green));
+  border-color: #fff;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(255, 183, 3, 0.7);
+}
+
+/* ==========================================================================
+   POLISHED MAHOGANY BOOKSHELF VAULT & 3D HARDCOVER TOMES
+   ========================================================================== */
+.vault-library-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.shelf-title-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 0 0.6rem;
+}
+
+.shelf-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.shelf-stats {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--gold-warm);
+}
+
+/* 3D Volumes Grid Layout */
+.vault-bookshelf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2rem 1.5rem;
+  align-items: flex-end;
+  padding: 0 0.5rem;
+}
+
+.book-tome-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.book-tome-wrapper.hidden {
+  display: none !important;
+}
+
+/* 3D Hardcover Tome Construction */
+.book-volume {
   width: 100%;
-  margin: 0 auto;
-  pointer-events: auto;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75);
+  max-width: 250px;
+  height: 380px;
+  background: var(--snow-cream);
+  border-radius: 4px 14px 14px 4px;
+  text-decoration: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 10px 22px rgba(0, 0, 0, 0.8), 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s var(--transition), box-shadow 0.4s ease;
+  overflow: hidden;
+  border: 1px solid rgba(255, 183, 3, 0.35);
+}
+
+.book-volume:hover {
+  transform: translateY(-16px) scale(1.03);
+  box-shadow: -12px 22px 35px rgba(0, 0, 0, 0.95), 0 0 28px rgba(255, 183, 3, 0.65);
+}
+
+.book-spine-accent {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 8px;
+  background: var(--crimson-red);
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+.tome-pine .book-spine-accent    { background: #1b4332; }
+.tome-crimson .book-spine-accent { background: #c1121f; }
+.tome-gold .book-spine-accent    { background: #b8860b; }
+.tome-berry .book-spine-accent   { background: #780000; }
+.tome-frost .book-spine-accent   { background: #0077b6; }
+.tome-amber .book-spine-accent   { background: #d97706; }
+.tome-cyan .book-spine-accent    { background: #005f73; }
+
+.book-front-cover {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-left: 8px;
+}
+
+/* Custom Thematic Artwork Plates */
+.cover-art-plate {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.art-foil-icon {
+  font-size: 2.8rem;
+  color: #fff;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  transition: transform 0.4s ease;
+}
+
+.book-volume:hover .art-foil-icon {
+  transform: scale(1.15) rotate(4deg);
+}
+
+.foil-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: rgba(14, 25, 20, 0.88);
+  border: 1px solid var(--gold-warm);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--gold-warm);
+  text-transform: uppercase;
+}
+
+.art-reads   { background: radial-gradient(circle, #2d6a4f 0%, #081c15 100%); }
+.art-movies  { background: radial-gradient(circle, #c1121f 0%, #590d22 100%); }
+.art-wheel   { background: radial-gradient(circle, #ffb703 0%, #b8860b 100%); }
+.art-game    { background: radial-gradient(circle, #780000 0%, #2b0907 100%); }
+.art-map     { background: radial-gradient(circle, #0077b6 0%, #03045e 100%); }
+.art-store   { background: radial-gradient(circle, #d97706 0%, #78350f 100%); }
+.art-weather { background: radial-gradient(circle, #00b4d8 0%, #003049 100%); }
+
+.cover-typography {
+  padding: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: var(--snow-cream);
+}
+
+.volume-index {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--crimson-red);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.volume-title {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #1a0f0d;
+  margin: 0.2rem 0 0.4rem;
+}
+
+.volume-desc {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: #5a3e36;
+  flex: 1;
+}
+
+.open-portal-tag {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--pine-green);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  text-transform: uppercase;
+}
+
+/* Realistic 3D Polished Mahogany Shelf Base */
+.hardwood-shelf {
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.shelf-top-face {
+  height: 14px;
+  background: linear-gradient(90deg, #3d1c14 0%, var(--shelf-edge) 50%, #3d1c14 100%);
+  border-top: 2px solid var(--shelf-edge);
+  box-shadow: inset 0 2px 4px rgba(255, 183, 3, 0.3);
+}
+
+.shelf-front-bevel {
+  height: 22px;
+  background: linear-gradient(180deg, var(--shelf-face) 0%, #0a0403 100%);
+  border-radius: 0 0 6px 6px;
+  box-shadow: 0 14px 28px var(--shelf-shadow);
+}
+
+/* ==========================================================================
+   PERSISTENT BOTTOM NAVIGATION DOCK
+   ========================================================================== */
+.vault-dock {
+  position: sticky;
+  bottom: 0;
+  z-index: 95;
+  background: rgba(14, 25, 20, 0.96);
+  border-top: 2px solid var(--crimson-red);
+  padding: 0.65rem 1.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 -6px 25px rgba(0, 0, 0, 0.8);
   overflow-x: auto;
-  scrollbar-width: none;
-  gap: 6px;
 }
 
-.village-dock-bar::-webkit-scrollbar {
-  display: none;
-}
-
-.dock-btn {
-  background: transparent;
-  border: none;
+.dock-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 6px 12px;
-  flex-shrink: 0;
-  border-radius: var(--radius-md);
-  transition: var(--transition-fast);
-}
-
-.dock-icon-wrap {
-  font-size: 1.1rem;
-}
-
-.dock-label {
-  font-size: 0.65rem;
+  padding: 0.4rem 0.7rem;
+  text-decoration: none;
+  color: #a3b899;
+  font-size: 0.95rem;
   font-weight: 700;
-  white-space: nowrap;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
 }
 
-.dock-btn.active,
-.dock-btn:hover {
-  color: var(--holiday-gold);
-  background: rgba(255, 255, 255, 0.05);
+.dock-item span {
+  font-size: 0.68rem;
+}
+
+.dock-item:hover,
+.dock-item.active {
+  color: #fff;
+  background: rgba(193, 18, 31, 0.25);
+  box-shadow: 0 0 12px rgba(255, 183, 3, 0.4);
+}
+
+/* ==========================================================================
+   PROFILE & SETTINGS MODAL
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 14, 11, 0.88);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-overlay.active {
+  display: flex;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-window {
+  background: var(--snow-cream);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 520px;
+  border: 2px solid var(--gold-warm);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+  overflow: hidden;
+}
+
+.modal-top {
+  background: rgba(14, 25, 20, 0.95);
+  padding: 1.2rem 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--gold-warm);
+}
+
+.modal-heading {
+  font-family: var(--font-display);
+  color: #ffffff;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--gold-warm);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.modal-content {
+  padding: 1.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.setting-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.highlight-season-box {
+  background: rgba(14, 25, 20, 0.08);
+  border: 1.5px solid var(--gold-warm);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.btn-master-switch-seasons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, var(--crimson-red), var(--pine-green));
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.btn-master-switch-seasons:hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 8px var(--holiday-gold-glow));
+  color: #fff;
 }
 
-/* --------------------------------------------------------------------------
-   12. Responsive Media Queries
-   -------------------------------------------------------------------------- */
-@media (min-width: 1200px) {
-  .village-dock-bar {
+.setting-hint {
+  font-size: 0.75rem;
+  color: #5a3e36;
+  margin-top: 0.3rem;
+}
+
+.setting-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #1a0f0d;
+  letter-spacing: 0.5px;
+}
+
+.setting-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--snow-tint);
+  border: 1.5px solid #dcd1be;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: #1a0f0d;
+  outline: none;
+}
+
+.setting-input:focus {
+  border-color: var(--gold-warm);
+  background: #ffffff;
+}
+
+.avatar-picker {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.avatar-option {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid #dcd1be;
+  background: var(--snow-tint);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.avatar-option:hover,
+.avatar-option.active {
+  border-color: var(--crimson-red);
+  background: var(--crimson-red);
+  transform: scale(1.1);
+}
+
+.btn-save-settings {
+  padding: 0.85rem;
+  background: linear-gradient(135deg, var(--crimson-red), var(--gold-warm));
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(193, 18, 31, 0.4);
+}
+
+.btn-save-settings:hover {
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .christmas-header {
+    flex-direction: column;
+    padding: 1.2rem;
+    align-items: stretch;
+  }
+  .header-right {
     justify-content: space-between;
   }
-}
-
-@media (max-width: 1024px) {
-  .brand-main-title {
-    font-size: 1.25rem;
+  .vault-shell {
+    padding: 1.5rem 1.2rem 4rem;
   }
-  .brand-tagline {
-    font-size: 0.58rem;
-  }
-  .hero-prompt-card {
-    max-width: 360px;
-    padding: 24px;
-  }
-  .village-telemetry-hud {
-    font-size: 0.65rem;
-    padding: 5px 14px;
+  .daily-fact-card {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 768px) {
-  .globe-ui-overlay {
-    padding: 16px 14px;
-  }
-  .brand-main-title {
-    font-size: 1.1rem;
-  }
-  .brand-tagline {
-    font-size: 0.52rem;
-  }
-  .hud-btn .btn-text {
+@media (max-width: 480px) {
+  .side-garland-left, .side-garland-right {
     display: none;
-  }
-  .hud-btn {
-    padding: 8px 10px;
-  }
-  .hero-prompt-card {
-    max-width: 320px;
-    padding: 20px 18px;
-  }
-  .prompt-headline {
-    font-size: 1.15rem;
-  }
-  .prompt-description {
-    font-size: 0.78rem;
-  }
-  .enter-village-btn {
-    padding: 12px 24px;
-    font-size: 0.84rem;
-  }
-  .village-telemetry-hud {
-    display: none;
-  }
-  .modal-surface-card {
-    padding: 22px 18px;
-  }
-  .modal-hero-cover-wrap {
-    height: 145px;
-  }
-  .modal-title {
-    font-size: 1.25rem;
-  }
-  .village-dock-bar {
-    justify-content: flex-start;
-    padding: 6px 10px;
-  }
-  .dock-btn {
-    padding: 4px 8px;
-  }
-}
-
-@media (max-width: 420px) {
-  .brand-signature-block {
-    gap: 6px;
-  }
-  .sparkle-glyph {
-    font-size: 1rem;
-  }
-  .brand-main-title {
-    font-size: 0.95rem;
-  }
-  .hero-prompt-card {
-    max-width: 290px;
-    padding: 18px 14px;
-  }
-  .modal-surface-card {
-    max-height: 92vh;
   }
 }
