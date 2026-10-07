@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-season="spring">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
   <link rel="stylesheet" href="SpringMovie.css">
 </head>
 <body class="meadow-body">
@@ -19,9 +22,10 @@
   <header class="navbar">
     <div class="nav-left">
       <a href="../SpringLanding/SpringLanding.html" class="btn-return" title="Return to Spring Portal">
-        <span class="btn-icon">🌸</span>
+        <span class="btn-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></span>
         <span class="btn-text">Spring Portal</span>
       </a>
+      <a href="../../index.html" class="btn-return" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="btn-text">Hub</span></a>
       <div class="brand-badge">
         <h1 class="brand-title">FESTO</h1>
         <span class="brand-sub">CINEMA MEADOW</span>
@@ -30,11 +34,11 @@
 
     <div class="nav-right">
       <div class="search-wrapper">
-        <span class="search-icon" aria-hidden="true">🔍</span>
+        <span class="search-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search 1,000+ films, stars, #tags (e.g. #road-trip)..." 
+          placeholder="Search films, stars, #tags (e.g. #road-trip)..." 
           autocomplete="off"
           spellcheck="false"
         >
@@ -51,26 +55,26 @@
       </div>
       <h2 class="hero-heading">THE SPRING CINEMA MEADOW</h2>
       <p class="hero-subtext">
-        Wander across 50 blooming chambers featuring road-trip odysseys, opening-day baseball classics, prom night memories, and countryside romances across 1,000 curated titles.
+        Wander across <span data-fx-count="categories">25</span> blooming chambers featuring road-trip odysseys, opening-day baseball classics, prom night memories, and countryside romances across <span data-fx-count="total">491</span> curated titles.
       </p>
       
       <div class="hero-stats">
         <div class="stat-pill">
-          <div class="stat-icon">🌷</div>
+          <div class="stat-icon"><i class="fa-solid fa-spa" aria-hidden="true"></i></div>
           <div class="stat-meta">
-            <strong>50</strong>
+            <strong data-fx-count="categories">25</strong>
             <span>Curated Chambers</span>
           </div>
         </div>
         <div class="stat-pill">
-          <div class="stat-icon">🌼</div>
+          <div class="stat-icon"><i class="fa-solid fa-seedling" aria-hidden="true"></i></div>
           <div class="stat-meta">
-            <strong id="totalMovieCount">1,000+</strong>
+            <strong id="totalMovieCount" data-fx-count="total">491</strong>
             <span>Spring Classics</span>
           </div>
         </div>
         <div class="stat-pill">
-          <div class="stat-icon">⭐</div>
+          <div class="stat-icon"><i class="fa-solid fa-star" aria-hidden="true"></i></div>
           <div class="stat-meta">
             <strong id="watchlistCount">0</strong>
             <span>On Watchlist</span>
@@ -81,14 +85,9 @@
 
     <div class="filter-controls-wrapper">
       <div class="filter-pills-row" id="filterPills" role="tablist">
-        <button class="pill-btn active" data-filter="all" role="tab" aria-selected="true">🌸 All Chambers</button>
-        <button class="pill-btn" data-filter="recommended" role="tab" aria-selected="false">🎯 Personalized For You</button>
-        <button class="pill-btn" data-filter="watchlist" role="tab" aria-selected="false">⭐ My Watchlist</button>
-        <button class="pill-btn" data-filter="springbreak" role="tab" aria-selected="false">🏖️ Spring Break</button>
-        <button class="pill-btn" data-filter="prom" role="tab" aria-selected="false">👗 Prom & Youth</button>
-        <button class="pill-btn" data-filter="baseball" role="tab" aria-selected="false">⚾ Opening Day</button>
-        <button class="pill-btn" data-filter="storms" role="tab" aria-selected="false">🌪️ Spring Storms</button>
-        <button class="pill-btn" data-filter="romance" role="tab" aria-selected="false">💐 Countryside Romances</button>
+        <button class="pill-btn active" data-filter="all" role="tab" aria-selected="true">All Chambers</button>
+        <button class="pill-btn" data-filter="recommended" role="tab" aria-selected="false">Personalized For You</button>
+        <button class="pill-btn" data-filter="watchlist" role="tab" aria-selected="false">My Watchlist</button>
       </div>
 
       <div class="jump-select-wrapper">
@@ -122,15 +121,15 @@
           
           <div class="modal-hero-actions">
             <button id="btnToggleLike" class="btn-action btn-like" type="button">
-              <span id="likeIcon">💖</span>
+              <span id="likeIcon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
               <span id="likeText">Love This</span>
             </button>
             <button id="btnToggleWatchlist" class="btn-action btn-watchlist" type="button">
-              <span id="watchlistIcon">⭐</span>
+              <span id="watchlistIcon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
               <span id="watchlistText">Add to Watchlist</span>
             </button>
             <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-stream">
-              <span class="stream-icon">🍿</span>
+              <span class="stream-icon"><i class="fa-solid fa-tv" aria-hidden="true"></i></span>
               <span>Where to Stream ↗</span>
             </a>
           </div>
@@ -160,8 +159,7 @@
         </div>
 
         <div class="modal-footer-actions">
-          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
-            📖 Read Complete Archival History on Wikipedia ↗
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link"> Read Complete Archival History on Wikipedia ↗
           </a>
         </div>
       </div>
@@ -175,16 +173,15 @@
     </div>
   </footer>
 
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
+
   <script src="Movie Data/SpringData_Part1.js"></script>
   <script src="Movie Data/SpringData_Part2.js"></script>
   <script src="Movie Data/SpringData_Part3.js"></script>
   <script src="Movie Data/SpringData_Part4.js"></script>
   <script src="Movie Data/SpringData_Part5.js"></script>
-  <script src="Movie Data/SpringData_Part6.js"></script>
-  <script src="Movie Data/SpringData_Part7.js"></script>
-  <script src="Movie Data/SpringData_Part8.js"></script>
-  <script src="Movie Data/SpringData_Part9.js"></script>
-  <script src="Movie Data/SpringData_Part10.js"></script>
 
   <script src="SpringMovie.js"></script>
 </body>

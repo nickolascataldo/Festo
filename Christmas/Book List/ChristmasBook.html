@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-season="christmas">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -8,8 +8,11 @@
   <!-- Holiday, Festive Serif & High-Readability Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Mountains+of+Christmas:wght@700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
   <link rel="stylesheet" href="ChristmasBook.css">
 </head>
 <body class="bookshelf-body christmas-theme">
@@ -29,15 +32,16 @@
   <header class="library-header">
     <div class="header-left">
       <a href="../Christmas Landing/ChristmasLanding.html" class="btn-portal" title="Return to Holiday Portal">
-        <span class="icon">🎄</span>
+        <span class="icon"><i class="fa-solid fa-tree" aria-hidden="true"></i></span>
         <span class="text">Holiday Portal</span>
       </a>
+      <a href="../../index.html" class="btn-portal" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="text">Hub</span></a>
       <h1 class="brand-title">CHRISTMAS READS</h1>
     </div>
 
     <div class="header-right">
       <div class="search-box">
-        <span class="search-icon">❄️</span>
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
         <input 
           type="text" 
           id="searchInput" 
@@ -52,7 +56,7 @@
   <!-- Winter Welcome & Sanctuary Metrics -->
   <section class="sanctuary-hero">
     <div class="hero-plaque">
-      <span class="plaque-badge">✨ Festive Curated Winter Volumes</span>
+      <span class="plaque-badge">Festive Curated Winter Volumes</span>
       <h2 class="hero-title">THE CHRISTMAS BOOK NOOK</h2>
       <p class="hero-desc">
         A snowlit sanctuary of heartwarming holiday romances, cozy winter whodunits, classic festive fables, and fireside page-turners arranged across warm mahogany shelves in tidy groups of 10. Inspect seasonal jackets, check editions, and curate your winter fireside reading list.
@@ -60,11 +64,11 @@
 
       <div class="hero-counters">
         <div class="counter-box">
-          <span class="counter-num">100</span>
+          <span class="counter-num" data-fx-count="shelves">60</span>
           <span class="counter-label">Shelves (10s)</span>
         </div>
         <div class="counter-box">
-          <span class="counter-num" id="totalBookCount">1,000+</span>
+          <span class="counter-num" id="totalBookCount" data-fx-count="total">500</span>
           <span class="counter-label">Volumes</span>
         </div>
         <div class="counter-box">
@@ -77,14 +81,9 @@
     <!-- Quick Navigation Filters -->
     <div class="shelf-controls">
       <div class="shelf-pills" id="filterPills">
-        <button class="pill-btn active" data-filter="all">🎄 All Shelves</button>
-        <button class="pill-btn" data-filter="recommended">⭐ Warm Recommendations</button>
-        <button class="pill-btn" data-filter="readinglist">🧣 My Fireside List</button>
-        <button class="pill-btn" data-filter="holiday-romance">❤️ Holiday Romance</button>
-        <button class="pill-btn" data-filter="winter-mystery">🔍 Cozy Mystery</button>
-        <button class="pill-btn" data-filter="festive-fable">🦌 Classic Fables</button>
-        <button class="pill-btn" data-filter="small-town">🏘️ Small Town Magic</button>
-        <button class="pill-btn" data-filter="comforting">☕ Comfort Reads</button>
+        <button class="pill-btn active" data-filter="all">All Shelves</button>
+        <button class="pill-btn" data-filter="recommended">Warm Recommendations</button>
+        <button class="pill-btn" data-filter="readinglist">My Fireside List</button>
       </div>
 
       <div class="shelf-jump">
@@ -121,11 +120,11 @@
           <!-- Interactive Action Buttons -->
           <div class="modal-actions-row">
             <button id="btnToggleLike" class="btn-action btn-like">
-              <span id="likeIcon">💚</span>
+              <span id="likeIcon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
               <span id="likeText">Favorite Book</span>
             </button>
             <button id="btnToggleReadingList" class="btn-action btn-readlist">
-              <span id="listIcon">🧣</span>
+              <span id="listIcon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
               <span id="listText">Add to Fireside List</span>
             </button>
             <a id="modalGoodreadsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-link">
@@ -157,9 +156,9 @@
 
         <!-- Wikipedia Reference -->
         <div class="modal-footer-row">
-          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki">
-            📖 Read Full History on Wikipedia ↗
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki"> Read Full History on Wikipedia ↗
           </a>
+          <div id="modalBuyLinks" class="buy-links"></div>
         </div>
       </div>
     </div>
@@ -167,21 +166,20 @@
 
   <!-- Library Footer -->
   <footer class="library-footer">
-    <p class="footer-title">FESTO CHRISTMAS NOOK // 100-SHELF HOLIDAY ARCHIVE &copy; 2026</p>
+    <p class="footer-title">FESTO CHRISTMAS NOOK // HOLIDAY ARCHIVE &copy; 2026</p>
     <p class="footer-sub">Book jackets and metadata retrieved via Open Library and Wikipedia under Creative Commons licensing (CC BY-SA).</p>
   </footer>
 
   <!-- 10 Partitioned Christmas Reads Manifests -->
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
+
   <script src="Data List/ChristmasReads_Data1.js"></script>
   <script src="Data List/ChristmasReads_Data2.js"></script>
   <script src="Data List/ChristmasReads_Data3.js"></script>
   <script src="Data List/ChristmasReads_Data4.js"></script>
   <script src="Data List/ChristmasReads_Data5.js"></script>
-  <script src="Data List/ChristmasReads_Data6.js"></script>
-  <script src="Data List/ChristmasReads_Data7.js"></script>
-  <script src="Data List/ChristmasReads_Data8.js"></script>
-  <script src="Data List/ChristmasReads_Data9.js"></script>
-  <script src="Data List/ChristmasReads_Data10.js"></script>
 
   <!-- Performance Engine -->
   <script src="ChristmasBook.js"></script>

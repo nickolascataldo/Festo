@@ -9,8 +9,6 @@
  * - Fast Wikipedia caching with IntersectionObserver lazy loading
  */
 
-const wikiCache = new Map();
-
 const CATEGORY_PRIORITY_ORDER = [
   4,   // Modern Live-Action Blockbusters
   10,  // Animated Holiday Features & CGI
@@ -59,38 +57,6 @@ function toggleWatchlistMovie(movieId) {
   return list.includes(movieId);
 }
 
-async function fetchWikiPoster(wikiSlug) {
-  if (!wikiSlug) return null;
-  if (wikiCache.has(wikiSlug)) return wikiCache.get(wikiSlug);
-
-  const cleanSlug = decodeURIComponent(wikiSlug).replace(/\s+/g, '_');
-  const endpoint = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cleanSlug)}`;
-
-  try {
-    const res = await fetch(endpoint, {
-      headers: {
-        'Api-User-Agent': 'FestoChristmasCinemaVault/10.0 (contact@festoapp.local)'
-      }
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      const posterUrl = data.thumbnail?.source || data.originalimage?.source || null;
-      const result = {
-        poster: posterUrl,
-        overview: data.extract || "",
-        wikiUrl: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(cleanSlug)}`
-      };
-      wikiCache.set(wikiSlug, result);
-      return result;
-    }
-  } catch (err) {
-    console.error(`[Festo Christmas] Wiki load failed for "${cleanSlug}":`, err);
-  }
-
-  return null;
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   // Vault DOM References
   const vaultContainer = document.getElementById("categoryContainer");
@@ -125,30 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
       watchlistCountEl.textContent = getWatchlist().length;
     }
   }
-
-  // IntersectionObserver for lazy Wikipedia posters
-  const posterObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const slug = card.dataset.wikiSlug;
-        const imgEl = card.querySelector(".official-poster");
-
-        if (slug && imgEl && !imgEl.classList.contains("loaded")) {
-          fetchWikiPoster(slug).then(data => {
-            if (data && data.poster) {
-              imgEl.src = data.poster;
-              imgEl.onload = () => imgEl.classList.add("loaded");
-            }
-          });
-        }
-        observer.unobserve(card);
-      }
-    });
-  }, {
-    rootMargin: "250px",
-    threshold: 0.01
-  });
 
   function extractOriginalCategoryNumber(label) {
     const match = label.match(/^(\d+)\./);
@@ -252,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
         vaultContainer.innerHTML = `
           <div class="empty-results">
             <h3>Your Holiday Watchlist is Empty</h3>
-            <p>Click "Inspect ❄️" on any movie card and hit "⭐ Add to Watchlist" to curate your holiday marathon.</p>
+            <p>Click "Inspect" on any movie card and hit "Add to Watchlist" to curate your holiday marathon.</p>
           </div>
         `;
         return;
@@ -263,14 +205,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const titleHeader = document.createElement("h3");
       titleHeader.className = "category-title";
-      titleHeader.innerHTML = `<span>⭐ My Saved Holiday Watchlist</span> <small style="font-size: 0.8rem; color: var(--warm-gold); opacity: 0.8;">(${watchlistMovies.length})</small>`;
+      titleHeader.innerHTML = `<span>My Saved Holiday Watchlist</span> <small style="font-size: 0.8rem; color: var(--warm-gold); opacity: 0.8;">(${watchlistMovies.length})</small>`;
       rowSection.appendChild(titleHeader);
 
       const slider = document.createElement("div");
       slider.className = "movie-slider holiday-scroll";
 
       watchlistMovies.forEach(movie => {
-        const card = createMovieCard(movie, "⭐ Holiday Watchlist");
+        const card = createMovieCard(movie, "Holiday Watchlist");
         slider.appendChild(card);
       });
 
@@ -321,7 +263,6 @@ document.addEventListener("DOMContentLoaded", () => {
     card.setAttribute("role", "button");
     card.setAttribute("tabindex", "0");
     card.setAttribute("aria-label", `${movie.title} (${movie.year})`);
-    card.dataset.wikiSlug = movie.wikiSlug || "";
 
     card.innerHTML = `
       <div class="poster-box">
@@ -332,12 +273,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <h4 class="card-title" title="${movie.title}">${movie.title}</h4>
         <div class="card-meta">
           <span>${movie.year}</span>
-          <span class="card-btn-hint">Inspect ❄️</span>
+          <span class="card-btn-hint">Inspect</span>
         </div>
       </div>
     `;
 
-    posterObserver.observe(card);
+    FestoCovers.attach(card.querySelector(".official-poster"), movie, "movie");
 
     card.addEventListener("click", () => openCinemaModal(movie, displayCategoryLabel));
     card.addEventListener("keydown", (e) => {
@@ -350,7 +291,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return card;
   }
 
-  async function openCinemaModal(movie, displayCategoryLabel) {
+  function openCinemaModal(movie, displayCategoryLabel) {
     activeMovie = movie;
 
     modalRatingTag.textContent = `★ ${movie.rating ? movie.rating.toFixed(1) : 'N/A'}`;
@@ -389,31 +330,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modalWatchLink.href = `https://www.justwatch.com/us/search?q=${encodeURIComponent(movie.title)}`;
 
-    const wikiData = await fetchWikiPoster(movie.wikiSlug);
-    if (wikiData) {
-      if (wikiData.poster) {
-        modalBackdrop.style.backgroundImage = `url('${wikiData.poster}')`;
-      }
-      if (wikiData.overview) modalOverview.textContent = wikiData.overview;
-      modalWikiLink.href = wikiData.wikiUrl;
-    } else {
-      modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(movie.wikiSlug || movie.title)}`;
-    }
-
     movieModal.classList.add("active");
     movieModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+
+    modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(movie.wikiSlug || movie.title)}`;
+
+    // Open instantly; the poster and synopsis fill in when they arrive.
+    FestoCovers.resolve(movie, "movie", { overview: true }).then(info => {
+      if (!movieModal.classList.contains("active") || modalTitle.textContent !== movie.title) return;
+      if (info.poster) modalBackdrop.style.backgroundImage = `url('${info.poster}')`;
+      modalOverview.textContent = info.overview || "No synopsis on record for this title. The Wikipedia link below may have more.";
+      if (info.wikiUrl) modalWikiLink.href = info.wikiUrl;
+    });
   }
 
   function updateWatchlistButtonState(movieId) {
     const isSaved = isMovieInWatchlist(movieId);
     if (isSaved) {
       btnToggleWatchlist.classList.add("active");
-      watchlistIcon.textContent = "✓";
+      watchlistIcon.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>';
       watchlistText.textContent = "On Your Watchlist";
     } else {
       btnToggleWatchlist.classList.remove("active");
-      watchlistIcon.textContent = "⭐";
+      watchlistIcon.innerHTML = '<i class="fa-solid fa-bookmark" aria-hidden="true"></i>';
       watchlistText.textContent = "Add to Watchlist";
     }
   }
@@ -483,7 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderVault(filtered);
   }
 
-  searchInput.addEventListener("input", handleSearch);
+  searchInput.addEventListener("input", Festo.dom.debounce(handleSearch, 180));
 
   clearSearchBtn.addEventListener("click", () => {
     searchInput.value = "";
@@ -493,9 +433,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Initialize Library
-  const fullDataset = window.christmasData || [];
+  const fullDataset = FestoVault.dedupe(window.christmasData || []);
+  window.christmasData = fullDataset;
+  FestoVault.fillCounts(document, FestoVault.counts(fullDataset));
   if (totalMovieCountEl) {
-    totalMovieCountEl.textContent = `${fullDataset.length}+`;
+    totalMovieCountEl.textContent = fullDataset.length.toLocaleString("en-US");
   }
   updateWatchlistCounter();
 

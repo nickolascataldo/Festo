@@ -40,38 +40,6 @@
   };
 
   // ==========================================================================
-  // 2. IN-MEMORY WIKIPEDIA REST API CACHE
-  // ==========================================================================
-  const wikiCache = new Map();
-
-  async function fetchWikiPoster(wikiSlug) {
-    if (!wikiSlug) return null;
-    if (wikiCache.has(wikiSlug)) return wikiCache.get(wikiSlug);
-
-    const cleanSlug = decodeURIComponent(wikiSlug).trim().replace(/\s+/g, '_');
-    const endpoint = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cleanSlug)}`;
-
-    try {
-      const res = await fetch(endpoint, {
-        headers: { 'Api-User-Agent': 'FestoSpringCinemaVault/9.0 (contact@festoapp.local)' }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        const payload = {
-          poster: data.thumbnail?.source || data.originalimage?.source || null,
-          overview: data.extract || 'No narrative synopsis available in Wikipedia records.',
-          wikiUrl: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(cleanSlug)}`
-        };
-        wikiCache.set(wikiSlug, payload);
-        return payload;
-      }
-    } catch (e) {
-      // Fail silently to maintain UI responsiveness
-    }
-    return null;
-  }
-
-  // ==========================================================================
   // 3. VECTOR SIMILARITY & METADATA HELPERS
   // ==========================================================================
   function computeMovieScore(movie, userProfile) {
@@ -123,7 +91,9 @@
       watchlistText: document.getElementById('watchlistText')
     };
 
-    const fullDataset = window.springData || [];
+    const fullDataset = FestoVault.dedupe(window.springData || []);
+    // Part 5 carries no mood tags; give those films their category as a tag so filters and recommendations include them.
+    fullDataset.forEach(m => { if (!m.tags && m.category) m.tags = { [m.category]: 0.8 }; });
     const movieMap = new Map(fullDataset.map(m => [String(m.id), m]));
     let currentFilter = 'all';
     let activeMovie = null;
@@ -135,25 +105,14 @@
       }
     }
 
-    // High-Performance Parallel Poster Loader
-    const posterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const card = entry.target;
-        const slug = card.dataset.wikiSlug;
+    // Posters: the shared engine shows a title plate at once, then lazily loads the real art.
+    function attachPosters(root) {
+      root.querySelectorAll('.movie-card').forEach(card => {
+        const movie = movieMap.get(card.dataset.id);
         const img = card.querySelector('.official-poster');
-
-        if (slug && img && !img.classList.contains('loaded')) {
-          fetchWikiPoster(slug).then(data => {
-            if (data?.poster) {
-              img.src = data.poster;
-              img.onload = () => img.classList.add('loaded');
-            }
-          });
-        }
-        observer.unobserve(card);
+        if (movie && img) FestoCovers.attach(img, movie, 'movie');
       });
-    }, { rootMargin: '350px 0px', threshold: 0.01 });
+    }
 
     const parseCategoryNumber = label => (label.match(/^(\d+)\./) ? parseInt(label.match(/^(\d+)\./)[1], 10) : 999);
     const cleanCategoryTitle = label => label.replace(/^\d+\.\s*/, '').trim();
@@ -201,7 +160,7 @@
               <h4 class="card-title" title="${movie.title}">${movie.title}</h4>
               <div class="card-meta">
                 <span>${movie.year}</span>
-                <span class="card-btn-hint">Inspect 🌸</span>
+                <span class="card-btn-hint">Inspect</span>
               </div>
             </div>
             <div class="card-tags-row">${topTags}</div>
@@ -212,6 +171,16 @@
 
     function render(dataset) {
       DOM.vault.innerHTML = '';
+
+      if (!dataset.length && currentFilter !== 'recommended' && currentFilter !== 'watchlist') {
+        FestoVault.emptyState(DOM.vault, {
+          title: 'No films match that',
+          body: 'Try a different word, or clear the search and filters to see every film.',
+          ctaLabel: 'Show every film',
+          onCta: () => { DOM.searchInput.value = ''; DOM.filterPills.querySelector('[data-filter="all"]').click(); }
+        });
+        return;
+      }
 
       if (currentFilter === 'recommended') {
         const profile = Store.get(Store.KEYS.AFFINITY, {});
@@ -231,7 +200,7 @@
           `;
           return;
         }
-        renderRail('🎯 Personalized For You (Live Vector Match)', scored);
+        renderRail('Personalized For You (Live Vector Match)', scored);
         return;
       }
 
@@ -243,12 +212,12 @@
           DOM.vault.innerHTML = `
             <div style="text-align:center; padding:5rem 0;">
               <h3 style="font-family:var(--font-heading); font-size:2rem; color:var(--wild-rose); margin-bottom:0.5rem;">Your Watchlist is Empty</h3>
-              <p style="color:var(--text-muted); font-weight:600;">Click "Inspect 🌸" on any title and hit "Add to Watchlist".</p>
+              <p style="color:var(--text-muted); font-weight:600;">Click "Inspect" on any title and hit "Add to Watchlist".</p>
             </div>
           `;
           return;
         }
-        renderRail('⭐ My Saved Spring Watchlist', watchlistMovies);
+        renderRail('My Saved Spring Watchlist', watchlistMovies);
         return;
       }
 
@@ -267,7 +236,7 @@
         DOM.vault.appendChild(section);
       });
 
-      DOM.vault.querySelectorAll('.movie-card').forEach(card => posterObserver.observe(card));
+      attachPosters(DOM.vault);
     }
 
     function renderRail(title, movies) {
@@ -281,13 +250,13 @@
         <div class="movie-slider">${movies.map(buildCardHTML).join('')}</div>
       `;
       DOM.vault.appendChild(section);
-      section.querySelectorAll('.movie-card').forEach(card => posterObserver.observe(card));
+      attachPosters(section);
     }
 
     // ==========================================================================
     // 5. CONSERVATORY MODAL ACTIONS
     // ==========================================================================
-    async function openModal(movie) {
+    function openModal(movie) {
       activeMovie = movie;
       Store.recordAffinity(movie.tags, 1);
 
@@ -320,14 +289,13 @@
       DOM.modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
 
-      const wiki = await fetchWikiPoster(movie.wikiSlug);
-      if (wiki) {
-        if (wiki.poster) DOM.modalBackdrop.style.backgroundImage = `url('${wiki.poster}')`;
-        if (wiki.overview) DOM.modalOverview.textContent = wiki.overview;
-        DOM.modalWikiLink.href = wiki.wikiUrl;
-      } else {
-        DOM.modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(movie.wikiSlug || movie.title)}`;
-      }
+      DOM.modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(movie.wikiSlug || movie.title)}`;
+      FestoCovers.resolve(movie, 'movie', { overview: true }).then(info => {
+        if (activeMovie !== movie) return;
+        if (info.poster) DOM.modalBackdrop.style.backgroundImage = `url('${info.poster}')`;
+        DOM.modalOverview.textContent = info.overview || 'No synopsis on record for this title. The Wikipedia link below may have more.';
+        if (info.wikiUrl) DOM.modalWikiLink.href = info.wikiUrl;
+      });
     }
 
     function closeModal() {
@@ -402,19 +370,24 @@
       if (currentFilter === 'watchlist') render(fullDataset);
     });
 
+    // Films in the active genre pill (or everything).
+    function scope() {
+      return currentFilter.startsWith('tag:') ? FestoVault.filterByTag(fullDataset, currentFilter.slice(4)) : fullDataset;
+    }
+
     function handleSearch() {
       const q = DOM.searchInput.value.toLowerCase().trim();
       DOM.clearSearch.style.display = q ? 'block' : 'none';
 
       if (!q) { 
-        render(fullDataset); 
+        render(scope()); 
         return; 
       }
 
       const isTag = q.startsWith('#');
       const cleanTag = q.replace(/^#/, '');
 
-      const filtered = fullDataset.filter(item => {
+      const filtered = scope().filter(item => {
         const titleMatch = item.title?.toLowerCase().includes(q);
         const castMatch = item.cast?.some(c => c.toLowerCase().includes(q));
         const tagMatch = item.tags && Object.keys(item.tags).some(t => t.toLowerCase().includes(cleanTag));
@@ -424,12 +397,12 @@
       render(filtered);
     }
 
-    DOM.searchInput.addEventListener('input', handleSearch);
+    DOM.searchInput.addEventListener('input', Festo.dom.debounce(handleSearch, 180));
 
     DOM.clearSearch.addEventListener('click', () => {
       DOM.searchInput.value = '';
       DOM.clearSearch.style.display = 'none';
-      render(fullDataset);
+      handleSearch();
       DOM.searchInput.focus();
     });
 
@@ -454,7 +427,20 @@
     // ==========================================================================
     // 7. INITIAL EXECUTION
     // ==========================================================================
-    if (DOM.totalMovieCount) DOM.totalMovieCount.textContent = `${fullDataset.length}+`;
+    FestoVault.fillCounts(document, FestoVault.counts(fullDataset));
+    if (DOM.totalMovieCount) DOM.totalMovieCount.textContent = fullDataset.length.toLocaleString('en-US');
+    DOM.searchInput.placeholder = `Search ${fullDataset.length} films, stars, #tags (e.g. #road-trip)...`;
+
+    // Genre pills come from the data, so none of them can come back empty.
+    FestoVault.tagPills(fullDataset, { max: 6, minCount: 8, prefer: ['spring-break', 'senior-prom', 'opening-day', 'spring-wedding', 'romantic-comedy', 'easter-sunday'] }).forEach(p => {
+      const btn = document.createElement('button');
+      btn.className = 'pill-btn';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', 'false');
+      btn.dataset.filter = `tag:${p.key}`;
+      btn.textContent = `${p.label} (${p.count})`;
+      DOM.filterPills.appendChild(btn);
+    });
     refreshWatchlistCounter();
     initJumpSelect(categorizeData(fullDataset));
     render(fullDataset);

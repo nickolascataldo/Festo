@@ -6020,7 +6020,7 @@ const halloweenData = [
   // 19. Sitcom Halloween Costumes, Heists & Office Parties (30)
   // =========================================================================
   {
-    id: 541,
+    id: 601,
     title: "Brooklyn Nine-Nine – 'Halloween' (Season 1 Heist)",
     year: "2013",
     category: "sitcom-halloween",

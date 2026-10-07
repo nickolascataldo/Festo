@@ -864,3 +864,15 @@ html, body, .holiday-scroll, .movie-slider, .modal-card {
     font-size: 1.6rem;
   }
 }
+
+/* ---------- Phones: keep everything inside the screen ---------- */
+@media (max-width: 600px) {
+  .navbar { flex-wrap: wrap; gap: 10px; padding: 0.7rem 1rem; }
+  .nav-left { flex-wrap: wrap; gap: 8px; min-width: 0; }
+  .nav-right, .search-wrapper { width: 100%; max-width: 100%; }
+  .brand-title { display: none; }
+  .shelf-jump { flex-wrap: wrap; }
+  select, .select-styled-container { min-width: 0; max-width: 100%; }
+  .shelf-jump select, .select-styled-container select, #categoryJumpSelect { min-width: 0; width: 100%; }
+  .select-styled-container { width: 100%; }
+}

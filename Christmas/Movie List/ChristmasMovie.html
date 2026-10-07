@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-season="christmas">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Mountains+of+Christmas:wght@700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
   <link rel="stylesheet" href="ChristmasMovie.css">
 </head>
 <body class="holiday-scroll">
@@ -25,19 +28,20 @@
   <header class="navbar">
     <div class="nav-left">
       <a href="../Christmas Landing/ChristmasLanding.html" class="btn-return" title="Return to Christmas Portal">
-        <span class="icon">🎄</span>
+        <span class="icon"><i class="fa-solid fa-tree" aria-hidden="true"></i></span>
         <span class="btn-text">Christmas Portal</span>
       </a>
+      <a href="../../index.html" class="btn-return" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="btn-text">Hub</span></a>
       <h1 class="brand-title">FESTO</h1>
     </div>
 
     <div class="nav-right">
       <div class="search-wrapper">
-        <span class="search-icon">❄️</span>
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search 1,000+ blockbusters, animations, stars..." 
+          placeholder="Search blockbusters, animations, stars..." 
           autocomplete="off"
         >
         <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
@@ -49,14 +53,14 @@
   <section class="hero-banner">
     <div class="hero-ribbon"></div>
     <div class="hero-content">
-      <span class="holiday-badge">⭐ Curated Holiday Experience</span>
+      <span class="holiday-badge">Curated Holiday Experience</span>
       <h2 class="hero-heading">THE CHRISTMAS VAULT</h2>
       <p class="hero-subtext">
-        Explore 50 curated holiday chambers. Discover blockbusters, nostalgic 80s/90s family favorites, winter animations, and build your personalized Holiday Watchlist.
+        Explore <span data-fx-count="categories">50</span> curated holiday chambers. Discover blockbusters, nostalgic 80s/90s family favorites, winter animations, and build your personalized Holiday Watchlist.
       </p>
       <div class="hero-stats">
-        <div class="stat-box"><strong>50</strong><span>Chambers</span></div>
-        <div class="stat-box"><strong id="totalMovieCount">1,000+</strong><span>Holiday Titles</span></div>
+        <div class="stat-box"><strong data-fx-count="categories">50</strong><span>Chambers</span></div>
+        <div class="stat-box"><strong id="totalMovieCount" data-fx-count="total">1,020</strong><span>Holiday Titles</span></div>
         <div class="stat-box"><strong id="watchlistCount">0</strong><span>On Watchlist</span></div>
       </div>
     </div>
@@ -64,15 +68,15 @@
     <!-- Quick Category Filter & Chamber Jump Selector -->
     <div class="filter-controls-wrapper">
       <div class="filter-pills-row" id="filterPills">
-        <button class="pill-btn active" data-filter="all">🌟 All Chambers</button>
-        <button class="pill-btn" data-filter="watchlist">⭐ My Watchlist</button>
-        <button class="pill-btn" data-filter="blockbuster">⭐ Modern Blockbusters</button>
-        <button class="pill-btn" data-filter="animation">🎨 Animated Classics</button>
-        <button class="pill-btn" data-filter="roadtrip">🚗 Holiday Road Trips</button>
-        <button class="pill-btn" data-filter="family">🎄 80s/90s Family Nostalgia</button>
-        <button class="pill-btn" data-filter="action">💥 Action & Sieges</button>
-        <button class="pill-btn" data-filter="classics">🎞️ Vintage Hollywood</button>
-        <button class="pill-btn" data-filter="romance">💖 Holiday Romance</button>
+        <button class="pill-btn active" data-filter="all">All Chambers</button>
+        <button class="pill-btn" data-filter="watchlist">My Watchlist</button>
+        <button class="pill-btn" data-filter="blockbuster">Modern Blockbusters</button>
+        <button class="pill-btn" data-filter="animation">Animated Classics</button>
+        <button class="pill-btn" data-filter="roadtrip">Holiday Road Trips</button>
+        <button class="pill-btn" data-filter="family">80s/90s Family Nostalgia</button>
+        <button class="pill-btn" data-filter="action">Action & Sieges</button>
+        <button class="pill-btn" data-filter="classics">Vintage Hollywood</button>
+        <button class="pill-btn" data-filter="romance">Holiday Romance</button>
       </div>
 
       <div class="jump-select-wrapper">
@@ -108,11 +112,11 @@
           <!-- In-App Engagement & Stream Action Hub -->
           <div class="modal-hero-actions">
             <button id="btnToggleWatchlist" class="btn-watchlist-hero">
-              <span id="watchlistIcon">⭐</span>
+              <span id="watchlistIcon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
               <span id="watchlistText">Add to Watchlist</span>
             </button>
             <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-stream-hero">
-              <span class="stream-icon">🎁</span>
+              <span class="stream-icon"><i class="fa-solid fa-tv" aria-hidden="true"></i></span>
               <span>Where to Stream / Rent ↗</span>
             </a>
           </div>
@@ -135,8 +139,7 @@
 
         <!-- Secondary Meta / Wiki Link -->
         <div class="modal-footer-actions">
-          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
-            📖 Read Full History on Wikipedia ↗
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link"> Read Full History on Wikipedia ↗
           </a>
         </div>
       </div>
@@ -150,6 +153,10 @@
   </footer>
 
   <!-- Modular Christmas Data Manifests (Parts 1–10) -->
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
+
   <script src="Movie Data/ChristmasData_Part1.js"></script>
   <script src="Movie Data/ChristmasData_Part2.js"></script>
   <script src="Movie Data/ChristmasData_Part3.js"></script>

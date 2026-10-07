@@ -1,23 +1,23 @@
 /* ==========================================================================
-   FESTO SUMMER VAULT — RETRO 80s/90s MIAMI SYNTHWAVE THEME
+   FESTO SUMMER VAULT — SUN & SURF THEME (matches the Summer landing palette)
    Pure Standard CSS (Zero -webkit- Vendor Rules)
    ========================================================================== */
 :root {
-  --bg-deep: #080314;
-  --bg-card: #130924;
-  --bg-surface: #1b0e33;
-  --neon-pink: #ff007f;
-  --neon-cyan: #00f0ff;
-  --neon-purple: #9d00ff;
-  --neon-yellow: #ffe600;
-  --sunset-orange: #ff5e00;
+  --bg-deep: #07131e;
+  --bg-card: #0f2438;
+  --bg-surface: #16344f;
+  --neon-pink: #ffb703;
+  --neon-cyan: #00b4d8;
+  --neon-purple: #0077b6;
+  --neon-yellow: #ffd166;
+  --sunset-orange: #fb8500;
   --text-main: #ffffff;
-  --text-muted: #a395be;
-  --glow-pink: 0 0 15px rgba(255, 0, 127, 0.5);
-  --glow-cyan: 0 0 15px rgba(0, 240, 255, 0.5);
-  --font-retro: 'Orbitron', sans-serif;
-  --font-marker: 'Permanent Marker', cursive;
-  --font-body: 'Rajdhani', sans-serif;
+  --text-muted: #a9bccb;
+  --glow-pink: 0 0 15px rgba(255, 183, 3, 0.5);
+  --glow-cyan: 0 0 15px rgba(0, 180, 216, 0.5);
+  --font-retro: 'Cinzel', Georgia, serif;
+  --font-marker: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
   --transition-smooth: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
@@ -43,7 +43,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   scrollbar-color: var(--neon-pink) var(--bg-deep);
 }
 
-/* Retro Glowing Synthwave Sun */
+/* Warm summer sun glow */
 .synthwave-sun {
   position: fixed;
   top: 15%;
@@ -51,21 +51,9 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   transform: translateX(-50%);
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, #ffe600 0%, #ff007f 60%, transparent 80%);
+  background: radial-gradient(circle, #ffd166 0%, #fb8500 55%, transparent 80%);
   filter: blur(75px);
   opacity: 0.35;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* 80s Perspective Laser Grid */
-.synthwave-grid {
-  position: fixed;
-  inset: 0;
-  background: 
-    linear-gradient(rgba(255, 0, 127, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
   pointer-events: none;
   z-index: 1;
 }
@@ -81,10 +69,10 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 3rem;
-  background: rgba(8, 3, 20, 0.94);
+  background: rgba(7, 19, 30, 0.94);
   backdrop-filter: blur(16px);
   border-bottom: 2px solid var(--neon-pink);
-  box-shadow: 0 4px 25px rgba(255, 0, 127, 0.3);
+  box-shadow: 0 4px 25px rgba(255, 183, 3, 0.3);
 }
 
 .nav-left {
@@ -98,7 +86,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 1.2rem;
-  background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(0, 240, 255, 0.2));
+  background: linear-gradient(135deg, rgba(255, 183, 3, 0.2), rgba(0, 180, 216, 0.2));
   border: 1.5px solid var(--neon-cyan);
   border-radius: 4px;
   color: #fff;
@@ -129,7 +117,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   color: var(--neon-cyan);
   background: linear-gradient(180deg, #ffffff 0%, var(--neon-cyan) 60%, var(--neon-pink) 100%);
   background-clip: text;
-  filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.7));
+  filter: drop-shadow(0 0 10px rgba(0, 180, 216, 0.7));
   user-select: none;
 }
 
@@ -150,8 +138,8 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 #searchInput {
   width: 350px;
   padding: 0.75rem 2.8rem 0.75rem 2.8rem;
-  background: rgba(19, 9, 36, 0.9);
-  border: 1.5px solid rgba(0, 240, 255, 0.4);
+  background: rgba(15, 36, 56, 0.9);
+  border: 1.5px solid rgba(0, 180, 216, 0.4);
   border-radius: 4px;
   color: #fff;
   font-family: var(--font-body);
@@ -164,7 +152,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   width: 420px;
   border-color: var(--neon-pink);
   box-shadow: var(--glow-pink);
-  background: #1b0e33;
+  background: #16344f;
 }
 
 .btn-clear {
@@ -185,7 +173,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   position: relative;
   padding: 4.5rem 3rem 2.5rem;
   z-index: 2;
-  border-bottom: 1px solid rgba(255, 0, 127, 0.2);
+  border-bottom: 1px solid rgba(255, 183, 3, 0.2);
 }
 
 .hero-content {
@@ -196,7 +184,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 .summer-badge {
   display: inline-block;
   padding: 0.4rem 1rem;
-  background: rgba(255, 0, 127, 0.15);
+  background: rgba(255, 183, 3, 0.15);
   border: 1px solid var(--neon-pink);
   border-radius: 4px;
   font-family: var(--font-retro);
@@ -216,7 +204,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   color: #fff;
   background: linear-gradient(135deg, #ffffff 0%, var(--neon-cyan) 50%, var(--neon-pink) 100%);
   background-clip: text;
-  text-shadow: 0 0 25px rgba(255, 0, 127, 0.6);
+  text-shadow: 0 0 25px rgba(255, 183, 3, 0.6);
 }
 
 .hero-subtext {
@@ -296,7 +284,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   min-width: 195px;
   max-width: 195px;
   background: var(--bg-card);
-  border: 1.5px solid rgba(0, 240, 255, 0.2);
+  border: 1.5px solid rgba(0, 180, 216, 0.2);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -318,7 +306,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   width: 100%;
   height: 280px;
   position: relative;
-  background: linear-gradient(110deg, #130924 8%, #26114a 18%, #130924 33%);
+  background: linear-gradient(110deg, #0f2438 8%, #1d4260 18%, #0f2438 33%);
   background-size: 200% 100%;
   animation: pulseShimmer 1.8s infinite linear;
   overflow: hidden;
@@ -350,7 +338,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   position: absolute;
   top: 0.6rem;
   right: 0.6rem;
-  background: rgba(8, 3, 20, 0.9);
+  background: rgba(7, 19, 30, 0.9);
   border: 1px solid var(--neon-yellow);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
@@ -358,7 +346,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--neon-yellow);
-  box-shadow: 0 0 10px rgba(255, 230, 0, 0.4);
+  box-shadow: 0 0 10px rgba(255, 209, 102, 0.4);
 }
 
 .card-details {
@@ -412,7 +400,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(5, 1, 10, 0.92);
+  background: rgba(4, 12, 20, 0.92);
   backdrop-filter: blur(14px);
   z-index: 1000;
   display: none;
@@ -440,7 +428,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 0 60px rgba(255, 0, 127, 0.4);
+  box-shadow: 0 0 60px rgba(255, 183, 3, 0.4);
   padding: 2.2rem;
 }
 
@@ -484,8 +472,8 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   height: 380px;
   border-radius: 6px;
   overflow: hidden;
-  background: #130924;
-  border: 1.5px solid rgba(0, 240, 255, 0.3);
+  background: #0f2438;
+  border: 1.5px solid rgba(0, 180, 216, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
@@ -504,7 +492,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 .modal-rating-badge {
   margin-top: 0.8rem;
   text-align: center;
-  background: rgba(255, 230, 0, 0.15);
+  background: rgba(255, 209, 102, 0.15);
   border: 1px solid var(--neon-yellow);
   color: var(--neon-yellow);
   padding: 0.45rem;
@@ -526,7 +514,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 }
 
 .modal-cat-tag {
-  background: rgba(255, 0, 127, 0.2);
+  background: rgba(255, 183, 3, 0.2);
   border: 1px solid var(--neon-pink);
   color: var(--neon-pink);
   padding: 0.25rem 0.75rem;
@@ -536,7 +524,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 }
 
 .modal-year-tag {
-  background: rgba(0, 240, 255, 0.15);
+  background: rgba(0, 180, 216, 0.15);
   border: 1px solid var(--neon-cyan);
   color: var(--neon-cyan);
   padding: 0.25rem 0.6rem;
@@ -576,7 +564,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   align-items: center;
   padding: 0.25rem 0.7rem;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(0, 240, 255, 0.3);
+  border: 1px solid rgba(0, 180, 216, 0.3);
   border-radius: 4px;
   font-size: 0.88rem;
   color: #fff;
@@ -585,7 +573,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 }
 
 .cast-badge:hover {
-  background: rgba(255, 0, 127, 0.3);
+  background: rgba(255, 183, 3, 0.3);
   border-color: var(--neon-pink);
   transform: translateY(-2px);
   box-shadow: var(--glow-pink);
@@ -680,7 +668,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   display: inline-flex;
   align-items: center;
   padding: 0.65rem 1.2rem;
-  background: #130924;
+  background: #0f2438;
   color: #fff;
   text-decoration: none;
   font-family: var(--font-retro);
@@ -692,7 +680,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 }
 
 .btn-wiki-link:hover {
-  background: #1f0e38;
+  background: #13304a;
   border-color: var(--neon-pink);
   color: var(--neon-pink);
 }
@@ -705,7 +693,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   z-index: 2;
   text-align: center;
   padding: 3.5rem 1.5rem;
-  background: #040108;
+  background: #030a12;
   border-top: 2px solid var(--neon-pink);
 }
 
@@ -719,7 +707,7 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
 
 .footer-wiki {
   font-size: 0.85rem;
-  color: #6a5d85;
+  color: #6f8499;
 }
 
 /* ==========================================================================
@@ -759,4 +747,16 @@ html, body, .summer-scroll, .movie-slider, .modal-card {
   .main-vault {
     padding: 1.5rem 1rem 4rem;
   }
+}
+
+/* ---------- Phones: keep everything inside the screen ---------- */
+@media (max-width: 600px) {
+  .navbar { flex-wrap: wrap; gap: 10px; padding: 0.7rem 1rem; }
+  .nav-left { flex-wrap: wrap; gap: 8px; min-width: 0; }
+  .nav-right, .search-wrapper { width: 100%; max-width: 100%; }
+  .brand-title { display: none; }
+  .shelf-jump { flex-wrap: wrap; }
+  select, .select-styled-container { min-width: 0; max-width: 100%; }
+  .shelf-jump select, .select-styled-container select, #categoryJumpSelect { min-width: 0; width: 100%; }
+  .select-styled-container { width: 100%; }
 }

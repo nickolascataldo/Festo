@@ -65,8 +65,14 @@ body.meadow-body {
 .meadow-bg-fixed {
   position: fixed;
   inset: 0;
-  /* Verified CC0/Public-Domain high-res rainbow flower plateau */
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Fioritura_a_Castelluccio_di_Norcia_-_panoramio.jpg/2560px-Fioritura_a_Castelluccio_di_Norcia_-_panoramio.jpg');
+  /* Pure-CSS wildflower meadow: no remote image to break. */
+  background-image:
+    radial-gradient(circle at 18% 82%, rgba(255, 143, 163, 0.60) 0 5%, transparent 5.6%),
+    radial-gradient(circle at 72% 78%, rgba(255, 214, 102, 0.55) 0 4.5%, transparent 5.2%),
+    radial-gradient(circle at 46% 92%, rgba(190, 120, 255, 0.45) 0 4.5%, transparent 5.2%),
+    radial-gradient(circle at 88% 90%, rgba(255, 255, 255, 0.55) 0 4%, transparent 4.8%),
+    radial-gradient(ellipse at 50% 100%, rgba(95, 184, 120, 0.9), transparent 62%),
+    linear-gradient(180deg, #bfe8ff 0%, #e3f6df 48%, #a6dfa4 78%, #66bb7f 100%);
   background-size: cover;
   background-position: center 65%;
   background-repeat: no-repeat;
@@ -902,4 +908,34 @@ body.meadow-body {
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+/* ==========================================================================
+   RESPONSIVE: tablets and phones
+   ========================================================================== */
+@media (max-width: 900px) {
+  .navbar { flex-wrap: wrap; gap: 0.7rem; padding: 0.8rem 1rem; }
+  .nav-left { gap: 0.6rem; flex-wrap: wrap; width: 100%; }
+  .nav-right { width: 100%; }
+  .search-wrapper { width: 100%; }
+  .search-wrapper input { width: 100%; min-width: 0; }
+  .hero-banner { padding: 1.4rem 1rem 1rem; }
+  .hero-stats { gap: 0.7rem; flex-wrap: wrap; }
+  .filter-controls-wrapper { margin-top: 1.2rem; }
+  .main-vault { padding: 1rem 0.5rem 5rem; gap: 2.4rem; }
+  .category-title { font-size: 1.15rem; padding: 0.4rem 1rem; max-width: 100%; }
+  .movie-slider { gap: 1rem; scroll-snap-type: x proximity; }
+  .movie-card { min-width: 168px; max-width: 168px; scroll-snap-align: start; }
+}
+
+/* ---------- Phones: keep everything inside the screen ---------- */
+@media (max-width: 600px) {
+  .navbar { flex-wrap: wrap; gap: 10px; padding: 0.7rem 1rem; }
+  .nav-left { flex-wrap: wrap; gap: 8px; min-width: 0; }
+  .nav-right, .search-wrapper { width: 100%; max-width: 100%; }
+  .brand-title { display: none; }
+  .shelf-jump { flex-wrap: wrap; }
+  select, .select-styled-container { min-width: 0; max-width: 100%; }
+  .shelf-jump select, .select-styled-container select, #categoryJumpSelect { min-width: 0; width: 100%; }
+  .select-styled-container { width: 100%; }
 }

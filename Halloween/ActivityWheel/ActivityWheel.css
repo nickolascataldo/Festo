@@ -1,0 +1,13 @@
+/* Halloween wheel: a pale moon glow behind the wheel and a candle-lit result card. */
+.fxw-host { position: relative; }
+.fxw-host::before {
+  content: '';
+  position: absolute;
+  inset: 4% 4%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(102, 252, 241, 0.16), rgba(255, 111, 0, 0.10) 55%, transparent 72%);
+  filter: blur(22px);
+  pointer-events: none;
+}
+.fxw-result { border-color: rgba(102, 252, 241, 0.35); }
+.fxw-result .fx-eyebrow { color: var(--fx-accent-2); }

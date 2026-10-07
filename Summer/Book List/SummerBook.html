@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-season="summer">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
   <link rel="stylesheet" href="SummerBook.css">
 </head>
 <body class="bookshelf-body summer-theme">
@@ -24,19 +27,20 @@
   <header class="library-header">
     <div class="header-left">
       <a href="../Summer Landing/SummerLanding.html" class="btn-portal" title="Return to Summer Portal">
-        <span class="icon">☀️</span>
+        <span class="icon"><i class="fa-solid fa-sun" aria-hidden="true"></i></span>
         <span class="text">Summer Portal</span>
       </a>
+      <a href="../../index.html" class="btn-portal" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="text">Hub</span></a>
       <h1 class="brand-title">FESTO SUMMER</h1>
     </div>
 
     <div class="header-right">
       <div class="search-box">
-        <span class="search-icon">🌊</span>
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search 1,000+ beach reads, authors, #tags (e.g. #beach-romance)..." 
+          placeholder="Search beach reads, authors, #tags (e.g. #beach-romance)..." 
           autocomplete="off"
         >
         <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
@@ -46,19 +50,19 @@
 
   <section class="sanctuary-hero">
     <div class="hero-plaque">
-      <span class="plaque-badge">🌴 50-Shelf Sun-Bleached Driftwood Vault</span>
+      <span class="plaque-badge"><span data-fx-count="categories">5</span>-Shelf Sun-Bleached Driftwood Vault</span>
       <h2 class="hero-title">THE SUMMER BOOKSHELF</h2>
       <p class="hero-desc">
-        A sun-drenched sanctuary of 1,000 coastal escapes, poolside thrillers, and warm solstice epics resting upon sun-bleached teak and driftwood shelves. Inspect bindings, browse prices, and build your seasonal reading bag.
+        A sun-drenched sanctuary of <span data-fx-count="total">500</span> coastal escapes, poolside thrillers, and warm solstice epics resting upon sun-bleached teak and driftwood shelves. Inspect bindings, browse prices, and build your seasonal reading bag.
       </p>
 
       <div class="hero-counters">
         <div class="counter-box">
-          <span class="counter-num">50</span>
+          <span class="counter-num" data-fx-count="categories">5</span>
           <span class="counter-label">Shelves</span>
         </div>
         <div class="counter-box">
-          <span class="counter-num" id="totalBookCount">1,000+</span>
+          <span class="counter-num" id="totalBookCount" data-fx-count="total">500</span>
           <span class="counter-label">Beach Volumes</span>
         </div>
         <div class="counter-box">
@@ -70,20 +74,15 @@
 
     <div class="shelf-controls">
       <div class="shelf-pills" id="filterPills">
-        <button class="pill-btn active" data-filter="all">☀️ All Shelves</button>
-        <button class="pill-btn" data-filter="recommended">🎯 Curated For You</button>
-        <button class="pill-btn" data-filter="readinglist">🏖️ My Beach Bag</button>
-        <button class="pill-btn" data-filter="beach-read">🍹 Beach Romance</button>
-        <button class="pill-btn" data-filter="thriller">🌊 Coastal Thriller</button>
-        <button class="pill-btn" data-filter="travel">✈️ Summer Travels</button>
-        <button class="pill-btn" data-filter="solstice">🌞 Solstice Fantasy</button>
-        <button class="pill-btn" data-filter="cozy-summer">🍉 Warm & Nostalgic</button>
+        <button class="pill-btn active" data-filter="all">All Shelves</button>
+        <button class="pill-btn" data-filter="recommended">Curated For You</button>
+        <button class="pill-btn" data-filter="readinglist">My Beach Bag</button>
       </div>
 
       <div class="shelf-jump">
         <label for="categoryJumpSelect">Direct Shelf Jump:</label>
         <select id="categoryJumpSelect">
-          <option value="">-- Jump to Shelf (1 to 50) --</option>
+          <option value="">-- Jump to a shelf --</option>
         </select>
       </div>
     </div>
@@ -111,11 +110,11 @@
 
           <div class="modal-actions-row">
             <button id="btnToggleLike" class="btn-action btn-like">
-              <span id="likeIcon">💛</span>
+              <span id="likeIcon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
               <span id="likeText">Loved This Book</span>
             </button>
             <button id="btnToggleReadingList" class="btn-action btn-readlist">
-              <span id="listIcon">🏖️</span>
+              <span id="listIcon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
               <span id="listText">Add to Beach Bag</span>
             </button>
             <a id="modalGoodreadsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-link">
@@ -142,29 +141,28 @@
         </div>
 
         <div class="modal-footer-row">
-          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki">
-            📖 Read Full History on Wikipedia ↗
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki"> Read Full History on Wikipedia ↗
           </a>
+          <div id="modalBuyLinks" class="buy-links"></div>
         </div>
       </div>
     </div>
   </div>
 
   <footer class="library-footer">
-    <p class="footer-title">FESTO SUMMER LITERARY VAULT // 50-SHELF COASTAL SANCTUARY &copy; 2026</p>
+    <p class="footer-title">FESTO SUMMER LITERARY VAULT // COASTAL SANCTUARY &copy; 2026</p>
     <p class="footer-sub">Book jacket artwork and metadata retrieved via Open Library and Wikipedia under Creative Commons licensing (CC BY-SA).</p>
   </footer>
+
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
 
   <script src="Book Data/SummerBook_Data1.js"></script>
   <script src="Book Data/SummerBook_Data2.js"></script>
   <script src="Book Data/SummerBook_Data3.js"></script>
   <script src="Book Data/SummerBook_Data4.js"></script>
   <script src="Book Data/SummerBook_Data5.js"></script>
-  <script src="Book Data/SummerBook_Data6.js"></script>
-  <script src="Book Data/SummerBook_Data7.js"></script>
-  <script src="Book Data/SummerBook_Data8.js"></script>
-  <script src="Book Data/SummerBook_Data9.js"></script>
-  <script src="Book Data/SummerBook_Data10.js"></script>
 
   <script src="SummerBook.js"></script>
 </body>

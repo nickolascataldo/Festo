@@ -1,0 +1,156 @@
+/* ==========================================================================
+   SPRING HAVEN: a botanical journal. Cream paper, soft green line work, rose accents, Cormorant italics,
+   stationery-style double-ruled cards. Gentle and airy: no hard shadows, no glow.
+   ========================================================================== */
+[data-season="spring"] {
+  --fx-bg: #f3ecdc;
+  --fx-surface: rgba(255, 253, 247, 0.92);
+  --fx-surface-solid: #fffdf7;
+  --fx-surface-2: #f5efdf;
+  --fx-line: rgba(88, 128, 86, 0.5);
+  --fx-line-soft: rgba(88, 128, 86, 0.18);
+  --fx-text: #33402f;
+  --fx-muted: #6b7a63;
+  --fx-accent: #d8506f;
+  --fx-accent-2: #4f8a4c;
+  --fx-accent-3: #8d7bc9;
+  --fx-on-accent: #ffffff;
+  --fx-glow: 216, 80, 111;
+  --fx-font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+
+  --fx-frame-w: 1020px;
+  --fx-radius: 22px;
+  --fx-card-bg: #fffdf7;
+  --fx-card-border: 1.5px solid rgba(88, 128, 86, 0.42);
+  --fx-card-shadow: 0 10px 26px rgba(88, 128, 86, 0.15), inset 0 0 0 5px #fffdf7, inset 0 0 0 6px rgba(88, 128, 86, 0.2);
+  --fx-btn-bg: linear-gradient(180deg, #ea7792, #d04b6b);
+  --fx-btn-color: #ffffff;
+  --fx-btn-radius: 999px;
+  --fx-btn-shadow: 0 7px 18px rgba(208, 75, 107, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  --fx-btn-font: 700 0.9rem 'Plus Jakarta Sans', sans-serif;
+  --fx-btn-track: 0.01em;
+  --fx-title-font: italic 700 2.2rem 'Cormorant Garamond', Georgia, serif;
+  --fx-frame-bg: rgba(255, 251, 240, 0.5);
+  --fx-frame-line: rgba(255, 255, 255, 0.85);
+  --fx-frame-shadow: 0 30px 80px rgba(88, 128, 86, 0.22);
+  --fx-frame-radius: 44px;
+  --fx-appbar-bg: linear-gradient(180deg, rgba(255, 251, 240, 0.9), rgba(255, 251, 240, 0.3) 80%, transparent);
+  --fx-tabs-bg: #fffaf0;
+  --fx-pin-bg: #ffffff;
+}
+
+/* ---------- Scene ---------- */
+[data-season="spring"] .sc-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+[data-season="spring"] .sc-foreground { position: absolute; inset: 0; }
+[data-season="spring"] .fg { position: absolute; bottom: -1%; display: flex; align-items: flex-end; }
+[data-season="spring"] .fg-l { left: -1%; }
+[data-season="spring"] .fg-r { right: 1%; }
+[data-season="spring"] .art-tree { filter: drop-shadow(0 10px 14px rgba(88, 128, 86, 0.22)); }
+[data-season="spring"] .art-tree .canopy { transform-origin: 50% 60%; animation: sp-sway 8s ease-in-out infinite alternate; transform-box: fill-box; }
+@keyframes sp-sway { from { transform: rotate(-1.2deg); } to { transform: rotate(1.4deg); } }
+[data-season="spring"] .fg-flowers { display: flex; align-items: flex-end; gap: 6px; margin-left: -48px; margin-bottom: 10px; }
+[data-season="spring"] .fg-tulips { display: flex; align-items: flex-end; gap: 4px; }
+[data-season="spring"] .art-tulip { transform-origin: 50% 100%; animation: sp-nod 5s ease-in-out infinite alternate; }
+[data-season="spring"] .art-tulip:nth-child(2n) { animation-duration: 6.4s; animation-delay: -2s; }
+[data-season="spring"] .art-tulip:nth-child(3n) { animation-duration: 7.2s; animation-delay: -4s; }
+@keyframes sp-nod { from { rotate: -2.4deg; } to { rotate: 2.4deg; } }
+[data-season="spring"] .sc-bflies { position: absolute; inset: 0; }
+[data-season="spring"] .sc-bflies svg { position: absolute; left: 0; top: 0; animation: sp-flutter 26s ease-in-out infinite; animation-delay: calc(var(--k, 0) * -11s); }
+[data-season="spring"] .art-bfly .wing { transform-origin: 50% 50%; transform-box: fill-box; animation: sp-flap 0.5s ease-in-out infinite alternate; }
+[data-season="spring"] .art-bfly .wl { transform-origin: 100% 50%; }
+[data-season="spring"] .art-bfly .wr { transform-origin: 0% 50%; animation-direction: alternate-reverse; }
+@keyframes sp-flap { from { transform: scaleX(1); } to { transform: scaleX(0.35); } }
+@keyframes sp-flutter {
+  0% { translate: 8vw 62vh; rotate: 8deg; }
+  20% { translate: 30vw 40vh; rotate: -14deg; }
+  45% { translate: 58vw 56vh; rotate: 10deg; }
+  70% { translate: 78vw 34vh; rotate: -10deg; }
+  100% { translate: 8vw 62vh; rotate: 8deg; }
+}
+[data-season="spring"] .sc-petals { position: absolute; inset: 0; }
+[data-season="spring"] .pt { position: absolute; top: -20px; width: var(--s); height: calc(var(--s) * 0.7); border-radius: 150% 0 150% 0; background: linear-gradient(135deg, #ffd9e3, #f4a9bf); opacity: 0.9; animation: sp-fall var(--dur) linear infinite, sp-swing var(--sw) ease-in-out infinite alternate; }
+@keyframes sp-fall { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(112vh) rotate(540deg); } }
+@keyframes sp-swing { from { translate: calc(var(--dx) * -0.4) 0; } to { translate: calc(var(--dx) * 0.6) 0; } }
+[data-season="spring"] .sc-paper { position: absolute; inset: 0; opacity: 0.07; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); mix-blend-mode: multiply; }
+@media (max-width: 760px) { [data-season="spring"] .fg { transform: scale(0.6); transform-origin: bottom center; } [data-season="spring"] .fg-l { transform-origin: bottom left; } [data-season="spring"] .fg-r { transform-origin: bottom right; } }
+
+/* ---------- App bar + type ---------- */
+[data-season="spring"] .fx-circle-btn { background: #fffdf7; border: 1.5px solid rgba(88, 128, 86, 0.45); color: #4f8a4c; box-shadow: 0 5px 14px rgba(88, 128, 86, 0.18); }
+[data-season="spring"] .fx-circle-btn:hover { background: #f4faf0; box-shadow: 0 7px 18px rgba(88, 128, 86, 0.28); }
+[data-season="spring"] .fx-apptitle { color: #33402f; }
+[data-season="spring"] .fx-mascot { color: #d8506f; filter: none; }
+[data-season="spring"] .fx-h2 { color: #33402f; font-size: clamp(1.8rem, 4.8vw, 2.6rem); }
+[data-season="spring"] .fx-eyebrow { color: #d8506f; letter-spacing: 0.2em; }
+[data-season="spring"] .fx-sec-title { color: #4f8a4c; font: italic 700 1.35rem 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.02em; text-transform: none; }
+[data-season="spring"] .fx-sec-title a, [data-season="spring"] .fx-sec-title button { color: #d8506f; font-style: normal; }
+[data-season="spring"] .fx-hero .fx-h2::after { content: ''; display: block; width: 70px; height: 10px; margin-top: 8px; background: radial-gradient(circle at 5px 5px, #d8506f 3px, transparent 3.5px), radial-gradient(circle at 25px 5px, #f2c94c 3px, transparent 3.5px), radial-gradient(circle at 45px 5px, #8d7bc9 3px, transparent 3.5px), radial-gradient(circle at 65px 5px, #4f8a4c 3px, transparent 3.5px); }
+
+/* ---------- Buttons + inputs ---------- */
+[data-season="spring"] .fx-btn--ghost { color: #4f8a4c; background: rgba(255, 253, 247, 0.8); border: 1.5px solid rgba(88, 128, 86, 0.5); box-shadow: none; }
+[data-season="spring"] .fx-btn--ghost:hover { background: #f1f8ec; }
+[data-season="spring"] .fx-pill { color: #5a6b53; border-color: rgba(88, 128, 86, 0.32); background: rgba(255, 253, 247, 0.85); }
+[data-season="spring"] .fx-pill:hover { color: #3c6e3a; border-color: #4f8a4c; }
+[data-season="spring"] .fx-pill.is-active { color: #fff; background: linear-gradient(180deg, #6fa86c, #4f8a4c); border-color: transparent; box-shadow: 0 4px 12px rgba(79, 138, 76, 0.32); }
+[data-season="spring"] .fx-input, [data-season="spring"] .fx-select { background: #fffdf7; color: #33402f; border: 1.5px solid rgba(88, 128, 86, 0.38); border-radius: 999px; padding-left: 18px; box-shadow: inset 0 1px 3px rgba(88, 128, 86, 0.1); }
+[data-season="spring"] .fx-search > .fx-input { padding-left: 42px; }
+[data-season="spring"] .fx-input::placeholder { color: #98a590; }
+[data-season="spring"] .fx-input:focus { outline: none; border-color: #4f8a4c; box-shadow: 0 0 0 4px rgba(79, 138, 76, 0.16); }
+[data-season="spring"] .fx-select option { background: #fff; color: #33402f; }
+[data-season="spring"] .fx-badge { background: rgba(216, 80, 111, 0.12); color: #b83f5f; }
+[data-season="spring"] .fx-switch span { background: rgba(88, 128, 86, 0.25); }
+
+/* ---------- Tiles, feature and list cards ---------- */
+[data-season="spring"] .fx-tile { color: #33402f; background: #fffdf7; border: 1.5px solid rgba(88, 128, 86, 0.32); }
+[data-season="spring"] .fx-tile > i { color: #d8506f; filter: none; }
+[data-season="spring"] .fx-tile.is-on { border-color: #4f8a4c; box-shadow: 0 8px 22px rgba(79, 138, 76, 0.22); }
+[data-season="spring"] .fx-feature-art { background: linear-gradient(160deg, #f9c6d4, #e996ae); color: #fff; }
+[data-season="spring"] .fx-feature-art > i { filter: drop-shadow(0 4px 8px rgba(184, 63, 95, 0.35)); }
+[data-season="spring"] .fx-listcard-art { background: linear-gradient(160deg, #eaf5e2, #d3e8c6); color: #4f8a4c; }
+[data-season="spring"] .fx-catcard { background: #fffdf7; box-shadow: 0 4px 14px rgba(88, 128, 86, 0.12); }
+[data-season="spring"] .fx-sidebar-title { color: #4f8a4c; font: italic 700 1.3rem 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.02em; text-transform: none; }
+[data-season="spring"] .fx-listcard-title, [data-season="spring"] .fx-feature-title { color: #33402f; }
+[data-season="spring"] .fxs-shop { color: #d8506f; }
+[data-season="spring"] .fxs-act.is-on, [data-season="spring"] .fxs-bar .fx-circle-btn.is-on { background: #d8506f; color: #fff; }
+
+/* ---------- Style 1 tab bar: the Petal Dock (a cream bar with a scalloped crest and a flower button) ---------- */
+[data-season="spring"] .fx-tabs { left: 0; right: 0; bottom: 0; height: calc(78px + env(safe-area-inset-bottom, 0px)); border-radius: 0; background: #fffaf0; border-top: 0; box-shadow: 0 -10px 30px rgba(88, 128, 86, 0.14); }
+[data-season="spring"] .fx-tabs::before { content: ''; position: absolute; left: 0; right: 0; top: -13px; height: 14px; background: radial-gradient(circle at 14px 14px, #fffaf0 13.5px, transparent 14px) repeat-x; background-size: 28px 14px; pointer-events: none; }
+@media (min-width: 900px) { [data-season="spring"] .fx-tabs { left: 50%; right: auto; width: min(var(--fx-frame-w), calc(100% - 48px)); transform: translateX(-50%); bottom: 14px; border-radius: 34px; border: 1.5px solid rgba(88, 128, 86, 0.3); } [data-season="spring"] .fx-tabs::before { display: none; } }
+[data-season="spring"] .fx-tab { height: 78px; color: #7c8a74; }
+[data-season="spring"] .fx-tab:hover { color: #3c6e3a; }
+[data-season="spring"] .fx-tab.is-active { color: #d8506f; }
+[data-season="spring"] .fx-tab.is-active i { filter: none; }
+[data-season="spring"] .fx-fab { width: 70px; height: 70px; margin-bottom: 26px; background: radial-gradient(circle at 35% 30%, #f4a0b8, #d8506f 70%); box-shadow: 0 10px 24px rgba(208, 75, 107, 0.4), 0 0 0 6px #fffaf0, 0 0 0 7.5px rgba(88, 128, 86, 0.3); }
+[data-season="spring"] .fx-fab svg { width: 44px; height: 44px; filter: drop-shadow(0 1px 1px rgba(160, 40, 70, 0.4)); }
+[data-season="spring"] .fx-fab.is-active { box-shadow: 0 10px 24px rgba(208, 75, 107, 0.5), 0 0 0 6px #fffaf0, 0 0 0 9px #4f8a4c; }
+
+/* ---------- Sheet + modal ---------- */
+[data-season="spring"] .fx-sheet { background: rgba(51, 64, 47, 0.42); }
+[data-season="spring"] .fx-sheet-card { background: linear-gradient(180deg, #fffdf7, #f4efdf); border: 1.5px solid rgba(88, 128, 86, 0.3); border-bottom: 0; color: #33402f; box-shadow: 0 -16px 50px rgba(51, 64, 47, 0.25); }
+[data-season="spring"] .fx-sheet-tile { background: #fffdf7; color: #33402f; border: 1.5px solid rgba(88, 128, 86, 0.25); box-shadow: 0 6px 16px rgba(88, 128, 86, 0.1); }
+[data-season="spring"] .fx-sheet-tile i { color: #d8506f; filter: none; }
+[data-season="spring"] .fx-sheet-tile.is-active, [data-season="spring"] .fx-sheet-tile:hover { border-color: #4f8a4c; background: #f4faf0; }
+[data-season="spring"] .fx-modal-card { background: #fffdf7; color: #33402f; }
+[data-season="spring"] .fx-modal-close { color: #33402f; border-color: rgba(88, 128, 86, 0.35); }
+[data-season="spring"] .fx-toast { background: #fffdf7; color: #33402f; }
+[data-season="spring"] .fx-empty, [data-season="spring"] .fx-soon { background: rgba(255, 253, 247, 0.75); }
+
+/* ---------- Engine tweaks for the light theme ---------- */
+[data-season="spring"] .fxwx-status.is-warn { color: #a3541a; }
+[data-season="spring"] .fx-app-frame { -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+
+/* ---------- Style 2: the Vine (a leafy vine up the right edge, a flower bud at the top) ---------- */
+[data-season="spring"][data-nav="2"] { --fx-tabs-h: 8px; }
+[data-season="spring"] .fx-vine { position: fixed; z-index: 90; right: 6px; top: 50%; transform: translateY(-50%); width: 80px; height: min(82vh, 580px); display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4px 0 8px; }
+[data-season="spring"] .fx-vine-stem { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+[data-season="spring"] .fx-vine-bud { position: relative; z-index: 1; width: 58px; height: 58px; padding: 0; display: grid; place-items: center; border: 0; border-radius: 50%; cursor: pointer; background: radial-gradient(circle at 35% 30%, #f4a0b8, #d8506f 72%); box-shadow: 0 0 0 4px #fffaf0, 0 0 0 5.5px rgba(88, 128, 86, 0.4), 0 8px 18px rgba(208, 75, 107, 0.35); transition: transform 0.2s var(--fx-ease); }
+[data-season="spring"] .fx-vine-bud svg { width: 40px; height: 40px; }
+[data-season="spring"] .fx-vine-bud:hover { transform: scale(1.07) rotate(8deg); }
+[data-season="spring"] .fx-leaf { position: relative; z-index: 1; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 0 72% 0 72%; background: #fffdf7; border: 1.5px solid rgba(88, 128, 86, 0.55); color: #4f8a4c; font-size: 1.05rem; text-decoration: none; box-shadow: 0 5px 12px rgba(88, 128, 86, 0.22); transition: transform 0.2s var(--fx-ease), background 0.2s; }
+[data-season="spring"] .fx-leaf--l { transform: translateX(-12px) rotate(-6deg); }
+[data-season="spring"] .fx-leaf--r { transform: translateX(12px) rotate(6deg) scaleX(-1); }
+[data-season="spring"] .fx-leaf--r i { transform: scaleX(-1); }
+[data-season="spring"] .fx-leaf:hover { background: #f4faf0; }
+[data-season="spring"] .fx-leaf.is-active { color: #ffffff; background: linear-gradient(180deg, #6fa86c, #4f8a4c); border-color: transparent; }
+@media (max-width: 1160px) { [data-season="spring"][data-nav="2"] .fx-app-frame { padding-right: 84px; } }
+@media (max-width: 480px) { [data-season="spring"] .fx-vine { width: 70px; right: 2px; } [data-season="spring"][data-nav="2"] .fx-app-frame { padding-right: 72px; } }

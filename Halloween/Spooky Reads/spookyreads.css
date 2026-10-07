@@ -63,7 +63,7 @@ body.bookshelf-body.halloween-theme {
   height: 100dvh;
   background-image: 
     linear-gradient(180deg, rgba(5, 2, 2, 0.35) 0%, rgba(10, 4, 3, 0.88) 100%),
-    url('Halloween.jpg');
+    url('../../shared/img/halloween-bg.jpg');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -931,3 +931,21 @@ body.bookshelf-body.halloween-theme {
     justify-content: center;
   }
 }
+
+/* ---------- Phones: keep everything inside the screen ---------- */
+@media (max-width: 600px) {
+  .navbar { flex-wrap: wrap; gap: 10px; padding: 0.7rem 1rem; }
+  .nav-left { flex-wrap: wrap; gap: 8px; min-width: 0; }
+  .nav-right, .search-wrapper { width: 100%; max-width: 100%; }
+  .brand-title { display: none; }
+  .shelf-jump { flex-wrap: wrap; }
+  select, .select-styled-container { min-width: 0; max-width: 100%; }
+  .shelf-jump select, .select-styled-container select, #categoryJumpSelect { min-width: 0; width: 100%; }
+  .select-styled-container { width: 100%; }
+}
+
+/* ---------- Find a copy (book modal) ---------- */
+.buy-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.buy-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-right: 4px; }
+.buy-link { margin: 0; }
+.buy-note { flex-basis: 100%; opacity: 0.7; font-size: 0.72rem; }

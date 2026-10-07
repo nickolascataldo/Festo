@@ -4,50 +4,12 @@
  * multi-field cast searching, and YouTube trailer playback.
  */
 
-// In-memory cache to prevent duplicate network calls to Wikipedia
-const wikiCache = new Map();
-
-/**
- * Fetches Wikipedia article summary, official theatrical poster, and canonical page link.
- */
-async function fetchWikiPoster(wikiSlug) {
-  if (!wikiSlug) return null;
-  if (wikiCache.has(wikiSlug)) return wikiCache.get(wikiSlug);
-
-  // Clean slug to prevent double-encoding issues
-  const cleanSlug = decodeURIComponent(wikiSlug).replace(/\s+/g, '_');
-  const endpoint = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cleanSlug)}`;
-
-  try {
-    const res = await fetch(endpoint, {
-      headers: {
-        'Api-User-Agent': 'FestoSummerCinemaVault/1.0 (contact@festoapp.local)'
-      }
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      const posterUrl = data.thumbnail?.source || data.originalimage?.source || null;
-      const result = {
-        poster: posterUrl,
-        overview: data.extract || "",
-        wikiUrl: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(cleanSlug)}`
-      };
-      wikiCache.set(wikiSlug, result);
-      return result;
-    }
-  } catch (err) {
-    console.error(`[Festo Summer] Wiki load failed for "${cleanSlug}":`, err);
-  }
-
-  return null;
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   // Vault DOM References
   const vaultContainer = document.getElementById("categoryContainer");
   const searchInput = document.getElementById("searchInput");
   const clearSearchBtn = document.getElementById("clearSearch");
+  const trailerIdx = FestoVault.trailerIndex(window.summerData || []);
 
   // Cinema Modal DOM References
   const movieModal = document.getElementById("movieModal");
@@ -63,33 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalYtDirectLink = document.getElementById("modalYtDirectLink");
   const modalWikiLink = document.getElementById("modalWikiLink");
   const modalWatchLink = document.getElementById("modalWatchLink");
-
-  /**
-   * IntersectionObserver: Smoothly prefetches Wikipedia posters as cards
-   * enter within a 250px buffer of the viewport.
-   */
-  const posterObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const slug = card.dataset.wikiSlug;
-        const imgEl = card.querySelector(".official-poster");
-
-        if (slug && imgEl && !imgEl.classList.contains("loaded")) {
-          fetchWikiPoster(slug).then(data => {
-            if (data && data.poster) {
-              imgEl.src = data.poster;
-              imgEl.onload = () => imgEl.classList.add("loaded");
-            }
-          });
-        }
-        observer.unobserve(card); // Unobserve once triggered
-      }
-    });
-  }, {
-    rootMargin: "250px 250px 250px 250px", // 250px pre-load cushion in all directions
-    threshold: 0.01
-  });
 
   /**
    * Groups items by categoryLabel.
@@ -145,9 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         card.setAttribute("tabindex", "0");
         card.setAttribute("aria-label", `${movie.title} (${movie.year})`);
 
-        // Store slug on dataset for IntersectionObserver
-        card.dataset.wikiSlug = movie.wikiSlug || "";
-
         card.innerHTML = `
           <div class="poster-box">
             <img 
@@ -160,13 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
             <h4 class="card-title" title="${movie.title}">${movie.title}</h4>
             <div class="card-meta">
               <span>${movie.year}</span>
-              <span class="card-btn-hint">Inspect ☀️</span>
+              <span class="card-btn-hint">Inspect</span>
             </div>
           </div>
         `;
 
-        // Register card with Lazy Observer
-        posterObserver.observe(card);
+        FestoCovers.attach(card.querySelector(".official-poster"), movie, "movie");
 
         // Click and Keyboard Accessibility
         card.addEventListener("click", () => openCinemaModal(movie));
@@ -188,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /**
    * Opens the theatre modal, populates cast chips, and initiates trailer playback.
    */
-  async function openCinemaModal(movie) {
+  function openCinemaModal(movie) {
     modalRatingTag.textContent = `★ ${movie.rating ? movie.rating.toFixed(1) : 'N/A'} / 10`;
     modalCategory.textContent = movie.categoryLabel;
     modalYear.textContent = movie.year;
@@ -221,37 +152,37 @@ document.addEventListener("DOMContentLoaded", () => {
       modalCastList.parentElement.style.display = "none";
     }
 
-    // Embed YouTube Trailer with Verified Fallbacks
-    if (movie.youtubeTrailerKey) {
-      modalIframe.src = `https://www.youtube.com/embed/${movie.youtubeTrailerKey}?autoplay=1&rel=0`;
+    // Trailer: embed only when the key is unique to this title; a key shared by several films is a placeholder.
+    const trailer = FestoVault.trailer(movie, trailerIdx);
+    if (trailer.mode === "embed") {
+      modalIframe.src = `${trailer.url}?autoplay=1&rel=0`;
       modalIframe.parentElement.style.display = "block";
-      modalYtDirectLink.href = `https://www.youtube.com/watch?v=${movie.youtubeTrailerKey}`;
-      modalYtDirectLink.style.display = "inline-block";
+      modalYtDirectLink.href = `https://www.youtube.com/watch?v=${trailer.key}`;
+      modalYtDirectLink.textContent = "Open on YouTube ↗";
     } else {
       modalIframe.src = "";
       modalIframe.parentElement.style.display = "none";
-      modalYtDirectLink.style.display = "none";
+      modalYtDirectLink.href = trailer.url;
+      modalYtDirectLink.textContent = "Search trailer on YouTube ↗";
     }
+    modalYtDirectLink.style.display = "inline-block";
 
     // Set streaming destination on JustWatch
     modalWatchLink.href = `https://www.justwatch.com/us/search?q=${encodeURIComponent(movie.title)}`;
 
-    // Populate Wikipedia Details
-    const wikiData = await fetchWikiPoster(movie.wikiSlug);
-    if (wikiData) {
-      if (wikiData.poster) {
-        modalPoster.src = wikiData.poster;
-        modalPoster.classList.add("loaded");
-      }
-      if (wikiData.overview) modalOverview.textContent = wikiData.overview;
-      modalWikiLink.href = wikiData.wikiUrl;
-    } else {
-      modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(movie.wikiSlug || movie.title)}`;
-    }
-
     movieModal.classList.add("active");
     movieModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden"; // Freeze background scrolling
+
+    modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(movie.wikiSlug || movie.title)}`;
+
+    // Open instantly; the poster and synopsis fill in when they arrive.
+    FestoCovers.resolve(movie, "movie", { overview: true }).then(info => {
+      if (!movieModal.classList.contains("active") || modalTitle.textContent !== movie.title) return;
+      if (info.poster) { modalPoster.src = info.poster; modalPoster.classList.add("loaded"); }
+      modalOverview.textContent = info.overview || "No synopsis on record for this title. The Wikipedia link below may have more.";
+      if (info.wikiUrl) modalWikiLink.href = info.wikiUrl;
+    });
   }
 
   /**
@@ -304,7 +235,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderVault(filtered);
   }
 
-  searchInput.addEventListener("input", handleSearch);
+  searchInput.addEventListener("input", Festo.dom.debounce(handleSearch, 180));
 
   clearSearchBtn.addEventListener("click", () => {
     searchInput.value = "";
@@ -315,6 +246,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial load once scripts are ready
   if (window.summerData && Array.isArray(window.summerData)) {
+    window.summerData = FestoVault.dedupe(window.summerData);
+    FestoVault.fillCounts(document, FestoVault.counts(window.summerData));
     renderVault(window.summerData);
   }
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-season="halloween">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
   <link rel="stylesheet" href="spookyreads.css">
 </head>
 <body class="bookshelf-body halloween-theme">
@@ -29,19 +32,20 @@
   <header class="library-header">
     <div class="header-left">
       <a href="../Halloween Landing page/HalloweenLanding.html" class="btn-portal" title="Return to Portal">
-        <span class="icon">🎃</span>
+        <span class="icon"><i class="fa-solid fa-ghost" aria-hidden="true"></i></span>
         <span class="text">Spooky Portal</span>
       </a>
+      <a href="../../index.html" class="btn-portal" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="text">Hub</span></a>
       <h1 class="brand-title">SPOOKY READS</h1>
     </div>
 
     <div class="header-right">
       <div class="search-box">
-        <span class="search-icon">🕯️</span>
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
         <input 
           type="text" 
           id="searchInput" 
-          placeholder="Search 1,000+ cursed tomes, authors, #tags (e.g. #gothic-mystery)..." 
+          placeholder="Search cursed tomes, authors, #tags (e.g. #gothic-mystery)..." 
           autocomplete="off"
         >
         <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
@@ -52,19 +56,19 @@
   <!-- Crypt Welcome & Sanctuary Metrics -->
   <section class="sanctuary-hero">
     <div class="hero-plaque">
-      <span class="plaque-badge">🍂 100-Shelf Curated Halloween Grimoires</span>
+      <span class="plaque-badge"><span data-fx-count="shelves">60</span>-Shelf Curated Halloween Grimoires</span>
       <h2 class="hero-title">THE SPOOKY BOOKSHELF</h2>
       <p class="hero-desc">
-        A moonlit sanctuary of 1,000 cursed tales, gothic horrors, and eerie mysteries arranged across charred ebony shelves in tidy groups of 10. Inspect spellbound bindings, check prices, and curate your midnight reading list.
+        A moonlit sanctuary of <span data-fx-count="total">500</span> cursed tales, gothic horrors, and eerie mysteries arranged across charred ebony shelves in tidy groups of 10. Inspect spellbound bindings, check prices, and curate your midnight reading list.
       </p>
 
       <div class="hero-counters">
         <div class="counter-box">
-          <span class="counter-num">100</span>
+          <span class="counter-num" data-fx-count="shelves">60</span>
           <span class="counter-label">Shelves (10s)</span>
         </div>
         <div class="counter-box">
-          <span class="counter-num" id="totalBookCount">1,000+</span>
+          <span class="counter-num" id="totalBookCount" data-fx-count="total">500</span>
           <span class="counter-label">Grimoires</span>
         </div>
         <div class="counter-box">
@@ -77,14 +81,9 @@
     <!-- Quick Navigation Filters -->
     <div class="shelf-controls">
       <div class="shelf-pills" id="filterPills">
-        <button class="pill-btn active" data-filter="all">🎃 All Shelves</button>
-        <button class="pill-btn" data-filter="recommended">🔮 Divined For You</button>
-        <button class="pill-btn" data-filter="readinglist">📜 My Coven List</button>
-        <button class="pill-btn" data-filter="gothic-horror">🩸 Gothic Horror</button>
-        <button class="pill-btn" data-filter="folk-horror">🌲 Folk Horror</button>
-        <button class="pill-btn" data-filter="psychological-thriller">🧠 Psychological</button>
-        <button class="pill-btn" data-filter="dark-academia">🏛️ Dark Academia</button>
-        <button class="pill-btn" data-filter="cozy-mystery">🐈‍⬛ Cozy Mystery</button>
+        <button class="pill-btn active" data-filter="all">All Shelves</button>
+        <button class="pill-btn" data-filter="recommended">Divined For You</button>
+        <button class="pill-btn" data-filter="readinglist">My Coven List</button>
       </div>
 
       <div class="shelf-jump">
@@ -121,11 +120,11 @@
           <!-- Interactive Action Buttons -->
           <div class="modal-actions-row">
             <button id="btnToggleLike" class="btn-action btn-like">
-              <span id="likeIcon">🖤</span>
+              <span id="likeIcon"><i class="fa-solid fa-heart" aria-hidden="true"></i></span>
               <span id="likeText">Favorited Tome</span>
             </button>
             <button id="btnToggleReadingList" class="btn-action btn-readlist">
-              <span id="listIcon">📜</span>
+              <span id="listIcon"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
               <span id="listText">Add to Coven List</span>
             </button>
             <a id="modalGoodreadsLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-action btn-link">
@@ -157,9 +156,9 @@
 
         <!-- Wikipedia Reference -->
         <div class="modal-footer-row">
-          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki">
-            📖 Read Full History on Wikipedia ↗
+          <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki"> Read Full History on Wikipedia ↗
           </a>
+          <div id="modalBuyLinks" class="buy-links"></div>
         </div>
       </div>
     </div>
@@ -167,21 +166,20 @@
 
   <!-- Library Footer -->
   <footer class="library-footer">
-    <p class="footer-title">FESTO SPOOKY VAULT // 100-SHELF GOTHIC ARCHIVE &copy; 2026</p>
+    <p class="footer-title">FESTO SPOOKY VAULT // GOTHIC ARCHIVE &copy; 2026</p>
     <p class="footer-sub">Grimoire jackets and metadata retrieved via Open Library and Wikipedia under Creative Commons licensing (CC BY-SA).</p>
   </footer>
 
   <!-- 10 Partitioned Book Data Manifests -->
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
+
   <script src="Book Data/SpookyBook_Data1.js"></script>
   <script src="Book Data/SpookyBook_Data2.js"></script>
   <script src="Book Data/SpookyBook_Data3.js"></script>
   <script src="Book Data/SpookyBook_Data4.js"></script>
   <script src="Book Data/SpookyBook_Data5.js"></script>
-  <script src="Book Data/SpookyBook_Data6.js"></script>
-  <script src="Book Data/SpookyBook_Data7.js"></script>
-  <script src="Book Data/SpookyBook_Data8.js"></script>
-  <script src="Book Data/SpookyBook_Data9.js"></script>
-  <script src="Book Data/SpookyBook_Data10.js"></script>
 
   <!-- Performance Engine -->
   <script src="spookyreads.js"></script>

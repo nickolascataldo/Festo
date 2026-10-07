@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-season="halloween">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festo — The Halloween Vault</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Cinzel:wght@600;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
+  <link rel="stylesheet" href="HalloweenMovie.css">
+</head>
+<body class="spooky-scroll">
+
+  <div class="fog-overlay" aria-hidden="true"></div>
+
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="../Halloween Landing page/HalloweenLanding.html" class="btn-return" title="Return to Festo Portal">
+        <span class="icon"><i class="fa-solid fa-ghost" aria-hidden="true"></i></span>
+        <span class="btn-text">Portal Return</span>
+      </a>
+      <a href="../../index.html" class="btn-return" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="btn-text">Hub</span></a>
+      <h1 class="brand-title">FESTO</h1>
+    </div>
+
+    <div class="nav-right">
+      <div class="search-wrapper">
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Search movies, actors, voice stars, years..." 
+          autocomplete="off"
+        >
+        <button id="clearSearch" class="btn-clear" title="Clear Search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-backdrop-glow"></div>
+    <div class="hero-content">
+      <span class="spooky-badge">Official Archival Vault</span>
+      <h2 class="hero-heading">THE HALLOWEEN VAULT</h2>
+      <p class="hero-subtext">
+        Explore <span data-fx-count="categories">20</span> chambers of iconic slashers, animated family specials, and psychological thrillers. Search by titles, release years, or legendary horror actors and voice stars.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-box"><strong data-fx-count="categories">20</strong><span>Chambers</span></div>
+        <div class="stat-box"><strong data-fx-count="total">601</strong><span>Horrors</span></div>
+        <div class="stat-box"><strong>Wiki</strong><span>Poster Art</span></div>
+      </div>
+    </div>
+  </section>
+
+  <main id="categoryContainer" class="main-vault">
+    </main>
+
+  <div id="movieModal" class="modal" aria-hidden="true">
+    <div class="modal-card">
+      <button id="modalClose" class="modal-close-btn" title="Close Vault Card">&times;</button>
+      
+      <div class="modal-inner">
+        <div class="modal-poster-side">
+          <div class="modal-poster-wrapper">
+            <img id="modalPoster" src="" alt="Movie Poster" class="modal-poster-img">
+          </div>
+          <div id="modalRatingTag" class="modal-rating-badge">★ 0.0</div>
+        </div>
+
+        <div class="modal-details-side">
+          <div class="modal-header-meta">
+            <span id="modalCategory" class="modal-cat-tag">Category</span>
+            <span id="modalYear" class="modal-year-tag">Year</span>
+          </div>
+
+          <h2 id="modalTitle" class="modal-title">Title</h2>
+          
+          <div class="cast-container">
+            <h4 class="cast-header">Starring & Voice Cast</h4>
+            <div id="modalCastList" class="cast-badges-list">
+              </div>
+          </div>
+
+          <p id="modalOverview" class="modal-desc">Loading official overview from Wikipedia...</p>
+
+          <div class="trailer-wrapper">
+            <div class="trailer-header-row">
+              <h4 class="trailer-title">Official Archival Footage</h4>
+              <a id="modalYtDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="link-yt-fallback">
+                Open on YouTube ↗
+              </a>
+            </div>
+            <div class="video-container">
+              <iframe 
+                id="modalIframe" 
+                src="" 
+                title="Movie Trailer" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-watch-stream"> Stream / Rent Options ↗
+            </a>
+            <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
+              Read on Wikipedia ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p class="footer-festo">FESTO CINEMA VAULT &copy; 2026</p>
+    <p class="footer-wiki">Metadata and theatrical posters retrieved via Wikipedia and Wikimedia Commons under Creative Commons licensing (CC BY-SA).</p>
+  </footer>
+
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
+
+  <script src="HalloweenData.js"></script>
+  <script src="HalloweenMovie.js"></script>
+</body>
+</html>

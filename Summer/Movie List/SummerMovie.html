@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-season="summer">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,27 +7,30 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Outfit:wght@400;600;700;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../../shared/festo-core.css">
   <link rel="stylesheet" href="SummerMovie.css">
 </head>
 <body class="summer-scroll">
 
-  <div class="sunbeam-overlay" aria-hidden="true"></div>
-  <div class="wave-overlay" aria-hidden="true"></div>
+  <div class="synthwave-sun" aria-hidden="true"></div>
 
   <header class="navbar">
     <div class="nav-left">
       <a href="../Summer Landing/SummerLanding.html" class="btn-return" title="Return to Summer Portal">
-        <span class="icon">🏝️</span>
+        <span class="icon"><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i></span>
         <span class="btn-text">Summer Portal</span>
       </a>
+      <a href="../../index.html" class="btn-return" title="Festo hub"><span class="icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span><span class="btn-text">Hub</span></a>
       <h1 class="brand-title">FESTO</h1>
     </div>
 
     <div class="nav-right">
       <div class="search-wrapper">
-        <span class="search-icon">☀️</span>
+        <span class="search-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
         <input 
           type="text" 
           id="searchInput" 
@@ -40,16 +43,15 @@
   </header>
 
   <section class="hero-banner">
-    <div class="hero-sun-glow"></div>
     <div class="hero-content">
-      <span class="summer-badge">🌊 Endless Summer Cinema</span>
+      <span class="summer-badge">Endless Summer Cinema</span>
       <h2 class="hero-heading">THE SUMMER VAULT</h2>
       <p class="hero-subtext">
         Dive into sun-soaked road trips, legendary summer blockbusters, beachside camp adventures, and nostalgic vacation classics. Search by titles, release years, or your favorite stars.
       </p>
       <div class="hero-stats">
-        <div class="stat-box"><strong>20+</strong><span>Chambers</span></div>
-        <div class="stat-box"><strong>600+</strong><span>Adventures</span></div>
+        <div class="stat-box"><strong data-fx-count="categories">25</strong><span>Chambers</span></div>
+        <div class="stat-box"><strong data-fx-count="total">625</strong><span>Adventures</span></div>
         <div class="stat-box"><strong>4K</strong><span>Sunshine</span></div>
       </div>
     </div>
@@ -106,8 +108,7 @@
           </div>
 
           <div class="modal-actions">
-            <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-watch-stream">
-              🍿 Where to Stream / Rent ↗
+            <a id="modalWatchLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-watch-stream"> Where to Stream / Rent ↗
             </a>
             <a id="modalWikiLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-wiki-link">
               Read on Wikipedia ↗
@@ -122,6 +123,10 @@
     <p class="footer-festo">FESTO SUMMER CINEMA &copy; 2026</p>
     <p class="footer-wiki">Metadata and theatrical posters retrieved via Wikipedia and Wikimedia Commons under Creative Commons licensing (CC BY-SA).</p>
   </footer>
+
+  <script src="../../shared/festo-core.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../../shared/engines/vault.js"></script>
 
   <script src="Movie Data/SummerData_Part1.js"></script>
   <script src="Movie Data/SummerData_Part2.js"></script>

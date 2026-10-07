@@ -9,7 +9,6 @@
  * - IntersectionObserver Dual-Fetch Caching for Open Library & Wikipedia
  */
 
-const bookCoverCache = new Map();
 let dwellTimer = null;
 
 // Isolated LocalStorage Profile Utilities for Christmas Store
@@ -63,55 +62,6 @@ function getTopTags(tagsObj, limit = 3) {
     .map(entry => entry[0]);
 }
 
-/**
- * Dual Fetcher for Book Covers via Open Library & Wikipedia
- */
-async function fetchBookCover(wikiSlug, isbn, title) {
-  const cacheKey = wikiSlug || isbn || title;
-  if (bookCoverCache.has(cacheKey)) return bookCoverCache.get(cacheKey);
-
-  // 1. Check Open Library via ISBN
-  if (isbn) {
-    const coverUrl = `https://covers.openlibrary.org/b/isbn/${encodeURIComponent(isbn)}-L.jpg?default=false`;
-    try {
-      const imgRes = await fetch(coverUrl, { method: 'HEAD' });
-      if (imgRes.ok) {
-        const result = {
-          poster: coverUrl,
-          overview: "",
-          wikiUrl: `https://en.wikipedia.org/wiki/${encodeURIComponent(wikiSlug || title)}`
-        };
-        bookCoverCache.set(cacheKey, result);
-        return result;
-      }
-    } catch(e) {}
-  }
-
-  // 2. Wikipedia Summary API fallback
-  if (wikiSlug) {
-    const cleanSlug = decodeURIComponent(wikiSlug).replace(/\s+/g, '_');
-    const endpoint = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(cleanSlug)}`;
-
-    try {
-      const res = await fetch(endpoint, {
-        headers: { 'Api-User-Agent': 'FestoChristmasBookSanctuary/1.0 (contact@festoapp.local)' }
-      });
-      if (res.ok) {
-        const data = await res.json();
-        const result = {
-          poster: data.thumbnail?.source || data.originalimage?.source || null,
-          overview: data.extract || "",
-          wikiUrl: data.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${encodeURIComponent(cleanSlug)}`
-        };
-        bookCoverCache.set(cacheKey, result);
-        return result;
-      }
-    } catch(e) {}
-  }
-
-  return null;
-}
-
 document.addEventListener("DOMContentLoaded", () => {
   const vaultContainer = document.getElementById("categoryContainer");
   const searchInput = document.getElementById("searchInput");
@@ -148,29 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateReadingListCounter() {
     if (readingListCountEl) readingListCountEl.textContent = getReadingList().length;
   }
-
-  // Lazy Jacket Observer
-  const coverObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const slug = card.dataset.wikiSlug;
-        const isbn = card.dataset.isbn;
-        const title = card.dataset.title;
-        const imgEl = card.querySelector(".book-cover-img");
-
-        if (imgEl && !imgEl.classList.contains("loaded")) {
-          fetchBookCover(slug, isbn, title).then(data => {
-            if (data && data.poster) {
-              imgEl.src = data.poster;
-              imgEl.onload = () => imgEl.classList.add("loaded");
-            }
-          });
-        }
-        observer.unobserve(card);
-      }
-    });
-  }, { rootMargin: "250px", threshold: 0.01 });
 
   function cleanCategoryTitle(label) {
     return (label || "").replace(/^\d+\.\s*/, "").trim();
@@ -237,6 +164,19 @@ document.addEventListener("DOMContentLoaded", () => {
   function renderVault(dataset) {
     vaultContainer.innerHTML = "";
 
+    if (!dataset.length && currentPillFilter !== "recommended" && currentPillFilter !== "readinglist") {
+      FestoVault.emptyState(vaultContainer, {
+        title: "No books match that",
+        body: "Try a different word, or clear the search and filters to see the whole vault.",
+        ctaLabel: "Show every Christmas book",
+        onCta: () => {
+          searchInput.value = "";
+          filterPills.querySelector('[data-filter="all"]').click();
+        }
+      });
+      return;
+    }
+
     // 1. Recommended View
     if (currentPillFilter === "recommended") {
       const profile = getUserBookTagAffinity();
@@ -251,13 +191,13 @@ document.addEventListener("DOMContentLoaded", () => {
         vaultContainer.innerHTML = `
           <div style="text-align: center; padding: 4rem 1rem; background: rgba(18, 30, 24, 0.9); border-radius: 20px; border: 1.5px solid var(--gold-warm);">
             <h3 style="font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--gold-warm); margin-bottom: 0.5rem;">No Festive Recommendations Yet</h3>
-            <p style="color: #f0eade; font-family: var(--font-serif); font-size: clamp(0.9rem, 1.6vw, 1rem);">Inspect books and tap "💚 Favorite Book" or "🧣 Add to Fireside List" to discover your holiday taste profile.</p>
+            <p style="color: #f0eade; font-family: var(--font-serif); font-size: clamp(0.9rem, 1.6vw, 1rem);">Inspect books and tap "Favorite Book" or "Add to Fireside List" to discover your holiday taste profile.</p>
           </div>
         `;
         return;
       }
 
-      renderChunkedCustomShelves("⭐ Divined For Your Winter Hearth (AI Match)", scored);
+      renderChunkedCustomShelves("Divined For Your Winter Hearth (AI Match)", scored);
       return;
     }
 
@@ -270,13 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
         vaultContainer.innerHTML = `
           <div style="text-align: center; padding: 4rem 1rem; background: rgba(18, 30, 24, 0.9); border-radius: 20px; border: 1.5px solid var(--gold-warm);">
             <h3 style="font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--gold-warm); margin-bottom: 0.5rem;">Your Fireside Reading List is Empty</h3>
-            <p style="color: #f0eade; font-family: var(--font-serif); font-size: clamp(0.9rem, 1.6vw, 1rem);">Inspect any holiday volume and hit "🧣 Add to Fireside List" to save it for snowy nights.</p>
+            <p style="color: #f0eade; font-family: var(--font-serif); font-size: clamp(0.9rem, 1.6vw, 1rem);">Inspect any holiday volume and hit "Add to Fireside List" to save it for snowy nights.</p>
           </div>
         `;
         return;
       }
 
-      renderChunkedCustomShelves("🧣 My Saved Fireside Reading List", listBooks);
+      renderChunkedCustomShelves("My Saved Fireside Reading List", listBooks);
       return;
     }
 
@@ -378,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
 
-    coverObserver.observe(card);
+    FestoCovers.attach(card.querySelector(".book-cover-img"), book, "book");
 
     card.addEventListener("click", () => openBookModal(book, displayCategoryLabel, priceDisplay));
     card.addEventListener("keydown", (e) => {
@@ -391,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return card;
   }
 
-  async function openBookModal(book, displayCategoryLabel, priceDisplay) {
+  function openBookModal(book, displayCategoryLabel, priceDisplay) {
     activeBook = book;
 
     recordTagAffinity(book.tags, 1);
@@ -441,7 +381,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (book.author) {
       const badge = document.createElement("span");
       badge.className = "author-badge";
-      badge.textContent = `✍️ ${book.author}`;
+      badge.textContent = `By ${book.author}`;
 
       badge.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -456,18 +396,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     modalGoodreadsLink.href = `https://www.goodreads.com/search?q=${encodeURIComponent(book.title + " " + (book.author || ""))}`;
 
-    const coverData = await fetchBookCover(book.wikiSlug, book.isbn, book.title);
-    if (coverData) {
-      if (coverData.poster) modalBackdrop.style.backgroundImage = `url('${coverData.poster}')`;
-      if (coverData.overview) modalOverview.textContent = coverData.overview;
-      modalWikiLink.href = coverData.wikiUrl;
-    } else {
-      modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(book.wikiSlug || book.title)}`;
-    }
+    modalWikiLink.href = `https://en.wikipedia.org/wiki/${encodeURIComponent(book.wikiSlug || book.title)}`;
+    (function () {
+      var host = document.getElementById("modalBuyLinks");
+      if (!host || !window.Festo || !Festo.links) return;
+      var l = Festo.links.book(book);
+      host.innerHTML = "";
+      var label = document.createElement("span"); label.className = "buy-label"; label.textContent = "Find a copy"; host.appendChild(label);
+      [["Bookshop", l.bookshop], ["Amazon", l.amazon], ["Library", l.library]].forEach(function (x) {
+        var a = document.createElement("a"); a.href = x[1]; a.target = "_blank"; a.className = "btn-wiki buy-link";
+        a.rel = "noopener noreferrer" + (x[0] === "Amazon" && l.affiliate ? " sponsored" : ""); a.textContent = x[0] + " \u2197"; host.appendChild(a);
+      });
+      if (l.affiliate) { var n = document.createElement("small"); n.className = "buy-note"; n.textContent = "Amazon links may earn Festo a commission."; host.appendChild(n); }
+    })();
 
     bookModal.classList.add("active");
     bookModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+
+    // Open instantly; the jacket and synopsis fill in when they arrive.
+    FestoCovers.resolve(book, "book", { overview: true }).then(info => {
+      if (activeBook !== book) return;
+      if (info.poster) modalBackdrop.style.backgroundImage = `url('${info.poster}')`;
+      modalOverview.textContent = info.overview || "No synopsis on record for this edition. The Wikipedia and Goodreads links below may have more.";
+      if (info.wikiUrl) modalWikiLink.href = info.wikiUrl;
+    });
   }
 
   function updateLikeButtonState(bookId) {
@@ -550,7 +503,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let dataset = window.christmasBookData || [];
 
     // Filter Pill Routing
-    if (currentPillFilter !== "all" && currentPillFilter !== "recommended" && currentPillFilter !== "readinglist") {
+    if (currentPillFilter.startsWith("tag:")) {
+      dataset = FestoVault.filterByTag(dataset, currentPillFilter.slice(4));
+    } else if (currentPillFilter !== "all" && currentPillFilter !== "recommended" && currentPillFilter !== "readinglist") {
       dataset = dataset.filter(item => {
         const matchesCategory = item.category && item.category.toLowerCase().includes(currentPillFilter);
         const matchesTag = item.tags && Object.keys(item.tags).some(t => t.toLowerCase().includes(currentPillFilter));
@@ -582,21 +537,34 @@ document.addEventListener("DOMContentLoaded", () => {
     renderVault(filtered);
   }
 
-  searchInput.addEventListener("input", handleSearch);
+  searchInput.addEventListener("input", Festo.dom.debounce(handleSearch, 180));
 
   clearSearchBtn.addEventListener("click", () => {
     searchInput.value = "";
     clearSearchBtn.style.display = "none";
-    renderVault(window.christmasBookData || []);
+    handleSearch();
     searchInput.focus();
   });
 
   // Startup Initialization
-  const fullDataset = window.christmasBookData || [];
-  if (totalBookCountEl) totalBookCountEl.textContent = `${fullDataset.length}+`;
+  const fullDataset = FestoVault.dedupe(window.christmasBookData || []);
+  window.christmasBookData = fullDataset;   // handleSearch and the reading list read this again
+  FestoVault.fillCounts(document, FestoVault.counts(fullDataset));
+  if (totalBookCountEl) totalBookCountEl.textContent = fullDataset.length.toLocaleString("en-US");
+  searchInput.placeholder = `Search ${fullDataset.length} books, authors, #tags...`;
+
+  // Genre pills come from the data, so none of them can come back empty.
+  FestoVault.tagPills(fullDataset, { max: 6, prefer: ["romantic-comedy","cozy","winter-wonderland","small-town-secrets","whodunit","childhood-wonder"] }).forEach(p => {
+    const btn = document.createElement("button");
+    btn.className = "pill-btn";
+    btn.dataset.filter = `tag:${p.key}`;
+    btn.textContent = `${p.label} (${p.count})`;
+    filterPills.appendChild(btn);
+  });
   updateReadingListCounter();
 
   const shelfList = buildTenBookShelves(fullDataset);
+  FestoVault.fillCounts(document, { shelves: shelfList.length });
   populateJumpSelect(shelfList);
   renderVault(fullDataset);
 });

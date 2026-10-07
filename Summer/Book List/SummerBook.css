@@ -836,3 +836,35 @@ body.bookshelf-body.summer-theme {
   font-size: 0.8rem;
   color: #9ab4c7;
 }
+
+/* ==========================================================================
+   RESPONSIVE: tablets and phones
+   ========================================================================== */
+@media (max-width: 900px) {
+  .library-header { flex-wrap: wrap; gap: 0.7rem; padding: 0.8rem 1rem; }
+  .header-left { gap: 0.6rem; flex-wrap: wrap; width: 100%; }
+  .brand-title { font-size: 1.6rem; letter-spacing: 2px; }
+  .header-right { width: 100%; }
+  .search-box { width: 100%; }
+  .search-box input { width: 100%; min-width: 0; }
+  .sanctuary-hero { padding: 1.2rem 1rem 1rem; }
+  .hero-plaque { padding: 1.4rem 1.2rem; }
+  .hero-title { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  .hero-desc { font-size: 1rem; line-height: 1.6; }
+  .hero-counters { gap: 0.8rem; flex-wrap: wrap; }
+  .shelf-jump { flex-wrap: wrap; }
+  .shelf-jump select { width: 100%; max-width: 100%; }
+  .bookshelf-vault { padding: 1rem 0.5rem 5rem; gap: 3rem; }
+  .shelf-header { padding: 0 0.4rem; gap: 0.5rem; }
+  .shelf-book-slider { gap: 1.1rem; padding: 1rem 0.7rem; scroll-snap-type: x proximity; }
+  .book-volume-card { min-width: 168px; max-width: 168px; scroll-snap-align: start; }
+  .modal-book-header { height: 260px; }
+  .backdrop-content { padding: 1.2rem; }
+  .modal-actions-row .btn-action { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ---------- Find a copy (book modal) ---------- */
+.buy-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.buy-label { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.75; margin-right: 4px; }
+.buy-link { margin: 0; }
+.buy-note { flex-basis: 100%; opacity: 0.7; font-size: 0.72rem; }

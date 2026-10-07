@@ -1,0 +1,399 @@
+[
+ {
+  "season": "halloween",
+  "module": "wheel",
+  "dir": "ActivityWheel",
+  "file": "ActivityWheel.html",
+  "engines": [
+   "wheel"
+  ],
+  "data": [
+   "wheel-data.js"
+  ],
+  "js": "ActivityWheel.js",
+  "css": "ActivityWheel.css"
+ },
+ {
+  "season": "halloween",
+  "module": "store",
+  "dir": "Halloween Store",
+  "file": "halloweenstore.html",
+  "engines": [
+   "store"
+  ],
+  "data": [
+   "store-data.js"
+  ],
+  "js": "halloweenstore.js",
+  "css": "halloweenstore.css"
+ },
+ {
+  "season": "halloween",
+  "module": "weather",
+  "dir": "Weather",
+  "file": "Weather.html",
+  "engines": [
+   "weather"
+  ],
+  "data": [],
+  "js": "Weather.js"
+ },
+ {
+  "season": "halloween",
+  "module": "map",
+  "dir": "Spectral Map",
+  "file": "spectralmap.html",
+  "engines": [
+   "map"
+  ],
+  "data": [
+   "map-data.js"
+  ],
+  "js": "spectralmap.js",
+  "css": "spectralmap.css",
+  "leaflet": true
+ },
+ {
+  "season": "christmas",
+  "module": "weather",
+  "dir": "Weather Alert",
+  "file": "Weather.html",
+  "engines": [
+   "weather"
+  ],
+  "data": [],
+  "js": "Weather.js"
+ },
+ {
+  "season": "summer",
+  "module": "weather",
+  "dir": "Weather",
+  "file": "Weather.html",
+  "engines": [
+   "weather"
+  ],
+  "data": [],
+  "js": "Weather.js"
+ },
+ {
+  "season": "spring",
+  "module": "weather",
+  "dir": "Weather",
+  "file": "Weather.html",
+  "engines": [
+   "weather"
+  ],
+  "data": [],
+  "js": "Weather.js"
+ },
+ {
+  "season": "halloween",
+  "module": "music",
+  "dir": "Halloween Music",
+  "file": "halloweenmusic.html",
+  "engines": [
+   "music"
+  ],
+  "data": [
+   "music-data.js"
+  ],
+  "js": "halloweenmusic.js",
+  "template": "music",
+  "global": "HALLOWEEN_MUSIC"
+ },
+ {
+  "season": "christmas",
+  "module": "music",
+  "dir": "Holiday Music",
+  "file": "HolidayMusic.html",
+  "engines": [
+   "music"
+  ],
+  "data": [
+   "music-data.js"
+  ],
+  "js": "HolidayMusic.js",
+  "template": "music",
+  "global": "CHRISTMAS_MUSIC"
+ },
+ {
+  "season": "summer",
+  "module": "music",
+  "dir": "Summer Beats",
+  "file": "SummerBeats.html",
+  "engines": [
+   "music"
+  ],
+  "data": [
+   "music-data.js"
+  ],
+  "js": "SummerBeats.js",
+  "template": "music",
+  "global": "SUMMER_MUSIC"
+ },
+ {
+  "season": "spring",
+  "module": "music",
+  "dir": "Music area",
+  "file": "Musicarea.html",
+  "engines": [
+   "music"
+  ],
+  "data": [
+   "music-data.js"
+  ],
+  "js": "Musicarea.js",
+  "template": "music",
+  "global": "SPRING_MUSIC"
+ },
+ {
+  "season": "halloween",
+  "module": "pumpkin",
+  "dir": "Pumpkin Carving Game",
+  "file": "pumpkincarvinggame.html",
+  "engines": [
+   "pumpkin"
+  ],
+  "data": [],
+  "js": "pumpkincarvinggame.js",
+  "template": "pumpkin"
+ },
+ {
+  "season": "christmas",
+  "module": "workshop",
+  "dir": "Christmas Game",
+  "file": "ChristmasGame.html",
+  "engines": [
+   "studio"
+  ],
+  "data": [
+   "workshop-data.js"
+  ],
+  "js": "ChristmasGame.js",
+  "template": "studio",
+  "global": "CHRISTMAS_WORKSHOP",
+  "subtitle": "Decorate, then save your picture"
+ },
+ {
+  "season": "christmas",
+  "module": "wheel",
+  "dir": "ActivityWheel",
+  "file": "ActivityWheel.html",
+  "engines": [
+   "wheel"
+  ],
+  "data": [
+   "wheel-data.js"
+  ],
+  "js": "ActivityWheel.js",
+  "template": "wheel",
+  "global": "CHRISTMAS_WHEEL",
+  "subtitle": "Spin for tonight's plan"
+ },
+ {
+  "season": "christmas",
+  "module": "store",
+  "dir": "Store",
+  "file": "Store.html",
+  "engines": [
+   "store"
+  ],
+  "data": [
+   "store-data.js"
+  ],
+  "js": "Store.js",
+  "template": "store",
+  "global": "CHRISTMAS_STORE",
+  "subtitle": "Apparel, decor, crafts and treats"
+ },
+ {
+  "season": "christmas",
+  "module": "map",
+  "dir": "Holiday Map",
+  "file": "HolidayMap.html",
+  "engines": [
+   "map"
+  ],
+  "data": [
+   "map-data.js"
+  ],
+  "js": "HolidayMap.js",
+  "leaflet": true,
+  "template": "map",
+  "global": "CHRISTMAS_MAP",
+  "mapTitle": "Light Radar",
+  "subtitle": "Lights, rinks, slopes and Santa"
+ },
+ {
+  "season": "summer",
+  "module": "map",
+  "dir": "Summer Map",
+  "file": "SummerMap.html",
+  "engines": [
+   "map"
+  ],
+  "data": [
+   "map-data.js"
+  ],
+  "js": "SummerMap.js",
+  "leaflet": true,
+  "template": "map",
+  "global": "SUMMER_MAP",
+  "mapTitle": "Summer Map",
+  "subtitle": "Beaches, pools, markets and stars"
+ },
+ {
+  "season": "spring",
+  "module": "map",
+  "dir": "Springmap",
+  "file": "Springmap.html",
+  "engines": [
+   "map"
+  ],
+  "data": [
+   "map-data.js"
+  ],
+  "js": "Springmap.js",
+  "leaflet": true,
+  "template": "map",
+  "global": "SPRING_MAP",
+  "mapTitle": "Garden Trails",
+  "subtitle": "Gardens, blooms and birding"
+ },
+ {
+  "season": "summer",
+  "module": "game",
+  "dir": "Game",
+  "file": "Summer.html",
+  "engines": [
+   "arcade"
+  ],
+  "data": [
+   "conestack.js"
+  ],
+  "js": "Summer.js",
+  "template": "arcade",
+  "global": "SUMMER_ARCADE",
+  "subtitle": "Tap to drop. Line it up."
+ },
+ {
+  "season": "summer",
+  "module": "wheel",
+  "dir": "ActivityWheel",
+  "file": "ActivityWheel.html",
+  "engines": [
+   "wheel"
+  ],
+  "data": [
+   "wheel-data.js"
+  ],
+  "js": "ActivityWheel.js",
+  "template": "wheel",
+  "global": "SUMMER_WHEEL",
+  "subtitle": "Spin for a summer day"
+ },
+ {
+  "season": "summer",
+  "module": "store",
+  "dir": "Store",
+  "file": "SummerStore.html",
+  "engines": [
+   "store"
+  ],
+  "data": [
+   "store-data.js"
+  ],
+  "js": "SummerStore.js",
+  "template": "store",
+  "global": "SUMMER_STORE",
+  "subtitle": "Swim, wear, outdoors and eat"
+ },
+ {
+  "season": "spring",
+  "module": "wheel",
+  "dir": "Activity Wheel",
+  "file": "Activitywheel.html",
+  "engines": [
+   "wheel"
+  ],
+  "data": [
+   "wheel-data.js"
+  ],
+  "js": "Activitywheel.js",
+  "template": "wheel",
+  "global": "SPRING_WHEEL",
+  "subtitle": "Spin for a spring quest"
+ },
+ {
+  "season": "spring",
+  "module": "store",
+  "dir": "Store",
+  "file": "Store.html",
+  "engines": [
+   "store"
+  ],
+  "data": [
+   "store-data.js"
+  ],
+  "js": "Store.js",
+  "template": "store",
+  "global": "SPRING_STORE",
+  "subtitle": "Wear, make, decorate and taste"
+ },
+ {
+  "season": "halloween",
+  "module": "landing",
+  "dir": "Halloween Landing page",
+  "file": "HalloweenLanding.html",
+  "engines": [
+   "landing"
+  ],
+  "data": [
+   "../../shared/seasons/halloween.facts.js"
+  ],
+  "js": "HalloweenLanding.js",
+  "template": "landing"
+ },
+ {
+  "season": "christmas",
+  "module": "landing",
+  "dir": "Christmas Landing",
+  "file": "ChristmasLanding.html",
+  "engines": [
+   "landing"
+  ],
+  "data": [
+   "../../shared/seasons/christmas.facts.js"
+  ],
+  "js": "ChristmasLanding.js",
+  "template": "landing"
+ },
+ {
+  "season": "summer",
+  "module": "landing",
+  "dir": "Summer Landing",
+  "file": "SummerLanding.html",
+  "engines": [
+   "landing"
+  ],
+  "data": [
+   "../../shared/seasons/summer.facts.js"
+  ],
+  "js": "SummerLanding.js",
+  "template": "landing"
+ },
+ {
+  "season": "spring",
+  "module": "landing",
+  "dir": "SpringLanding",
+  "file": "SpringLanding.html",
+  "engines": [
+   "landing"
+  ],
+  "data": [
+   "../../shared/seasons/spring.facts.js"
+  ],
+  "js": "SpringLanding.js",
+  "template": "landing"
+ }
+]

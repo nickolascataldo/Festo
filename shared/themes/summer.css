@@ -1,0 +1,152 @@
+/* ==========================================================================
+   SUMMER SOLSTICE: a retro surf poster. Flat colour, thick navy outlines, hard offset shadows,
+   Bebas Neue titles, sun-yellow and coral on a sea-blue sky. Bright and loud: the opposite of Halloween's night.
+   ========================================================================== */
+[data-season="summer"] {
+  --fx-bg: #9ee4f6;
+  --fx-surface: #ffffff;
+  --fx-surface-solid: #ffffff;
+  --fx-surface-2: #fff4d1;
+  --fx-line: #0b3550;
+  --fx-line-soft: rgba(11, 53, 80, 0.2);
+  --fx-text: #0b3550;
+  --fx-muted: #4a6f85;
+  --fx-accent: #ff5a3c;
+  --fx-accent-2: #0a93b8;
+  --fx-accent-3: #ffc933;
+  --fx-on-accent: #ffffff;
+  --fx-glow: 255, 90, 60;
+  --fx-font-display: 'Bebas Neue', Impact, 'Arial Narrow', sans-serif;
+
+  --fx-frame-w: 1060px;
+  --fx-radius: 18px;
+  --fx-card-bg: #ffffff;
+  --fx-card-border: 2.5px solid #0b3550;
+  --fx-card-shadow: 5px 5px 0 #0b3550;
+  --fx-btn-bg: #ff5a3c;
+  --fx-btn-color: #ffffff;
+  --fx-btn-border: 2.5px solid #0b3550;
+  --fx-btn-radius: 14px;
+  --fx-btn-shadow: 3px 3px 0 #0b3550;
+  --fx-btn-font: 400 1.15rem 'Bebas Neue', Impact, sans-serif;
+  --fx-btn-case: uppercase;
+  --fx-btn-track: 0.07em;
+  --fx-title-font: 400 2.2rem 'Bebas Neue', Impact, sans-serif;
+  --fx-frame-bg: rgba(255, 255, 255, 0.34);
+  --fx-frame-line: #0b3550;
+  --fx-frame-shadow: 8px 8px 0 rgba(11, 53, 80, 0.85);
+  --fx-frame-radius: 30px;
+  --fx-appbar-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.2) 80%, transparent);
+  --fx-tabs-bg: #0b3550;
+  --fx-pin-bg: #ffffff;
+}
+@media (min-width: 900px) { [data-season="summer"] .fx-app-frame { border-width: 3px; } }
+
+/* ---------- Scene ---------- */
+[data-season="summer"] .sc-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+[data-season="summer"] .sc-rays { transform-origin: 1260px 210px; animation: su-spin 90s linear infinite; }
+@keyframes su-spin { to { transform: rotate(360deg); } }
+[data-season="summer"] .sc-cloud { animation: su-drift 70s ease-in-out infinite alternate; animation-delay: var(--cx, 0s); }
+@keyframes su-drift { from { translate: 0 0; } to { translate: 110px 0; } }
+[data-season="summer"] .sc-wv { animation: su-wave 18s linear infinite; }
+[data-season="summer"] .sc-wv1 { --p: 400px; }
+[data-season="summer"] .sc-wv2 { --p: 480px; animation-duration: 26s; animation-direction: reverse; }
+[data-season="summer"] .sc-wv3 { --p: 360px; animation-duration: 14s; }
+@keyframes su-wave { from { translate: 0 0; } to { translate: calc(var(--p) * -1) 0; } }
+[data-season="summer"] .sc-boat { animation: su-bob 5s ease-in-out infinite alternate; }
+@keyframes su-bob { from { translate: 0 0; rotate: -1.2deg; } to { translate: 14px 6px; rotate: 1.2deg; } }
+[data-season="summer"] .sc-bird { animation: su-fly var(--d, 30s) linear infinite; }
+@keyframes su-fly { from { translate: -120px 0; } to { translate: 1900px -90px; } }
+[data-season="summer"] .sc-foreground { position: absolute; inset: 0; }
+[data-season="summer"] .fg { position: absolute; bottom: -2%; display: flex; align-items: flex-end; gap: 6px; }
+[data-season="summer"] .fg-l { left: 0; }
+[data-season="summer"] .fg-r { right: 0; }
+[data-season="summer"] .fg-ground { display: flex; align-items: flex-end; margin-left: -66px; margin-bottom: -6px; }
+[data-season="summer"] .fg-boards { display: flex; align-items: flex-end; gap: 2px; margin-right: -24px; }
+[data-season="summer"] .art-palm { filter: drop-shadow(0 8px 0 rgba(11, 53, 80, 0.12)); transform-origin: 50% 100%; animation: su-sway 7s ease-in-out infinite alternate; }
+[data-season="summer"] .fg-r .art-palm { animation-duration: 9s; }
+@keyframes su-sway { from { rotate: -1.4deg; } to { rotate: 1.4deg; } }
+@media (max-width: 760px) { [data-season="summer"] .fg { transform: scale(0.58); transform-origin: bottom center; } [data-season="summer"] .fg-l { transform-origin: bottom left; } [data-season="summer"] .fg-r { transform-origin: bottom right; } }
+
+/* ---------- App bar + type ---------- */
+[data-season="summer"] .fx-circle-btn { background: #ffc933; border: 2.5px solid #0b3550; color: #0b3550; box-shadow: 3px 3px 0 #0b3550; }
+[data-season="summer"] .fx-circle-btn:hover { background: #ffd95a; transform: translate(-1px, -1px); box-shadow: 4px 4px 0 #0b3550; }
+[data-season="summer"] .fx-circle-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #0b3550; }
+[data-season="summer"] .fx-apptitle { color: #0b3550; letter-spacing: 0.05em; text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.85); }
+[data-season="summer"] .fx-mascot { color: #ff5a3c; filter: none; }
+[data-season="summer"] .fx-h2 { color: #0b3550; font-size: clamp(1.7rem, 4.6vw, 2.5rem); letter-spacing: 0.04em; }
+[data-season="summer"] .fx-eyebrow { color: #ff5a3c; letter-spacing: 0.2em; font-weight: 900; }
+[data-season="summer"] .fx-sec-title { color: #0b3550; font: 400 1.35rem 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.08em; }
+[data-season="summer"] .fx-sec-title a, [data-season="summer"] .fx-sec-title button { color: #ff5a3c; }
+[data-season="summer"] .fx-hero .fx-h2::after { content: ''; display: block; width: 84px; height: 6px; margin-top: 8px; border-radius: 3px; background: repeating-linear-gradient(90deg, #ff5a3c 0 14px, #ffc933 14px 28px, #0a93b8 28px 42px); border: 0; box-shadow: 0 0 0 2px #0b3550; }
+
+/* ---------- Buttons + inputs ---------- */
+[data-season="summer"] .fx-btn:hover { transform: translate(-1px, -1px); filter: none; box-shadow: 4px 4px 0 #0b3550; }
+[data-season="summer"] .fx-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #0b3550; }
+[data-season="summer"] .fx-btn--ghost { color: #0b3550; background: #ffffff; border: 2.5px solid #0b3550; box-shadow: 3px 3px 0 #0b3550; }
+[data-season="summer"] .fx-btn--ghost:hover { background: #fff4d1; }
+[data-season="summer"] .fx-btn--sm { font-size: 1rem; padding: 6px 12px; }
+[data-season="summer"] .fx-pill { color: #0b3550; border: 2px solid #0b3550; background: #ffffff; font-weight: 800; }
+[data-season="summer"] .fx-pill:hover { background: #fff4d1; color: #0b3550; border-color: #0b3550; }
+[data-season="summer"] .fx-pill.is-active { color: #0b3550; background: #ffc933; border-color: #0b3550; box-shadow: 2px 2px 0 #0b3550; }
+[data-season="summer"] .fx-input, [data-season="summer"] .fx-select { background: #ffffff; color: #0b3550; border: 2.5px solid #0b3550; border-radius: 14px; box-shadow: 3px 3px 0 rgba(11, 53, 80, 0.25); }
+[data-season="summer"] .fx-search > .fx-input { padding-left: 42px; }
+[data-season="summer"] .fx-input::placeholder { color: #7e9aab; }
+[data-season="summer"] .fx-input:focus { outline: none; box-shadow: 3px 3px 0 #ff5a3c; border-color: #0b3550; }
+[data-season="summer"] .fx-select option { background: #fff; color: #0b3550; }
+[data-season="summer"] .fx-badge { background: #ffc933; color: #0b3550; border: 1.5px solid #0b3550; }
+[data-season="summer"] .fx-switch span { background: rgba(11, 53, 80, 0.25); }
+
+/* ---------- Tiles, feature and list cards ---------- */
+[data-season="summer"] .fx-tile { color: #0b3550; background: #ffffff; border: 2.5px solid #0b3550; box-shadow: 3px 3px 0 #0b3550; }
+[data-season="summer"] .fx-tile > i { color: #ff5a3c; filter: none; }
+[data-season="summer"] .fx-tile.is-on { background: #ffc933; }
+[data-season="summer"] .fx-feature-art { background: repeating-linear-gradient(135deg, #0a93b8 0 16px, #0aa6c9 16px 32px); color: #ffe27a; }
+[data-season="summer"] .fx-feature-art > i { filter: drop-shadow(2px 3px 0 #0b3550); }
+[data-season="summer"] .fx-listcard-art { background: #fff1c2; color: #ff5a3c; border-right: 2.5px solid #0b3550; }
+[data-season="summer"] .fx-catcard { background: #ffffff; border: 2px solid #0b3550; box-shadow: 3px 3px 0 #0b3550; }
+[data-season="summer"] .fx-sidebar-title { color: #0b3550; font: 400 1.3rem 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.08em; }
+[data-season="summer"] .fx-listcard-title, [data-season="summer"] .fx-feature-title { color: #0b3550; }
+[data-season="summer"] .fxs-shop { color: #ff5a3c; }
+[data-season="summer"] .fxs-act.is-on, [data-season="summer"] .fxs-bar .fx-circle-btn.is-on { background: #ff5a3c; color: #fff; }
+
+/* ---------- Style 1 tab bar: the Tide Bar (navy bar with a wave crest and a sun button) ---------- */
+[data-season="summer"] .fx-tabs { left: 0; right: 0; bottom: 0; height: calc(78px + env(safe-area-inset-bottom, 0px)); border-radius: 0; background: #0b3550; border-top: 0; box-shadow: 0 -4px 0 #ffffff; }
+[data-season="summer"] .fx-tabs::before { content: ''; position: absolute; left: 0; right: 0; top: -24px; height: 26px; background-color: #0b3550; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 26' preserveAspectRatio='none'%3E%3Cpath d='M0 26V14Q15 0 30 14T60 14T90 14T120 14V26Z'/%3E%3C/svg%3E") repeat-x bottom / 120px 26px; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 26' preserveAspectRatio='none'%3E%3Cpath d='M0 26V14Q15 0 30 14T60 14T90 14T120 14V26Z'/%3E%3C/svg%3E") repeat-x bottom / 120px 26px; pointer-events: none; animation: su-crest 6s linear infinite; }
+@keyframes su-crest { to { -webkit-mask-position: 120px bottom; mask-position: 120px bottom; } }
+@media (min-width: 900px) { [data-season="summer"] .fx-tabs { left: 50%; right: auto; width: min(var(--fx-frame-w), calc(100% - 48px)); transform: translateX(-50%); bottom: 14px; border-radius: 24px; border: 3px solid #ffffff; box-shadow: 4px 4px 0 rgba(11, 53, 80, 0.85); } [data-season="summer"] .fx-tabs::before { display: none; } }
+[data-season="summer"] .fx-tab { height: 78px; color: #9fd3e6; font: 400 1rem 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.1em; }
+[data-season="summer"] .fx-tab:hover { color: #ffffff; }
+[data-season="summer"] .fx-tab.is-active { color: #ffc933; }
+[data-season="summer"] .fx-tab.is-active i { filter: none; }
+[data-season="summer"] .fx-fab { width: 74px; height: 74px; margin-bottom: 26px; background: #ffc933; border: 3.5px solid #0b3550; box-shadow: 0 0 0 4px #ffffff, 0 6px 0 4px #0b3550; }
+[data-season="summer"] .fx-fab:hover { background: #ffd95a; }
+[data-season="summer"] .fx-fab.is-active { background: #ff8a5c; }
+
+/* ---------- Sheet + modal ---------- */
+[data-season="summer"] .fx-sheet { background: rgba(11, 53, 80, 0.55); }
+[data-season="summer"] .fx-sheet-card { background: #fff4d1; border: 3px solid #0b3550; border-bottom: 0; color: #0b3550; box-shadow: 0 -8px 0 rgba(11, 53, 80, 0.2); }
+[data-season="summer"] .fx-sheet-tile { background: #ffffff; color: #0b3550; border: 2.5px solid #0b3550; box-shadow: 3px 3px 0 #0b3550; font-weight: 800; }
+[data-season="summer"] .fx-sheet-tile i { color: #ff5a3c; filter: none; }
+[data-season="summer"] .fx-sheet-tile.is-active, [data-season="summer"] .fx-sheet-tile:hover { background: #ffc933; border-color: #0b3550; }
+[data-season="summer"] .fx-modal-card { background: #ffffff; color: #0b3550; border: 3px solid #0b3550; box-shadow: 8px 8px 0 #0b3550; }
+[data-season="summer"] .fx-modal-close { color: #0b3550; border-color: #0b3550; }
+[data-season="summer"] .fx-toast { background: #ffc933; color: #0b3550; border: 2.5px solid #0b3550; box-shadow: 3px 3px 0 #0b3550; font-weight: 800; }
+[data-season="summer"] .fx-empty, [data-season="summer"] .fx-soon { background: rgba(255, 255, 255, 0.78); border: 2.5px dashed #0b3550; }
+
+/* ---------- Engine tweaks for the light theme ---------- */
+[data-season="summer"] .fxwx-status.is-warn { color: #b3380f; }
+[data-season="summer"] .fx-app-frame { -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+
+/* ---------- Style 2: the Sun Dial (a sun in the corner that fans its buttons out in two arcs) ---------- */
+[data-season="summer"][data-nav="2"] { --fx-tabs-h: 92px; }
+[data-season="summer"] .fx-dial { position: fixed; z-index: 90; right: 16px; bottom: 16px; width: 76px; height: 76px; }
+[data-season="summer"] .fx-dial-sun { position: absolute; inset: 0; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 3.5px solid #0b3550; background: #ffc933; cursor: pointer; box-shadow: 0 0 0 4px #ffffff, 0 6px 0 4px #0b3550; transition: transform 0.25s var(--fx-ease), background 0.2s; }
+[data-season="summer"] .fx-dial-sun svg { width: 46px; height: 46px; animation: su-spin 30s linear infinite; }
+[data-season="summer"] .fx-dial-sun:hover { background: #ffd95a; }
+[data-season="summer"] .fx-dial.is-open .fx-dial-sun { background: #ff8a5c; transform: rotate(24deg) scale(0.94); }
+[data-season="summer"] .fx-dial-item { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 2.5px solid #0b3550; background: #ffffff; color: #0b3550; font-size: 1.05rem; text-decoration: none; cursor: pointer; box-shadow: 3px 3px 0 #0b3550; opacity: 0; pointer-events: none; transform: translate(0, 0) scale(0.3); transition: transform 0.34s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d, 0ms), opacity 0.2s var(--d, 0ms), background 0.15s; }
+[data-season="summer"] .fx-dial.is-open .fx-dial-item { opacity: 1; pointer-events: auto; transform: translate(var(--x), var(--y)) scale(1); }
+[data-season="summer"] .fx-dial-item:hover { background: #fff4d1; }
+[data-season="summer"] .fx-dial-item.is-active { background: #ffc933; }
+[data-season="summer"] .fx-dial-item:focus-visible, [data-season="summer"] .fx-dial-sun:focus-visible { outline: 3px solid #ff5a3c; outline-offset: 3px; }
