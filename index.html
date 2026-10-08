@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" data-season="hub">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Festo · Four seasons, one app</title>
-  <link rel="icon" href="hxqoep4p.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080b18">
+  <title>Festo</title>
+  <script>
+    /* Returning visitors go straight to the season they made home. Add ?choose=1 to this page to change it. */
+    (function () {
+      try {
+        if (/[?&]choose\b/.test(location.search)) return;
+        var s = JSON.parse(localStorage.getItem('festo_home_season'));
+        var M = { spring: 'Spring/SpringLanding/SpringLanding.html', summer: 'Summer/Summer%20Landing/SummerLanding.html', halloween: 'Halloween/Halloween%20Landing%20page/HalloweenLanding.html', christmas: 'Christmas/Christmas%20Landing/ChristmasLanding.html' };
+        if (M[s]) location.replace(M[s]);
+      } catch (e) { /* storage blocked: show the chooser */ }
+    })();
+  </script>
+  <link rel="icon" href="shared/img/festo-icon-192.png">
+  <link rel="apple-touch-icon" href="shared/img/festo-icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="shared/festo-core.css">
-  <link rel="stylesheet" href="shared/engines/fx-engines.css">
-  <link rel="stylesheet" href="shared/themes/hub.css">
+  <link rel="stylesheet" href="shared/intro/intro.css?v=4">
+  <link rel="stylesheet" href="shared/scenes/poster.css?v=4">
+  <link rel="stylesheet" href="index.css?v=9">
 </head>
-<body class="fx-body">
-  <main id="fx-main" class="fx-main">
-    <noscript>
-      <div class="fx-soon">
-        <h1 class="fx-h2">Festo</h1>
-        <p class="fx-muted">This page needs JavaScript. You can still open a season directly:</p>
-        <p><a class="fx-btn" href="Spring/SpringLanding/SpringLanding.html">Spring</a> <a class="fx-btn" href="Summer/Summer%20Landing/SummerLanding.html">Summer</a> <a class="fx-btn" href="Halloween/Halloween%20Landing%20page/HalloweenLanding.html">Halloween</a> <a class="fx-btn" href="Christmas/Christmas%20Landing/ChristmasLanding.html">Christmas</a></p>
-      </div>
-    </noscript>
-  </main>
+<body class="in-body">
+  <div id="app"></div>
+  <noscript>
+    <p style="padding:40px 24px">Festo needs JavaScript. Open a season directly:
+      <a href="Spring/SpringLanding/SpringLanding.html">Spring</a>,
+      <a href="Summer/Summer%20Landing/SummerLanding.html">Summer</a>,
+      <a href="Halloween/Halloween%20Landing%20page/HalloweenLanding.html">Halloween</a>,
+      <a href="Christmas/Christmas%20Landing/ChristmasLanding.html">Christmas</a>.</p>
+  </noscript>
   <script src="shared/festo-core.js"></script>
-  <script src="shared/seasons/index.js"></script>
-  <script src="shared/scenes/hub.js"></script>
-  <script src="shared/navs.js"></script>
+  <script src="shared/seasons/index.js?v=9"></script>
   <script src="shared/engines/landing.js"></script>
-  <script src="index.js"></script>
+  <script src="shared/intro/intro.js?v=3"></script>
+  <script src="shared/scenes/poster.js?v=6"></script>
+  <script src="index.js?v=9"></script>
 </body>
 </html>

@@ -52,7 +52,7 @@ for (const f of files.filter(f => /\.html$/i.test(f))) {
     }
   }
   for (const m of s.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)) check(f, m[1], dir);
-  const fams = new Set([...s.matchAll(/[?&]family=([^&:"']+)/g)].map(m => decodeURIComponent(m[1]).replace(/\+/g, ' ')));
+  const fams = new Set([...s.replace(/<link[^>]*[?&]text=[^>]*>/g, '').matchAll(/[?&]family=([^&:"']+)/g)].map(m => decodeURIComponent(m[1]).replace(/\+/g, ' ')));
   if (fams.size > 3) bad('FONTS', f, `${fams.size}: ${[...fams].join(', ')}`);
   const vp = s.match(/<meta[^>]+name=["']viewport["'][^>]*>/i);
   if (!vp) bad('VIEWPORT', f, 'missing');

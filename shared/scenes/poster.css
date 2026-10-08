@@ -1,0 +1,29 @@
+/* Artwork */
+.in-art svg, .fx-scene svg.in-poster { position: absolute; inset: 0; width: 100%; height: 100%; }
+.in-tw { animation: in-twinkle 4s ease-in-out infinite alternate; animation-delay: calc(var(--d) * -0.3); }
+@keyframes in-twinkle { from { opacity: 0.2; } to { opacity: 0.9; } }
+.in-ember { animation: in-ember var(--d) linear infinite; }
+@keyframes in-ember { 0% { translate: 0 0; opacity: 0; } 15% { opacity: 0.9; } 100% { translate: var(--dx) -300px; opacity: 0; } }
+.in-snow { animation: in-snow var(--d) linear infinite; }
+@keyframes in-snow { from { translate: 0 -40px; opacity: 0; } 10% { opacity: 0.9; } to { translate: var(--dx) 180px; opacity: 0; } }
+.in-petal { animation: in-petal calc(var(--d) * 1.6) ease-in-out infinite; }
+@keyframes in-petal { 0% { translate: 0 -20px; opacity: 0; } 12% { opacity: 0.9; } 100% { translate: var(--dx) 320px; opacity: 0; } }
+.in-sway { transform-box: fill-box; transform-origin: 50% 100%; animation: in-sway 6s ease-in-out infinite alternate; }
+@keyframes in-sway { from { rotate: -1.2deg; } to { rotate: 1.2deg; } }
+@media (prefers-reduced-motion: reduce) { .in-tw, .in-ember, .in-snow, .in-petal, .in-sway, .d5-q.is-rec::before, .d2-today { animation: none !important; } .in-ember, .in-snow, .in-petal { opacity: 0; } }
+
+/* Brand */
+.in-logo { display: block; border-radius: 22%; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.18); }
+.in-brand { display: flex; align-items: center; gap: 12px; }
+.in-brand-text p { margin: 1px 0 0; font-size: 0.86rem; color: #bcc2de; }
+.in-wordmark { margin: 0; font: 800 1.55rem/1 'Plus Jakarta Sans', sans-serif; letter-spacing: -0.035em; }
+.in-year { position: relative; width: 100%; height: 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.14); }
+.in-year i { position: absolute; top: 0; bottom: 0; border-radius: 6px; opacity: 0.85; }
+.in-year b { position: absolute; top: -5px; width: 4px; height: 16px; margin-left: -2px; border-radius: 3px; background: #fff; box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25); }
+
+/* Season pages: a pale veil keeps text readable on the light themes. */
+.fx-scene::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
+[data-season="christmas"] .fx-scene::after { background: linear-gradient(180deg, rgba(232, 242, 252, 0.62), rgba(232, 242, 252, 0.4)); }
+[data-season="summer"] .fx-scene::after { background: linear-gradient(180deg, rgba(255, 249, 232, 0.6), rgba(255, 249, 232, 0.42)); }
+[data-season="spring"] .fx-scene::after { background: linear-gradient(180deg, rgba(255, 252, 244, 0.5), rgba(255, 252, 244, 0.28)); }
+[data-season="halloween"] .fx-scene::after { background: linear-gradient(180deg, rgba(8, 4, 16, 0.25), rgba(8, 4, 16, 0.45)); }

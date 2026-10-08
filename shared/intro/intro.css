@@ -1,0 +1,43 @@
+/* Shared base for the intro drafts: page, season type, scene wrapper, confirm sheet, draft switcher. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body.in-body {
+  background: #080b18; color: #f3eee2; overflow-x: hidden;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+}
+.in-body :where(button) { font-family: inherit; color: inherit; }
+.in-body a { color: inherit; }
+.in-body :focus-visible { outline: 3px solid #ffd98a; outline-offset: 3px; }
+
+/* One refined serif for every season name, so the four cards read as one family. */
+.f-halloween, .f-christmas, .f-summer, .f-spring { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-style: normal; letter-spacing: -0.02em; text-transform: none; font-optical-sizing: auto; }
+
+/* A live season scene dropped into any box. The box needs position: relative and overflow: hidden. */
+.in-scene { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.in-scene svg { display: block; }
+
+.in-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 54px; padding: 0 26px; border: 0; border-radius: 999px; font: 800 1rem 'Plus Jakarta Sans', sans-serif; cursor: pointer; text-decoration: none; transition: transform 0.15s, filter 0.15s; }
+.in-btn:active { transform: scale(0.98); }
+.in-btn--main { background: var(--c1); color: var(--on, #1a1209); box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35); }
+.in-btn--main:hover { filter: brightness(1.08); }
+.in-btn--quiet { background: rgba(255, 255, 255, 0.1); color: inherit; border: 1.5px solid rgba(255, 255, 255, 0.28); }
+.in-link { background: none; border: 0; padding: 10px; font: 700 0.9rem 'Plus Jakarta Sans', sans-serif; opacity: 0.8; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Confirm sheet */
+.in-sheet { position: fixed; inset: 0; z-index: 300; display: flex; align-items: flex-end; justify-content: center; background: rgba(4, 6, 14, 0.66); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); animation: in-fade 0.2s ease-out; }
+.in-sheet-card { position: relative; width: min(520px, 100%); display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 32px 24px calc(24px + env(safe-area-inset-bottom, 0px)); border-radius: 30px 30px 0 0; text-align: center; color: #f3eee2; background: linear-gradient(180deg, #1b2142, #0d1128); border: 1.5px solid var(--c1); border-bottom: 0; box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.5); animation: in-rise 0.32s cubic-bezier(0.25, 1, 0.5, 1); }
+.in-sheet-icon { align-self: center; width: 64px; height: 64px; display: grid; place-items: center; margin-top: -64px; margin-bottom: 4px; border-radius: 50%; font-size: 1.6rem; color: var(--on, #1a1209); background: var(--c1); box-shadow: 0 0 0 6px #0d1128, 0 10px 24px rgba(0, 0, 0, 0.45); }
+.in-sheet-title { margin: 0; font: 800 1.45rem/1.15 'Plus Jakarta Sans', sans-serif; }
+.in-sheet-text { margin: 0 0 8px; font-size: 0.95rem; line-height: 1.5; color: #c4c9e4; max-width: 38ch; align-self: center; }
+@media (min-width: 640px) { .in-sheet { align-items: center; } .in-sheet-card { border-radius: 30px; border-bottom: 1.5px solid var(--c1); } }
+@keyframes in-fade { from { opacity: 0; } }
+@keyframes in-rise { from { transform: translateY(40px); opacity: 0; } }
+
+/* Draft switcher: only exists while we compare designs. */
+.in-draftbar { position: fixed; z-index: 250; top: calc(8px + env(safe-area-inset-top, 0px)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 4px; padding: 4px 6px 4px 12px; border-radius: 999px; background: rgba(8, 11, 24, 0.82); border: 1px solid rgba(255, 255, 255, 0.2); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); font: 700 0.72rem 'Plus Jakarta Sans', sans-serif; color: #c4c9e4; }
+.in-draftbar span { margin-right: 4px; }
+.in-draftbar a, .in-draftbar button { min-width: 28px; height: 28px; display: grid; place-items: center; padding: 0 8px; border-radius: 999px; border: 0; background: transparent; color: #f3eee2; font: 800 0.78rem 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; }
+.in-draftbar a.is-on { background: #f3eee2; color: #080b18; }
+.in-draftbar button { margin-left: 4px; font-weight: 600; opacity: 0.75; }
+

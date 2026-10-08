@@ -1,0 +1,1 @@
+Put a picture here named halloween.jpg, christmas.jpg, summer.jpg or spring.jpg (portrait, about 1200 x 1800, under 400 KB), then add that season to PHOTOS at the top of shared/scenes/poster.js. It replaces the drawn poster on the intro page and every season page.

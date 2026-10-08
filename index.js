@@ -1,63 +1,72 @@
-/* Festo hub: pick a season. Built on the shared shell (see shared/festo-core.js); this file only fills the page. */
+/* Festo intro page: suggest the season for today's date, show it as a postcard you can swipe through, and list all
+   four seasons underneath. Choosing one offers to make it the home season. Shared pieces (icon, posters, confirm
+   sheet, saved choice) live in shared/intro/ and shared/scenes/poster.js. */
 Festo.dom.ready(function () {
   'use strict';
-  var F = Festo, h = F.dom.h;
-  var PIN_KEY = 'festo_hub_pinned';
-  var PORTALS = {
-    spring: { c1: '#f08fae', c2: '#4f8a4c', sub: 'Gardens, blooms and birdsong' },
-    summer: { c1: '#ffb81f', c2: '#0aa6c9', sub: 'Beaches, sun and long evenings' },
-    halloween: { c1: '#ff8a1f', c2: '#5b1f8a', sub: 'Haunts, harvest and midnight' },
-    christmas: { c1: '#d62839', c2: '#1f7a5a', sub: 'Lights, hearth and snow' }
-  };
-  var ORDER = ['spring', 'summer', 'halloween', 'christmas'];
-  function n(v) { return (+v).toLocaleString('en-US'); }
+  var F = Festo, h = F.dom.h, I = Intro, root = document.getElementById('app');
+  var rec = I.recommended(), mine = I.saved(), start = mine || rec;
+  function vars(id) { var i = I.info(id); return { '--c1': i.c1, '--c2': i.c2, '--on': i.on }; }
+  var d = F.now(), post = d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase() + ' ' + d.getDate();
+  var order = [start].concat(I.order.filter(function (x) { return x !== start; })), rots = [0, -5, 4, -2];
+  var cards = {}, rows = {}, layers = {};
 
-  var brand = h('span', { class: 'fx-circle-btn fxh-brand', 'aria-hidden': 'true' }, h('img', { src: F.rootUrl + 'hxqoep4p.png', alt: '', decoding: 'async' }));
-  var main = F.shell.mount({ season: 'hub', module: 'landing', left: brand });
+  /* ----- backdrop: the selected season's poster, softly darkened ----- */
+  var bg = h('div', { class: 'home-bg', 'aria-hidden': 'true' });
+  I.order.forEach(function (id) { layers[id] = I.art(id); layers[id].classList.add('home-layer'); bg.appendChild(layers[id]); });
 
-  F.guard('the hub', function () {
-    var now = F.now(), natural = F.seasons.detect(now);
-    var pinned = F.store.get(PIN_KEY, null);
-    if (ORDER.indexOf(pinned) < 0) pinned = null;
-    var target = pinned || natural;
-    var seasons = [target].concat(ORDER.filter(function (id) { return id !== target; }));
-
-    /* ----- direct jump ----- */
-    var ts = F.seasons.get(target), cd = F.countdown(ts.countdown, now), p = PORTALS[target];
-    var jump = h('section', { class: 'fx-card fxh-jump', style: { '--c1': p.c1 }, 'aria-label': 'Jump to the current season' },
-      h('div', { class: 'fxh-jump-main' },
-        h('span', { class: 'fx-eyebrow' }, pinned ? 'Your pinned season' : 'Right now'),
-        h('h2', { class: 'fxh-jump-title' }, ts.name),
-        h('span', { class: 'fxh-date' }, now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })),
-        h('span', { class: 'fx-muted' }, cd.state === 'today' || cd.state === 'last' ? cd.big + ' ' + cd.label : cd.big + ' ' + cd.label),
-        h('a', { class: 'fx-btn', href: F.url(target, 'landing') }, h('i', { class: 'fa-solid fa-arrow-right' }), 'Jump in')),
-      h('div', { class: 'fxh-ring', 'aria-hidden': 'true' }, h('i', { class: 'fa-solid fa-' + ts.icon })));
-
-    /* ----- four portals ----- */
-    function portal(id) {
-      var s = F.seasons.get(id), c = PORTALS[id], on = pinned === id;
-      var pin = h('button', { class: 'fxh-pin', type: 'button', 'aria-pressed': String(on), 'aria-label': 'Pin ' + s.name + ' as my default season', title: on ? 'Unpin' : 'Pin as default', onclick: function () {
-        if (F.store.get(PIN_KEY, null) === id) F.store.remove(PIN_KEY); else F.store.set(PIN_KEY, id);
-        location.reload();
-      } }, h('i', { class: 'fa-solid fa-thumbtack' }));
-      return h('div', { class: 'fxh-portal-wrap' },
-        h('a', { class: 'fxh-portal', href: F.url(id, 'landing'), style: { '--c1': c.c1, '--c2': c.c2 } },
-          h('span', { class: 'fxh-portal-art', 'aria-hidden': 'true' }, h('i', { class: 'fa-solid fa-' + s.icon })),
-          h('span', { class: 'fxh-portal-text' },
-            h('span', { class: 'fxh-portal-name' }, s.name),
-            h('span', { class: 'fxh-portal-sub' }, c.sub),
-            h('span', { class: 'fxh-portal-meta' }, n(s.counts.books) + ' books · ' + n(s.counts.films) + ' films')),
-          h('i', { class: 'fa-solid fa-arrow-right fxh-portal-go', 'aria-hidden': 'true' })),
-        id === natural ? h('span', { class: 'fxh-now' }, 'In season') : null,
-        pin);
-    }
-
-    /* ----- quick tiles for the target season ----- */
-    var tiles = ts.modules.map(function (m) { return h('a', { class: 'fx-tile', href: F.url(target, m.id) }, h('i', { class: 'fa-solid ' + m.icon }), m.label); });
-
-    main.appendChild(h('div', { class: 'fxh' },
-      jump,
-      h('section', { class: 'fx-sec' }, h('h2', { class: 'fx-sec-title' }, 'Choose a season'), h('div', { class: 'fxh-grid' }, seasons.map(portal))),
-      h('section', { class: 'fx-sec' }, h('h2', { class: 'fx-sec-title' }, 'Quick links · ' + ts.name), h('div', { class: 'fx-tiles' }, tiles))));
+  /* ----- postcards ----- */
+  var stage = h('div', { class: 'home-stage', 'aria-label': 'Season postcards' });
+  I.order.forEach(function (id) {
+    var inf = I.info(id);
+    cards[id] = h('article', { class: 'home-card', 'data-id': id, style: vars(id), 'aria-label': inf.name },
+      h('div', { class: 'home-photo' }, I.art(id),
+        h('span', { class: 'home-post', 'aria-hidden': 'true' }, h('b', null, 'Festo'), h('i', null, post)),
+        id === rec ? h('span', { class: 'home-sug' }, I.ico('star'), I.suggestLabel()) : null,
+        id === mine ? h('span', { class: 'home-mine' }, I.ico('house'), 'Your home') : null),
+      h('div', { class: 'home-note' }, h('p', { class: 'home-greet' }, 'Greetings from'), h('h2', { class: 'home-name f-' + id }, inf.name), h('p', { class: 'home-tag' }, inf.tag)));
+    stage.appendChild(cards[id]);
   });
+
+  /* ----- the four-season sheet ----- */
+  var list = h('div', { class: 'home-list', role: 'radiogroup', 'aria-label': 'Season' });
+  I.order.forEach(function (id) {
+    var inf = I.info(id);
+    rows[id] = h('button', { class: 'home-row', type: 'button', role: 'radio', 'aria-checked': 'false', style: vars(id), onclick: function () { select(id); } },
+      h('span', { class: 'home-thumb' }, I.art(id)),
+      h('span', { class: 'home-rtext' }, h('b', { class: 'f-' + id }, inf.short), h('small', null, I.countdown(id))));
+    list.appendChild(rows[id]);
+  });
+  var go = h('button', { class: 'in-btn in-btn--main home-go', type: 'button', onclick: function () { I.enter(order[0]); } });
+
+  function layout(animate) {
+    order.forEach(function (id, i) {
+      var c = cards[id]; c.classList.toggle('no-anim', !animate);
+      c.style.zIndex = String(10 - i); c.style.transform = 'translate3d(0,' + (i * 14) + 'px,0) scale(' + (1 - i * 0.05) + ') rotate(' + rots[i] + 'deg)';
+      c.style.filter = 'brightness(' + (1 - i * 0.16) + ')'; c.style.pointerEvents = i === 0 ? 'auto' : 'none'; c.setAttribute('aria-hidden', String(i !== 0));
+    });
+    var top = order[0], inf = I.info(top);
+    I.order.forEach(function (k) { layers[k].classList.toggle('is-on', k === top); rows[k].setAttribute('aria-checked', String(k === top)); rows[k].classList.toggle('is-on', k === top); });
+    go.textContent = 'Enter ' + inf.name; go.style.setProperty('--c1', inf.c1); go.style.setProperty('--on', inf.on);
+  }
+  function select(id) { while (order[0] !== id) order.push(order.shift()); layout(true); }
+  function next(dir) {
+    var top = cards[order[0]]; dir = dir || 1;
+    top.classList.remove('no-anim'); top.style.transform = 'translate3d(' + (dir * 130) + '%,40px,0) rotate(' + (dir * 22) + 'deg)'; top.style.opacity = '0';
+    setTimeout(function () { order.push(order.shift()); top.style.opacity = ''; layout(false); void top.offsetWidth; layout(true); }, 240);
+  }
+  function prev() { order.unshift(order.pop()); layout(true); }
+
+  var sx = 0, sy = 0, dx = 0, drag = false;
+  stage.addEventListener('pointerdown', function (e) { drag = true; sx = e.clientX; sy = e.clientY; dx = 0; cards[order[0]].classList.add('no-anim'); try { stage.setPointerCapture(e.pointerId); } catch (x) { /* ignore */ } });
+  stage.addEventListener('pointermove', function (e) { if (!drag) return; dx = e.clientX - sx; cards[order[0]].style.transform = 'translate3d(' + dx + 'px,' + ((e.clientY - sy) * 0.3) + 'px,0) rotate(' + (dx / 14) + 'deg)'; });
+  function release() { if (!drag) return; drag = false; if (Math.abs(dx) > 60) next(dx > 0 ? 1 : -1); else layout(true); }
+  stage.addEventListener('pointerup', release); stage.addEventListener('pointercancel', release);
+  document.addEventListener('keydown', function (e) { if (document.querySelector('.in-sheet')) return; if (e.key === 'ArrowRight') next(1); else if (e.key === 'ArrowLeft') prev(); });
+
+  root.appendChild(bg);
+  root.appendChild(h('main', { class: 'home' },
+    h('header', { class: 'home-top' }, I.brand(mine ? 'Your home is ' + I.info(mine).name : I.dateLabel())),
+    h('section', { class: 'home-hero' }, h('button', { class: 'home-arrow', type: 'button', 'aria-label': 'Previous season', onclick: prev }, I.ico('chevron-left')), stage, h('button', { class: 'home-arrow', type: 'button', 'aria-label': 'Next season', onclick: function () { next(1); } }, I.ico('chevron-right'))),
+    h('section', { class: 'home-sheet' }, h('span', { class: 'home-grab', 'aria-hidden': 'true' }), h('div', { class: 'home-year' }, I.yearBar()), list, go)));
+  layout(false);
 });

@@ -411,7 +411,7 @@
       var main = document.getElementById('fx-main');
       var frame = h('div', { class: 'fx-app-frame' });
       var isHome = cfg.module === 'landing';
-      var back = cfg.left || h('a', { class: 'fx-circle-btn', href: isHome ? Festo.url('hub') : Festo.url(cfg.season, 'landing'), 'aria-label': isHome ? 'All seasons' : 'Back to ' + s.name, title: isHome ? 'All seasons' : s.name }, ico('chevron-left'));
+      var back = cfg.left || h('a', { class: 'fx-circle-btn', href: isHome ? Festo.url('hub', null, 'choose=1') : Festo.url(cfg.season, 'landing'), 'aria-label': isHome ? 'All seasons' : 'Back to ' + s.name, title: isHome ? 'All seasons' : s.name }, ico('chevron-left'));
       var action = h('button', { class: 'fx-circle-btn', type: 'button', 'aria-label': 'Open menu', 'aria-haspopup': 'dialog' }, ico('grip'));
       var appbar = h('header', { class: 'fx-appbar' }, back,
         h('h1', { class: 'fx-apptitle' }, h('span', null, title), ico(s.icon, 'fx-mascot')), action);
@@ -472,7 +472,7 @@
       var st = shellState, h = Festo.dom.h, s = st.s;
       var tiles = [h('a', { class: 'fx-sheet-tile', href: Festo.url(st.season, 'landing') }, ico('house'), h('span', null, s.short))];
       s.modules.forEach(function (m) { tiles.push(h('a', { class: 'fx-sheet-tile' + (m.id === st.module ? ' is-active' : ''), href: Festo.url(st.season, m.id) }, ico(m.icon.replace('fa-', '')), h('span', null, m.label))); });
-      if (st.season !== 'hub') tiles.push(h('a', { class: 'fx-sheet-tile', href: Festo.url('hub') }, ico('compass'), h('span', null, 'All seasons')));
+      if (st.season !== 'hub') tiles.push(h('a', { class: 'fx-sheet-tile', href: Festo.url('hub', null, 'choose=1') }, ico('compass'), h('span', null, 'All seasons')));
       var styleBtn = function (n) { return h('button', { class: 'fx-pill' + (st.style === n ? ' is-active' : ''), type: 'button', 'aria-label': 'Navigation style ' + n, onclick: function () { Festo.shell.setStyle(n); } }, 'Style ' + n); };
       var snd = h('button', { class: 'fx-pill', type: 'button', 'aria-label': 'Toggle sound' }, ico(Festo.audio.muted ? 'volume-xmark' : 'volume-high'));
       snd.addEventListener('click', function () { Festo.audio.setMuted(!Festo.audio.muted); snd.innerHTML = ''; snd.appendChild(ico(Festo.audio.muted ? 'volume-xmark' : 'volume-high')); });
@@ -508,7 +508,7 @@
         Festo.dom.h('div', { class: 'fx-soon-icon' }, Festo.dom.h('i', { class: 'fa-solid fa-triangle-exclamation' })),
         Festo.dom.h('h2', { class: 'fx-h2' }, 'Something went wrong in ' + name),
         Festo.dom.h('p', { class: 'fx-muted' }, 'The rest of the site is fine. You can head back and try again.'),
-        Festo.dom.h('a', { class: 'fx-btn', href: s ? Festo.url(s.id, 'landing') : Festo.url('hub') }, 'Back to ' + (s ? s.name : 'the hub'))));
+        Festo.dom.h('a', { class: 'fx-btn', href: s ? Festo.url(s.id, 'landing') : Festo.url('hub', null, 'choose=1') }, 'Back to ' + (s ? s.name : 'the hub'))));
       return null;
     }
   };

@@ -30,7 +30,8 @@ function build(p) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">${isMap ? '\n  ' + LEAFLET_CSS : ''}
   <link rel="stylesheet" href="${up}festo-core.css">
   <link rel="stylesheet" href="${up}engines/fx-engines.css">
-  <link rel="stylesheet" href="${up}themes/${p.season}.css">${p.css ? `\n  <link rel="stylesheet" href="${p.css}">` : ''}
+  <link rel="stylesheet" href="${up}themes/${p.season}.css">
+  <link rel="stylesheet" href="${up}scenes/poster.css?v=4">${p.css ? `\n  <link rel="stylesheet" href="${p.css}">` : ''}
 </head>
 <body class="fx-body">
   <main id="fx-main" class="fx-main${isMap ? ' fx-main--wide' : ''}">
@@ -39,6 +40,7 @@ function build(p) {
   <script src="${up}festo-core.js"></script>
   <script src="${up}seasons/index.js"></script>
   <script src="${up}scenes/${p.season}.js"></script>
+  <script src="${up}scenes/poster.js?v=6"></script>
   <script src="${up}navs.js"></script>
 ${list(p.engines).map(e => `  <script src="${up}engines/${e}.js"></script>`).join('\n')}
 ${list(p.data).map(d => `  <script src="${d}"></script>`).join('\n')}
