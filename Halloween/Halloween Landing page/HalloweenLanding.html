@@ -2,25 +2,305 @@
 <html lang="en" data-season="halloween">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#06080d">
   <title>Halloween Hollow · Festo</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Halloween Hollow: films, books, haunts near you, playlists, pumpkin carving and a live moon, all in one place.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..900,0..100,0..1;1,9..144,400..900,0..100,0..1&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="stylesheet" href="../../shared/festo-core.css">
-  <link rel="stylesheet" href="../../shared/engines/fx-engines.css">
-  <link rel="stylesheet" href="../../shared/themes/halloween.css">
-  <link rel="stylesheet" href="../../shared/scenes/poster.css?v=4">
+  <link rel="stylesheet" href="HalloweenLanding.css">
 </head>
-<body class="fx-body">
-  <main id="fx-main" class="fx-main">
-    <noscript><div class="fx-soon"><h1 class="fx-h2">Halloween Hollow</h1><p class="fx-muted">This page needs JavaScript.</p><a class="fx-btn" href="HalloweenLanding.html">Back</a></div></noscript>
+<body class="mh">
+  <a class="mh-skip" href="#mh-main">Skip to content</a>
+
+  <header class="mh-top">
+    <div class="mh-wrap mh-top-row">
+      <a class="mh-allseasons" id="mh-allseasons" href="../../index.html?choose=1" aria-label="All seasons" title="All seasons">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </a>
+      <a class="mh-brand" href="HalloweenLanding.html" aria-label="Halloween Hollow home">
+        <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true"><defs><radialGradient id="lgP" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#ffb26b"/><stop offset="1" stop-color="#e2600f"/></radialGradient></defs><path d="M20 11c-8.6 0-14 5-14 11.6S11.6 34 20 34s14-4.8 14-11.4S28.6 11 20 11z" fill="url(#lgP)"/><path d="M20 11c-3 0-5 5.2-5 11.6S17 34 20 34s5-5 5-11.4S23 11 20 11z" fill="none" stroke="#a8430a" stroke-width="1.2" opacity=".7"/><path d="M19.6 11.4l-.8-5.4c1.6-1.8 3.8-1.6 4.8-.2l-2 5.6z" fill="#3ddc84"/><path d="M12.5 20.5l3-3.2 1.6 3.6zM27.5 20.5l-3-3.2-1.6 3.6zM12.6 25.6q7.4 5 14.8 0l-2 2-2-1.4-2.4 2-2.4-2-2 1.4z" fill="#1a0c02"/></svg>
+        <span class="disp">Halloween <span>Hollow</span></span>
+      </a>
+      <form class="mh-search" id="mh-search" role="search" autocomplete="off">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <label class="mh-sr" for="mh-q">Search the Hollow</label>
+        <input id="mh-q" type="search" placeholder="Films, books, haunts, playlists…" aria-describedby="mh-search-hint">
+        <kbd aria-hidden="true">/</kbd>
+        <span class="mh-sr" id="mh-search-hint" aria-live="polite"></span>
+      </form>
+      <nav class="mh-quick" aria-label="Quick links">
+        <a class="nl" href="../Spectral%20Map/spectralmap.html">Map</a>
+        <a class="nl" href="../Halloween%20Store/halloweenstore.html">Shop</a>
+        <a class="nl" href="../Halloween%20Music/halloweenmusic.html">Music</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="mh-main" class="mh-wrap mh-main" tabindex="-1">
+
+    <section class="mh-hero" aria-labelledby="mh-title">
+      <svg class="mh-hero-art" viewBox="0 0 1320 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <linearGradient id="hSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#070b17"/><stop offset=".45" stop-color="#16213f"/><stop offset=".8" stop-color="#2a2e52"/><stop offset="1" stop-color="#3b2f4c"/></linearGradient>
+          <radialGradient id="hMoon" cx="38%" cy="36%" r="68%"><stop offset="0" stop-color="#fffbee"/><stop offset=".5" stop-color="#f3e7c3"/><stop offset=".85" stop-color="#d7c48d"/><stop offset="1" stop-color="#bba468"/></radialGradient>
+          <radialGradient id="hHalo"><stop offset="0" stop-color="#ffe9b8" stop-opacity=".42"/><stop offset=".35" stop-color="#c9b8ff" stop-opacity=".12"/><stop offset="1" stop-color="#c9b8ff" stop-opacity="0"/></radialGradient>
+          <radialGradient id="hWarm" cx="50%" cy="100%" r="60%"><stop offset="0" stop-color="#ff8a3d" stop-opacity=".28"/><stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/></radialGradient>
+          <linearGradient id="hFog" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#b7c3e6" stop-opacity="0"/><stop offset="1" stop-color="#b7c3e6" stop-opacity=".2"/></linearGradient>
+          <filter id="hBlur"><feGaussianBlur stdDeviation="6"/></filter>
+          <filter id="hNoise"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+          <clipPath id="hMoonClip"><circle cx="990" cy="168" r="96"/></clipPath>
+        </defs>
+        <rect width="1320" height="520" fill="url(#hSky)"/>
+        <g fill="#fff" class="stars"><circle cx="90" cy="60" r="1.1" opacity=".8"/><circle cx="210" cy="132" r=".8" opacity=".6"/><circle cx="330" cy="40" r="1.3" opacity=".9"/><circle cx="470" cy="104" r=".9" opacity=".6"/><circle cx="560" cy="34" r="1" opacity=".7"/><circle cx="660" cy="150" r=".8" opacity=".5"/><circle cx="760" cy="62" r="1.2" opacity=".8"/><circle cx="1210" cy="54" r="1" opacity=".7"/><circle cx="1280" cy="190" r="1.3" opacity=".8"/><circle cx="1150" cy="300" r=".8" opacity=".5"/><circle cx="400" cy="210" r=".8" opacity=".5"/><circle cx="830" cy="230" r=".9" opacity=".5"/></g>
+        <circle class="glow" cx="990" cy="168" r="260" fill="url(#hHalo)"/>
+        <circle cx="990" cy="168" r="96" fill="url(#hMoon)"/>
+        <g clip-path="url(#hMoonClip)" fill="#a8925a" opacity=".32"><circle cx="958" cy="138" r="18"/><circle cx="1022" cy="196" r="24"/><circle cx="1030" cy="126" r="9"/><circle cx="960" cy="214" r="12"/><circle cx="1000" cy="160" r="6"/><ellipse cx="950" cy="176" rx="30" ry="12" opacity=".4"/></g>
+        <rect x="894" y="72" width="192" height="192" filter="url(#hNoise)" clip-path="url(#hMoonClip)"/>
+        <g class="cloud" opacity=".55"><path d="M860 214c20-20 60-18 74-2 18-14 52-12 64 6 26-6 52 6 54 22H850c-8-10-4-22 10-26z" fill="#1c2546" filter="url(#hBlur)"/></g>
+        <g class="cloud b" opacity=".45"><path d="M180 120c24-22 70-20 86 0 22-16 60-12 72 8 30-6 58 8 60 26H170c-10-12-4-28 10-34z" fill="#1c2546" filter="url(#hBlur)"/></g>
+        <g class="crow" fill="#0a0f1d"><path d="M0 120c6-6 12-8 16-6 4-4 8-4 10 0 4-2 10 0 14 6-6-2-10-1-14 2-3-2-6-2-10 0-4-3-10-3-16-2z"/><path d="M40 140c4-4 8-5 11-4 3-3 6-3 7 0 3-1 7 0 10 4-4-1-7-1-10 1-2-1-4-1-7 0-3-2-7-2-11-1z"/></g>
+        <path d="M0 352c90-26 170-30 260-18 70-30 140-40 220-28 90-30 180-24 270-6 80-22 170-26 260-10 70-20 150-22 310 8V520H0z" fill="#1e2442"/>
+        <g fill="#181d36"><path d="M40 348l10-40 10 40zM70 344l8-30 8 30zM1190 340l10-44 10 44zM1220 344l8-32 8 32zM1250 342l9-38 9 38zM1290 346l7-28 7 28z"/></g>
+        <g transform="translate(1046 196)">
+          <path d="M40 150V70l32-30 32 30v80z" fill="#171c33"/>
+          <path d="M60 40l12-74 12 74z" fill="#171c33"/>
+          <rect x="70" y="-64" width="4" height="26" fill="#171c33"/><rect x="63" y="-56" width="18" height="4" fill="#171c33"/>
+          <path d="M104 150V92h78v58z" fill="#171c33"/><path d="M98 94l45-32 45 32z" fill="#171c33"/>
+          <g class="win"><path d="M64 118v-18a8 8 0 0 1 16 0v18z" fill="#ffb347" filter="url(#hBlur)"/><path d="M64 118v-18a8 8 0 0 1 16 0v18z" fill="#ffd486"/><rect x="120" y="108" width="12" height="18" rx="1" fill="#ffd486"/><rect x="148" y="108" width="12" height="18" rx="1" fill="#ffd486" opacity=".5"/><circle cx="72" cy="66" r="5" fill="#ffd486"/></g>
+        </g>
+        <ellipse cx="1150" cy="330" rx="200" ry="60" fill="url(#hWarm)"/>
+        <path d="M0 410c150-34 300-30 450-44 160-16 300 8 450-6 150-14 280-2 420 10V520H0z" fill="#131a30"/>
+        <g fill="#0e1427"><path d="M540 416v-30a15 15 0 0 1 30 0v32z"/><path d="M620 410l3-34h11l2-15h10v15h14l-2 10h-12l-2 26z"/><path d="M710 410v-24a12 12 0 0 1 24 0v26z" transform="rotate(-6 722 400)"/><path d="M290 424v-26a13 13 0 0 1 26 0v28z"/><path d="M800 412v-20a10 10 0 0 1 20 0v22z"/><path d="M380 420l2-26h9l1-12h8v12h11l-1 8h-10l-1 20z"/></g>
+        <g fill="#090d1a" stroke="#090d1a" stroke-linecap="round">
+          <path d="M126 520c10-80 16-140 8-196-5-38 10-74 26-100l18 7c-12 32-16 66-9 102 9 66 15 124 33 187z" stroke="none"/>
+          <path d="M156 236c-28-38-66-56-104-60" fill="none" stroke-width="13"/><path d="M90 182c-14-24-10-52-24-72" fill="none" stroke-width="6"/><path d="M52 176c-22-6-36 4-52-4" fill="none" stroke-width="5"/>
+          <path d="M168 214c16-54 58-82 108-94" fill="none" stroke-width="12"/><path d="M226 136c12-32 2-60 18-84" fill="none" stroke-width="5"/><path d="M276 120c38-6 66 4 96-6" fill="none" stroke-width="6"/><path d="M330 116c14-18 12-36 28-52" fill="none" stroke-width="3.5"/>
+          <path d="M164 292c42-10 74 0 108-10" fill="none" stroke-width="7"/><path d="M146 330c-34-10-58 0-80-14" fill="none" stroke-width="6"/><path d="M172 216c-2-44 6-74-4-114" fill="none" stroke-width="7"/>
+        </g>
+        <path d="M266 286l0-18q0-8 8-4l7 4q8-4 6 6l-6 12z" fill="#090d1a"/>
+        <rect x="0" y="420" width="1320" height="100" fill="url(#hFog)"/>
+        <path d="M0 470c240-18 520-6 800-14 240-6 400 4 520 0V520H0z" fill="#070a14"/>
+        <g fill="#05070e"><rect x="0" y="456" width="1320" height="4"/><rect x="0" y="494" width="1320" height="4"/>
+          <path d="M14 446l4-10 4 10v74h-8zM48 446l4-10 4 10v74h-8zM82 446l4-10 4 10v74h-8zM1202 446l4-10 4 10v74h-8zM1236 446l4-10 4 10v74h-8zM1270 446l4-10 4 10v74h-8zM1304 446l4-10 4 10v74h-8z"/></g>
+      </svg>
+      <div class="mh-hero-shade" aria-hidden="true"></div>
+
+      <div class="mh-hero-body">
+        <div class="mh-hero-copy">
+          <div class="mh-eyebrow in mono" style="--d:.05s"><span class="dot" aria-hidden="true"></span><span id="mh-greeting">Good evening</span> · <span data-place data-place-live="Near you">Salem, MA</span></div>
+          <h1 id="mh-title" class="disp in" style="--d:.15s">Halloween<br><i>Hollow</i></h1>
+          <p class="in" style="--d:.28s">Films, books, haunts, playlists, and a moon to plan by. The whole season, gathered under one roof.</p>
+          <div class="mh-cta in" style="--d:.4s">
+            <a class="btn pri" href="../ActivityWheel/ActivityWheel.html">Plan tonight
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="btn sec" href="../Halloween%20Movie%20List/HalloweenMovie.html">Pick a film</a>
+          </div>
+        </div>
+        <div class="mh-count in" style="--d:.5s">
+          <div class="mono mh-count-label" id="mh-count-label">Until All Hallows' Eve</div>
+          <div class="mh-count-row" role="timer" aria-label="Countdown to Halloween" id="mh-count">
+            <div class="cd"><b data-cd="d">--</b><span>Days</span></div>
+            <div class="cd"><b data-cd="h">--</b><span>Hrs</span></div>
+            <div class="cd"><b data-cd="m">--</b><span>Min</span></div>
+            <div class="cd cd-accent"><b data-cd="s">--</b><span>Sec</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mh-sechead rv">
+      <div>
+        <div class="mono mh-kicker">Eight doors · one night</div>
+        <h2 class="disp">Explore the <i>Hollow</i></h2>
+      </div>
+      <span class="mono mh-sechead-meta" id="mh-match">08 destinations</span>
+    </div>
+
+    <div class="grid" id="mh-grid">
+
+      <div class="tile w8 rv" style="--c:#e5484d;--bg:#130a0d" data-keys="cinema film films movie movies watch horror slasher hocus pocus halloween coraline beetlejuice shining nightmare trailer">
+        <a class="th" href="../Halloween%20Movie%20List/HalloweenMovie.html">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 4v16M17 4v16M3 9h4M3 15h4M17 9h4M17 15h4"/></svg></span>
+          <span><span class="tn">Cinema</span><span class="tm"><span data-count="films">601</span> films · sorted by fear level</span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+        <div class="posters" id="mh-posters"></div>
+      </div>
+
+      <a class="tile w4 rv" href="../Weather/Weather.html" style="--c:#a8c5ff;--bg:#0b101d" data-keys="moon mist weather sky forecast phase rain fog trick treat odds">
+        <span class="th">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></span>
+          <span><span class="tn">Moon &amp; Mist</span><span class="tm">Live sky · <span data-place data-place-live="near you">Salem, MA</span></span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </span>
+        <span class="moon-row">
+          <svg width="132" height="132" viewBox="0 0 132 132" aria-hidden="true" class="moon-svg">
+            <defs><radialGradient id="mL" cx="40%" cy="38%" r="70%"><stop offset="0" stop-color="#fffaea"/><stop offset="1" stop-color="#d9cb9c"/></radialGradient><clipPath id="mC"><circle cx="66" cy="66" r="50"/></clipPath></defs>
+            <circle class="glow" cx="66" cy="66" r="64" fill="#a8c5ff" opacity=".08"/>
+            <circle cx="66" cy="66" r="50" fill="#1a2135"/>
+            <path id="mh-moon-lit" d="" fill="url(#mL)"/>
+            <g clip-path="url(#mC)" fill="#8f7d4c" opacity=".18"><circle cx="52" cy="50" r="8"/><circle cx="80" cy="78" r="11"/><circle cx="84" cy="46" r="4"/><circle cx="54" cy="86" r="5"/></g>
+            <circle cx="66" cy="66" r="50" fill="none" stroke="rgba(168,197,255,.25)"/>
+          </svg>
+          <span>
+            <span class="mono mh-dim">Tonight</span>
+            <span class="disp moon-name" id="mh-moon-name">Moon phase</span>
+            <span class="moon-bar"><span class="moon-track"><span class="moon-fill" id="mh-moon-fill"></span></span><span class="mono" id="mh-moon-pct">--%</span></span>
+          </span>
+        </span>
+        <span class="moon-foot"><span class="mono mh-dim">Oct 31</span><b class="disp" id="mh-moon-hallow">--</b></span>
+      </a>
+
+      <a class="tile w4 rv" href="../Spooky%20Reads/spookyreads.html" style="--c:#9d7bff;--bg:#0f0b1b" data-keys="reads read books book library novel gothic dracula frankenstein carmilla shining hill house mexican gothic stories">
+        <span class="th">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></svg></span>
+          <span><span class="tn">Spooky Reads</span><span class="tm"><span data-count="books">500</span> gothic &amp; haunted tales</span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </span>
+        <span class="shelf" aria-hidden="true">
+          <span class="spine" style="height:178px;width:34px;background:#7a1f2b;color:#f4d9a0">Dracula</span>
+          <span class="spine p1" style="height:196px;width:42px;background:#2f4a3a;color:#e6efe0">Frankenstein</span>
+          <span class="spine" style="height:160px;width:30px;background:#e3d4ae;color:#3a2414">Carmilla</span>
+          <span class="spine" style="height:186px;width:38px;background:#c43d2a;color:#fff">The Shining</span>
+          <span class="spine p2" style="height:170px;width:34px;background:#3b2f6e;color:#e5dcff">Hill House</span>
+          <span class="spine lean" style="height:150px;width:32px;background:#0f5d5a;color:#f1e7c8">Mexican Gothic</span>
+          <span class="shelf-board"></span>
+        </span>
+      </a>
+
+      <a class="tile w4 rv" href="../ActivityWheel/ActivityWheel.html" style="--c:#f5b83d;--bg:#14100a" data-keys="spin wheel plan tonight decide activity party ghost hunt costume scream park folklore treats">
+        <span class="th">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg></span>
+          <span><span class="tn">Spin Wheel</span><span class="tm">Can't decide? Let fate pick</span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </span>
+        <span class="wheel-row">
+          <span class="wheel-wrap" aria-hidden="true">
+            <span class="wheel"></span>
+            <svg viewBox="0 0 152 152" class="wheel-hub"><circle cx="76" cy="76" r="19" fill="#14100a" stroke="#f5b83d" stroke-width="3"/><circle cx="76" cy="76" r="6" fill="#f5b83d"/></svg>
+            <svg width="24" height="26" viewBox="0 0 24 26" class="wheel-ptr"><path d="M12 24L2 4h20z" fill="#f5b83d" stroke="#14100a" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="chips-col">
+            <span class="chip"><span class="dot" style="background:#ff6f00"></span>DIY Party</span>
+            <span class="chip"><span class="dot" style="background:#9d0208"></span>Haunted House</span>
+            <span class="chip"><span class="dot" style="background:#0e8f8a"></span>Ghost Hunt</span>
+            <span class="chip"><span class="dot" style="background:#5a189a"></span>+5 more</span>
+          </span>
+        </span>
+      </a>
+
+      <a class="tile w4 rv" href="../Pumpkin%20Carving%20Game/pumpkincarvinggame.html" style="--c:#ff7a1a;--bg:#170c04" data-keys="pumpkin studio carve carving jack o lantern stencil gallery">
+        <span class="th">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 7c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7z"/><path d="M12 7V4l2-1"/></svg></span>
+          <span><span class="tn">Pumpkin Studio</span><span class="tm">Carve · stencil · save</span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </span>
+        <span class="pk-stage">
+          <svg class="pk" width="220" height="176" viewBox="0 0 220 176" aria-hidden="true">
+            <defs>
+              <radialGradient id="pkB" cx="42%" cy="36%" r="72%"><stop offset="0" stop-color="#ffb066"/><stop offset=".55" stop-color="#f0700f"/><stop offset="1" stop-color="#9c3d08"/></radialGradient>
+              <radialGradient id="pkG"><stop offset="0" stop-color="#ff8a1f" stop-opacity=".5"/><stop offset="1" stop-color="#ff8a1f" stop-opacity="0"/></radialGradient>
+              <radialGradient id="pkF" cx="50%" cy="60%" r="60%"><stop offset="0" stop-color="#fff3b0"/><stop offset=".6" stop-color="#ffd166"/><stop offset="1" stop-color="#ff9f1c"/></radialGradient>
+            </defs>
+            <ellipse class="glow" cx="110" cy="106" rx="110" ry="70" fill="url(#pkG)"/>
+            <ellipse cx="110" cy="166" rx="70" ry="8" fill="#000" opacity=".4"/>
+            <path d="M60 52c-30 6-44 30-44 56s20 52 52 54c14 1 28-4 42-4s28 5 42 4c32-2 52-28 52-54s-14-50-44-56c-14-3-30 2-50 2s-36-5-50-2z" fill="url(#pkB)"/>
+            <path d="M110 54c-16 0-24 26-24 54s8 54 24 54 24-26 24-54-8-54-24-54zM66 54c-22 14-28 40-24 64 3 18 12 34 26 42M154 54c22 14 28 40 24 64-3 18-12 34-26 42" fill="none" stroke="#8c3606" stroke-width="2.2" opacity=".55"/>
+            <path d="M106 56l-4-24c6-9 18-9 22-2l-8 26z" fill="#4a7a2a"/><path d="M120 34c10-8 22-6 26 2" fill="none" stroke="#4a7a2a" stroke-width="3" stroke-linecap="round"/>
+            <path d="M64 98l22-22 10 26zM156 98l-22-22-10 26z" fill="url(#pkF)"/>
+            <path d="M104 112l6-10 6 10z" fill="url(#pkF)"/>
+            <path d="M58 124q52 40 104 0l-10 14-11-8-13 14-12-10-12 10-13-14-11 8z" fill="url(#pkF)"/>
+          </svg>
+        </span>
+        <span class="chips-row"><span class="chip">Freehand</span><span class="chip">Stencils</span><span class="chip">Gallery</span></span>
+      </a>
+
+      <div class="tile w7 rv" style="--c:#2ec4b6;--bg:#07141a" data-keys="map spectral haunts haunted houses near me graveyard graveyards cemetery cemeteries ghost tours paranormal spirit halloween historic salem">
+        <a class="th" href="../Spectral%20Map/spectralmap.html">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg></span>
+          <span><span class="tn">Spectral Map</span><span class="tm">Haunts near <span data-place data-place-live="you">Salem, MA</span></span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </a>
+        <div class="map-box">
+          <div class="map-canvas" id="mh-map" aria-hidden="true"></div>
+          <a class="map-link" id="mh-map-link" href="../Spectral%20Map/spectralmap.html" aria-label="Open the Spectral Map"></a>
+          <div class="map-info">
+            <span class="dot" id="mh-geo-dot"></span>
+            <span><b id="mh-geo-label">Salem, MA</b><span class="mono" id="mh-geo-sub">Finding nearby haunts…</span></span>
+          </div>
+        </div>
+        <div class="chips-row map-chips">
+          <a class="chip chip-link" href="../Spectral%20Map/spectralmap.html?cat=paranormal" data-cat="paranormal"><span class="dot" style="background:#ff6f00"></span>Paranormal</a>
+          <a class="chip chip-link" href="../Spectral%20Map/spectralmap.html?cat=haunted" data-cat="haunted"><span class="dot" style="background:#e63946"></span>Haunted houses</a>
+          <a class="chip chip-link" href="../Spectral%20Map/spectralmap.html?cat=historic" data-cat="historic"><span class="dot" style="background:#94a3b8"></span>Historic sites</a>
+          <a class="chip chip-link" href="../Spectral%20Map/spectralmap.html?cat=graveyard" data-cat="graveyard"><span class="dot" style="background:#3ddc84"></span>Graveyards</a>
+          <button type="button" class="chip chip-btn" id="mh-locate">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg><span>Use my location</span></button>
+        </div>
+      </div>
+
+      <a class="tile w5 rv" href="../Halloween%20Music/halloweenmusic.html" style="--c:#3ddc84;--bg:#08140e" data-keys="sound vault music playlist playlists songs song spotify thriller monster mash ghostbusters ambient party kids road trip">
+        <span class="th">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></span>
+          <span><span class="tn">Sound Vault</span><span class="tm">Playlists for the witching hour</span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </span>
+        <span class="np">
+          <svg class="vinyl" width="76" height="76" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="27" fill="#07090c"/><circle cx="28" cy="28" r="22" fill="none" stroke="#1a1f26" stroke-width="1"/><circle cx="28" cy="28" r="18" fill="none" stroke="#1a1f26" stroke-width="1"/><circle cx="28" cy="28" r="14" fill="none" stroke="#1a1f26" stroke-width="1"/><path d="M14 12a22 22 0 0 1 14-6" stroke="#3a4250" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="28" cy="28" r="8" fill="#3ddc84"/><circle cx="28" cy="28" r="1.8" fill="#07090c"/></svg>
+          <span class="np-body">
+            <span class="mono np-kicker">Party playlist</span>
+            <span class="disp np-title">Ultimate Halloween Playlist</span>
+            <span class="np-bar"><span class="np-fill"></span></span>
+          </span>
+        </span>
+        <span class="tracks">
+          <span class="trk"><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span>Thriller<span>Michael Jackson</span></span>
+          <span class="trk"><em>02</em>Monster Mash<span>Bobby "Boris" Pickett</span></span>
+          <span class="trk"><em>03</em>Ghostbusters<span>Ray Parker Jr.</span></span>
+        </span>
+      </a>
+
+      <a class="tile w12 rv" href="../Halloween%20Store/halloweenstore.html" style="--c:#e05aa8;--bg:#130912" data-keys="coven shop store buy costume costumes masks decor decorations crafts treats candy snacks">
+        <span class="th">
+          <span class="ti"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+          <span><span class="tn">Coven Shop</span><span class="tm">Costumes · decor · crafts · treats</span></span>
+          <span class="tg" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg></span>
+        </span>
+        <span class="cats">
+          <span class="cat" style="background:#24103a;color:#ecdcff"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c49bff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c-1 5-3 9-5 13h10c-1-4-2-6-3-9 1.5 0 3-1 3.5-2-2 .5-4-.3-5.5-2z"/><path d="M2 17c3 2 17 2 20 0"/></svg><b>Costumes &amp; Masks</b><span>Capes, masks, wigs, makeup and full looks</span></span>
+          <span class="cat" style="background:#331306;color:#ffe2cc"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff9a52" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="4"/><path d="M12 9V2M8 11L3 8M16 11l5-3M8 14l-5 2M16 14l5 2M9 16l-3 5M15 16l3 5"/></svg><b>Decorations</b><span>Indoor, outdoor and atmosphere</span></span>
+          <span class="cat" style="background:#0a2a28;color:#d2fbf6"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2ee6d6" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.5 15.5M14.5 14.5L20 20M8.5 8.5L12 12"/></svg><b>Arts &amp; Crafts</b><span>Kits, pumpkin tools and glowing light</span></span>
+          <span class="cat" style="background:#330c19;color:#ffd9e0"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#ff4d6d" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 12a5 5 0 0 0 10 0 5 5 0 0 0-10 0z"/><path d="M7 12L3 9v6zM17 12l4-3v6z"/></svg><b>Treats &amp; Snacks</b><span>Candy, bakes and party food</span></span>
+        </span>
+      </a>
+
+    </div>
   </main>
+
+  <footer class="mh-foot">
+    <div class="mh-wrap mh-foot-row">
+      <span class="disp mh-foot-brand">Halloween <span>Hollow</span></span>
+      <span class="mono mh-dim">A Festo season · Posters via Wikipedia · Map © OpenStreetMap contributors</span>
+    </div>
+  </footer>
+
+  <nav class="mh-tabs" aria-label="App tabs">
+    <a class="on" href="HalloweenLanding.html" aria-current="page"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+    <a href="../Spectral%20Map/spectralmap.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11z"/></svg>Map</a>
+    <a href="../ActivityWheel/ActivityWheel.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>Spin</a>
+    <a href="../Halloween%20Store/halloweenstore.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Shop</a>
+    <a href="../Halloween%20Music/halloweenmusic.html"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>Music</a>
+  </nav>
+
   <script src="../../shared/festo-core.js"></script>
   <script src="../../shared/seasons/index.js"></script>
-  <script src="../../shared/scenes/halloween.js"></script>
-  <script src="../../shared/scenes/poster.js?v=6"></script>
-  <script src="../../shared/navs.js"></script>
-  <script src="../../shared/engines/landing.js"></script>
-  <script src="../../shared/seasons/halloween.facts.js"></script>
+  <script src="../../shared/engines/covers.js"></script>
+  <script src="../Spectral%20Map/map-data.js"></script>
   <script src="HalloweenLanding.js"></script>
 </body>
 </html>
