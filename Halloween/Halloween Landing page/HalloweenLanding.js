@@ -91,7 +91,7 @@
     Array.prototype.forEach.call(books.children, function (n, k) { n.classList.toggle('is-out', k === i); });
     $('#noteT').textContent = b.t; $('#noteA').textContent = b.a + ' · ' + b.y;
     var nb = $('#noteB'); nb.classList.add('swap'); setTimeout(function () { nb.textContent = b.b; nb.classList.remove('swap'); }, 200);
-    wakeAudio().then(function () { playTick(520); });
+    wakeAudio().then(function () { playTick(520); }, function () {});
   }
   $('#noteB').textContent = BOOKS[0].b;
 
@@ -292,105 +292,26 @@
   /* ==========================================================================
      SOUND VAULT TEASER · four synthesized stations, analyser drives the ectoplasm scope
      ========================================================================== */
-  var STATIONS = [{ n: 'Graveyard Drone', x: 12 }, { n: 'Crypt Organ', x: 38 }, { n: 'Theremin Waves', x: 63 }, { n: 'Music Box Waltz', x: 88 }];
-  var AC = null, master = null, analyser = null, reverb = null, station = 0, playing = false, live = [], timers = [];
-  function audio() {
-    if (AC) return AC;
-    var C = global.AudioContext || global.webkitAudioContext; if (!C) return null;
-    AC = new C(); master = AC.createGain(); master.gain.value = .4;
-    analyser = AC.createAnalyser(); analyser.fftSize = 1024; master.connect(analyser); analyser.connect(AC.destination);
-    reverb = AC.createConvolver();
-    var len = AC.sampleRate * 3.2, ir = AC.createBuffer(2, len, AC.sampleRate);
-    for (var ch = 0; ch < 2; ch++) { var d = ir.getChannelData(ch); for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.6); }
-    reverb.buffer = ir; var rg = AC.createGain(); rg.gain.value = .55; reverb.connect(rg); rg.connect(master);
-    return AC;
-  }
-  /* start (or resume) the audio context from a user gesture, then resolve once it can make sound */
-  function wakeAudio() {
-    if (!AC) audio();
-    if (!AC) return Promise.reject();
-    return AC.state === 'suspended' ? AC.resume() : Promise.resolve();
-  }
-  function playTick(f) {
-    if (!AC || AC.state !== 'running') return;
-    var o = AC.createOscillator(), g = AC.createGain(), n = AC.currentTime;
-    o.type = 'triangle'; o.frequency.value = f || 600; g.gain.setValueAtTime(.05, n); g.gain.exponentialRampToValueAtTime(.0001, n + .12);
-    o.connect(g); g.connect(master); o.start(n); o.stop(n + .13);
-  }
-  function track(n) { live.push(n); return n; }
-  function osc(type, f) { var o = track(AC.createOscillator()); o.type = type; o.frequency.value = f; o.start(); return o; }
-  function gain(v) { var g = track(AC.createGain()); g.gain.value = v === undefined ? 1 : v; return g; }
-  function noiseBuf() { var b = AC.createBuffer(1, AC.sampleRate * 2, AC.sampleRate), d = b.getChannelData(0); for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return b; }
-  function stopStation() {
-    timers.forEach(clearInterval); timers = [];
-    var n = AC ? AC.currentTime : 0;
-    live.forEach(function (x) { try { if (x.gain) x.gain.setTargetAtTime(0, n, .08); if (x.stop) x.stop(n + .4); } catch (e) {} });
-    var dead = live; live = []; setTimeout(function () { dead.forEach(function (x) { try { x.disconnect(); } catch (e) {} }); }, 600);
-  }
-  function startStation(i) {
-    var n = AC.currentTime, out = gain(0); out.gain.linearRampToValueAtTime(1, n + 1.2); out.connect(master); out.connect(reverb);
-    if (i === 0) {
-      var lp = track(AC.createBiquadFilter()); lp.type = 'lowpass'; lp.frequency.value = 380; lp.Q.value = 6;
-      var dg = gain(.16); lp.connect(dg); dg.connect(out);
-      [55, 55.6, 82.4].forEach(function (f) { osc('sawtooth', f).connect(lp); });
-      var l = osc('sine', .07), lg = gain(240); l.connect(lg); lg.connect(lp.frequency);
-      var ns = track(AC.createBufferSource()); ns.buffer = noiseBuf(); ns.loop = true; ns.start();
-      var bp = track(AC.createBiquadFilter()); bp.type = 'bandpass'; bp.frequency.value = 520; bp.Q.value = .9;
-      var wg = gain(.05); ns.connect(bp); bp.connect(wg); wg.connect(out);
-      var wf = osc('sine', .05), wfg = gain(300); wf.connect(wfg); wfg.connect(bp.frequency);
-    } else if (i === 1) {
-      var chords = [[110, 130.81, 164.81, 220], [87.31, 110, 130.81, 174.61], [73.42, 87.31, 110, 146.83], [82.41, 103.83, 123.47, 164.81]];
-      var voices = chords[0].map(function (f) {
-        var g = gain(.045); g.connect(out);
-        var a = osc('triangle', f), b = osc('sine', f * 2), c = osc('sine', f * 3), bg = gain(.5), cg = gain(.18);
-        a.connect(g); b.connect(bg); bg.connect(g); c.connect(cg); cg.connect(g);
-        return [a, b, c];
-      });
-      var k = 0;
-      timers.push(setInterval(function () { k = (k + 1) % chords.length; var t0 = AC.currentTime; voices.forEach(function (v, j) { v[0].frequency.setTargetAtTime(chords[k][j], t0, .25); v[1].frequency.setTargetAtTime(chords[k][j] * 2, t0, .25); v[2].frequency.setTargetAtTime(chords[k][j] * 3, t0, .25); }); }, 4200));
-    } else if (i === 2) {
-      var th = osc('sine', 440), thg = gain(.14); th.connect(thg); thg.connect(out);
-      var vib = osc('sine', 5.6), vg = gain(7); vib.connect(vg); vg.connect(th.frequency);
-      var notes = [440, 523.25, 587.33, 659.25, 392, 698.46, 493.88, 349.23];
-      timers.push(setInterval(function () { th.frequency.setTargetAtTime(notes[Math.floor(Math.random() * notes.length)] * (Math.random() < .3 ? .5 : 1), AC.currentTime, .22); }, 1300));
-    } else {
-      var dl = track(AC.createDelay(1)); dl.delayTime.value = .36; var fb = gain(.38); dl.connect(fb); fb.connect(dl); dl.connect(out);
-      var mel = [76, 79, 83, 81, 79, 76, 74, 76, 71, 74, 76, 79, 77, 76, 74, 71, 72, 74, 76, 72, 69, 71, 72, 74], step = 0, beat = .42, next = AC.currentTime + .1;
-      timers.push(setInterval(function () {
-        while (next < AC.currentTime + .25) {
-          var f = 440 * Math.pow(2, (mel[step % mel.length] - 69) / 12);
-          [[1, .22], [3, .05], [5.2, .02]].forEach(function (h) {
-            var o = AC.createOscillator(), g = AC.createGain(); o.type = 'sine'; o.frequency.value = f * h[0];
-            g.gain.setValueAtTime(h[1], next); g.gain.exponentialRampToValueAtTime(.0001, next + 1.4);
-            o.connect(g); g.connect(out); g.connect(dl); o.start(next); o.stop(next + 1.5);
-          });
-          next += step % 3 === 2 ? beat * 1.5 : beat; step++;
-        }
-      }, 60));
-    }
-  }
-  function setStation(i) {
-    station = (i + STATIONS.length) % STATIONS.length;
-    $('#needle').style.left = STATIONS[station].x + '%';
-    $('#sNum').textContent = 'STATION ' + roman(station + 1); $('#sName').textContent = STATIONS[station].n;
-    if (playing) { stopStation(); startStation(station); }
-  }
-  function play(on) {
-    if (on && !audio()) return;
-    if (on && AC.state === 'suspended') AC.resume();
-    playing = on; if (on) startStation(station); else stopStation();
-    $('#sPlayIco').innerHTML = '<use href="#i-' + (on ? 'pause' : 'play') + '"/>';
-    $('#sPlay').setAttribute('aria-label', on ? 'Pause the haunted radio' : 'Play the haunted radio');
-    $('#cab').classList.toggle('is-playing', on);
-  }
-  $('#sPlay').addEventListener('click', function () { play(!playing); });
-  $('#sNext').addEventListener('click', function () { setStation(station + 1); });
+  /* the stations live in shared/radio/stations.js; shared/radio/radio.js keeps them playing from page to page */
+  var Radio = global.FestoRadio.init('halloween', { mini: false }), STATIONS = Radio.stations(), playing = false, analyser = null;
+  function wakeAudio() { return Radio.wake(); }
+  function playTick(f) { Radio.tick(f); }
+  Radio.on(function (st) {
+    playing = st.playing;
+    $('#needle').style.left = STATIONS[st.station].x + '%';
+    $('#sNum').textContent = st.suspended ? 'TAP ANYWHERE TO RESUME' : 'STATION ' + roman(st.station + 1); $('#sName').textContent = STATIONS[st.station].n;
+    $('#sPlayIco').innerHTML = '<use href="#i-' + (st.playing ? 'pause' : 'play') + '"/>';
+    $('#sPlay').setAttribute('aria-label', st.playing ? 'Pause the haunted radio' : 'Play the haunted radio');
+    $('#cab').classList.toggle('is-playing', st.playing && !st.suspended);
+  });
+  $('#sPlay').addEventListener('click', function () { Radio.play(); });
+  $('#sNext').addEventListener('click', function () { Radio.next(); });
   (function () {
     var cv = $('#scope'), ctx = cv.getContext('2d'), wave = new Uint8Array(1024);
     addRenderer(cv, function (t) {
       fit(cv); var W = cv.width, H = cv.height, n = 160, pts = [];
       ctx.clearRect(0, 0, W, H);
-      if (playing && analyser) { analyser.getByteTimeDomainData(wave); for (var i = 0; i < n; i++) pts.push((wave[Math.floor(i / n * 1024)] - 128) / 128); }
+      analyser = Radio.analyser(); if (analyser) { analyser.getByteTimeDomainData(wave); for (var i = 0; i < n; i++) pts.push((wave[Math.floor(i / n * 1024)] - 128) / 128); }
       else for (var j = 0; j < n; j++) pts.push(Math.sin(j / n * Math.PI * 6 + t * 2) * .18 * Math.sin(t * .7 + j / 40) + Math.sin(j * .9 + t * 7) * .02);
       [[10 * DPR, 'rgba(77,255,176,.12)'], [4 * DPR, 'rgba(77,255,176,.35)'], [1.5 * DPR, '#d6ffec']].forEach(function (p) {
         ctx.lineWidth = p[0]; ctx.strokeStyle = p[1]; ctx.lineJoin = 'round'; ctx.beginPath();

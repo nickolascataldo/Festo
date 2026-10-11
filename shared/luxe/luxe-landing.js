@@ -65,7 +65,7 @@
   var gameMod = C.game && mods[C.game.module] ? C.game : null;
   var tabs = (R.tabs || ['map', 'store', 'music']).filter(function (t) { return mods[t]; }).slice(0, 3);
   var count = function (k) { var v = R.counts && R.counts[k]; return v ? (+v).toLocaleString('en-US') : ''; };
-  var stations = C.sound.stations;
+  var Radio = global.FestoRadio.init(id, { mini: false }), stations = Radio.stations();
 
   var html = sprite +
     '<div class="page">' +
@@ -103,15 +103,14 @@
 
         '<div class="rule rv"><h2>' + esc(C.rules[1]) + '</h2></div>' +
 
-        (mods.music ? '<section class="gc c-sound rv" aria-labelledby="soundT">' +
+        (mods.music ? '<section class="gc c-sound rv" aria-label="' + esc(mods.music.title) + '">' +
           '<div class="device" id="cab">' + C.sound.device +
             '<div class="dial" aria-hidden="true"><div class="ticks"></div><div class="names">' + stations.map(function (s) { return '<span>' + esc(s.short || s.n) + '</span>'; }).join('') + '</div><div class="needle" id="needle" style="left:' + stations[0].x + '%"></div></div>' +
             '<div class="scope"><canvas id="scope"></canvas></div>' +
           '</div>' +
           '<div class="controls"><button class="knob big" id="sPlay" aria-label="Play the ' + esc(C.sound.noun) + '"><svg id="sPlayIco" aria-hidden="true"><use href="#i-play"/></svg></button>' +
           '<button class="knob" id="sNext" aria-label="Next station">' + ico('next') + '</button>' +
-          '<div class="station" aria-live="polite"><small id="sNum">STATION I</small><b id="sName">' + esc(stations[0].n) + '</b></div></div>' +
-          '<div class="gc-row"><div><h2 class="gc-title" id="soundT">' + esc(mods.music.title) + '</h2><p class="gc-sub">' + esc(C.sound.sub) + '</p></div>' +
+          '<div class="station" aria-live="polite"><small id="sNum">STATION I</small><b id="sName">' + esc(stations[0].n) + '</b></div>' +
           '<a class="go" href="' + href('music') + '">Playlists ' + ico('arrow') + '</a></div>' +
         '</section>' : '') +
 
@@ -122,7 +121,7 @@
           '<span><h2 class="gc-title" id="wheelT">' + esc(mods.wheel.title) + '</h2><span class="gc-sub" style="display:block">' + esc(C.wheel.sub) + '</span></span></a>' +
 
         '<a class="gc c-radar rv" href="' + href('map') + '" id="radarCard" aria-labelledby="radarT"><span class="radar-row">' +
-          '<span class="radar-mini" aria-hidden="true"><i style="left:66%;top:30%"></i><i style="left:28%;top:62%;animation-delay:-1.6s"></i><i style="left:58%;top:72%;animation-delay:-2.4s"></i></span>' +
+          (C.radar.art ? '<span class="map-art" aria-hidden="true">' + C.radar.art.replace('<svg ', '<svg preserveAspectRatio="xMidYMid slice" ') + '</span>' : '<span class="radar-mini" aria-hidden="true"><i style="left:66%;top:30%"></i><i style="left:28%;top:62%;animation-delay:-1.6s"></i><i style="left:58%;top:72%;animation-delay:-2.4s"></i></span>') +
           '<span><h2 class="gc-title" id="radarT">' + esc(mods.map.title) + '</h2><span class="gc-sub" style="display:block">' + esc(C.radar.sub) + ' <span id="radarPlace">' + esc(R.location.label) + '</span></span>' +
           '<span class="chips"><span class="chip" id="radarCount">Looking nearby…</span><span class="chip" id="radarNear" hidden></span></span></span></span>' +
           '<span class="go">Open the map ' + ico('arrow') + '</span></a>' +
@@ -192,104 +191,23 @@
   tick(); setInterval(tick, 15000);
 
   /* ==========================================================================
-     AUDIO · master bus with a convolver hall; stations are recipes in the season config
+     RADIO · shared/radio/radio.js plays the season's stations and keeps them going from page to page
      ========================================================================== */
-  var AC = null, master = null, analyser = null, reverb = null, station = 0, playing = false, live = [], timers = [], NB = null;
-  function audio() {
-    if (AC) return AC;
-    var Ctor = global.AudioContext || global.webkitAudioContext; if (!Ctor) return null;
-    AC = new Ctor(); master = AC.createGain(); master.gain.value = .42;
-    var comp = AC.createDynamicsCompressor(); master.connect(comp);
-    analyser = AC.createAnalyser(); analyser.fftSize = 1024; comp.connect(analyser); analyser.connect(AC.destination);
-    reverb = AC.createConvolver();
-    var len = AC.sampleRate * 2.8, ir = AC.createBuffer(2, len, AC.sampleRate);
-    for (var ch = 0; ch < 2; ch++) { var d = ir.getChannelData(ch); for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.8); }
-    reverb.buffer = ir; var rg = AC.createGain(); rg.gain.value = .5; reverb.connect(rg); rg.connect(master);
-    return AC;
-  }
-  function wakeAudio() { if (!AC) audio(); if (!AC) return Promise.reject(); return AC.state === 'suspended' ? AC.resume() : Promise.resolve(); }
-  function playTick(f) {
-    if (!AC || AC.state !== 'running') return;
-    var o = AC.createOscillator(), g = AC.createGain(), n = AC.currentTime;
-    o.type = 'triangle'; o.frequency.value = f || 600; g.gain.setValueAtTime(.05, n); g.gain.exponentialRampToValueAtTime(.0001, n + .14);
-    o.connect(g); g.connect(master); o.start(n); o.stop(n + .15);
-  }
-  function track(n) { live.push(n); return n; }
-  function noiseBuf() { if (NB) return NB; NB = AC.createBuffer(1, AC.sampleRate * 2, AC.sampleRate); var d = NB.getChannelData(0); for (var i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1; return NB; }
-  /* the synth kit handed to each station recipe */
-  function kit(out) {
-    var A = { ac: AC, out: out, reverb: reverb };
-    A.mtof = function (m) { return 440 * Math.pow(2, (m - 69) / 12); };
-    A.osc = function (type, f) { var o = track(AC.createOscillator()); o.type = type; o.frequency.value = f; o.start(); return o; };
-    A.gain = function (v) { var g = track(AC.createGain()); g.gain.value = v === undefined ? 1 : v; return g; };
-    A.filter = function (type, f, q) { var b = track(AC.createBiquadFilter()); b.type = type; b.frequency.value = f; if (q !== undefined) b.Q.value = q; return b; };
-    A.noise = function () { var s = track(AC.createBufferSource()); s.buffer = noiseBuf(); s.loop = true; s.start(); return s; };
-    A.delay = function (time, fb, dest) { var dl = track(AC.createDelay(2)); dl.delayTime.value = time; var g = A.gain(fb); dl.connect(g); g.connect(dl); dl.connect(dest || out); return dl; };
-    A.every = function (ms, fn) { timers.push(setInterval(fn, ms)); };
-    /* one-shot voices: they end on their own, the station fade covers a mid-note stop */
-    A.bell = function (f, t, dur, vol, dest, partials) {
-      (partials || [[1, 1], [2.76, .32], [5.4, .1], [8.93, .04]]).forEach(function (p) {
-        var o = AC.createOscillator(), g = AC.createGain(); o.type = 'sine'; o.frequency.value = f * p[0];
-        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol * p[1], t + .004); g.gain.exponentialRampToValueAtTime(.0001, t + dur / (p[0] > 3 ? 2.5 : 1));
-        o.connect(g); g.connect(dest || out); o.start(t); o.stop(t + dur + .05);
-      });
-    };
-    A.pluck = function (f, t, dur, vol, dest, bright) {
-      var o = AC.createOscillator(), o2 = AC.createOscillator(), lp = AC.createBiquadFilter(), g = AC.createGain();
-      o.type = 'sawtooth'; o.frequency.value = f; o2.type = 'triangle'; o2.frequency.value = f * 1.003;
-      lp.type = 'lowpass'; lp.Q.value = 1; lp.frequency.setValueAtTime(f * (bright || 9), t); lp.frequency.exponentialRampToValueAtTime(f * 1.2, t + dur * .6);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .006); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
-      o.connect(lp); o2.connect(lp); lp.connect(g); g.connect(dest || out); o.start(t); o2.start(t); o.stop(t + dur + .05); o2.stop(t + dur + .05);
-    };
-    A.tone = function (f, t, dur, vol, type, dest, att) {
-      var o = AC.createOscillator(), g = AC.createGain(); o.type = type || 'sine'; o.frequency.value = f;
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + (att || .02)); g.gain.setTargetAtTime(0, t + dur * .7, dur * .2);
-      o.connect(g); g.connect(dest || out); o.start(t); o.stop(t + dur * 1.6 + .1);
-    };
-    A.chirp = function (t, f0, f1, dur, vol, dest) {
-      var o = AC.createOscillator(), g = AC.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t + dur);
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + dur * .2); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
-      o.connect(g); g.connect(dest || out); o.start(t); o.stop(t + dur + .02);
-    };
-    A.burst = function (t, dur, vol, type, f, q, dest) {
-      var s = AC.createBufferSource(), b = AC.createBiquadFilter(), g = AC.createGain(); s.buffer = noiseBuf(); b.type = type || 'highpass'; b.frequency.value = f || 6000; b.Q.value = q || .7;
-      g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .005); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
-      s.connect(b); b.connect(g); g.connect(dest || out); s.start(t, Math.random() * 1.5); s.stop(t + dur + .02);
-    };
-    /* step sequencer: notes are [midi|null, beats]; voice(freq, time, seconds, step) */
-    A.seq = function (notes, beat, voice) {
-      var step = 0, next = AC.currentTime + .12;
-      A.every(50, function () { while (next < AC.currentTime + .3) { var n = notes[step % notes.length]; if (n[0] !== null) voice(A.mtof(n[0]), next, n[1] * beat, step); next += n[1] * beat; step++; } });
-    };
-    return A;
-  }
-  function stopStation() {
-    timers.forEach(clearInterval); timers = [];
-    var n = AC ? AC.currentTime : 0;
-    live.forEach(function (x) { try { if (x.gain) x.gain.setTargetAtTime(0, n, .08); if (x.stop) x.stop(n + .4); } catch (e) {} });
-    var dead = live; live = []; setTimeout(function () { dead.forEach(function (x) { try { x.disconnect(); } catch (e) {} }); }, 600);
-  }
-  function startStation(i) {
-    var out = track(AC.createGain()), n = AC.currentTime; out.gain.value = 0; out.gain.linearRampToValueAtTime(1, n + 1); out.connect(master); out.connect(reverb);
-    try { stations[i].play(kit(out)); } catch (e) { if (global.console) console.warn('Festo radio station', i, e); }
-  }
-  function setStation(i) {
-    station = (i + stations.length) % stations.length;
-    $('#needle').style.left = stations[station].x + '%';
-    $('#sNum').textContent = 'STATION ' + roman(station + 1); $('#sName').textContent = stations[station].n;
-    if (playing) { stopStation(); startStation(station); }
-  }
-  function play(on) {
-    if (on && !audio()) return;
-    if (on && AC.state === 'suspended') AC.resume();
-    playing = on; if (on) startStation(station); else stopStation();
-    $('#sPlayIco').innerHTML = '<use href="#i-' + (on ? 'pause' : 'play') + '"/>';
-    $('#sPlay').setAttribute('aria-label', (on ? 'Pause the ' : 'Play the ') + C.sound.noun);
-    $('#cab').classList.toggle('is-playing', on);
-  }
+  var playing = false, analyser = null;
+  function wakeAudio() { return Radio.wake(); }
+  function playTick(f) { Radio.tick(f); }
   if ($('#sPlay')) {
-    $('#sPlay').addEventListener('click', function () { play(!playing); });
-    $('#sNext').addEventListener('click', function () { setStation(station + 1); });
+    Radio.on(function (st) {
+      playing = st.playing;
+      var cur = stations[st.station]; if (!cur) return;
+      $('#needle').style.left = cur.x + '%';
+      $('#sNum').textContent = st.suspended ? 'TAP ANYWHERE TO RESUME' : 'STATION ' + roman(st.station + 1); $('#sName').textContent = cur.n;
+      $('#sPlayIco').innerHTML = '<use href="#i-' + (st.playing ? 'pause' : 'play') + '"/>';
+      $('#sPlay').setAttribute('aria-label', (st.playing ? 'Pause the ' : 'Play the ') + C.sound.noun);
+      $('#cab').classList.toggle('is-playing', st.playing && !st.suspended);
+    });
+    $('#sPlay').addEventListener('click', function () { Radio.play(); });
+    $('#sNext').addEventListener('click', function () { Radio.next(); });
   }
 
   /* ==========================================================================
@@ -350,7 +268,7 @@
       fit(cv); var W = cv.width, H = cv.height, n = 160, pts = [];
       if (!W || !H) return;
       ctx.clearRect(0, 0, W, H);
-      if (playing && analyser) { analyser.getByteTimeDomainData(wave); for (var i = 0; i < n; i++) pts.push((wave[Math.floor(i / n * 1024)] - 128) / 128); }
+      analyser = Radio.analyser(); if (analyser) { analyser.getByteTimeDomainData(wave); for (var i = 0; i < n; i++) pts.push((wave[Math.floor(i / n * 1024)] - 128) / 128); }
       else for (var j = 0; j < n; j++) pts.push(Math.sin(j / n * Math.PI * 6 + t * 2) * .16 * Math.sin(t * .7 + j / 40) + Math.sin(j * .9 + t * 7) * .02);
       [[10 * DPR, col[0]], [4 * DPR, col[1]], [1.5 * DPR, col[2]]].forEach(function (p) {
         ctx.lineWidth = p[0]; ctx.strokeStyle = p[1]; ctx.lineJoin = 'round'; ctx.beginPath();

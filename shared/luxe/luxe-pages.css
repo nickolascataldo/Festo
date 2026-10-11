@@ -4,7 +4,7 @@
    <html> carries lx plus lx-shell (app-shell modules), lx-reads (book library) or lx-cinema (film vault).
    Corners are CSS background images, so cards a page adds later get them too.
    ========================================================================== */
-html.lx[data-season="christmas"] { --lx-title-font: 400 clamp(2.4rem, 6vw, 3rem) 'Pinyon Script', cursive; --lx-panel: rgba(3,12,9,.55); --lx-panel-line: rgba(246,213,138,.22); --lx-fab-ring: #0b2018; }
+html.lx[data-season="christmas"] { --lx-title-font: 400 clamp(1.9rem, 6.4vw, 3rem) 'Pinyon Script', cursive; --lx-panel: rgba(3,12,9,.55); --lx-panel-line: rgba(246,213,138,.22); --lx-fab-ring: #0b2018; }
 html.lx[data-season="summer"] { --lx-title-font: 400 clamp(1.8rem, 5vw, 2.3rem) 'Yeseva One', serif; --lx-panel: rgba(255,251,242,.9); --lx-panel-line: rgba(224,83,42,.22); --lx-title-ink: linear-gradient(180deg, #ff9a5a 0%, #e0532a 55%, #a8361a 100%); --lx-fab-ring: #fffaf0; }
 html.lx[data-season="spring"] { --lx-title-font: italic 600 clamp(2rem, 5.4vw, 2.6rem) 'Fraunces', serif; --lx-panel: rgba(255,255,250,.82); --lx-panel-line: rgba(143,174,138,.45); --lx-fab-ring: #fffefa; }
 

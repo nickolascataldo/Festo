@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/festo-core.css">
-  <link rel="stylesheet" href="HalloweenLanding.css?v=gothic5">
+  <link rel="stylesheet" href="HalloweenLanding.css?v=gothic6">
 </head>
 <body class="gh">
 <a class="skip" href="#realm">Skip to content</a>
@@ -174,7 +174,7 @@
 
     <div class="rule rv"><h2>Interactive Stalls</h2></div>
 
-    <section class="gc c-sound rv" data-frame aria-labelledby="soundT">
+    <section class="gc c-sound rv" data-frame aria-label="The Sound Vault">
       <div class="cabinet" id="cab">
         <div class="cab-row">
           <div class="grille"><svg viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="qf" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8zM10 10a4 4 0 0 1 0 8 4 4 0 0 1 0-8zM2 10a4 4 0 0 1 8 0 4 4 0 0 1-8 0zM10 10a4 4 0 0 1 8 0 4 4 0 0 1-8 0z" fill="none" stroke="#c99a52" stroke-width=".9"/><circle cx="10" cy="10" r="1.2" fill="#e8c27a"/></pattern></defs><rect width="200" height="110" fill="url(#qf)"/><g fill="none" stroke="#e8c27a" stroke-width="1.4" opacity=".7"><path d="M100 4 c-34 22 -34 80 0 102 c34 -22 34 -80 0 -102z"/><path d="M100 24 c-18 14 -18 48 0 62 c18 -14 18 -48 0 -62z"/></g><circle cx="100" cy="55" r="8" fill="url(#gBronze)" stroke="#2a1806"/></svg></div>
@@ -187,9 +187,6 @@
         <button class="knob big" id="sPlay" aria-label="Play the haunted radio"><svg id="sPlayIco"><use href="#i-play"/></svg></button>
         <button class="knob" id="sNext" aria-label="Next station"><svg><use href="#i-next"/></svg></button>
         <div class="station" aria-live="polite"><small id="sNum">STATION I</small><b id="sName">Graveyard Drone</b></div>
-      </div>
-      <div class="gc-row">
-        <div><h2 class="gc-title" id="soundT">The Sound Vault</h2><p class="gc-sub">Tune the haunted radio, then open the playlists for the witching hour.</p></div>
         <a class="go" href="../Halloween%20Music/halloweenmusic.html">Playlists <svg><use href="#i-arrow"/></svg></a>
       </div>
     </section>
@@ -336,6 +333,8 @@
 <script src="../../shared/engines/covers.js"></script>
 <script src="../Spectral%20Map/map-data.js"></script>
 <script src="../../shared/seasons/halloween.facts.js"></script>
-<script src="HalloweenLanding.js?v=gothic5"></script>
+<script src="../../shared/radio/stations.js?v=1"></script>
+<script src="../../shared/radio/radio.js?v=1"></script>
+<script src="HalloweenLanding.js?v=gothic6"></script>
 </body>
 </html>

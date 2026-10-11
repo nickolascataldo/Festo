@@ -22,17 +22,34 @@
     return s + '<use href="#xm-wreath" x="171" y="10" width="48" height="48"/></svg>';
   }
 
-  /* ---------- music box ---------- */
-  var DEVICE = '<div class="mbox"><div class="mb-lid"><svg viewBox="0 0 220 90" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' +
-    '<defs><linearGradient id="mbSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1c33"/><stop offset="1" stop-color="#3b5f86"/></linearGradient><radialGradient id="mbWin"><stop offset="0" stop-color="#fff0b0"/><stop offset="1" stop-color="#f29a2e"/></radialGradient></defs>' +
-    '<rect width="220" height="90" fill="url(#mbSky)"/><circle cx="168" cy="22" r="11" fill="#fdf8e6"/><circle cx="168" cy="22" r="22" fill="#fdf8e6" opacity=".12"/>' +
-    '<g fill="#fff" opacity=".8"><circle cx="20" cy="14" r=".9"/><circle cx="56" cy="8" r=".7"/><circle cx="92" cy="20" r=".8"/><circle cx="124" cy="10" r=".6"/><circle cx="200" cy="44" r=".7"/></g>' +
-    '<path d="M0 66 C 50 52 90 60 130 58 S 200 50 220 56 V90 H0z" fill="#dbe6f2"/>' +
-    '<path d="M70 66V50l14-11 14 11v16z" fill="#16263a"/><path d="M66 51l18-14 18 14-3 2-15-11-15 11z" fill="#eef4fb"/><rect x="78" y="54" width="7" height="9" rx="1" fill="url(#mbWin)"/><rect x="88" y="54" width="6" height="6" rx="1" fill="url(#mbWin)"/>' +
-    '<g fill="#173a2a"><path d="M28 70l9-26 9 26z"/><path d="M40 72l7-20 7 20z"/><path d="M150 72l10-30 10 30z"/><path d="M168 74l7-20 7 20z"/></g>' +
-    '<g fill="#eef4fb"><path d="M37 46l4 9h-8z" opacity=".9"/><path d="M160 45l5 10h-10z" opacity=".9"/></g></svg></div>' +
-    '<div class="mb-body"><div class="mb-cyl"></div><svg class="mb-tree" viewBox="0 0 40 60" aria-hidden="true"><path d="M20 4l3 6h-6z" fill="url(#xmGold)"/><path d="M20 8l12 18h-6l9 14h-8l9 14H4l9-14H5l9-14H8z" fill="url(#xmLeaf)" stroke="#0b2e1b" stroke-width=".6"/>' +
-    '<circle cx="16" cy="26" r="2" fill="url(#xmBerry)"/><circle cx="24" cy="36" r="2" fill="url(#xmGold)"/><circle cx="14" cy="45" r="2" fill="url(#xmGold)"/><circle cx="27" cy="48" r="2" fill="url(#xmBerry)"/><rect x="17" y="54" width="6" height="5" fill="#5a3412"/></svg></div></div>';
+  /* ---------- the cathedral radio ---------- */
+  function cathedral() {
+    var spind = '';
+    for (var x = 84; x <= 236; x += 13) { var u = (x - 160) / 92, top = 84 - 52 * Math.sqrt(Math.max(0, 1 - u * u)); spind += '<path d="M' + x + ' 118V' + (top + 4).toFixed(1) + '" stroke="#e6bf6a" stroke-width="2.2" stroke-linecap="round"/>'; }
+    return '<svg class="rad" viewBox="0 0 320 176" aria-hidden="true"><defs>' +
+      '<linearGradient id="crWood" x1="0" x2="1"><stop offset="0" stop-color="#2a1006"/><stop offset=".18" stop-color="#6e3416"/><stop offset=".42" stop-color="#a5592a"/><stop offset=".6" stop-color="#7e3f1a"/><stop offset=".85" stop-color="#4a200a"/><stop offset="1" stop-color="#220c04"/></linearGradient>' +
+      '<linearGradient id="crShade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".3" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>' +
+      '<radialGradient id="crCloth" cx="50%" cy="60%" r="65%"><stop offset="0" stop-color="#b3283a"/><stop offset=".7" stop-color="#6e0e1c"/><stop offset="1" stop-color="#3a040c"/></radialGradient>' +
+      '<radialGradient id="crGlow" cx="50%" cy="62%" r="55%"><stop offset="0" stop-color="#ffd27a" stop-opacity=".95"/><stop offset=".55" stop-color="#ff9a3a" stop-opacity=".35"/><stop offset="1" stop-color="#ff9a3a" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="crKnob" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fff2c4"/><stop offset=".45" stop-color="#c9952e"/><stop offset="1" stop-color="#4a2e06"/></radialGradient>' +
+      '<radialGradient id="crLamp"><stop offset="0" stop-color="#fffbe0"/><stop offset=".4" stop-color="#ffd36b"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient></defs>' +
+      '<ellipse cx="160" cy="170" rx="132" ry="5" fill="#000" opacity=".45"/>' +
+      '<rect x="26" y="158" width="268" height="10" rx="4" fill="#2a1006"/><rect x="40" y="166" width="22" height="6" rx="2" fill="#1a0904"/><rect x="258" y="166" width="22" height="6" rx="2" fill="#1a0904"/>' +
+      '<path d="M34 160V86C34 36 92 10 160 10S286 36 286 86V160z" fill="url(#crWood)" stroke="#1a0904" stroke-width="2"/><path d="M34 160V86C34 36 92 10 160 10S286 36 286 86V160z" fill="url(#crShade)"/>' +
+      '<path d="M46 154V88C46 46 100 22 160 22S274 46 274 88V154" fill="none" stroke="url(#xmGold)" stroke-width="1.8"/>' +
+      '<g fill="#3a1808"><rect x="50" y="92" width="16" height="62" rx="3"/><rect x="254" y="92" width="16" height="62" rx="3"/></g><path d="M54 96v54M58 96v54M62 96v54M258 96v54M262 96v54M266 96v54" stroke="#6e3416" stroke-width="1.2"/>' +
+      '<path class="spk" d="M70 120V84C70 52 112 32 160 32S250 52 250 84V120z" fill="url(#crCloth)" stroke="#1a0904" stroke-width="1.5"/>' +
+      '<path class="glow" d="M70 120V84C70 52 112 32 160 32S250 52 250 84V120z" fill="url(#crGlow)"/>' +
+      spind +
+      '<path d="M84 84C100 60 124 50 160 48C196 50 220 60 236 84" fill="none" stroke="url(#xmGold)" stroke-width="2"/><path d="M98 104C112 92 136 86 160 86C184 86 208 92 222 104" fill="none" stroke="url(#xmGold)" stroke-width="1.6"/>' +
+      '<circle cx="160" cy="64" r="16" fill="#3a040c" stroke="url(#xmGold)" stroke-width="2.4"/><path d="M160 50v28M146 64h28M150 54l20 20M170 54l-20 20" stroke="url(#xmGold)" stroke-width="1.8" stroke-linecap="round"/><circle cx="160" cy="64" r="3.6" fill="url(#xmGold)"/>' +
+      '<path d="M70 120H250" stroke="#e6bf6a" stroke-width="2.4"/>' +
+      '<rect x="118" y="128" width="84" height="18" rx="9" fill="#f6ead0" stroke="url(#xmGold)" stroke-width="1.6"/><path d="M128 137h64" stroke="#a5592a" stroke-width=".8" stroke-dasharray="1 5"/><circle class="lamp" cx="160" cy="137" r="12" fill="url(#crLamp)"/><path d="M160 130v14" stroke="#c8283a" stroke-width="1.8"/>' +
+      '<circle cx="88" cy="137" r="11" fill="url(#crKnob)" stroke="#2a1006"/><circle cx="232" cy="137" r="11" fill="url(#crKnob)" stroke="#2a1006"/><path d="M88 128v6M232 128v6" stroke="#3a2208" stroke-width="1.6"/>' +
+      '<path d="M50 42C72 18 116 4 160 4S248 18 270 42C258 34 240 30 226 32C212 24 188 20 172 22C156 18 136 20 122 24C104 22 84 26 72 34C64 34 56 38 50 42z" fill="#f4f8fd"/><path d="M76 34c4 6 10 8 16 6M160 22c2 6 8 8 14 6M230 34c-4 6-10 8-16 6" stroke="#cfdcea" stroke-width="1.4" fill="none"/>' +
+      '<use href="#xm-holly" x="214" y="-8" width="58" height="58"/><g transform="translate(110 -4) scale(-1 1)"><use href="#xm-holly" width="46" height="46"/></g></svg>';
+  }
+  var DEVICE = cathedral();
 
   /* ---------- workshop gift ---------- */
   var GIFT = '<svg class="game-art" viewBox="0 0 200 170" width="160" height="136" aria-hidden="true"><defs>' +
@@ -219,6 +236,20 @@
     }
   };
 
+  function pin(x, y, col, d) { return '<g transform="translate(' + x + ' ' + y + ')"><circle class="ring" r="5" fill="none" stroke="' + col + '" stroke-width="1.6" style="animation-delay:' + d + 's"/><g class="pin" style="animation-delay:' + d + 's"><path d="M0 0C-4.5-6-7-9.5-7-13.5a7 7 0 0 1 14 0C7-9.5 4.5-6 0 0z" fill="' + col + '" stroke="rgba(0,0,0,.35)" stroke-width=".8"/><circle cy="-13.5" r="2.6" fill="#fff"/></g></g>'; }
+  var MAP = '<svg viewBox="0 0 132 116"><defs><linearGradient id="xmMap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbf6ea"/><stop offset="1" stop-color="#e6d8b8"/></linearGradient></defs>' +
+    '<rect width="132" height="116" fill="url(#xmMap)"/><g fill="#fff" opacity=".85"><ellipse cx="22" cy="20" rx="20" ry="9"/><ellipse cx="104" cy="96" rx="26" ry="10"/><ellipse cx="96" cy="24" rx="14" ry="6"/></g>' +
+    '<path d="M-4 70C20 62 34 80 58 74S96 52 136 60" fill="none" stroke="#b9d0e4" stroke-width="7"/><path d="M-4 70C20 62 34 80 58 74S96 52 136 60" fill="none" stroke="#e6f0f8" stroke-width="1.4" stroke-dasharray="3 5"/>' +
+    '<path d="M20 -4C26 30 40 44 70 50S110 70 118 120M0 36H132" fill="none" stroke="#d8c7a2" stroke-width="4"/><path d="M20 -4C26 30 40 44 70 50S110 70 118 120M0 36H132" fill="none" stroke="#fffaf0" stroke-width=".9" stroke-dasharray="3 3"/>' +
+    '<path d="M58 72v8M62 72v8" stroke="#8a6a3a" stroke-width="1.4"/>' +
+    '<g fill="#1f5a3a"><path d="M8 52l5-10 5 10z"/><path d="M15 58l5-11 5 11z"/><path d="M100 40l5-11 5 11z"/><path d="M108 46l4-9 4 9z"/><path d="M40 98l5-10 5 10z"/><path d="M84 86l4-9 4 9z"/></g>' +
+    '<g fill="#fff"><path d="M13 42l2 4h-4z"/><path d="M20 47l2 4h-4z"/><path d="M105 29l2 4h-4z"/><path d="M45 88l2 4h-4z"/></g>' +
+    '<g><rect x="44" y="20" width="10" height="8" fill="#f4ead6" stroke="#7a5a3a" stroke-width=".6"/><path d="M42 21l7-6 7 6z" fill="#b3202e"/><rect x="74" y="26" width="9" height="7" fill="#f4ead6" stroke="#7a5a3a" stroke-width=".6"/><path d="M72 27l6.5-5 6.5 5z" fill="#1f6a40"/><rect x="66" y="88" width="10" height="8" fill="#f4ead6" stroke="#7a5a3a" stroke-width=".6"/><path d="M64 89l7-6 7 6z" fill="#b3202e"/></g>' +
+    '<path class="route" d="M10 106C30 96 34 70 52 62S86 40 98 18" fill="none" stroke="#c8283a" stroke-width="1.6" stroke-linecap="round"/>' +
+    '<path d="M118 8l1.6 4.4 4.4 1.6-4.4 1.6-1.6 4.4-1.6-4.4-4.4-1.6 4.4-1.6z" fill="#c9952e"/>' +
+    pin(52, 62, '#c8283a', 0) + pin(98, 20, '#d4a23a', -.8) + pin(30, 92, '#1f6a40', -1.6) +
+    '<rect x="1" y="1" width="130" height="114" rx="14" fill="none" stroke="#c9a050" stroke-width="2"/></svg>';
+
   S.landing = {
     arch: arch(),
     flank: 'xm-holly',
@@ -250,45 +281,12 @@
       ]
     },
     sound: {
-      noun: 'music box', sub: 'Wind the music box, then open the playlists for the season.', device: DEVICE,
-      scope: ['rgba(255,214,140,.14)', 'rgba(255,214,140,.42)', '#fff6dc'],
-      stations: [
-        { n: 'Silent Night · Music Box', short: 'Silent Night', x: 12, play: function (A) {
-          var dl = A.delay(.34, .32);
-          A.seq([[79, 1.5], [81, .5], [79, 1], [76, 3], [79, 1.5], [81, .5], [79, 1], [76, 3], [86, 2], [86, 1], [83, 3], [84, 2], [84, 1], [79, 3], [81, 2], [81, 1], [84, 1.5], [83, .5], [81, 1], [79, 1.5], [81, .5], [79, 1], [76, 3], [81, 2], [81, 1], [84, 1.5], [83, .5], [81, 1], [79, 1.5], [81, .5], [79, 1], [76, 3], [86, 2], [86, 1], [89, 1.5], [86, .5], [83, 1], [84, 3], [88, 3], [84, 1.5], [79, .5], [76, 1], [79, 1.5], [77, .5], [74, 1], [72, 6], [null, 3]], .3, function (f, t, d) {
-            A.bell(f, t, 1.8, .2, null, [[1, 1], [4, .14], [8.2, .04]]); A.bell(f, t, 1.2, .05, dl, [[1, 1]]);
-          });
-        } },
-        { n: 'Deck the Halls · Celesta', short: 'Deck the Halls', x: 38, play: function (A) {
-          var bass = [48, 43, 45, 41];
-          A.seq([[79, 1.5], [77, .5], [76, 1], [74, 1], [72, 1], [74, 1], [76, 1], [72, 1], [74, .5], [76, .5], [77, .5], [74, .5], [76, 1.5], [74, .5], [72, 1], [71, 1], [72, 2], [79, 1.5], [77, .5], [76, 1], [74, 1], [72, 1], [74, 1], [76, 1], [72, 1], [74, .5], [76, .5], [77, .5], [74, .5], [76, 1.5], [74, .5], [72, 1], [71, 1], [72, 2],
-            [74, 1.5], [76, .5], [77, 1], [74, 1], [76, 1.5], [77, .5], [79, 1], [74, 1], [76, .5], [78, .5], [79, 1], [81, .5], [83, .5], [84, 1], [83, 1], [81, 1], [79, 2], [79, 1.5], [77, .5], [76, 1], [74, 1], [72, 1], [74, 1], [76, 1], [72, 1], [81, .5], [81, .5], [81, .5], [81, .5], [79, 1.5], [77, .5], [76, 1], [74, 1], [72, 2]], .27, function (f, t, d, step) {
-            A.bell(f, t, 1.1, .16, null, [[1, 1], [3, .2], [6.1, .05]]);
-            if (step % 4 === 0) A.pluck(A.mtof(bass[(step / 4 | 0) % 4]), t, .9, .12, null, 4);
-          });
-        } },
-        { n: 'Sleigh Bells · Jingle Bells', short: 'Sleigh Bells', x: 63, play: function (A) {
-          A.seq([[76, 1], [76, 1], [76, 2], [76, 1], [76, 1], [76, 2], [76, 1], [79, 1], [72, 1.5], [74, .5], [76, 4], [77, 1], [77, 1], [77, 1.5], [77, .5], [77, 1], [76, 1], [76, 1], [76, .5], [76, .5], [76, 1], [74, 1], [74, 1], [76, 1], [74, 2], [79, 2],
-            [76, 1], [76, 1], [76, 2], [76, 1], [76, 1], [76, 2], [76, 1], [79, 1], [72, 1.5], [74, .5], [76, 4], [77, 1], [77, 1], [77, 1.5], [77, .5], [77, 1], [76, 1], [76, 1], [76, .5], [76, .5], [79, 1], [79, 1], [77, 1], [74, 1], [72, 4]], .22, function (f, t, d, step) {
-            A.pluck(f, t, .5, .13, null, 7); A.bell(f * 2, t, .4, .03);
-          });
-          var bt = A.ac.currentTime + .12, k = 0;
-          A.every(50, function () { while (bt < A.ac.currentTime + .3) { A.burst(bt, k % 2 ? .12 : .2, k % 4 === 0 ? .09 : .05, 'highpass', 7200, .8); A.bell(2637 + (k % 3) * 140, bt, .18, .015, null, [[1, 1], [1.5, .5]]); bt += .22; k++; } });
-        } },
-        { n: 'Choir by Candlelight', short: 'Choir', x: 88, play: function (A) {
-          var form = A.filter('bandpass', 820, 2.2), form2 = A.filter('bandpass', 1180, 3), lp = A.filter('lowpass', 2200, .5), g = A.gain(.05);
-          lp.connect(form); lp.connect(form2); form.connect(g); form2.connect(g); var dry = A.gain(.012); lp.connect(dry); dry.connect(A.out); g.connect(A.out);
-          var chords = [[60, 64, 67, 72], [57, 60, 64, 69], [53, 57, 60, 65], [55, 59, 62, 67]];
-          var voices = chords[0].map(function (m) { return [-6, 0, 7].map(function (det) { var o = A.osc('sawtooth', A.mtof(m)); o.detune.value = det; o.connect(lp); return o; }); });
-          var vib = A.osc('sine', 4.8), vg = A.gain(4); vib.connect(vg); voices.forEach(function (vs) { vs.forEach(function (o) { vg.connect(o.detune); }); });
-          var k = 0; A.every(4400, function () { k = (k + 1) % chords.length; var t0 = A.ac.currentTime; voices.forEach(function (vs, j) { vs.forEach(function (o) { o.frequency.setTargetAtTime(A.mtof(chords[k][j]), t0, .35); }); }); });
-          var tb = A.ac.currentTime + .2; A.every(4400, function () { A.bell(A.mtof(84 + [0, -3, -7, -5][k]), A.ac.currentTime + .05, 3, .05); }); A.bell(A.mtof(84), tb, 3, .05);
-        } }
-      ]
+      noun: 'radio', device: DEVICE,
+      scope: ['rgba(255,214,140,.14)', 'rgba(255,214,140,.42)', '#fff6dc']
     },
     game: { module: 'workshop', sub: 'Build, wrap and deliver gifts', art: GIFT },
     wheel: { sub: 'Spin for tonight’s plan', dataVar: 'CHRISTMAS_WHEEL', style: { rim: ['#fff2c4', '#8a5e14', '#f6d58a', '#5e3e0a', '#e6bf6a'], inner: '#06140c', core: '#000', edge: '#05100a', text: '#fff6df', font: '700 #px "Playfair Display SC", serif', spoke: '#e8c27a', bulbA: '#ffd36b', bulbB: '#ff5a5a', hub: ['#fff2c4', '#c9952e', '#5a3a08'], hubText: '#3a2208', hubFont: '400 #px "Pinyon Script", cursive', pointer: '#f6d58a' } },
-    radar: { sub: 'Light displays, markets & rinks near', noun: ['place', 'places'], mapVar: 'CHRISTMAS_MAP' },
+    radar: { sub: 'Light displays, markets & rinks near', noun: ['place', 'places'], mapVar: 'CHRISTMAS_MAP', art: MAP },
     shop: { sub: 'Sweaters, decorations, kits & treats', items: SHOP },
     sky: { icon: 'snow', small: function (i) { return 'The snow globe · ' + (i.place || ''); }, draw: globe,
       cells: function (i) { var d = daysTo(i.now, 11, 21); return [['Sunset', i.polar ? '—' : i.hm(i.set)], ['Daylight', i.dur(i.len)], ['Solstice', d === 0 ? 'Tonight' : d + (d === 1 ? ' day' : ' days')]]; } },
@@ -302,12 +300,6 @@
         { id: 'hearth', name: 'Hearthside Eve', sub: 'Stockings hung by the chimney with care', seed: 7 }
       ],
       paint: function (K, sceneId) { PAINT[sceneId](K); }
-    },
-    after: function (h) {
-      var cab = h.$('#cab'); if (!cab) return;
-      /* the music box lid lifts a little more while it plays */
-      cab.addEventListener('pointerenter', function () { cab.classList.add('peek'); });
-      cab.addEventListener('pointerleave', function () { cab.classList.remove('peek'); });
     }
   };
 })(window);

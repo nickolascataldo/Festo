@@ -82,8 +82,8 @@ html.lx[data-season="spring"] {
   --lx-rate-bg: rgba(30,50,36,.8);
   --lx-well: radial-gradient(circle at 50% 70%, #fffdf6 0%, #eef5e4 55%, #d6e8cc 100%);
   --lx-well-shadow: inset 0 0 0 1px rgba(80,110,70,.18), inset 0 6px 18px rgba(80,110,70,.14);
-  --lx-device-bg: radial-gradient(120% 100% at 50% 0%, #ffffff 0%, #f6f1e2 60%, #ece2c8 100%);
-  --lx-device-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #c9a464, inset 0 -10px 20px rgba(120,100,60,.12), 0 18px 26px -16px rgba(60,80,50,.5);
+  --lx-device-bg: radial-gradient(70% 70% at 50% 50%, rgba(255,214,227,.45), transparent 70%), radial-gradient(circle at 50% 60%, #fffdf6 0%, #eef5e4 55%, #d6e8cc 100%);
+  --lx-device-shadow: inset 0 0 0 1px rgba(80,110,70,.2), inset 0 8px 20px rgba(80,110,70,.14);
   --lx-dial-bg: linear-gradient(180deg, #fffefa, #f1ead6);
   --lx-dial-shadow: inset 0 0 0 2px #c9a464, inset 0 0 0 3px #fff, inset 0 3px 8px rgba(120,100,60,.2);
   --lx-dial-tick: rgba(60,90,60,.5);
@@ -147,20 +147,6 @@ html.lx[data-season="spring"] {
 [data-season="spring"] .book .crest { top: 9%; width: 16px; height: 16px; margin-left: -8px; transform: none; opacity: 1; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cg fill='%23fff7fa' stroke='%23d07a96' stroke-width='.6'%3E%3Cpath d='M15 15C12 11 12 7 15 5.5C18 7 18 11 15 15z'/%3E%3Cpath d='M15 15C12 11 12 7 15 5.5C18 7 18 11 15 15z' transform='rotate(72 15 15)'/%3E%3Cpath d='M15 15C12 11 12 7 15 5.5C18 7 18 11 15 15z' transform='rotate(144 15 15)'/%3E%3Cpath d='M15 15C12 11 12 7 15 5.5C18 7 18 11 15 15z' transform='rotate(216 15 15)'/%3E%3Cpath d='M15 15C12 11 12 7 15 5.5C18 7 18 11 15 15z' transform='rotate(288 15 15)'/%3E%3C/g%3E%3Ccircle cx='15' cy='15' r='2' fill='%23f2c14e'/%3E%3C/svg%3E") center / contain no-repeat; }
 [data-season="spring"] .book .label span { filter: none; }
 [data-season="spring"] .book.is-out { filter: brightness(1.04) drop-shadow(0 18px 14px rgba(60,80,50,.35)) drop-shadow(0 0 14px rgba(244,166,191,.6)); }
-
-/* the birdcage */
-[data-season="spring"] .cage { display: grid; place-items: center; height: 170px; border-radius: 12px; background: radial-gradient(circle at 50% 60%, rgba(244,166,191,.2), transparent 60%), radial-gradient(circle at 50% 40%, #fffefa, #f1ead6 80%); box-shadow: inset 0 0 0 1px rgba(201,164,100,.35); }
-[data-season="spring"] .cage svg { display: block; width: auto; height: 158px; max-width: 100%; overflow: visible; }
-[data-season="spring"] .cage .head { transform-box: fill-box; transform-origin: 80% 80%; }
-[data-season="spring"] .cage .beak { transform-box: fill-box; transform-origin: 100% 50%; }
-[data-season="spring"] .cage .notes { opacity: 0; }
-[data-season="spring"] .is-playing .cage .head { animation: sp-sing 1.1s ease-in-out infinite; }
-[data-season="spring"] .is-playing .cage .beak { animation: sp-beak .3s ease-in-out infinite alternate; }
-[data-season="spring"] .is-playing .cage .notes { animation: sp-notes 2.4s ease-out infinite; }
-[data-season="spring"] .device:not(.is-playing):hover .cage .head { animation: sp-sing 1.6s ease-in-out 1; }
-@keyframes sp-sing { 0%, 100% { transform: rotate(0); } 30% { transform: rotate(-12deg); } 60% { transform: rotate(6deg); } }
-@keyframes sp-beak { from { transform: scaleY(1); } to { transform: scaleY(1.9); } }
-@keyframes sp-notes { 0% { opacity: 0; transform: translateY(8px); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(-18px); } }
 
 /* almanac note: a seed-packet card */
 [data-season="spring"] .lore .sheet::after { content: ""; position: absolute; left: 50%; bottom: -10px; width: 64%; height: 20px; transform: translateX(-50%); border-radius: 0 0 50% 50%; background: radial-gradient(circle, rgba(143,174,138,.35) 1px, transparent 1.6px) 0 0 / 8px 8px; opacity: .6; }

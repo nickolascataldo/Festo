@@ -20,13 +20,13 @@ const LUXE_FONTS = {
 function layer(season) {
   if (season === 'halloween') return {
     cls: 'gh-theme gh-shell',
-    head: [PRE, '<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" data-gh-fonts>', '<link rel="stylesheet" href="../../shared/themes/halloween-gothic.css?v=4">'],
-    tail: ['<script src="../../shared/themes/halloween-gothic.js?v=1"></script>']
+    head: [PRE, '<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" data-gh-fonts>', '<link rel="stylesheet" href="../../shared/themes/halloween-gothic.css?v=5">'],
+    tail: ['<script src="../../shared/themes/halloween-gothic.js?v=1"></script>', '<script src="../../shared/radio/stations.js?v=1"></script>', '<script src="../../shared/radio/radio.js?v=1"></script>']
   };
   return {
     cls: 'lx lx-shell',
-    head: [PRE, '<link href="https://fonts.googleapis.com/css2?' + LUXE_FONTS[season] + '&display=swap" rel="stylesheet" data-lx-fonts>', '<link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=1">', '<link rel="stylesheet" href="../../shared/luxe/luxe-pages.css?v=1">', '<link rel="stylesheet" href="../../shared/luxe/' + season + '.css?v=1">'],
-    tail: ['<script src="../../shared/luxe/' + season + '.js?v=1"></script>', '<script src="../../shared/luxe/luxe-atmos.js?v=1"></script>']
+    head: [PRE, '<link href="https://fonts.googleapis.com/css2?' + LUXE_FONTS[season] + '&display=swap" rel="stylesheet" data-lx-fonts>', '<link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=2">', '<link rel="stylesheet" href="../../shared/luxe/luxe-pages.css?v=2">', '<link rel="stylesheet" href="../../shared/luxe/' + season + '.css?v=2">'],
+    tail: ['<script src="../../shared/luxe/' + season + '.js?v=2"></script>', '<script src="../../shared/luxe/luxe-atmos.js?v=2"></script>', '<script src="../../shared/radio/stations.js?v=1"></script>', '<script src="../../shared/radio/radio.js?v=1"></script>']
   };
 }
 

@@ -472,7 +472,8 @@
       var st = shellState, h = Festo.dom.h, s = st.s;
       var tiles = [h('a', { class: 'fx-sheet-tile', href: Festo.url(st.season, 'landing') }, ico('house'), h('span', null, s.short))];
       s.modules.forEach(function (m) { tiles.push(h('a', { class: 'fx-sheet-tile' + (m.id === st.module ? ' is-active' : ''), href: Festo.url(st.season, m.id) }, ico(m.icon.replace('fa-', '')), h('span', null, m.label))); });
-      if (st.season !== 'hub') tiles.push(h('a', { class: 'fx-sheet-tile', href: Festo.url('hub', null, 'choose=1') }, ico('compass'), h('span', null, 'All seasons')));
+      /* the intro page is only offered from a season's landing page */
+      if (st.season !== 'hub' && st.module === 'landing') tiles.push(h('a', { class: 'fx-sheet-tile', href: Festo.url('hub', null, 'choose=1') }, ico('compass'), h('span', null, 'All seasons')));
       var styleBtn = function (n) { return h('button', { class: 'fx-pill' + (st.style === n ? ' is-active' : ''), type: 'button', 'aria-label': 'Navigation style ' + n, onclick: function () { Festo.shell.setStyle(n); } }, 'Style ' + n); };
       var snd = h('button', { class: 'fx-pill', type: 'button', 'aria-label': 'Toggle sound' }, ico(Festo.audio.muted ? 'volume-xmark' : 'volume-high'));
       snd.addEventListener('click', function () { Festo.audio.setMuted(!Festo.audio.muted); snd.innerHTML = ''; snd.appendChild(ico(Festo.audio.muted ? 'volume-xmark' : 'volume-high')); });

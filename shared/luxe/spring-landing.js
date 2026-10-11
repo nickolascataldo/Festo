@@ -17,18 +17,29 @@
     return s + '<use href="#sp-bloom" x="169" y="20" width="52" height="52"/></svg>';
   }
 
-  /* ---------- the gilded birdcage ---------- */
-  var bars = ''; for (var i = 0; i < 9; i++) { var x = 30 + i * 17.5; bars += '<path d="M' + x + ' 150 V70 Q' + x + ' ' + (32 + Math.abs(i - 4) * 4) + ' 100 22" stroke="url(#spGold)" stroke-width="1.6" fill="none"/>'; }
-  var DEVICE = '<div class="cage"><svg viewBox="0 0 200 170" aria-hidden="true"><defs><radialGradient id="bcBird" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#bfe0ff"/><stop offset=".6" stop-color="#5a9ad8"/><stop offset="1" stop-color="#2a5a9a"/></radialGradient>' +
-    '<radialGradient id="bcBreast" cx="40%" cy="40%" r="70%"><stop offset="0" stop-color="#ffd2a6"/><stop offset="1" stop-color="#e98a4a"/></radialGradient></defs>' +
-    '<ellipse cx="100" cy="158" rx="80" ry="8" fill="#000" opacity=".12"/>' + bars +
-    '<path d="M22 150 H178" stroke="url(#spGold)" stroke-width="6" stroke-linecap="round"/><path d="M30 70 H170" stroke="url(#spGold)" stroke-width="2"/><path d="M100 22 v-10" stroke="url(#spGold)" stroke-width="2"/><circle cx="100" cy="9" r="5" fill="none" stroke="url(#spGold)" stroke-width="2"/>' +
-    '<path d="M44 112 H156" stroke="#8a6a3a" stroke-width="3" stroke-linecap="round"/>' +
-    '<g class="bird"><path d="M120 104 C 132 100 142 98 150 92 C 146 104 136 108 124 110z" fill="#2a5a9a"/><ellipse cx="102" cy="98" rx="20" ry="15" fill="url(#bcBird)"/><path d="M86 94 C 86 106 94 112 104 112 C 96 106 94 98 96 90z" fill="url(#bcBreast)"/>' +
-      '<g class="head"><circle cx="88" cy="82" r="10.5" fill="url(#bcBird)"/><path class="beak" d="M78 81 L 70 84 L 78 86z" fill="#f2b43a"/><circle cx="85" cy="80" r="1.9" fill="#121a24"/><circle cx="84.4" cy="79.4" r=".6" fill="#fff"/></g>' +
-      '<path d="M104 92 C 114 88 124 92 128 98 C 118 100 110 98 104 92z" fill="#3a74b8"/><path d="M98 112 v4 M106 112 v4" stroke="#8a5a2a" stroke-width="1.6"/></g>' +
-    '<g class="notes" fill="#c45478"><path d="M54 60 v-12 l8 -2 v12" stroke="#c45478" stroke-width="1.4" fill="none"/><circle cx="52" cy="60" r="2.6"/><circle cx="60" cy="58" r="2.6"/><path d="M146 52 v-10" stroke="#4f8a4c" stroke-width="1.4"/><circle cx="144" cy="52" r="2.6" fill="#4f8a4c"/></g>' +
-    '<g transform="translate(16 128)"><use href="#sp-sprig" width="40" height="40"/></g><g transform="translate(184 128) scale(-1 1)"><use href="#sp-sprig" width="40" height="40"/></g></svg></div>';
+  /* ---------- the art deco blossom radio ---------- */
+  function deco() {
+    var petal = ''; [[0, -3.2], [3, -1], [1.9, 2.6], [-1.9, 2.6], [-3, -1]].forEach(function (p) { petal += '<circle cx="' + (11 + p[0]) + '" cy="' + (11 + p[1]) + '" r="2.6" fill="#f4a6bf"/>'; });
+    return '<svg class="rad" viewBox="0 0 320 176" aria-hidden="true"><defs>' +
+      '<linearGradient id="prBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe4c4"/><stop offset=".5" stop-color="#9cc290"/><stop offset="1" stop-color="#6f9a68"/></linearGradient>' +
+      '<linearGradient id="prSheen" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".3" stop-color="#fff" stop-opacity=".28"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/></linearGradient>' +
+      '<pattern id="prLattice" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="#fffaf0"/><path d="M0 11h22M11 0v22" stroke="#e6dcc4" stroke-width=".8"/>' + petal + '<circle cx="11" cy="11" r="1.5" fill="#f2c14e"/>' +
+        '<path d="M0 0c3 1 4 3 4 5c-3-.5-4-2.5-4-5zM22 22c-3-1-4-3-4-5c3 .5 4 2.5 4 5z" fill="#8fbf80"/></pattern>' +
+      '<radialGradient id="prGlow" cx="50%" cy="55%" r="60%"><stop offset="0" stop-color="#ffd6e3" stop-opacity=".85"/><stop offset="1" stop-color="#ffd6e3" stop-opacity="0"/></radialGradient>' +
+      '<radialGradient id="prKnob" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#fffbe8"/><stop offset=".5" stop-color="#d9bc7e"/><stop offset="1" stop-color="#7a5a20"/></radialGradient></defs>' +
+      '<ellipse cx="160" cy="170" rx="126" ry="5" fill="#000" opacity=".16"/>' +
+      '<rect x="48" y="160" width="30" height="8" rx="3" fill="#7a5a3a"/><rect x="242" y="160" width="30" height="8" rx="3" fill="#7a5a3a"/>' +
+      '<path d="M30 160V76Q30 48 58 48H86Q94 22 124 20H196Q226 22 234 48H262Q290 48 290 76V160z" fill="url(#prBody)" stroke="#4f7a4c" stroke-width="2"/><path d="M30 160V76Q30 48 58 48H86Q94 22 124 20H196Q226 22 234 48H262Q290 48 290 76V160z" fill="url(#prSheen)"/>' +
+      '<path d="M40 76Q40 58 58 58H84M236 58H262Q280 58 280 76" fill="none" stroke="#fffaf0" stroke-width="1.6" opacity=".8"/>' +
+      '<g stroke="#fffaf0" stroke-width="2.4" stroke-linecap="round" opacity=".85"><path d="M44 96h40M44 106h40M44 116h40M236 96h40M236 106h40M236 116h40"/></g>' +
+      '<path class="spk" d="M98 132V62Q98 36 124 34H196Q222 36 222 62V132z" fill="url(#prLattice)" stroke="#c9a464" stroke-width="3"/>' +
+      '<path class="glow" d="M98 132V62Q98 36 124 34H196Q222 36 222 62V132z" fill="url(#prGlow)"/>' +
+      '<path d="M160 34V132" stroke="#c9a464" stroke-width="2"/><path d="M98 84H222" stroke="#c9a464" stroke-width="1.4" opacity=".7"/>' +
+      '<rect x="112" y="140" width="96" height="14" rx="7" fill="#fffaf0" stroke="#c9a464" stroke-width="1.6"/><path d="M120 147h80" stroke="#8fae8a" stroke-width=".9" stroke-dasharray="1 5"/><circle class="lamp" cx="160" cy="147" r="5" fill="#f4a6bf"/>' +
+      '<circle cx="62" cy="140" r="12" fill="url(#prKnob)" stroke="#7a5a20"/><use href="#sp-flower" x="53" y="131" width="18" height="18"/><circle cx="258" cy="140" r="12" fill="url(#prKnob)" stroke="#7a5a20"/><use href="#sp-flower" x="249" y="131" width="18" height="18"/>' +
+      '<use href="#sp-sprig" x="214" y="-12" width="62" height="62"/><use href="#sp-flower" x="140" y="6" width="40" height="40"/></svg>';
+  }
+  var DEVICE = deco();
 
   var SHOP = [
     { b: 'Clothing', s: 'Rain gear & sun hats', svg: '<svg viewBox="0 0 34 40"><path d="M9 6h8v22l6 2c3 1 4 3 4 6H5V6z" fill="#e8b84a" stroke="#9a7420"/><path d="M5 30h22" stroke="#9a7420"/><path d="M9 6h8" stroke="#fff" stroke-width="2"/><circle cx="9" cy="16" r="1.4" fill="#fff"/><circle cx="13" cy="20" r="1.4" fill="#fff"/></svg>' },
@@ -140,6 +151,18 @@
     }
   };
 
+  function pin(x, y, col, d) { return '<g transform="translate(' + x + ' ' + y + ')"><circle class="ring" r="5" fill="none" stroke="' + col + '" stroke-width="1.6" style="animation-delay:' + d + 's"/><g class="pin" style="animation-delay:' + d + 's"><path d="M0 0C-4.5-6-7-9.5-7-13.5a7 7 0 0 1 14 0C7-9.5 4.5-6 0 0z" fill="' + col + '" stroke="rgba(0,0,0,.35)" stroke-width=".8"/><circle cy="-13.5" r="2.6" fill="#fff"/></g></g>'; }
+  function bed(x, y, r, cols) { var o = '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" fill="#9cc290" stroke="#6f9a68" stroke-width="1"/>'; for (var i = 0; i < 9; i++) { var a = i * 2.4, d = (i % 3 + 1) * r / 4; o += '<circle cx="' + (x + Math.cos(a) * d).toFixed(1) + '" cy="' + (y + Math.sin(a) * d).toFixed(1) + '" r="2.2" fill="' + cols[i % cols.length] + '"/>'; } return o; }
+  var MAP = '<svg viewBox="0 0 132 116"><rect width="132" height="116" fill="#d4e8c6"/>' +
+    '<path d="M0 0H132V116H0z" fill="none" stroke="#7fa97a" stroke-width="10" stroke-opacity=".7"/>' +
+    '<path d="M-4 96C24 92 30 70 54 64S92 58 98 36S118 12 136 10" fill="none" stroke="#f6ecd4" stroke-width="8" stroke-linecap="round"/><path d="M60 64C70 80 90 88 110 112" fill="none" stroke="#f6ecd4" stroke-width="6" stroke-linecap="round"/>' +
+    bed(34, 34, 14, ['#f4a6bf', '#ffffff', '#e8506f']) + bed(98, 82, 13, ['#c9b6e8', '#f6b93b', '#ffffff']) + bed(80, 22, 9, ['#f6b93b', '#ff8a8a']) +
+    '<ellipse cx="30" cy="80" rx="13" ry="8" fill="#9ed0e8" stroke="#fff" stroke-width="1.4"/><ellipse cx="27" cy="78" rx="4" ry="1.4" fill="#fff" opacity=".7"/>' +
+    '<g fill="#5f9a52"><circle cx="112" cy="50" r="7"/><circle cx="60" cy="98" r="6"/><circle cx="10" cy="56" r="5"/></g><g fill="#f4a6bf"><circle cx="110" cy="48" r="1.6"/><circle cx="114" cy="52" r="1.4"/><circle cx="58" cy="96" r="1.4"/></g>' +
+    '<path class="route" d="M-4 96C24 92 30 70 54 64S92 58 98 36S118 12 136 10" fill="none" stroke="#a07a50" stroke-width="1.4" stroke-linecap="round"/>' +
+    pin(54, 64, '#cc4a6c', 0) + pin(98, 36, '#8d7bc9', -.8) + pin(96, 84, '#4f8a4c', -1.6) +
+    '<rect x="1" y="1" width="130" height="114" rx="14" fill="none" stroke="#c9a464" stroke-width="2"/></svg>';
+
   S.landing = {
     arch: arch(),
     flank: 'sp-sprig',
@@ -171,37 +194,12 @@
       ]
     },
     sound: {
-      noun: 'birdcage music box', sub: 'Wake the songbird, then open the playlists for the season.', device: DEVICE,
-      scope: ['rgba(244,166,191,.16)', 'rgba(244,166,191,.45)', '#fff2f6'],
-      stations: [
-        { n: 'Dawn Chorus', short: 'Dawn Chorus', x: 12, play: function (A) {
-          var pad = A.filter('lowpass', 900), pg = A.gain(.025); pad.connect(pg); pg.connect(A.out); [60, 67, 72, 76].forEach(function (m) { A.osc('sine', A.mtof(m)).connect(pad); });
-          function song() { var t = A.ac.currentTime + .05, kind = Math.random(), base = 2200 + Math.random() * 1400, n = 3 + (Math.random() * 6 | 0);
-            for (var i = 0; i < n; i++) { if (kind < .4) A.chirp(t + i * .09, base * 1.2, base * .8, .07, .05); else if (kind < .75) A.chirp(t + i * .16, base * .8, base * 1.3, .12, .045); else A.chirp(t + i * .05, base, base * (i % 2 ? 1.25 : .9), .04, .04); } }
-          song(); A.every(900, function () { if (Math.random() < .75) song(); });
-        } },
-        { n: 'Spring Rain on Glass', short: 'Spring Rain', x: 38, play: function (A) {
-          var n = A.noise(), hp = A.filter('highpass', 1800, .3), lp = A.filter('lowpass', 7000), g = A.gain(.06); n.connect(hp); hp.connect(lp); lp.connect(g); g.connect(A.out);
-          var low = A.filter('lowpass', 400), lg = A.gain(.05); n.connect(low); low.connect(lg); lg.connect(A.out);
-          A.every(70, function () { if (Math.random() < .5) { var t = A.ac.currentTime + Math.random() * .06; A.chirp(t, 1400 + Math.random() * 1800, 600 + Math.random() * 500, .05, .025); } });
-          A.seq([[72, 2], [76, 2], [79, 4], [74, 2], [77, 2], [81, 4]], .5, function (f, t) { A.bell(f, t, 2.4, .035); });
-        } },
-        { n: 'Glasshouse Harp', short: 'Harp', x: 63, play: function (A) {
-          var scale = [60, 62, 64, 67, 69, 72, 74, 76, 79, 81], chords = [[0, 2, 4, 5, 7, 9], [1, 3, 4, 6, 8, 9], [0, 2, 3, 5, 7, 8], [2, 4, 5, 7, 9, 9]], k = 0, next = A.ac.currentTime + .12, step = 0;
-          A.every(50, function () { while (next < A.ac.currentTime + .3) { var ch = chords[(step / 12 | 0) % 4], idx = step % 12 < 6 ? step % 6 : 5 - step % 6; var f = A.mtof(scale[ch[idx]]);
-            A.pluck(f, next, 1.6, .07, null, 5); A.bell(f, next, 1.4, .025, null, [[1, 1], [2, .3]]); if (step % 12 === 0) A.pluck(A.mtof(scale[ch[0]] - 24), next, 2.4, .1, null, 2.5); next += .2; step++; } });
-        } },
-        { n: 'Wind Chimes', short: 'Chimes', x: 88, play: function (A) {
-          var n = A.noise(), bp = A.filter('bandpass', 500, .4), g = A.gain(.03); n.connect(bp); bp.connect(g); g.connect(A.out);
-          var lfo = A.osc('sine', .09), lg = A.gain(.025); lfo.connect(lg); lg.connect(g.gain);
-          var notes = [72, 74, 76, 79, 81, 84, 86, 88];
-          A.every(260, function () { if (Math.random() < .55) { var t = A.ac.currentTime + Math.random() * .1; A.bell(A.mtof(notes[Math.random() * notes.length | 0]), t, 3.4, .06, null, [[1, 1], [2.76, .35], [5.4, .12]]); } });
-        } }
-      ]
+      noun: 'radio', device: DEVICE,
+      scope: ['rgba(244,166,191,.16)', 'rgba(244,166,191,.45)', '#fff2f6']
     },
     game: null,
     wheel: { sub: 'Spin a small spring quest for today', dataVar: 'SPRING_WHEEL', style: { rim: ['#f6e6b8', '#8fae8a', '#f1dca0', '#6f9470', '#e2c98a'], inner: '#fffdf6', core: 'rgba(255,255,255,.6)', edge: 'rgba(0,0,0,.2)', text: '#ffffff', font: '600 #px "Jost", sans-serif', upper: true, spoke: '#fffdf6', bulbA: '#f2c94c', bulbB: '#ffffff', hub: ['#fffdf6', '#f1dca0', '#a7864a'], hubText: '#4a3a1a', hubFont: 'italic 600 #px "Fraunces", serif', pointer: '#d8577a' } },
-    radar: { sub: 'Gardens, trails & birding spots near', noun: ['garden spot', 'garden spots'], mapVar: 'SPRING_MAP' },
+    radar: { sub: 'Gardens, trails & birding spots near', noun: ['garden spot', 'garden spots'], mapVar: 'SPRING_MAP', art: MAP },
     shop: { sub: 'Rain gear, crafts, planters & tea-table treats', items: SHOP },
     sky: { icon: 'cloud', small: function (i) { return 'The meadow over ' + (i.place || ''); }, draw: meadow,
       cells: function (i) { return [['Sunrise', i.polar ? '—' : i.hm(i.rise)], ['Sunset', i.polar ? '—' : i.hm(i.set)], ['Since winter', fmtGain(i.gained)]]; } },

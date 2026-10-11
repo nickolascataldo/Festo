@@ -41,7 +41,9 @@ body.gh { margin: 0; min-height: 100vh; background: radial-gradient(120% 70% at 
 #streetFog { position: absolute; inset: 0; width: 100%; height: 100%; }
 .street::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 45%, rgba(6,5,8,.35) 0%, rgba(6,5,8,.85) 100%); }
 .grain-veil { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: var(--grain); opacity: .18; mix-blend-mode: overlay; }
-.iron { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
+/* the frame wraps the whole page (it scrolls with it), not the screen */
+body.gh { position: relative; }
+.iron { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 60; pointer-events: none; }
 .iron .rail { position: absolute; inset: 5px; border-radius: 30px; box-shadow: inset 0 0 0 3px #08070a, inset 0 0 0 4px #4a4150, inset 0 0 0 6px #0b090d, inset 0 0 0 7px rgba(170,140,90,.22), inset 0 0 50px 14px rgba(0,0,0,.6); }
 .iron .vine { position: absolute; top: 70px; bottom: 70px; width: 26px; background-repeat: repeat-y; background-size: 26px 150px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='150' viewBox='0 0 26 150'%3E%3Cdefs%3E%3ClinearGradient id='i' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23060508'/%3E%3Cstop offset='.5' stop-color='%23463c4c'/%3E%3Cstop offset='1' stop-color='%23060508'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 0 C 17 18, 1 34, 9 52 S 17 88, 9 104 S 1 136, 9 150' fill='none' stroke='url(%23i)' stroke-width='2.6'/%3E%3Cpath d='M11 22 l5 -3 M7 44 l-5 -2 M11 70 l6 -1 M7 96 l-5 3 M11 122 l5 -3 M7 140 l-4 -3' stroke='%2318131b' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M12 30 c6 -6 12 -4 13 2 c-6 4 -11 4 -13 -2z' fill='%237a3f19'/%3E%3Cpath d='M12 30 l11 1' stroke='%23331607' stroke-width='.7'/%3E%3Cpath d='M6 82 c-5 -6 -4 -12 1 -14 c3 6 3 10 -1 14z' fill='%235a2a12'/%3E%3Cpath d='M12 112 c7 -3 12 1 12 7 c-7 2 -11 0 -12 -7z' fill='%23964f1c'/%3E%3Cpath d='M12 112 l10 5' stroke='%23421c08' stroke-width='.7'/%3E%3Ccircle cx='17' cy='58' r='1.6' fill='%237d1a1a'/%3E%3Ccircle cx='3' cy='128' r='1.4' fill='%237d1a1a'/%3E%3C/svg%3E"); }
@@ -217,8 +219,12 @@ a.gc:active { transform: scale(.985); }
 .scope::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(0,0,0,.25) 0 1px, transparent 1px 3px); pointer-events: none; }
 .controls { display: flex; align-items: center; gap: 12px; }
 .knob { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; flex: none; background: radial-gradient(circle at 38% 30%, #f0d28a, #a07434 40%, #4a3010 75%); box-shadow: inset 0 2px 2px rgba(255,240,200,.5), inset 0 -4px 6px rgba(0,0,0,.55), 0 6px 12px -4px #000; transition: transform .2s var(--ease); }
-.knob:hover { transform: rotate(-12deg); }
-.knob:active { transform: scale(.93); }
+.knob { transition: filter .2s ease; }
+.knob:hover { filter: brightness(1.1); }
+.knob:active { filter: brightness(.92); }
+.controls { flex-wrap: wrap; }
+.controls .go { margin-left: auto; }
+@media (max-width: 560px) { .controls .go { flex-basis: 100%; justify-content: flex-end; margin-top: -4px; } }
 .knob svg { width: 18px; height: 18px; color: #2a1607; }
 .knob.big { width: 56px; height: 56px; }
 .knob.big svg { width: 22px; height: 22px; }
@@ -234,9 +240,10 @@ a.gc:active { transform: scale(.985); }
 .radar-row { display: flex; align-items: center; gap: 16px; }
 .chip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 11px; border-radius: 999px; font: 700 9.5px var(--engr); letter-spacing: .12em; color: #8fe8c0; box-shadow: inset 0 0 0 1px rgba(77,255,176,.35); white-space: nowrap; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.wheel-mini { width: 132px; height: 132px; transition: transform 1.8s cubic-bezier(.15,.85,.2,1); }
+.wheel-mini { width: 132px; height: 132px; }
 @media (min-width: 700px) { .wheel-mini { width: 156px; height: 156px; } }
-.c-wheel:hover .wheel-mini { transform: rotate(405deg); }
+.c-wheel:hover .wheel-mini, .c-wheel:focus-visible .wheel-mini { animation: wheelSpin 2.6s linear infinite; }
+@keyframes wheelSpin { to { transform: rotate(360deg); } }
 .pk { transition: transform .5s var(--spring); }
 .c-pump:hover .pk { transform: translateY(-6px) rotate(-3deg); }
 .pk-flicker { animation: flicker 2.4s infinite; }

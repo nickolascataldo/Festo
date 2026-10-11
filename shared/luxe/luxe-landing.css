@@ -151,14 +151,27 @@ a.gc:active { transform: scale(.985); }
 .c-game .gc-title, .c-wheel .gc-title { font-size: 16px; }
 .c-wheel.solo { flex-direction: row; align-items: center; }
 .c-wheel.solo .stall-art { flex: 0 0 46%; }
-.wheel-mini { width: 132px; height: 132px; transition: transform 1.8s cubic-bezier(.15,.85,.2,1); }
+.wheel-mini { width: 132px; height: 132px; }
 @media (min-width: 700px) { .wheel-mini { width: 156px; height: 156px; } }
-.c-wheel:hover .wheel-mini { transform: rotate(405deg); }
+.c-wheel:hover .wheel-mini, .c-wheel:focus-visible .wheel-mini { animation: lx-wheelspin 2.6s linear infinite; }
+@keyframes lx-wheelspin { to { transform: rotate(360deg); } }
 .game-art { transition: transform .5s var(--lx-spring); }
 .c-game:hover .game-art { transform: translateY(-6px) rotate(-3deg); }
 
 /* ---------- sound device ---------- */
-.device { position: relative; border-radius: 16px 16px 10px 10px; padding: 12px; background: var(--lx-device-bg); box-shadow: var(--lx-device-shadow); }
+.device { position: relative; border-radius: 16px; padding: 14px 12px 12px; background: var(--lx-device-bg); box-shadow: var(--lx-device-shadow); }
+.device .rad { display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto 2px; overflow: visible; filter: drop-shadow(0 10px 12px rgba(0,0,0,.25)); }
+.rad .glow { opacity: .12; transition: opacity .8s ease; }
+.rad .lamp { opacity: .35; transition: opacity .6s ease; }
+.rad .spk { transform-box: fill-box; transform-origin: 50% 50%; }
+.is-playing .rad .glow { animation: lx-radglow 1.6s ease-in-out infinite alternate; }
+.is-playing .rad .lamp { opacity: 1; }
+.is-playing .rad .spk { animation: lx-thump .48s ease-in-out infinite alternate; }
+@keyframes lx-radglow { from { opacity: .3; } to { opacity: .85; } }
+@keyframes lx-thump { from { transform: scale(1); } to { transform: scale(1.018); } }
+.controls { flex-wrap: wrap; }
+.controls .go { margin-left: auto; }
+@media (max-width: 560px) { .controls .go { flex-basis: 100%; justify-content: flex-end; margin-top: -4px; } }
 .dial { position: relative; height: 40px; margin-top: 10px; border-radius: 10px; overflow: hidden; background: var(--lx-dial-bg); box-shadow: var(--lx-dial-shadow); }
 .dial .ticks { position: absolute; inset: 6px 10px; background: repeating-linear-gradient(90deg, var(--lx-dial-tick) 0 1px, transparent 1px 8px); -webkit-mask: linear-gradient(180deg, #000 0 40%, transparent 40%); mask: linear-gradient(180deg, #000 0 40%, transparent 40%); }
 .dial .names { position: absolute; left: 10px; right: 10px; bottom: 5px; display: flex; justify-content: space-between; font: 700 8.5px var(--lx-engr); letter-spacing: .06em; color: var(--lx-dial-ink); text-transform: uppercase; }
@@ -168,8 +181,9 @@ a.gc:active { transform: scale(.985); }
 .scope::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(0,0,0,.14) 0 1px, transparent 1px 3px); pointer-events: none; }
 .controls { display: flex; align-items: center; gap: 12px; }
 .knob { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; flex: none; background: var(--lx-knob); box-shadow: var(--lx-knob-shadow); transition: transform .2s var(--lx-ease); }
-.knob:hover { transform: rotate(-12deg); }
-.knob:active { transform: scale(.93); }
+.knob { transition: filter .2s ease, box-shadow .2s ease; }
+.knob:hover { filter: brightness(1.08); }
+.knob:active { filter: brightness(.94); }
 .knob svg { width: 18px; height: 18px; color: var(--lx-knob-ink); }
 .knob.big { width: 56px; height: 56px; }
 .knob.big svg { width: 22px; height: 22px; }
@@ -185,6 +199,17 @@ a.gc:active { transform: scale(.985); }
 @keyframes lx-sweep { to { transform: rotate(360deg); } }
 @keyframes lx-blip { 0%, 100% { opacity: 0; } 8% { opacity: 1; } 45% { opacity: .15; } }
 .radar-row { display: flex; align-items: center; gap: 16px; }
+.map-art { flex: none; width: 132px; height: 116px; border-radius: 16px; overflow: hidden; box-shadow: var(--lx-radar-shadow); transform: rotate(-2deg); transition: transform .5s var(--lx-spring); }
+.map-art svg { display: block; width: 100%; height: 100%; }
+.radar-row > span:last-child { min-width: 0; }
+@media (max-width: 480px) { .c-radar .radar-row { flex-direction: column; align-items: stretch; } .c-radar .map-art { width: 100%; height: 200px; transform: none; } .c-radar .map-art svg { object-fit: cover; } }
+.c-radar:hover .map-art { transform: rotate(0deg) scale(1.04); }
+.map-art .pin { transform-box: fill-box; transform-origin: 50% 100%; animation: lx-pin 2.4s ease-in-out infinite; }
+.map-art .ring { transform-box: fill-box; transform-origin: center; animation: lx-ring 2.4s ease-out infinite; }
+.map-art .route { stroke-dasharray: 3 4; animation: lx-route 5s linear infinite; }
+@keyframes lx-pin { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+@keyframes lx-ring { 0% { transform: scale(.4); opacity: .9; } 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes lx-route { to { stroke-dashoffset: -70; } }
 .chip { display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 11px; border-radius: 999px; font: 700 9.5px var(--lx-engr); letter-spacing: .12em; color: var(--lx-chip); box-shadow: inset 0 0 0 1px var(--lx-chip-line); white-space: nowrap; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 

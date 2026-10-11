@@ -35,7 +35,9 @@ html.lx body { background: var(--lx-bg); }
 .lx-veil { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: var(--lx-grain); opacity: var(--lx-veil-op, .12); mix-blend-mode: overlay; }
 
 /* ---------- frame ---------- */
-.lx-frame { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
+/* the frame wraps the whole page (it scrolls with it), not the screen */
+html.lx body { position: relative; min-height: 100vh; }
+.lx-frame { position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 60; pointer-events: none; }
 .lx-frame .rail { position: absolute; inset: 5px; border-radius: 30px; box-shadow: var(--lx-rail); }
 .lx-frame .vine { position: absolute; top: 72px; bottom: 72px; width: var(--lx-vine-w, 26px); background: var(--lx-vine) 0 0 / var(--lx-vine-w, 26px) var(--lx-vine-h, 150px) repeat-y; }
 .lx-frame .vine.l { left: var(--lx-vine-x, 3px); } .lx-frame .vine.r { right: var(--lx-vine-x, 3px); transform: scaleX(-1); }

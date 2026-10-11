@@ -19,10 +19,31 @@
     return s + '<use href="#su-sun" x="169" y="34" width="52" height="52"/></svg>';
   }
 
-  /* ---------- transistor radio ---------- */
-  var DEVICE = '<div class="radio"><i class="antenna" aria-hidden="true"></i><div class="r-top"><span class="r-brand">Festo</span><span class="r-band">AM · FM · SURF</span><i class="r-led"></i></div>' +
-    '<div class="r-row"><div class="r-grille"></div><div class="r-side"><svg viewBox="0 0 80 60" aria-hidden="true"><defs><linearGradient id="rsSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd59a"/><stop offset="1" stop-color="#f07a5a"/></linearGradient></defs>' +
-    '<rect width="80" height="60" rx="6" fill="url(#rsSky)"/><circle cx="40" cy="36" r="13" fill="#fff4cc"/><rect y="36" width="80" height="24" fill="#1d6a90"/><path d="M0 42q10-4 20 0t20 0 20 0 20 0M0 50q10-4 20 0t20 0 20 0 20 0" stroke="#bfe6f3" stroke-width="1.6" fill="none"/><path d="M8 36l10-18 10 18z" fill="#fdf3df" opacity=".9"/></svg></div></div></div>';
+  /* ---------- the 1950s tabletop radio ---------- */
+  function tabletop() {
+    var ticks = ''; for (var i = 0; i <= 12; i++) { var a = (-210 + i * 20) * Math.PI / 180, r2 = i % 3 ? 31 : 33; ticks += '<path d="M' + (232 + Math.cos(a) * 27).toFixed(1) + ' ' + (80 + Math.sin(a) * 27).toFixed(1) + 'L' + (232 + Math.cos(a) * r2).toFixed(1) + ' ' + (80 + Math.sin(a) * r2).toFixed(1) + '" stroke="#7a3a1a" stroke-width="1.2"/>'; }
+    return '<svg class="rad" viewBox="0 0 320 176" aria-hidden="true"><defs>' +
+      '<linearGradient id="srBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a8e6dc"/><stop offset=".55" stop-color="#6cc4b6"/><stop offset=".551" stop-color="#fdf3df"/><stop offset="1" stop-color="#ecd9b4"/></linearGradient>' +
+      '<linearGradient id="srChrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#b8c4cc"/><stop offset=".55" stop-color="#eef3f6"/><stop offset="1" stop-color="#7c8b96"/></linearGradient>' +
+      '<radialGradient id="srChromeR" cx="35%" cy="30%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#c9d3da"/><stop offset="1" stop-color="#6a7882"/></radialGradient>' +
+      '<radialGradient id="srFace" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#fff1c8"/><stop offset=".55" stop-color="#ffc483"/><stop offset="1" stop-color="#f08a5a"/></radialGradient>' +
+      '<pattern id="srHoles" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="3.5" cy="3.5" r="1.5" fill="#5a6a74"/></pattern>' +
+      '<radialGradient id="srGlow"><stop offset="0" stop-color="#ffd59a" stop-opacity=".9"/><stop offset="1" stop-color="#ffd59a" stop-opacity="0"/></radialGradient></defs>' +
+      '<ellipse cx="160" cy="170" rx="128" ry="5" fill="#000" opacity=".22"/>' +
+      '<path d="M112 36C112 10 208 10 208 36" fill="none" stroke="url(#srChrome)" stroke-width="8" stroke-linecap="round"/><rect x="104" y="30" width="14" height="10" rx="3" fill="#7c8b96"/><rect x="202" y="30" width="14" height="10" rx="3" fill="#7c8b96"/>' +
+      '<rect x="44" y="160" width="26" height="9" rx="4" fill="#4a5a64"/><rect x="250" y="160" width="26" height="9" rx="4" fill="#4a5a64"/>' +
+      '<rect x="22" y="36" width="276" height="128" rx="34" fill="url(#srBody)" stroke="#2c7a6e" stroke-width="2"/><rect x="27" y="41" width="266" height="118" rx="30" fill="none" stroke="#fff" stroke-opacity=".5"/>' +
+      '<rect x="22" y="104" width="276" height="7" fill="url(#srChrome)"/>' +
+      '<g class="spk"><circle cx="98" cy="100" r="50" fill="url(#srChrome)"/><circle cx="98" cy="100" r="44" fill="#eef2f4"/><circle cx="98" cy="100" r="44" fill="url(#srHoles)"/>' +
+      '<circle cx="98" cy="100" r="30" fill="none" stroke="url(#srChrome)" stroke-width="3"/><circle cx="98" cy="100" r="14" fill="url(#srChromeR)"/>' +
+      '<path d="M98 56V144M54 100H142" stroke="url(#srChrome)" stroke-width="3"/></g><circle class="glow" cx="98" cy="100" r="46" fill="url(#srGlow)"/>' +
+      '<circle cx="232" cy="80" r="38" fill="url(#srChrome)"/><circle cx="232" cy="80" r="33" fill="url(#srFace)"/>' + ticks +
+      '<path d="M210 94q6-4 11 0t11 0 11 0 11 0" stroke="#1f8fb0" stroke-width="2" fill="none"/><path class="rpointer" d="M232 80L249 61" stroke="#c2401a" stroke-width="2.2" stroke-linecap="round"/><circle cx="232" cy="80" r="3.6" fill="#7c8b96"/>' +
+      '<circle class="lamp" cx="272" cy="54" r="4" fill="#ff5a3a"/>' +
+      '<text x="232" y="138" text-anchor="middle" font-family="Yeseva One, serif" font-size="17" fill="#2c7a6e">Festo</text>' +
+      '<circle cx="194" cy="146" r="9" fill="url(#srChromeR)" stroke="#6a7882"/><circle cx="270" cy="146" r="9" fill="url(#srChromeR)" stroke="#6a7882"/><path d="M194 139v5M270 139v5" stroke="#4a5a64" stroke-width="1.6"/></svg>';
+  }
+  var DEVICE = tabletop();
 
   /* ---------- arcade: the cone stack ---------- */
   var CONE = '<svg class="game-art" viewBox="0 0 200 170" width="160" height="136" aria-hidden="true"><defs>' +
@@ -170,6 +191,18 @@
     }
   };
 
+  function pin(x, y, col, d) { return '<g transform="translate(' + x + ' ' + y + ')"><circle class="ring" r="5" fill="none" stroke="' + col + '" stroke-width="1.6" style="animation-delay:' + d + 's"/><g class="pin" style="animation-delay:' + d + 's"><path d="M0 0C-4.5-6-7-9.5-7-13.5a7 7 0 0 1 14 0C7-9.5 4.5-6 0 0z" fill="' + col + '" stroke="rgba(0,0,0,.35)" stroke-width=".8"/><circle cy="-13.5" r="2.6" fill="#fff"/></g></g>'; }
+  var MAP = '<svg viewBox="0 0 132 116"><defs><linearGradient id="suChart" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9fe0ec"/><stop offset="1" stop-color="#2a9ec0"/></linearGradient></defs>' +
+    '<rect width="132" height="116" fill="url(#suChart)"/><path d="M0 29H132M0 58H132M0 87H132M33 0V116M66 0V116M99 0V116" stroke="#fff" stroke-opacity=".18"/>' +
+    '<g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1" stroke-linecap="round"><path d="M10 14q3-3 6 0t6 0"/><path d="M96 90q3-3 6 0t6 0"/><path d="M14 92q3-3 6 0t6 0"/><path d="M104 12q3-3 6 0t6 0"/><path d="M56 104q3-3 6 0t6 0"/></g>' +
+    '<path d="M44 30C60 18 92 22 100 40S96 78 78 84S38 80 34 62S30 40 44 30z" fill="#f6deaa" stroke="#fff6dc" stroke-width="3"/><path d="M52 40C64 32 84 34 90 46S84 70 72 72S48 66 46 56S44 46 52 40z" fill="#8fc46a"/>' +
+    '<path d="M68 58V44" stroke="#6a4a2a" stroke-width="1.6"/><path d="M68 44c-6-2-9 1-10 3M68 44c6-2 9 1 10 3M68 44c-3-5-7-5-9-4M68 44c3-5 7-5 9-4" stroke="#2f7a3a" stroke-width="1.8" fill="none" stroke-linecap="round"/>' +
+    '<path class="route" d="M8 104C24 98 26 84 36 78M100 40C112 34 118 22 124 10" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>' +
+    '<path d="M118 16l6-9 1 9z" fill="#fff"/><path d="M116 17h10l-2 3h-6z" fill="#0b4a6e"/>' +
+    '<g transform="translate(20 22)"><circle r="10" fill="#fdf3df" stroke="#0b4a6e" stroke-width="1"/><path d="M0-9L2 0 0 9-2 0zM-9 0L0 2 9 0 0-2z" fill="#0b4a6e"/><path d="M0-9L2 0 0 0z" fill="#e0532a"/></g>' +
+    pin(60, 40, '#e0532a', 0) + pin(88, 68, '#ffb347', -.8) + pin(44, 70, '#f07a8a', -1.6) +
+    '<rect x="1" y="1" width="130" height="114" rx="14" fill="none" stroke="#fdf3df" stroke-width="2.4"/></svg>';
+
   S.landing = {
     arch: arch(),
     flank: 'su-lemon',
@@ -201,47 +234,12 @@
       ]
     },
     sound: {
-      noun: 'beach radio', sub: 'Tune the beach radio, then open the playlists for the long days.', device: DEVICE,
-      scope: ['rgba(120,230,255,.14)', 'rgba(120,230,255,.45)', '#effcff'],
-      stations: [
-        { n: 'Steel Drum Sunset', short: 'Steel Drum', x: 12, play: function (A) {
-          var bass = [48, 48, 53, 55];
-          A.seq([[72, .5], [76, .5], [79, .5], [76, .5], [77, 1], [74, 1], [72, .5], [74, .5], [76, .5], [72, .5], [71, 1.5], [null, .5], [72, .5], [76, .5], [79, .5], [81, .5], [79, 1], [77, .5], [76, .5], [74, .5], [72, .5], [74, .5], [76, .5], [72, 2]], .3, function (f, t) {
-            A.bell(f, t, .8, .16, null, [[1, 1], [2, .5], [3, .22], [4.2, .08]]);
-          });
-          var bt = A.ac.currentTime + .12, k = 0;
-          A.every(50, function () { while (bt < A.ac.currentTime + .3) { if (k % 4 === 0 || k % 4 === 3) A.pluck(A.mtof(bass[(k / 8 | 0) % 4]), bt, .5, .16, null, 3); A.burst(bt, .06, k % 2 ? .03 : .05, 'highpass', 8000); bt += .15; k++; } });
-        } },
-        { n: 'Ocean Waves & Gulls', short: 'Ocean', x: 38, play: function (A) {
-          var lp = A.filter('lowpass', 520, .4), g = A.gain(.0), n = A.noise(); n.connect(lp); lp.connect(g); g.connect(A.out);
-          var hp = A.filter('bandpass', 2400, .5), g2 = A.gain(0); n.connect(hp); hp.connect(g2); g2.connect(A.out);
-          function swell() { var t = A.ac.currentTime; g.gain.cancelScheduledValues(t); g.gain.setTargetAtTime(.55, t, 1.6); g.gain.setTargetAtTime(.12, t + 3.6, 1.8); g2.gain.setTargetAtTime(.06, t + 2.4, .5); g2.gain.setTargetAtTime(.005, t + 3.6, 1.2); lp.frequency.setTargetAtTime(900, t, 1.4); lp.frequency.setTargetAtTime(420, t + 3.6, 1.6); }
-          swell(); A.every(7600, swell);
-          var pad = A.filter('lowpass', 700), pg = A.gain(.03); pad.connect(pg); pg.connect(A.out); [57, 64, 69].forEach(function (m) { A.osc('triangle', A.mtof(m)).connect(pad); });
-          A.every(5300, function () { if (Math.random() < .7) { var t = A.ac.currentTime + .1; A.chirp(t, 2100, 1300, .32, .04); A.chirp(t + .4, 2000, 1250, .28, .035); } });
-        } },
-        { n: 'Ukulele on the Porch', short: 'Ukulele', x: 63, play: function (A) {
-          var chords = [[67, 60, 64, 72], [69, 60, 64, 69], [69, 60, 65, 69], [67, 62, 67, 71]], pat = [[0, 1], [1, 1], [1.5, -1], [2.5, -1], [3, 1], [3.5, -1]], beat = .3, bar = 0, next = A.ac.currentTime + .12;
-          A.every(50, function () { while (next < A.ac.currentTime + .35) { var ch = chords[bar % 4]; pat.forEach(function (p) { var t0 = next + p[0] * beat, notes = p[1] > 0 ? ch : ch.slice().reverse(); notes.forEach(function (m, j) { A.pluck(A.mtof(m), t0 + j * .016, .7, .07, null, 6); }); }); next += 4 * beat; bar++; } });
-          A.seq([[null, 4], [76, 1], [79, 1], [81, 2], [79, 1], [76, 1], [74, 2], [72, 1], [74, 1], [76, 2], [74, 4]], .3, function (f, t) { A.tone(f, t, .5, .05, 'triangle'); });
-        } },
-        { n: 'Synthwave Drive', short: 'Synthwave', x: 88, play: function (A) {
-          var roots = [45, 41, 48, 43], lp = A.filter('lowpass', 900, 6), lg = A.gain(.9); lp.connect(lg); lg.connect(A.out);
-          var sw = A.osc('sine', .08), swg = A.gain(700); sw.connect(swg); swg.connect(lp.frequency);
-          var bt = A.ac.currentTime + .12, k = 0;
-          A.every(50, function () { while (bt < A.ac.currentTime + .3) { var r = roots[(k / 8 | 0) % 4];
-            var o = A.ac.createOscillator(), g = A.ac.createGain(); o.type = 'sawtooth'; o.frequency.value = A.mtof(r); g.gain.setValueAtTime(.1, bt); g.gain.exponentialRampToValueAtTime(.001, bt + .25); o.connect(g); g.connect(lp); o.start(bt); o.stop(bt + .27);
-            var ar = A.ac.createOscillator(), ag = A.ac.createGain(); ar.type = 'square'; ar.frequency.value = A.mtof(r + 24 + [0, 7, 12, 15][k % 4]); ag.gain.setValueAtTime(.025, bt); ag.gain.exponentialRampToValueAtTime(.001, bt + .2); ar.connect(ag); ag.connect(lp); ar.start(bt); ar.stop(bt + .22);
-            if (k % 4 === 0) { var kk = A.ac.createOscillator(), kg = A.ac.createGain(); kk.frequency.setValueAtTime(140, bt); kk.frequency.exponentialRampToValueAtTime(40, bt + .18); kg.gain.setValueAtTime(.35, bt); kg.gain.exponentialRampToValueAtTime(.001, bt + .22); kk.connect(kg); kg.connect(A.out); kk.start(bt); kk.stop(bt + .24); }
-            if (k % 2 === 1) A.burst(bt, .05, .03, 'highpass', 9000);
-            if (k % 8 === 4) A.burst(bt, .18, .06, 'bandpass', 1800, 1);
-            bt += .135; k++; } });
-        } }
-      ]
+      noun: 'beach radio', device: DEVICE,
+      scope: ['rgba(120,230,255,.14)', 'rgba(120,230,255,.45)', '#effcff']
     },
     game: { module: 'game', sub: 'Stack the cones before they melt', art: CONE },
     wheel: { sub: 'Spin for today’s adventure', dataVar: 'SUMMER_WHEEL', style: { rim: ['#fff6e0', '#e0532a', '#ffd27a', '#1f8fb0', '#fff6e0'], inner: '#fff8ec', core: 'rgba(255,255,255,.5)', edge: 'rgba(0,0,0,.25)', text: '#ffffff', font: '700 #px "Josefin Sans", sans-serif', upper: true, spoke: '#fff6e0', bulbA: '#ffd36b', bulbB: '#ffffff', hub: ['#ffffff', '#ffd27a', '#e0532a'], hubText: '#ffffff', hubFont: '400 #px "Yeseva One", serif', pointer: '#e0532a' } },
-    radar: { sub: 'Beaches, pools, markets & trails near', noun: ['spot', 'spots'], mapVar: 'SUMMER_MAP' },
+    radar: { sub: 'Beaches, pools, markets & trails near', noun: ['spot', 'spots'], mapVar: 'SUMMER_MAP', art: MAP },
     shop: { sub: 'Swim, sun hats, patio & picnic', items: SHOP },
     sky: { icon: 'sun', small: function (i) { return 'Sun over ' + (i.place || 'the coast'); }, draw: sea,
       cells: function (i) { return [['Sunrise', i.polar ? '—' : i.hm(i.rise)], ['Sunset', i.polar ? '—' : i.hm(i.set)], ['Daylight', i.dur(i.len)]]; } },
