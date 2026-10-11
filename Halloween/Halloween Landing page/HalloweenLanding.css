@@ -236,6 +236,21 @@
 .cat svg { transition: transform 0.45s var(--mh-spring); }
 .tile:hover .cat svg { transform: rotate(-10deg) scale(1.08); }
 
+/* Halloween Edition app promo */
+.app-promo { flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 32px; border: 1.5px solid transparent; background: radial-gradient(120% 140% at 85% 30%, rgba(217,164,65,.16), transparent 55%) padding-box, linear-gradient(160deg, #1d1426, #0f0a13 70%) padding-box, linear-gradient(145deg, #f3d58a, #7a5520 30%, #e8c46f 50%, #5b3b12 75%, #d8ae5e) border-box; }
+.promo-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; max-width: 620px; }
+.promo-title { font-size: clamp(30px, 3.4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; color: #f6efe2; }
+.promo-title i { font-weight: 400; color: #e8c27a; }
+.promo-text { font-size: 16px; line-height: 1.55; color: var(--mh-soft); }
+.promo-btn { margin-top: 8px; }
+.tile:hover .promo-btn svg { transform: translateX(3px); }
+.promo-phone { flex: none; margin: -12px 8px -40px 0; filter: drop-shadow(0 24px 30px rgba(0,0,0,.8)) drop-shadow(0 0 30px rgba(217,164,65,.18)); transform: rotate(6deg); transition: transform .6s var(--mh-spring); }
+.tile:hover .promo-phone { transform: rotate(0deg) translateY(-8px); }
+@media (max-width: 640px) {
+  .app-promo { flex-direction: column; align-items: stretch; padding: 24px 22px 0; overflow: hidden; }
+  .promo-phone { align-self: center; margin: 4px 0 -70px; }
+}
+
 /* ---------- footer + phone tab bar ---------- */
 .mh-foot { border-top: 1px solid rgba(239, 233, 223, 0.07); padding: 28px 0 40px; }
 .mh-foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; }
