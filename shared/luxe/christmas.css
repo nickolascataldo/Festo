@@ -1,0 +1,179 @@
+/* ==========================================================================
+   CHRISTMAS SANCTUARY · luxe tokens + finishes
+   Midnight snowfall, evergreen velvet, gold leaf and crimson ribbon.
+   Type: Pinyon Script (wordmark) · Playfair Display SC (engraved labels) · EB Garamond (prose)
+   ========================================================================== */
+html.lx[data-season="christmas"] {
+  --lx-bg: radial-gradient(120% 70% at 50% 0%, #17324a 0%, #0b1a28 45%, #050c14 100%) fixed, #050c14;
+  --lx-back-op: .78;
+  --lx-vig: radial-gradient(70% 60% at 50% 40%, rgba(5,12,20,.1) 0%, rgba(5,12,20,.72) 100%);
+  --lx-veil-op: .1;
+  --lx-outside: rgba(3,8,14,.5);
+  --lx-vig-edge: rgba(2,6,10,.55);
+  --lx-scroll: #8a6a2a;
+  --lx-rail: inset 0 0 0 2px #04100a, inset 0 0 0 3px #b8924a, inset 0 0 0 5px #04100a, inset 0 0 0 6px rgba(246,213,138,.3), inset 0 0 50px 14px rgba(0,0,0,.4);
+  --lx-vine-w: 30px; --lx-vine-h: 160px; --lx-vine-x: 1px;
+
+  --lx-text: #f4ecdc;
+  --lx-text-2: #e3dccb;
+  --lx-muted: #b6c0b0;
+  --lx-head: #fbf1d6;
+  --lx-head-shadow: 0 2px 0 rgba(0,0,0,.5), 0 0 18px rgba(255,210,120,.16);
+  --lx-accent: #f6d58a;
+  --lx-accent-2: #ff9f9f;
+  --lx-glow: 255, 205, 120;
+  --lx-display: 'Pinyon Script', cursive;
+  --lx-engr: 'Playfair Display SC', 'Playfair Display', Georgia, serif;
+  --lx-prose: 'EB Garamond', Georgia, serif;
+  --lx-wordmark-font: 400 clamp(58px, 9.4vw, 96px) var(--lx-display);
+  --lx-wordmark: linear-gradient(180deg, #fff8e0 0%, #f6d58a 42%, #c9952e 72%, #8a5e14 100%);
+  --lx-wordmark-shadow: drop-shadow(0 0 14px rgba(255,210,120,.45)) drop-shadow(0 2px 0 #3a2606);
+  --lx-edition: #e6c27a;
+  --lx-gilt: linear-gradient(135deg, #7a5414 0%, #fff2c4 20%, #c9952e 38%, #fff6d8 52%, #a8740e 68%, #f6d58a 84%, #6a4808 100%);
+  --lx-gilt-glow: drop-shadow(0 1px 0 rgba(0,0,0,.6)) drop-shadow(0 0 8px rgba(255,200,110,.35));
+  --lx-rim: linear-gradient(145deg, #f6d58a 0%, #7a5414 26%, #f0cf7a 48%, #5e3e0a 72%, #e0b866 100%);
+  --lx-surface: radial-gradient(130% 90% at 50% 0%, #1c4636 0%, #0f2a20 55%, #071610 100%);
+  --lx-card-shadow: 0 0 0 1px #020b06, inset 0 1px 0 rgba(255,235,190,.16), inset 0 0 0 1px rgba(0,0,0,.45), inset 0 -14px 28px rgba(0,0,0,.4), 0 22px 34px -16px rgba(0,0,0,.9);
+  --lx-drop: rgba(0,0,0,.85);
+  --lx-btn: linear-gradient(180deg, #d93a4c, #9c1426);
+  --lx-on-btn: #fff3dc;
+  --lx-btn-shadow: inset 0 0 0 1px rgba(255,214,140,.6), inset 0 1px 0 rgba(255,255,255,.3), 0 6px 16px -6px rgba(200,30,50,.75);
+  --lx-ghost: #f6d58a;
+  --lx-tint: rgba(255,220,150,.05);
+  --lx-tint-2: rgba(255,220,150,.1);
+  --lx-tint-line: rgba(246,213,138,.2);
+  --lx-hbtn-bg: radial-gradient(circle at 40% 30%, #2a5a44, #0b2018 70%);
+  --lx-hbtn-ink: #f6dc96;
+  --lx-hbtn-shadow: inset 0 2px 3px rgba(255,235,190,.14), inset 0 -3px 6px rgba(0,0,0,.5), 0 6px 14px -4px #000;
+  --lx-plaque: var(--lx-grain) padding-box, radial-gradient(120% 160% at 50% 0%, #b8293c 0%, #7a1020 55%, #4a0712 100%) padding-box, var(--lx-rim) border-box;
+  --lx-plaque-shadow: inset 0 2px 1px rgba(255,220,170,.22), inset 0 -3px 6px rgba(0,0,0,.5), inset 0 0 22px rgba(0,0,0,.35), 0 14px 26px -10px #000;
+  --lx-plaque-ink: #ffe6b0;
+  --lx-plaque-emboss: 0 1px 0 rgba(0,0,0,.5), 0 0 12px rgba(255,200,120,.25);
+  --lx-rivet: radial-gradient(circle at 35% 30%, #fff1c0, #c9952e 55%, #5a3a08);
+  --lx-cd-bg: linear-gradient(180deg, #2e040c, #520a16);
+  --lx-cd-shadow: inset 0 3px 8px rgba(0,0,0,.75), 0 1px 0 rgba(255,220,160,.25);
+  --lx-cd-ink: #f2c98a;
+  --lx-rule-ink: #f0d9a0;
+  --lx-rule-line: #8a6a2a;
+  --lx-shelf-bg: radial-gradient(90% 70% at 50% 30%, rgba(255,180,90,.16), transparent 70%), repeating-linear-gradient(92deg, rgba(0,0,0,.18) 0 1px, transparent 1px 7px, rgba(255,210,160,.04) 7px 8px, transparent 8px 19px), linear-gradient(180deg, #2a120a, #160805);
+  --lx-shelf-shadow: inset 0 12px 24px rgba(0,0,0,.8), inset 0 0 0 1px rgba(0,0,0,.6);
+  --lx-plank: repeating-linear-gradient(92deg, rgba(0,0,0,.18) 0 1px, transparent 1px 7px, rgba(255,210,160,.05) 7px 8px, transparent 8px 19px), linear-gradient(180deg, #7a3a1f 0%, #4f2410 35%, #2a1206 100%);
+  --lx-plank-shadow: inset 0 1px 0 rgba(255,200,140,.35), inset 0 -2px 4px rgba(0,0,0,.6), 0 14px 20px -6px rgba(0,0,0,.95);
+  --lx-book-skin: repeating-linear-gradient(45deg, rgba(255,255,255,.05) 0 1px, transparent 1px 3px), repeating-linear-gradient(-45deg, rgba(0,0,0,.1) 0 1px, transparent 1px 3px);
+  --lx-spine-font: 700 calc(9.4px * var(--kh)) / 1.1 var(--lx-engr);
+  --lx-mq-head: radial-gradient(120% 140% at 50% 0%, #a51d30, #5e0a16 70%);
+  --lx-mq-line: #b8924a;
+  --lx-board-ink: #fff4d6;
+  --lx-board-glow: 0 0 6px #ffd36b, 0 0 16px rgba(255,170,60,.7);
+  --lx-bulb-off: #2e1e0c;
+  --lx-bulb-on: radial-gradient(circle at 40% 35%, #fffbe8, #ffd36b 50%, #ff9d2e);
+  --lx-bulb-on-2: radial-gradient(circle at 40% 35%, #fff, #8ef0b0 50%, #1f9a5a);
+  --lx-bulb-glow: 0 0 6px #ffcf6b, 0 0 12px rgba(255,157,46,.7);
+  --lx-reel: linear-gradient(180deg, #08130e, #0d1d16);
+  --lx-strip: repeating-linear-gradient(90deg, transparent 0 6px, rgba(240,226,190,.4) 6px 14px, transparent 14px 20px) left 5px / 100% 9px repeat-x local, repeating-linear-gradient(90deg, transparent 0 6px, rgba(240,226,190,.4) 6px 14px, transparent 14px 20px) left calc(100% - 5px) / 100% 9px repeat-x local, #050c08;
+  --lx-poster-ring: 0 0 0 2px #03100a, 0 0 0 3px #8a6a2a;
+  --lx-poster-ring-on: 0 0 0 2px #03100a, 0 0 0 3px #f6d58a;
+  --lx-well: radial-gradient(circle at 50% 45%, rgba(255,200,110,.18), transparent 65%), #06130d;
+  --lx-well-shadow: inset 0 0 0 1px rgba(0,0,0,.6), inset 0 6px 18px rgba(0,0,0,.7);
+  --lx-device-bg: repeating-linear-gradient(92deg, rgba(0,0,0,.16) 0 1px, transparent 1px 7px, rgba(255,210,160,.05) 7px 8px, transparent 8px 19px), radial-gradient(120% 80% at 50% 0%, #6b3a1c 0%, #3d1f0d 55%, #1f0f06 100%);
+  --lx-device-shadow: inset 0 2px 0 rgba(255,200,140,.25), inset 0 0 0 2px #1a0c04, inset 0 0 0 3px rgba(232,190,110,.45), inset 0 -12px 22px rgba(0,0,0,.55), 0 18px 26px -12px #000;
+  --lx-dial-bg: linear-gradient(180deg, #f6ead0, #e0cc9e);
+  --lx-dial-shadow: inset 0 0 0 2px #2a1607, inset 0 0 0 3px #c9a050, inset 0 4px 10px rgba(80,50,10,.4);
+  --lx-dial-tick: rgba(90,40,10,.6);
+  --lx-dial-ink: #6a1a12;
+  --lx-needle: linear-gradient(180deg, #e0303a, #7a0c12);
+  --lx-needle-glow: rgba(224,48,58,.7);
+  --lx-scope-bg: radial-gradient(120% 120% at 50% 50%, #1e0d06, #0a0402);
+  --lx-scope-shadow: inset 0 0 0 2px #0c0603, inset 0 0 0 3px #a37a3c, inset 0 0 18px rgba(0,0,0,.9);
+  --lx-knob: radial-gradient(circle at 38% 30%, #fff1c0, #c9952e 40%, #5a3a08 78%);
+  --lx-knob-shadow: inset 0 2px 2px rgba(255,240,200,.55), inset 0 -4px 6px rgba(0,0,0,.5), 0 6px 12px -4px #000;
+  --lx-knob-ink: #3a1a06;
+  --lx-radar-bg: radial-gradient(circle, #123528 0%, #04110b 72%);
+  --lx-radar-shadow: inset 0 0 0 2px #04100a, inset 0 0 0 3px #c9a050, inset 0 0 20px rgba(0,0,0,.85), 0 0 24px rgba(255,210,120,.12);
+  --lx-radar-rgb: 255, 214, 130;
+  --lx-blip: #fff3c8;
+  --lx-blip-glow: #ffd27a;
+  --lx-chip: #f6d58a;
+  --lx-chip-line: rgba(246,213,138,.4);
+  --lx-sky-small: #c9d8ee;
+  --lx-sky-big: #f4f8ff;
+  --lx-sky-shadow: 0 0 22px rgba(170,200,255,.45), 0 2px 0 rgba(0,0,0,.4);
+  --lx-tele-bg: #0b2019;
+  --lx-tele-line: rgba(200,160,80,.3);
+  --lx-paper: radial-gradient(circle at 12% 18%, rgba(160,110,40,.18), transparent 40%), radial-gradient(circle at 88% 85%, rgba(140,80,30,.2), transparent 45%), var(--lx-grain), linear-gradient(180deg, #f6ecd2, #ead8b0 60%, #dcc394);
+  --lx-paper-shadow: 0 0 0 1px rgba(120,80,20,.35), inset 0 0 26px rgba(120,80,20,.35), 0 12px 22px -6px rgba(0,0,0,.8);
+  --lx-paper-ink: #3a2210;
+  --lx-paper-head: #8a1a22;
+  --lx-paper-hint: #8a5a2a;
+  --lx-seal: radial-gradient(circle at 35% 30%, #e04848, #9a1418 55%, #4a0608);
+  --lx-seal-ink: #4a0608;
+  --lx-seg-bg: rgba(0,0,0,.35);
+  --lx-mat: var(--lx-grain), linear-gradient(160deg, #f6e6b8, #c9a050 55%, #9a7428);
+  --lx-mat-shadow: inset 0 0 0 1px rgba(90,55,15,.5), 0 14px 24px -12px #000;
+  --lx-wall-empty: #0b1626;
+  --lx-dock-bg: linear-gradient(180deg, rgba(28,70,52,.55), rgba(6,20,14,.8));
+  --lx-dock-shadow: inset 0 1px 0 rgba(255,235,190,.16), inset 0 0 0 1px rgba(246,213,138,.24), 0 18px 34px -10px rgba(0,0,0,.9);
+  --lx-dock-ink: #a9b8a6;
+  --lx-dock-on: #ffe0a0;
+  --lx-nav-ink: #d2cbb4;
+  --lx-foot-font: 400 34px var(--lx-display);
+  --lx-scrim: rgba(2,8,6,.6);
+}
+html.lx[data-season="christmas"] .lx-frame .medal { width: 48px; height: 48px; }
+
+/* ---------- landing finishes ---------- */
+[data-season="christmas"] .arch { margin-bottom: -50px; }
+[data-season="christmas"] .arch .tw { animation: xm-tw 2.2s ease-in-out infinite alternate; filter: drop-shadow(0 0 3px currentColor); }
+@keyframes xm-tw { from { opacity: .35; } to { opacity: 1; } }
+[data-season="christmas"] .flank { filter: drop-shadow(0 3px 4px rgba(0,0,0,.6)); }
+[data-season="christmas"] .library::after { content: ""; position: absolute; left: 8%; right: 8%; top: 8px; height: 2px; background: radial-gradient(circle, #ffd36b 1.5px, transparent 2px) 0 0 / 16px 2px repeat-x; filter: drop-shadow(0 0 3px #ffb347); opacity: .85; animation: xm-tw 1.6s ease-in-out infinite alternate; }
+[data-season="christmas"] .book .crest { width: 13px; height: 13px; transform: none; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff2c4, #c9952e 55%, #6a4808); box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+
+/* music box */
+[data-season="christmas"] .mbox { perspective: 700px; }
+[data-season="christmas"] .mb-lid { position: relative; height: 96px; padding: 7px; border-radius: 12px 12px 4px 4px; background: var(--lx-device-bg); box-shadow: inset 0 0 0 2px #1a0c04, inset 0 0 0 3px rgba(232,190,110,.5), 0 6px 10px -4px rgba(0,0,0,.6); transform-origin: 50% 100%; transform: rotateX(16deg); transition: transform .8s var(--lx-spring); }
+[data-season="christmas"] .mb-lid svg { display: block; width: 100%; height: 100%; border-radius: 6px; box-shadow: 0 0 0 1px #2a1607, 0 0 0 2px #c9a050; }
+[data-season="christmas"] .device.peek .mb-lid, [data-season="christmas"] .device.is-playing .mb-lid { transform: rotateX(4deg); }
+[data-season="christmas"] .mb-body { position: relative; display: flex; align-items: center; gap: 12px; height: 72px; margin-top: 6px; padding: 0 12px; border-radius: 6px 6px 10px 10px; background: radial-gradient(120% 120% at 50% 0%, #8e1b26, #4a0710 75%); box-shadow: inset 0 0 0 2px #1a0c04, inset 0 0 0 3px #c9a050, inset 0 8px 16px rgba(0,0,0,.55); }
+[data-season="christmas"] .mb-cyl { position: relative; flex: 1; height: 26px; border-radius: 13px; background: radial-gradient(circle, #fff6d0 1px, transparent 1.6px) 0 0 / 9px 7px, linear-gradient(180deg, #5a3a08, #f6d58a 35%, #fff2c4 50%, #c9952e 70%, #4a2e06); box-shadow: 0 3px 6px rgba(0,0,0,.6); }
+[data-season="christmas"] .mb-cyl::after { content: ""; position: absolute; left: 6px; right: 6px; bottom: -12px; height: 10px; background: repeating-linear-gradient(90deg, #e6bf6a 0 3px, transparent 3px 5px); border-radius: 0 0 2px 2px; opacity: .9; }
+[data-season="christmas"] .is-playing .mb-cyl { animation: xm-cyl 2.4s linear infinite; }
+@keyframes xm-cyl { to { background-position: 0 -70px, 0 0; } }
+[data-season="christmas"] .mb-tree { width: 40px; height: 60px; flex: none; margin-top: -26px; filter: drop-shadow(0 4px 4px rgba(0,0,0,.6)); }
+[data-season="christmas"] .is-playing .mb-tree { animation: xm-spin 3.4s linear infinite; }
+@keyframes xm-spin { to { transform: rotateY(360deg); } }
+
+/* workshop gift */
+[data-season="christmas"] .c-game .lid { transform-box: fill-box; transform-origin: 30% 100%; transition: transform .55s var(--lx-spring); }
+[data-season="christmas"] .c-game:hover .lid { transform: translateY(-12px) rotate(-6deg); }
+[data-season="christmas"] .c-game .spk path { animation: xm-tw 1.4s ease-in-out infinite alternate; }
+[data-season="christmas"] .c-game .spk path:nth-child(2) { animation-delay: -.5s; } [data-season="christmas"] .c-game .spk path:nth-child(3) { animation-delay: -1s; }
+
+/* letter from the north */
+[data-season="christmas"] .lore .sheet { border-radius: 3px; }
+[data-season="christmas"] .lore .sheet::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(138,26,34,.35); border-radius: 2px; pointer-events: none; }
+[data-season="christmas"] .lore .sheet::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 8px; background: repeating-linear-gradient(135deg, #c8283a 0 10px, #f6ecd2 10px 20px, #1f6a40 20px 30px, #f6ecd2 30px 40px); opacity: .85; border-radius: 3px 3px 0 0; }
+[data-season="christmas"] .lore .perch { top: -78px; width: 104px; height: 104px; }
+
+/* wallpaper mats: gilt picture frames */
+[data-season="christmas"] .wall-frame { border-radius: 4px; padding: 8px; }
+
+/* ==========================================================================
+   OTHER CHRISTMAS PAGES (pairs with luxe-pages.css)
+   ========================================================================== */
+html.lx-shell[data-season="christmas"] {
+  --fx-bg: #050c14; --fx-surface: #0f2a20; --fx-surface-solid: #0c231a; --fx-surface-2: #143428;
+  --fx-line: rgba(232,190,110,.5); --fx-line-soft: rgba(246,213,138,.14);
+  --fx-text: #f4ecdc; --fx-muted: #b6c0b0; --fx-accent: #f6d58a; --fx-accent-2: #ff8a8a; --fx-accent-3: #8ef0b0; --fx-on-accent: #3a1a06; --fx-glow: 255, 205, 120;
+  --fx-btn-bg: linear-gradient(180deg, #d93a4c, #9c1426); --fx-btn-color: #fff3dc; --fx-btn-shadow: inset 0 0 0 1px rgba(255,214,140,.6), inset 0 1px 0 rgba(255,255,255,.3), 0 6px 16px -6px rgba(200,30,50,.75);
+
+  --fx-appbar-bg: linear-gradient(180deg, rgba(4,12,10,.95), rgba(4,12,10,.65) 75%, transparent);
+  --fx-tabs-bg: linear-gradient(180deg, rgba(28,70,52,.6), rgba(6,20,14,.82));
+  --lx-tile: linear-gradient(180deg, #153a2c, #0b2018);
+  --lx-pill-on: linear-gradient(180deg, #d93a4c, #9c1426);
+  --lx-pill-on-ink: #fff3dc;
+  --lx-field: rgba(3,10,7,.72);
+}
+html.lx[data-season="christmas"] .lx-title-ink { background: linear-gradient(180deg, #fff8e0 0%, #f6d58a 42%, #c9952e 72%, #8a5e14 100%); }
+html.lx-reads[data-season="christmas"] .winter-cabin-bg, html.lx-reads[data-season="christmas"] .hearth-warm-glow, html.lx-reads[data-season="christmas"] .festive-border, html.lx-reads[data-season="christmas"] .falling-snow-layer { display: none; }
+html.lx-cinema[data-season="christmas"] .hearth-glow, html.lx-cinema[data-season="christmas"] .snow-layer, html.lx-cinema[data-season="christmas"] .frost-vignette { display: none; }

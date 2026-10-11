@@ -1,0 +1,58 @@
+/* ==========================================================================
+   FESTO LUXE · base tokens + atmosphere (Christmas, Summer, Spring)
+   Each season file (shared/luxe/<season>.css) sets the --lx-* tokens under html.lx[data-season=…].
+   The corner, vine and rule art arrive as custom properties from luxe-atmos.js.
+   ========================================================================== */
+html.lx {
+  --lx-fil-tl: none; --lx-fil-tr: none; --lx-fil-bl: none; --lx-fil-br: none; --lx-vine: none; --lx-rule: none;
+  --lx-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --lx-card-grain: var(--lx-grain);
+  --lx-ease: cubic-bezier(.2, .8, .2, 1);
+  --lx-spring: cubic-bezier(.3, 1.45, .5, 1);
+  --lx-corner: 32px;
+  --lx-card: var(--lx-fil-tl) top left / var(--lx-corner) var(--lx-corner) no-repeat border-box, var(--lx-fil-tr) top right / var(--lx-corner) var(--lx-corner) no-repeat border-box, var(--lx-fil-bl) bottom left / var(--lx-corner) var(--lx-corner) no-repeat border-box, var(--lx-fil-br) bottom right / var(--lx-corner) var(--lx-corner) no-repeat border-box, var(--lx-card-grain) padding-box, var(--lx-surface) padding-box, var(--lx-rim) border-box;
+  scrollbar-color: var(--lx-scroll, #8a6a3a) transparent;
+}
+html.lx ::selection { background: rgba(var(--lx-glow), .35); }
+html.lx body { background: var(--lx-bg); }
+
+/* ---------- backdrop ---------- */
+.lx-back { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.lx-back > svg { position: absolute; left: 50%; bottom: 0; width: max(100vw, 1600px); height: auto; min-height: 100%; transform: translateX(-50%); opacity: var(--lx-back-op, .6); }
+.lx-back .lx-vig { position: absolute; inset: 0; background: var(--lx-vig, none); }
+.lx-back .drift { animation: lx-drift 60s ease-in-out infinite alternate; }
+.lx-back .drift.b { animation-duration: 84s; animation-direction: alternate-reverse; }
+.lx-back .twinkle { animation: lx-twinkle 3.2s ease-in-out infinite alternate; }
+.lx-back .twinkle.b { animation-delay: -1.6s; animation-duration: 4.4s; }
+.lx-back .smoke { animation: lx-smoke 9s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 100%; }
+.lx-back .sway { animation: lx-sway 7s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: 50% 100%; }
+.lx-back .shimmer { animation: lx-shimmer 5s ease-in-out infinite alternate; }
+@keyframes lx-drift { from { transform: translateX(-3%); } to { transform: translateX(3%); } }
+@keyframes lx-twinkle { from { opacity: .35; } to { opacity: 1; } }
+@keyframes lx-smoke { 0% { opacity: 0; transform: translateY(0) scale(.8); } 30% { opacity: .5; } 100% { opacity: 0; transform: translateY(-60px) scale(1.6); } }
+@keyframes lx-sway { from { transform: rotate(-1.6deg); } to { transform: rotate(1.8deg); } }
+@keyframes lx-shimmer { from { opacity: .45; transform: scaleX(.92); } to { opacity: 1; transform: scaleX(1.06); } }
+.lx-veil { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: var(--lx-grain); opacity: var(--lx-veil-op, .12); mix-blend-mode: overlay; }
+
+/* ---------- frame ---------- */
+.lx-frame { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
+.lx-frame .rail { position: absolute; inset: 5px; border-radius: 30px; box-shadow: var(--lx-rail); }
+.lx-frame .vine { position: absolute; top: 72px; bottom: 72px; width: var(--lx-vine-w, 26px); background: var(--lx-vine) 0 0 / var(--lx-vine-w, 26px) var(--lx-vine-h, 150px) repeat-y; }
+.lx-frame .vine.l { left: var(--lx-vine-x, 3px); } .lx-frame .vine.r { right: var(--lx-vine-x, 3px); transform: scaleX(-1); }
+.lx-frame .medal { position: absolute; width: 46px; height: 46px; filter: var(--lx-medal-shadow, drop-shadow(0 3px 4px rgba(0,0,0,.6))); }
+.lx-frame .tl { left: 2px; top: 2px; } .lx-frame .tr { right: 2px; top: 2px; } .lx-frame .bl { left: 2px; bottom: 2px; } .lx-frame .br { right: 2px; bottom: 2px; }
+#lx-fx { position: fixed; inset: 0; z-index: 61; width: 100%; height: 100%; pointer-events: none; }
+@media (max-width: 640px) { .lx-frame .vine { opacity: .75; } .lx-frame .medal { width: 36px; height: 36px; } }
+
+/* widescreen: tether the frame to the content column on the landing */
+@media (min-width: 1400px) {
+  html.lx-landing { --gut: calc((100vw - 1340px) / 2); }
+  html.lx-landing .lx-frame .rail { left: var(--gut); right: var(--gut); top: 6px; bottom: 6px; box-shadow: 0 0 0 100vmax var(--lx-outside, rgba(0,0,0,.35)), var(--lx-rail); }
+  html.lx-landing .lx-frame .vine.l { left: calc(var(--gut) - 2px); } html.lx-landing .lx-frame .vine.r { right: calc(var(--gut) - 2px); }
+  html.lx-landing .lx-frame .tl, html.lx-landing .lx-frame .bl { left: calc(var(--gut) - 3px); } html.lx-landing .lx-frame .tr, html.lx-landing .lx-frame .br { right: calc(var(--gut) - 3px); }
+  html.lx-landing body::after { content: ""; position: fixed; inset: 0; z-index: 59; pointer-events: none; background: radial-gradient(75% 90% at 50% 50%, transparent 55%, var(--lx-vig-edge, rgba(0,0,0,.4)) 100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lx-back .drift, .lx-back .twinkle, .lx-back .smoke, .lx-back .sway, .lx-back .shimmer { animation: none; }
+}

@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" data-season="spring">
+<html lang="en" data-season="spring" class="lx lx-landing">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#d6ebe5">
   <title>Spring Haven · Festo</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Spring Haven: a garden library, a screening on the lawn, a birdcage music box, a quest wheel, gardens and trails near you, live sunrise and daylight, and wallpapers to download.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600;1,9..144,700&family=Jost:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/festo-core.css">
-  <link rel="stylesheet" href="../../shared/engines/fx-engines.css">
-  <link rel="stylesheet" href="../../shared/themes/spring.css">
-  <link rel="stylesheet" href="../../shared/scenes/poster.css?v=4">
+  <link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=1">
+  <link rel="stylesheet" href="../../shared/luxe/luxe-landing.css?v=1">
+  <link rel="stylesheet" href="../../shared/luxe/spring.css?v=1">
 </head>
-<body class="fx-body">
-  <main id="fx-main" class="fx-main">
-    <noscript><div class="fx-soon"><h1 class="fx-h2">Spring Haven</h1><p class="fx-muted">This page needs JavaScript.</p><a class="fx-btn" href="SpringLanding.html">Back</a></div></noscript>
-  </main>
-  <script src="../../shared/festo-core.js"></script>
-  <script src="../../shared/seasons/index.js"></script>
-  <script src="../../shared/scenes/spring.js"></script>
-  <script src="../../shared/scenes/poster.js?v=6"></script>
-  <script src="../../shared/navs.js"></script>
-  <script src="../../shared/engines/landing.js"></script>
-  <script src="../../shared/seasons/spring.facts.js"></script>
-  <script src="SpringLanding.js"></script>
+<body class="lxl">
+<a class="skip" href="#realm">Skip to content</a>
+<div id="lx-app">
+  <noscript>
+    <div class="page"><h1>Spring Haven</h1>
+      <p><a href="../Book%20List/SpringBook.html">Spring Reads</a> · <a href="../Movie%20list/SpringMovie.html">Cinema</a> · <a href="../Activity%20Wheel/Activitywheel.html">Spin Wheel</a> · <a href="../Springmap/Springmap.html">Garden Trails</a> · <a href="../Store/Store.html">Garden Shop</a> · <a href="../Music%20area/Musicarea.html">Meadow Music</a> · <a href="../Weather/Weather.html">Pollen &amp; Rain</a> · <a href="../../index.html?choose=1">All seasons</a></p>
+    </div>
+  </noscript>
+</div>
+<script src="../../shared/festo-core.js"></script>
+<script src="../../shared/seasons/index.js"></script>
+<script src="../../shared/engines/covers.js"></script>
+<script src="../Springmap/map-data.js"></script>
+<script src="../Activity%20Wheel/wheel-data.js"></script>
+<script src="../../shared/seasons/spring.facts.js"></script>
+<script src="../../shared/luxe/spring.js?v=1"></script>
+<script src="../../shared/luxe/luxe-atmos.js?v=1"></script>
+<script src="../../shared/luxe/spring-landing.js?v=1"></script>
+<script src="../../shared/luxe/luxe-landing.js?v=1"></script>
 </body>
 </html>

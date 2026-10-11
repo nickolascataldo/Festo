@@ -9,6 +9,27 @@ vm.runInNewContext(fs.readFileSync(R + 'shared/seasons/index.js', 'utf8'), { win
 const LEAFLET_CSS = '<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">';
 const LEAFLET_JS = '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>';
 
+// The season look layered over every module page: Halloween's gothic layer, and the luxe layer for the other three.
+// Landing pages are hand-built (Halloween Landing page/, shared/luxe/<season>-landing.js), so they are skipped here.
+const PRE = '<link rel="preconnect" href="https://fonts.googleapis.com">\n  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>';
+const LUXE_FONTS = {
+  christmas: 'family=Pinyon+Script&family=Playfair+Display+SC:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600',
+  summer: 'family=Yeseva+One&family=Josefin+Sans:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500',
+  spring: 'family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600;1,9..144,700&family=Jost:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600'
+};
+function layer(season) {
+  if (season === 'halloween') return {
+    cls: 'gh-theme gh-shell',
+    head: [PRE, '<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" data-gh-fonts>', '<link rel="stylesheet" href="../../shared/themes/halloween-gothic.css?v=4">'],
+    tail: ['<script src="../../shared/themes/halloween-gothic.js?v=1"></script>']
+  };
+  return {
+    cls: 'lx lx-shell',
+    head: [PRE, '<link href="https://fonts.googleapis.com/css2?' + LUXE_FONTS[season] + '&display=swap" rel="stylesheet" data-lx-fonts>', '<link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=1">', '<link rel="stylesheet" href="../../shared/luxe/luxe-pages.css?v=1">', '<link rel="stylesheet" href="../../shared/luxe/' + season + '.css?v=1">'],
+    tail: ['<script src="../../shared/luxe/' + season + '.js?v=1"></script>', '<script src="../../shared/luxe/luxe-atmos.js?v=1"></script>']
+  };
+}
+
 // engines: shared/engines/<name>.js, data: files beside the page, js/css: module files beside the page
 const pages = require('./pages.json');
 
@@ -21,8 +42,9 @@ function build(p) {
   const up = '../../shared/';
   const isMap = !!p.leaflet;
   const landingRel = path.posix.relative(s.root + '/' + p.dir, s.root + '/' + s.landing);
+  const lay = layer(p.season);
   const html = `<!DOCTYPE html>
-<html lang="en" data-season="${p.season}">
+<html lang="en" data-season="${p.season}" class="${lay.cls}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +54,7 @@ function build(p) {
   <link rel="stylesheet" href="${up}engines/fx-engines.css">
   <link rel="stylesheet" href="${up}themes/${p.season}.css">
   <link rel="stylesheet" href="${up}scenes/poster.css?v=4">${p.css ? `\n  <link rel="stylesheet" href="${p.css}">` : ''}
+${lay.head.map(l => '  ' + l).join('\n')}
 </head>
 <body class="fx-body">
   <main id="fx-main" class="fx-main${isMap ? ' fx-main--wide' : ''}">
@@ -45,6 +68,7 @@ function build(p) {
 ${list(p.engines).map(e => `  <script src="${up}engines/${e}.js"></script>`).join('\n')}
 ${list(p.data).map(d => `  <script src="${d}"></script>`).join('\n')}
   <script src="${p.js}"></script>
+${lay.tail.map(l => '  ' + l).join('\n')}
 </body>
 </html>
 `.replace(/\n{3,}/g, '\n\n');
@@ -99,6 +123,7 @@ const filter = process.argv[2];
 let n = 0;
 for (const p of pages) {
   if (filter && !(p.season + '.' + p.module).includes(filter)) continue;
+  if (p.module === 'landing') continue;
   if (p.template) { const sd = reg[p.season]; fs.writeFileSync(R + sd.root + '/' + p.dir + '/' + p.js, TEMPLATES[p.template](p).replace(/\n/g, '\r\n')); }
   console.log('wrote', build(p)); n++;
 }

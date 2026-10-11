@@ -1,0 +1,202 @@
+/* ==========================================================================
+   SUMMER SOLSTICE · luxe tokens + finishes
+   Golden hour on the Riviera: ivory linen cards, azulejo blue, coral and sun-gold.
+   Type: Yeseva One (wordmark) · Josefin Sans (labels) · Lora (prose)
+   ========================================================================== */
+html.lx[data-season="summer"] {
+  --lx-bg: linear-gradient(180deg, #26457a 0%, #6a5c9c 32%, #e0867a 56%, #ffbf86 68%, #1d5a82 70%, #062a44 100%) fixed, #1d5a82;
+  --lx-back-op: 1;
+  --lx-vig: linear-gradient(180deg, rgba(20,30,70,.25) 0%, rgba(20,30,70,0) 30%, rgba(10,20,40,0) 70%, rgba(6,16,30,.45) 100%);
+  --lx-veil-op: .06;
+  --lx-outside: rgba(20,24,56,.35);
+  --lx-vig-edge: rgba(20,20,50,.35);
+  --lx-scroll: #e0532a;
+  --lx-rail: inset 0 0 0 2px rgba(255,250,240,.92), inset 0 0 0 3.5px #1f5fa8, inset 0 0 0 5px rgba(255,250,240,.7), inset 0 0 40px 8px rgba(20,30,70,.22);
+  --lx-vine-w: 22px; --lx-vine-h: 24px; --lx-vine-x: 2px;
+  --lx-medal-shadow: drop-shadow(0 3px 5px rgba(30,20,50,.45));
+
+  --lx-text: #1d3248;
+  --lx-text-2: #2e4a62;
+  --lx-muted: #6a7886;
+  --lx-head: #0f2c48;
+  --lx-accent: #e0532a;
+  --lx-accent-2: #0f8aa6;
+  --lx-glow: 255, 150, 90;
+  --lx-display: 'Yeseva One', 'Playfair Display', serif;
+  --lx-engr: 'Josefin Sans', 'Trebuchet MS', sans-serif;
+  --lx-prose: 'Lora', Georgia, serif;
+  --lx-wordmark-font: 400 clamp(54px, 9vw, 92px) var(--lx-display);
+  --lx-wordmark: linear-gradient(180deg, #fffaf0 0%, #ffe6b0 45%, #ffb070 75%, #f07a4a 100%);
+  --lx-wordmark-shadow: drop-shadow(0 3px 0 rgba(120,40,40,.35)) drop-shadow(0 0 22px rgba(255,190,110,.55));
+  --lx-edition: #fff2d6;
+  --lx-gilt: linear-gradient(120deg, #e0532a 0%, #ff8a4a 35%, #f7b733 60%, #e0532a 100%);
+  --lx-gilt-glow: none;
+  --lx-card-grain: repeating-linear-gradient(0deg, rgba(140,100,50,.035) 0 1px, transparent 1px 3px), repeating-linear-gradient(90deg, rgba(140,100,50,.03) 0 1px, transparent 1px 3px);
+  --lx-rim: linear-gradient(145deg, #ffe2a8 0%, #e0763f 30%, #fff0c8 52%, #c4562c 76%, #f7c06a 100%);
+  --lx-surface: linear-gradient(180deg, #fffbf2 0%, #faf0dc 100%);
+  --lx-card-shadow: 0 0 0 1px rgba(150,70,30,.18), inset 0 1px 0 #fff, inset 0 -12px 24px rgba(220,160,90,.1), 0 22px 34px -18px rgba(40,20,50,.55);
+  --lx-drop: rgba(40,20,50,.5);
+  --lx-btn: linear-gradient(180deg, #ff8456, #e0532a);
+  --lx-on-btn: #ffffff;
+  --lx-btn-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 6px 16px -6px rgba(224,83,42,.7);
+  --lx-ghost: #0f6a86;
+  --lx-tint: rgba(16,96,140,.05);
+  --lx-tint-2: rgba(16,96,140,.1);
+  --lx-tint-line: rgba(16,96,140,.18);
+  --lx-hbtn-bg: radial-gradient(circle at 40% 30%, #fffdf6, #f3e2c4 75%);
+  --lx-hbtn-ink: #0f2c48;
+  --lx-hbtn-shadow: inset 0 2px 2px #fff, inset 0 -3px 6px rgba(160,100,40,.2), 0 8px 16px -6px rgba(30,20,60,.5);
+  --lx-plaque: radial-gradient(130% 160% at 50% 0%, #138aa8 0%, #0b5a7a 55%, #083d58 100%) padding-box, linear-gradient(#fdf3df, #f3dcb4) border-box;
+  --lx-plaque-r: 16px;
+  --lx-plaque-shadow: inset 0 0 0 3px #083d58, inset 0 0 0 4px rgba(253,243,223,.7), inset 0 2px 1px rgba(255,255,255,.2), 0 14px 26px -10px rgba(20,20,50,.6);
+  --lx-plaque-ink: #fdf3df;
+  --lx-plaque-emboss: 0 1px 0 rgba(0,0,0,.3);
+  --lx-rivet: radial-gradient(circle at 35% 30%, #fffbe8, #d8b066 55%, #7a5418);
+  --lx-cd-bg: linear-gradient(180deg, #fffaf0, #f3e2c4);
+  --lx-cd-shadow: inset 0 -2px 4px rgba(160,100,40,.2), 0 2px 6px rgba(0,0,0,.25);
+  --lx-cd-ink: #0b5a7a;
+  --lx-rule-ink: #fff6e6;
+  --lx-rule-line: rgba(255,244,226,.85);
+  --lx-shelf-bg: radial-gradient(90% 70% at 50% 25%, rgba(255,255,255,.55), transparent 70%), repeating-linear-gradient(90deg, rgba(120,90,50,.06) 0 1px, transparent 1px 22px), linear-gradient(180deg, #eadcc2, #d8c4a0);
+  --lx-shelf-shadow: inset 0 10px 20px rgba(120,80,40,.25), inset 0 0 0 1px rgba(120,80,40,.2);
+  --lx-plank: repeating-linear-gradient(90deg, rgba(90,60,30,.12) 0 1px, transparent 1px 13px), linear-gradient(180deg, #e9d6b4 0%, #c9a77a 45%, #9c7a4e 100%);
+  --lx-plank-shadow: inset 0 1px 0 rgba(255,255,255,.6), inset 0 -2px 4px rgba(90,60,30,.35), 0 14px 18px -8px rgba(60,30,20,.55);
+  --lx-spine-font: 700 calc(9px * var(--kh)) / 1.1 var(--lx-engr);
+  --lx-spine-ink: linear-gradient(#1f2a33, #1f2a33);
+  --lx-mq-head: linear-gradient(180deg, #0d2c4a, #081e36);
+  --lx-mq-line: #f07a8a;
+  --lx-board-ink: #fff4f6;
+  --lx-board-glow: 0 0 6px #ff8aa8, 0 0 16px #ff4f7a, 0 0 28px rgba(255,79,122,.6);
+  --lx-bulb-off: #2a3a50;
+  --lx-bulb-on: radial-gradient(circle at 40% 35%, #fffbe8, #ffd36b 50%, #ff9d2e);
+  --lx-bulb-on-2: radial-gradient(circle at 40% 35%, #fff, #8ae8ff 50%, #1f9fd0);
+  --lx-bulb-glow: 0 0 6px #ffcf6b, 0 0 12px rgba(255,157,46,.7);
+  --lx-reel: radial-gradient(120% 90% at 50% 0%, #10284a, #050f1e 80%);
+  --lx-strip: repeating-linear-gradient(90deg, transparent 0 6px, rgba(255,240,226,.35) 6px 14px, transparent 14px 20px) left 5px / 100% 9px repeat-x local, repeating-linear-gradient(90deg, transparent 0 6px, rgba(255,240,226,.35) 6px 14px, transparent 14px 20px) left calc(100% - 5px) / 100% 9px repeat-x local, #040b16;
+  --lx-reel-grain: .1;
+  --lx-poster-ring: 0 0 0 2px #fdf3df, 0 0 0 3px rgba(0,0,0,.3);
+  --lx-poster-ring-on: 0 0 0 2px #fdf3df, 0 0 0 4px #ff7a5a;
+  --lx-rate-ink: #fff3dc;
+  --lx-rate-bg: rgba(12,30,50,.78);
+  --lx-well: radial-gradient(circle at 50% 90%, #ffe9c4 0%, #ffcc94 35%, #f59a78 70%, #c86e7e 100%);
+  --lx-well-shadow: inset 0 0 0 1px rgba(150,70,30,.25), inset 0 6px 18px rgba(120,40,40,.25);
+  --lx-device-bg: radial-gradient(120% 90% at 50% 0%, #b8eadf 0%, #86d2c4 55%, #5ab4a6 100%);
+  --lx-device-shadow: inset 0 2px 0 rgba(255,255,255,.6), inset 0 0 0 2px #2c7a6e, inset 0 0 0 4px rgba(255,255,255,.35), inset 0 -10px 18px rgba(20,80,70,.3), 0 18px 26px -14px rgba(20,40,60,.6);
+  --lx-dial-bg: linear-gradient(180deg, #fffaf0, #f1e2c6);
+  --lx-dial-shadow: inset 0 0 0 2px #2c7a6e, inset 0 0 0 3px #e9f6f2, inset 0 3px 8px rgba(80,60,20,.25);
+  --lx-dial-tick: rgba(15,44,72,.55);
+  --lx-dial-ink: #0f4a6a;
+  --lx-needle: linear-gradient(180deg, #ff6a3a, #c2401a);
+  --lx-needle-glow: rgba(255,106,58,.7);
+  --lx-scope-bg: radial-gradient(120% 120% at 50% 50%, #0b4a6e, #04223a);
+  --lx-scope-shadow: inset 0 0 0 2px #2c7a6e, inset 0 0 0 3px #e9f6f2, inset 0 0 18px rgba(0,0,0,.6);
+  --lx-knob: radial-gradient(circle at 35% 30%, #ffffff, #d7e0e6 40%, #8a9aa6 82%);
+  --lx-knob-shadow: inset 0 2px 2px #fff, inset 0 -4px 6px rgba(40,60,80,.35), 0 6px 12px -4px rgba(20,30,60,.5);
+  --lx-knob-ink: #0f2c48;
+  --lx-radar-bg: radial-gradient(circle, #138aa8 0%, #0b5a7a 55%, #083d58 100%);
+  --lx-radar-shadow: inset 0 0 0 2px #fdf3df, inset 0 0 0 3.5px #1f5fa8, inset 0 0 18px rgba(0,0,0,.4), 0 6px 18px -6px rgba(20,60,90,.5);
+  --lx-radar-rgb: 210, 248, 255;
+  --lx-blip: #fff3c8;
+  --lx-blip-glow: #ffd27a;
+  --lx-chip: #0b6a86;
+  --lx-chip-line: rgba(11,106,134,.35);
+  --lx-sky-small: #fff1dc;
+  --lx-sky-big: #ffffff;
+  --lx-sky-shadow: 0 2px 10px rgba(40,20,60,.55);
+  --lx-tele-bg: #fffaf0;
+  --lx-tele-line: rgba(200,120,60,.25);
+  --lx-paper: linear-gradient(90deg, transparent calc(58% - 1px), rgba(31,95,168,.25) calc(58% - 1px) 58%, transparent 58%), radial-gradient(circle at 85% 18%, rgba(255,190,120,.12), transparent 40%), linear-gradient(180deg, #fffcf4, #f6ecd6);
+  --lx-paper-blend: normal;
+  --lx-paper-r: 6px;
+  --lx-paper-shadow: 0 0 0 1px rgba(150,90,40,.2), 0 14px 26px -12px rgba(40,20,60,.55);
+  --lx-paper-ink: #22394f;
+  --lx-paper-head: #e0532a;
+  --lx-paper-hint: #8a7a6a;
+  --lx-seal: linear-gradient(180deg, #ffcf7a, #f0743a);
+  --lx-seal-ink: #fff;
+  --lx-seg-bg: rgba(16,96,140,.06);
+  --lx-mat: linear-gradient(180deg, #ffffff, #f4ead6);
+  --lx-mat-shadow: 0 0 0 1px rgba(31,95,168,.28), inset 0 0 0 3px #fff, inset 0 0 0 4px rgba(31,95,168,.35), 0 14px 24px -12px rgba(40,20,50,.5);
+  --lx-wall-empty: #f3dcc0;
+  --lx-dock-bg: linear-gradient(180deg, rgba(255,251,242,.78), rgba(255,240,220,.9));
+  --lx-dock-shadow: inset 0 1px 0 #fff, inset 0 0 0 1px rgba(224,83,42,.22), 0 18px 34px -12px rgba(30,20,60,.55);
+  --lx-dock-ink: #5d6c7a;
+  --lx-dock-on: #e0532a;
+  --lx-nav-ink: #fff3e0;
+  --lx-foot-font: 400 26px var(--lx-display);
+  --lx-scrim: rgba(20,20,50,.4);
+}
+
+/* ---------- landing finishes ---------- */
+[data-season="summer"] .arch { margin-bottom: -40px; }
+[data-season="summer"] .arch .flag { animation: su-flag 3.2s ease-in-out infinite alternate; transform-box: view-box; }
+@keyframes su-flag { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+[data-season="summer"] .edition { text-shadow: 0 1px 6px rgba(80,30,40,.6); }
+[data-season="summer"] .flank { filter: drop-shadow(0 4px 6px rgba(60,30,40,.4)); }
+[data-season="summer"] .rule h2 { text-shadow: 0 1px 3px rgba(60,20,40,.55); }
+[data-season="summer"] .hnav a { text-shadow: 0 1px 4px rgba(60,20,40,.6); }
+[data-season="summer"] .hnav a:hover { color: #fff; }
+[data-season="summer"] .cd b { filter: none; }
+[data-season="summer"] .foot { color: rgba(255,244,230,.85); border-top-color: rgba(255,244,230,.3); }
+[data-season="summer"] .foot b { color: #ffd59a; }
+[data-season="summer"] .gc-title { letter-spacing: .06em; text-transform: uppercase; font-size: clamp(15px, 1.5vw, 18px); }
+[data-season="summer"] .gilt { text-transform: none; letter-spacing: 0; font: 400 clamp(24px, 2.6vw, 30px) var(--lx-display); }
+
+/* paperbacks: coloured bands top and bottom, cream title panel */
+[data-season="summer"] .book { border-radius: 2px; }
+[data-season="summer"] .book .spine { background: linear-gradient(90deg, rgba(0,0,0,.18) 0%, rgba(255,255,255,.18) 25%, rgba(255,255,255,0) 45%, rgba(0,0,0,.12) 80%, rgba(0,0,0,.3) 100%), linear-gradient(180deg, var(--c1) 0 22%, #f8f1e2 22% 78%, var(--c1) 78% 100%); box-shadow: inset 0 0 0 1px rgba(60,40,20,.2), 0 2px 3px rgba(60,40,20,.2); }
+[data-season="summer"] .book .band { display: none; }
+[data-season="summer"] .book .crest { top: 6%; width: 11px; height: 11px; margin-left: -5.5px; transform: none; border-radius: 50%; background: #fdf3df; opacity: 1; box-shadow: inset 0 0 0 2px var(--c2); }
+[data-season="summer"] .book .label span { filter: none; }
+[data-season="summer"] .book .pages { display: none; }
+[data-season="summer"] .book.is-out { filter: brightness(1.04) drop-shadow(0 18px 14px rgba(60,30,20,.45)) drop-shadow(0 0 14px rgba(255,170,90,.5)); }
+
+/* the beach radio */
+[data-season="summer"] .radio { position: relative; }
+[data-season="summer"] .antenna { position: absolute; right: 22px; top: -40px; width: 3px; height: 46px; border-radius: 2px; background: linear-gradient(90deg, #8a9aa6, #fff, #8a9aa6); transform: rotate(18deg); transform-origin: bottom; }
+[data-season="summer"] .antenna::after { content: ""; position: absolute; top: -4px; left: -2.5px; width: 8px; height: 8px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #fff, #8a9aa6); }
+[data-season="summer"] .r-top { display: flex; align-items: center; gap: 10px; padding: 2px 4px 8px; }
+[data-season="summer"] .r-brand { font: 400 22px var(--lx-display); color: #fffaf0; text-shadow: 0 2px 0 #2c7a6e; }
+[data-season="summer"] .r-band { flex: 1; font: 700 9px var(--lx-engr); letter-spacing: .26em; color: #1e5a52; }
+[data-season="summer"] .r-led { width: 9px; height: 9px; border-radius: 50%; background: #7a2a1a; box-shadow: inset 0 0 0 1px rgba(0,0,0,.3); transition: background .3s ease, box-shadow .3s ease; }
+[data-season="summer"] .is-playing .r-led { background: #ff5a3a; box-shadow: 0 0 8px #ff5a3a, 0 0 16px rgba(255,90,58,.6); }
+[data-season="summer"] .r-row { display: flex; gap: 10px; }
+[data-season="summer"] .r-grille { flex: 1.3; min-height: 96px; border-radius: 12px; background: radial-gradient(circle, #5a6a74 1.4px, transparent 1.9px) 0 0 / 7px 7px, radial-gradient(120% 120% at 30% 20%, #ffffff, #d7e0e6 50%, #a8b6c0); box-shadow: inset 0 0 0 2px #fff, inset 0 0 0 3px #7c8b96, inset 0 4px 10px rgba(40,60,80,.25); transition: transform .2s ease; }
+[data-season="summer"] .is-playing .r-grille { animation: su-pulse .27s ease-in-out infinite alternate; }
+@keyframes su-pulse { from { transform: scale(1); } to { transform: scale(1.012); } }
+[data-season="summer"] .r-side { flex: 1; border-radius: 10px; overflow: hidden; box-shadow: inset 0 0 0 2px #fff, 0 2px 6px rgba(20,60,60,.25); }
+[data-season="summer"] .r-side svg { display: block; width: 100%; height: 100%; }
+
+/* arcade cone */
+[data-season="summer"] .c-game .scoop { transform-box: fill-box; transform-origin: 50% 100%; }
+[data-season="summer"] .c-game:hover .scoop.s3 { animation: su-wobble .9s ease-in-out infinite alternate; }
+[data-season="summer"] .c-game:hover .scoop.s2 { animation: su-wobble 1.1s ease-in-out infinite alternate-reverse; }
+@keyframes su-wobble { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+[data-season="summer"] .stall-art .game-art { filter: drop-shadow(0 8px 10px rgba(120,40,40,.3)); }
+
+/* postcard */
+[data-season="summer"] .lore .sheet { padding-top: 30px; }
+[data-season="summer"] .lore .sheet::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 5px; background: repeating-linear-gradient(135deg, #e0532a 0 10px, transparent 10px 20px, #1f5fa8 20px 30px, transparent 30px 40px); -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); opacity: .85; pointer-events: none; }
+[data-season="summer"] .seal { width: 38px; height: 44px; border-radius: 2px; box-shadow: 0 0 0 3px #fffdf6, 0 0 0 4px rgba(150,90,40,.35), 0 3px 6px rgba(0,0,0,.2); }
+[data-season="summer"] .lore .perch { top: -80px; right: 26px; }
+
+/* ==========================================================================
+   OTHER SUMMER PAGES (pairs with luxe-pages.css)
+   ========================================================================== */
+html.lx-shell[data-season="summer"] {
+  --fx-bg: #1d5a82; --fx-surface: #fffaf0; --fx-surface-solid: #fffaf0; --fx-surface-2: #f6ecd8;
+  --fx-line: rgba(224,83,42,.4); --fx-line-soft: rgba(16,96,140,.14);
+  --fx-text: #1d3248; --fx-muted: #6a7886; --fx-accent: #e0532a; --fx-accent-2: #0f8aa6; --fx-accent-3: #f7b733; --fx-on-accent: #ffffff; --fx-glow: 255, 150, 90;
+  --fx-btn-bg: linear-gradient(180deg, #ff8456, #e0532a); --fx-btn-color: #fff; --fx-btn-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 6px 16px -6px rgba(224,83,42,.7);
+
+  --fx-appbar-bg: linear-gradient(180deg, rgba(30,50,100,.55), rgba(30,50,100,.2) 75%, transparent);
+  --fx-tabs-bg: linear-gradient(180deg, rgba(255,251,242,.82), rgba(255,240,220,.92));
+  --lx-tile: linear-gradient(180deg, #fffdf6, #f6ecd8);
+  --lx-pill-on: linear-gradient(180deg, #ff8456, #e0532a);
+  --lx-pill-on-ink: #fff;
+  --lx-field: rgba(255,252,244,.95);
+}
+html.lx-shell[data-season="summer"] .fx-apptitle, html.lx-shell[data-season="summer"] .fx-appbar .fx-muted { text-shadow: 0 1px 6px rgba(40,20,60,.45); }
+html.lx[data-season="summer"] .lx-title-ink { background: linear-gradient(180deg, #fffaf0 0%, #ffe6b0 45%, #ffb070 75%, #f07a4a 100%); }
+html.lx-reads[data-season="summer"] .coastal-bg, html.lx-reads[data-season="summer"] .sunbeam-wash, html.lx-reads[data-season="summer"] .summer-border { display: none; }
+html.lx-cinema[data-season="summer"] .synthwave-sun { display: none; }

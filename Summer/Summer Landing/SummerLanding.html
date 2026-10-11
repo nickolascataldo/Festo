@@ -1,26 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" data-season="summer">
+<html lang="en" data-season="summer" class="lx lx-landing">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#26457a">
   <title>Summer Solstice · Festo</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="Summer Solstice: a beach library, a drive-in of summer films, a beach radio, the cone-stack arcade, beaches and pools near you, live sunrise and sunset, and wallpapers to download.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Josefin+Sans:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/festo-core.css">
-  <link rel="stylesheet" href="../../shared/engines/fx-engines.css">
-  <link rel="stylesheet" href="../../shared/themes/summer.css">
-  <link rel="stylesheet" href="../../shared/scenes/poster.css?v=4">
+  <link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=1">
+  <link rel="stylesheet" href="../../shared/luxe/luxe-landing.css?v=1">
+  <link rel="stylesheet" href="../../shared/luxe/summer.css?v=1">
 </head>
-<body class="fx-body">
-  <main id="fx-main" class="fx-main">
-    <noscript><div class="fx-soon"><h1 class="fx-h2">Summer Solstice</h1><p class="fx-muted">This page needs JavaScript.</p><a class="fx-btn" href="SummerLanding.html">Back</a></div></noscript>
-  </main>
-  <script src="../../shared/festo-core.js"></script>
-  <script src="../../shared/seasons/index.js"></script>
-  <script src="../../shared/scenes/summer.js"></script>
-  <script src="../../shared/scenes/poster.js?v=6"></script>
-  <script src="../../shared/navs.js"></script>
-  <script src="../../shared/engines/landing.js"></script>
-  <script src="../../shared/seasons/summer.facts.js"></script>
-  <script src="SummerLanding.js"></script>
+<body class="lxl">
+<a class="skip" href="#realm">Skip to content</a>
+<div id="lx-app">
+  <noscript>
+    <div class="page"><h1>Summer Solstice</h1>
+      <p><a href="../Book%20List/SummerBook.html">Beach Reads</a> · <a href="../Movie%20List/SummerMovie.html">Cinema</a> · <a href="../ActivityWheel/ActivityWheel.html">Adventure Wheel</a> · <a href="../Game/Summer.html">Summer Arcade</a> · <a href="../Summer%20Map/SummerMap.html">Summer Map</a> · <a href="../Store/SummerStore.html">Summer Shop</a> · <a href="../Summer%20Beats/SummerBeats.html">Summer Beats</a> · <a href="../Weather/Weather.html">Sun &amp; Weather</a> · <a href="../../index.html?choose=1">All seasons</a></p>
+    </div>
+  </noscript>
+</div>
+<script src="../../shared/festo-core.js"></script>
+<script src="../../shared/seasons/index.js"></script>
+<script src="../../shared/engines/covers.js"></script>
+<script src="../Summer%20Map/map-data.js"></script>
+<script src="../ActivityWheel/wheel-data.js"></script>
+<script src="../../shared/seasons/summer.facts.js"></script>
+<script src="../../shared/luxe/summer.js?v=1"></script>
+<script src="../../shared/luxe/luxe-atmos.js?v=1"></script>
+<script src="../../shared/luxe/summer-landing.js?v=1"></script>
+<script src="../../shared/luxe/luxe-landing.js?v=1"></script>
 </body>
 </html>

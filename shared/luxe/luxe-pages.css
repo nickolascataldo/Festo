@@ -1,0 +1,165 @@
+/* ==========================================================================
+   FESTO LUXE · the season look on every other page (Christmas, Summer, Spring)
+   Loaded after a page's own CSS, with luxe-base.css and the season file (shared/luxe/<season>.css).
+   <html> carries lx plus lx-shell (app-shell modules), lx-reads (book library) or lx-cinema (film vault).
+   Corners are CSS background images, so cards a page adds later get them too.
+   ========================================================================== */
+html.lx[data-season="christmas"] { --lx-title-font: 400 clamp(2.4rem, 6vw, 3rem) 'Pinyon Script', cursive; --lx-panel: rgba(3,12,9,.55); --lx-panel-line: rgba(246,213,138,.22); --lx-fab-ring: #0b2018; }
+html.lx[data-season="summer"] { --lx-title-font: 400 clamp(1.8rem, 5vw, 2.3rem) 'Yeseva One', serif; --lx-panel: rgba(255,251,242,.9); --lx-panel-line: rgba(224,83,42,.22); --lx-title-ink: linear-gradient(180deg, #ff9a5a 0%, #e0532a 55%, #a8361a 100%); --lx-fab-ring: #fffaf0; }
+html.lx[data-season="spring"] { --lx-title-font: italic 600 clamp(2rem, 5.4vw, 2.6rem) 'Fraunces', serif; --lx-panel: rgba(255,255,250,.82); --lx-panel-line: rgba(143,174,138,.45); --lx-fab-ring: #fffefa; }
+
+/* ==========================================================================
+   SHELL PAGES (wheel, workshop, arcade, map, shop, music, weather)
+   ========================================================================== */
+html.lx-shell {
+  --fx-font-body: var(--lx-prose);
+  --fx-font-display: var(--lx-engr);
+  --fx-title-font: var(--lx-title-font);
+  --fx-radius: 18px;
+  --fx-card-bg: var(--lx-surface);
+  --fx-card-border: 1.5px solid var(--lx-tint-line);
+  --fx-card-shadow: var(--lx-card-shadow);
+  --fx-btn-radius: 999px;
+  --fx-btn-font: 700 0.74rem var(--lx-engr);
+  --fx-btn-case: uppercase;
+  --fx-btn-track: 0.14em;
+  --fx-frame-line: transparent;
+  --fx-frame-shadow: none;
+  --fx-frame-bg: var(--lx-panel);
+  --fx-frame-radius: 34px;
+}
+html.lx-shell .fx-body { font-size: 1.06rem; background: transparent; }
+@media (max-width: 899px) { html.lx-shell .fx-main { padding-left: 30px; padding-right: 30px; } html.lx-shell .fx-appbar { padding-left: 44px; padding-right: 44px; } }
+html.lx-shell .fx-scene > * { display: none; }
+html.lx-shell .fx-scene { background: transparent; }
+@media (min-width: 900px) { html.lx-shell .fx-app-frame { box-shadow: inset 0 0 0 1px var(--lx-panel-line), 0 30px 60px -30px rgba(0,0,0,.45); } }
+html.lx-shell .fx-card, html.lx-shell .fx-modal-card, html.lx-shell .fx-feature { border: 2px solid transparent; background: var(--lx-card); box-shadow: var(--lx-card-shadow); color: var(--lx-text); }
+html.lx-shell .fx-tile, html.lx-shell .fx-listcard, html.lx-shell .fx-sheet-tile, html.lx-shell .fx-catcard { border: 1.5px solid var(--lx-tint-line); background: var(--lx-tile); box-shadow: 0 10px 18px -12px rgba(0,0,0,.45); color: var(--lx-text); }
+html.lx-shell .fx-tile, html.lx-shell .fx-sheet-tile, html.lx-shell .fx-tab, html.lx-shell .fx-eyebrow, html.lx-shell .fx-sec-title, html.lx-shell .fx-pill, html.lx-shell .fx-badge, html.lx-shell .fx-sidebar-title { font-family: var(--lx-engr); }
+html.lx-shell .fx-tile > i, html.lx-shell .fx-sheet-tile i { color: var(--lx-accent); }
+html.lx-shell .fx-appbar { border-bottom: 1px solid var(--lx-tint-line); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+html.lx-shell .fx-apptitle { font: var(--lx-title-font); letter-spacing: 0; }
+html.lx-shell .fx-apptitle > span { background: var(--lx-title-ink, var(--lx-wordmark)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; filter: var(--lx-wordmark-shadow); padding: 0 .1em; }
+html.lx-shell .fx-mascot { color: var(--lx-accent); }
+html.lx-shell .fx-circle-btn { color: var(--lx-hbtn-ink); border: 1.5px solid transparent; background: var(--lx-hbtn-bg) padding-box, var(--lx-rim) border-box; box-shadow: var(--lx-hbtn-shadow); }
+html.lx-shell .fx-circle-btn:hover { box-shadow: var(--lx-hbtn-shadow), 0 0 16px rgba(var(--lx-glow), .35); }
+html.lx-shell .fx-h2 { font: 700 clamp(1.25rem, 3vw, 1.7rem) var(--lx-engr); letter-spacing: .04em; background: var(--lx-gilt); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; filter: var(--lx-gilt-glow); }
+html.lx-shell .fx-h3 { font-family: var(--lx-engr); color: var(--lx-head); }
+html.lx-shell .fx-eyebrow { color: var(--lx-accent); letter-spacing: .24em; font-weight: 700; }
+html.lx-shell .fx-sec-title { color: var(--lx-head); letter-spacing: .2em; font-weight: 700; text-shadow: none; }
+html.lx-shell .fx-muted { color: var(--lx-muted); }
+html.lx-shell .fx-btn { font-family: var(--lx-engr); }
+html.lx-shell .fx-btn:hover { filter: brightness(1.06); }
+html.lx-shell .fx-btn--ghost { color: var(--lx-ghost); border: 1.5px solid var(--lx-tint-line); background: var(--lx-tint); box-shadow: none; }
+html.lx-shell .fx-btn--ghost:hover { background: var(--lx-tint-2); }
+html.lx-shell .fx-pill { border: 1.5px solid var(--lx-tint-line); color: var(--lx-text); background: var(--lx-tint); letter-spacing: .06em; }
+html.lx-shell .fx-pill.is-active { color: var(--lx-pill-on-ink); border-color: transparent; background: var(--lx-pill-on); box-shadow: var(--lx-btn-shadow); }
+html.lx-shell .fx-input, html.lx-shell .fx-select { border: 1.5px solid var(--lx-tint-line); background: var(--lx-field); color: var(--lx-text); border-radius: 14px; font-family: var(--lx-prose); font-weight: 600; font-size: 1rem; }
+html.lx-shell .fx-input:focus, html.lx-shell .fx-select:focus { border-color: var(--lx-accent); box-shadow: 0 0 0 3px rgba(var(--lx-glow), .18); outline: none; }
+html.lx-shell .fx-badge { background: var(--lx-tint); color: var(--lx-accent-2); box-shadow: inset 0 0 0 1px var(--lx-tint-line); }
+html.lx-shell .fx-feature-art, html.lx-shell .fx-listcard-art { background: var(--lx-well); border: 1px solid var(--lx-tint-line); }
+html.lx-shell .fx-tabs { left: 50%; right: auto; bottom: max(12px, env(safe-area-inset-bottom)); width: min(calc(100% - 24px), 560px); transform: translateX(-50%); height: var(--fx-tabs-h); padding: 0 6px; border: 0; border-radius: 26px; -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5); box-shadow: var(--lx-dock-shadow); }
+html.lx-shell .fx-tab { color: var(--lx-dock-ink); font-weight: 700; letter-spacing: .12em; }
+html.lx-shell .fx-tab.is-active { color: var(--lx-dock-on); }
+html.lx-shell .fx-tab.is-active i { filter: drop-shadow(0 0 6px rgba(var(--lx-glow), .6)); }
+html.lx-shell .fx-fab { margin-bottom: 26px; }
+html.lx-shell .fx-app-frame { padding-bottom: calc(var(--fx-tabs-h) + 44px + env(safe-area-inset-bottom, 0px)); }
+html.lx-shell .fx-sheet-card { border: 2px solid transparent; border-bottom: 0; background: var(--lx-fil-tl) top left / 32px 32px no-repeat border-box, var(--lx-fil-tr) top right / 32px 32px no-repeat border-box, var(--lx-card-grain) padding-box, var(--lx-surface) padding-box, var(--lx-rim) border-box; box-shadow: 0 -16px 50px rgba(0,0,0,.35); color: var(--lx-text); }
+html.lx-shell .fx-sheet-tile:hover, html.lx-shell .fx-sheet-tile.is-active { border-color: var(--lx-accent); box-shadow: 0 0 18px rgba(var(--lx-glow), .3); }
+html.lx-shell .fx-rail { background: var(--lx-tile); border: 1.5px solid var(--lx-tint-line); box-shadow: 0 0 22px rgba(0,0,0,.2); }
+html.lx-shell .fx-rail-btn.is-active { background: var(--lx-pill-on); color: var(--lx-pill-on-ink); }
+
+html.lx-shell .fx-listcard-title, html.lx-shell .fx-feature-title, html.lx-shell .fx-sidebar-title { color: var(--lx-head); font-family: var(--lx-engr); }
+html.lx-shell .fx-feature-art, html.lx-shell .fx-listcard-art, html.lx-shell .fx-feature-art > i { color: var(--lx-accent); filter: none; }
+html.lx-shell .fx-tile.is-on { border-color: var(--lx-accent); box-shadow: 0 0 18px rgba(var(--lx-glow), .3); }
+html.lx-shell .fx-sec-title a, html.lx-shell .fx-sec-title button { color: var(--lx-accent); }
+html.lx-shell .fx-input::placeholder { color: var(--lx-muted); }
+html.lx-shell .fx-select option { background: var(--fx-surface-solid); color: var(--lx-text); }
+html.lx-shell .fx-search > .fx-input { background: var(--lx-field); color: var(--lx-text); }
+html.lx-shell .fx-modal-close { color: var(--lx-hbtn-ink); background: var(--lx-hbtn-bg); border: 1.5px solid var(--lx-tint-line); }
+html.lx-shell .fx-sheet-tile i { color: var(--lx-accent); filter: none; }
+html.lx-shell .fx-toast { background: var(--lx-btn); color: var(--lx-on-btn); font-family: var(--lx-engr); letter-spacing: .06em; }
+html.lx-shell .fx-empty, html.lx-shell .fx-soon { color: var(--lx-text); }
+html.lx-shell .fxs-shop { color: var(--lx-accent); }
+html.lx-shell .fxs-act.is-on, html.lx-shell .fxs-bar .fx-circle-btn.is-on { background: var(--lx-btn); color: var(--lx-on-btn); }
+html.lx-shell .fx-switch input:checked + span { background: var(--lx-accent); }
+html.lx-shell .fx-tabs { background: var(--fx-tabs-bg); border: 0; }
+html.lx-shell .fx-tab:hover { color: var(--lx-dock-on); }
+html.lx-shell .fx-fab { color: var(--lx-on-btn); background: var(--lx-btn); box-shadow: 0 12px 26px rgba(var(--lx-glow), .45), 0 0 0 6px var(--lx-fab-ring), 0 0 0 8px rgba(var(--lx-glow), .55); }
+html.lx-shell .fx-fab.is-active { box-shadow: 0 12px 26px rgba(var(--lx-glow), .55), 0 0 0 6px var(--lx-fab-ring), 0 0 0 9px var(--lx-accent); }
+
+/* ==========================================================================
+   READS (the book library pages)
+   ========================================================================== */
+html.lx-reads body.bookshelf-body { background: var(--lx-bg); font-family: var(--lx-prose); color: var(--lx-text); }
+html.lx-reads .library-header { background: var(--lx-panel); border-bottom: 1px solid var(--lx-panel-line); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 30px -12px rgba(0,0,0,.35); }
+html.lx-reads .btn-portal, html.lx-cinema .btn-return { color: var(--lx-hbtn-ink); border: 1.5px solid transparent; border-radius: 999px; background: var(--lx-hbtn-bg) padding-box, var(--lx-rim) border-box; box-shadow: var(--lx-hbtn-shadow); font: 700 0.72rem var(--lx-engr); letter-spacing: .14em; text-transform: uppercase; }
+html.lx-reads .btn-portal:hover, html.lx-cinema .btn-return:hover { background: var(--lx-hbtn-bg) padding-box, var(--lx-rim) border-box; box-shadow: var(--lx-hbtn-shadow), 0 0 18px rgba(var(--lx-glow), .35); border-color: transparent; }
+html.lx-reads .btn-portal .icon, html.lx-cinema .btn-return .icon { color: var(--lx-accent); }
+html.lx-reads .brand-title, html.lx-cinema .brand-title { font: 800 clamp(1.15rem, 2.8vw, 1.8rem) var(--lx-engr); letter-spacing: .07em; padding: 0 .06em; background: var(--lx-title-ink, var(--lx-wordmark)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: var(--lx-wordmark-shadow); text-shadow: none; }
+html.lx-reads #searchInput, html.lx-cinema #searchInput { background: var(--lx-field); border: 1.5px solid var(--lx-tint-line); color: var(--lx-text); font-family: var(--lx-prose); font-size: 1rem; font-weight: 600; }
+html.lx-reads #searchInput::placeholder, html.lx-cinema #searchInput::placeholder { color: var(--lx-muted); }
+html.lx-reads #searchInput:focus, html.lx-cinema #searchInput:focus { border-color: var(--lx-accent); box-shadow: 0 0 0 3px rgba(var(--lx-glow), .16); }
+html.lx-reads .search-icon, html.lx-cinema .search-icon { color: var(--lx-accent); }
+html.lx-reads .btn-clear, html.lx-cinema .btn-clear { color: var(--lx-muted); }
+html.lx-reads .hero-plaque { border: 2px solid transparent; border-radius: 20px; background: var(--lx-card); box-shadow: var(--lx-card-shadow); color: var(--lx-text); }
+html.lx-reads .plaque-badge, html.lx-cinema .holiday-badge, html.lx-cinema .summer-badge, html.lx-cinema .season-badge { color: var(--lx-accent); background: var(--lx-tint); border: 1px solid var(--lx-tint-line); font-family: var(--lx-engr); letter-spacing: .2em; font-weight: 700; }
+html.lx-reads .hero-title, html.lx-cinema .hero-heading { font-family: var(--lx-engr); font-weight: 800; letter-spacing: .04em; background: var(--lx-gilt); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; text-shadow: none; filter: var(--lx-gilt-glow); }
+html.lx-reads .hero-desc, html.lx-cinema .hero-subtext { font-family: var(--lx-prose); font-size: clamp(1.02rem, 1.9vw, 1.2rem); color: var(--lx-text-2); }
+html.lx-reads .counter-box { border: 2px solid transparent; background: var(--lx-plaque); box-shadow: var(--lx-plaque-shadow); }
+html.lx-reads .counter-num { font-family: var(--lx-engr); color: var(--lx-plaque-ink); text-shadow: var(--lx-plaque-emboss); }
+html.lx-reads .counter-label { font-family: var(--lx-engr); color: var(--lx-plaque-ink); opacity: .85; letter-spacing: .16em; }
+html.lx-reads .shelf-controls, html.lx-cinema .filter-controls-wrapper { background: var(--lx-panel); border: 1px solid var(--lx-panel-line); border-radius: 20px; padding: 14px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+html.lx-reads .pill-btn, html.lx-cinema .pill-btn { background: var(--lx-tint); border: 1.5px solid var(--lx-tint-line); color: var(--lx-text); font-family: var(--lx-engr); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+html.lx-reads .pill-btn:hover, html.lx-cinema .pill-btn:hover { background: var(--lx-tint-2); border-color: var(--lx-accent); }
+html.lx-reads .pill-btn.active, html.lx-cinema .pill-btn.active { color: var(--lx-pill-on-ink, var(--lx-on-btn)); border-color: transparent; background: var(--lx-btn); box-shadow: var(--lx-btn-shadow); }
+html.lx-reads .shelf-jump, html.lx-cinema .jump-select-wrapper { font-family: var(--lx-engr); font-size: .78rem; letter-spacing: .12em; color: var(--lx-head); }
+html.lx-reads #categoryJumpSelect, html.lx-cinema select { background: var(--lx-field); border: 1.5px solid var(--lx-tint-line); color: var(--lx-text); font-family: var(--lx-prose); font-size: 1rem; }
+html.lx-reads .bookshelf-vault, html.lx-cinema .main-vault { position: relative; background: var(--lx-panel); border: 1px solid var(--lx-panel-line); border-radius: 28px; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+html.lx-reads .shelf-label { font-family: var(--lx-engr); letter-spacing: .05em; color: var(--lx-head); text-shadow: none; }
+html.lx-reads .shelf-count { color: var(--lx-accent); font-family: var(--lx-engr); letter-spacing: .1em; }
+html.lx-reads .shelf-plank { background: var(--lx-plank); border-top: 1px solid rgba(255,255,255,.3); box-shadow: var(--lx-plank-shadow); }
+html.lx-reads .book-volume-card { border-radius: 3px 8px 8px 3px; box-shadow: inset 3px 0 0 rgba(255,255,255,.18), -4px 8px 16px rgba(0,0,0,.4); }
+html.lx-reads .book-volume-card:hover { box-shadow: inset 3px 0 0 rgba(255,255,255,.18), -8px 16px 26px rgba(0,0,0,.45), 0 0 24px rgba(var(--lx-glow), .4); }
+html.lx-reads .book-details { background: var(--lx-surface); border-top: 1px solid var(--lx-tint-line); }
+html.lx-reads .book-title { font-family: var(--lx-engr); font-size: .86rem; color: var(--lx-head); }
+html.lx-reads .book-author-meta { font-family: var(--lx-prose); font-size: .95rem; color: var(--lx-muted); }
+html.lx-reads .book-tag-chip { font-family: var(--lx-engr); background: var(--lx-tint); border-color: var(--lx-tint-line); color: var(--lx-text); }
+html.lx-reads .book-price-tag, html.lx-reads .book-rating-badge { font-family: var(--lx-engr); }
+html.lx-reads .modal-card, html.lx-cinema .modal-card { border: 2px solid transparent; background: var(--lx-card); box-shadow: 0 30px 80px rgba(0,0,0,.5), 0 0 40px rgba(var(--lx-glow), .12); color: var(--lx-text); }
+html.lx-reads .modal-title, html.lx-cinema .modal-title { font-family: var(--lx-engr); color: var(--lx-head); letter-spacing: .02em; }
+html.lx-reads .modal-author, html.lx-reads .book-synopsis, html.lx-cinema .modal-desc { font-family: var(--lx-prose); font-size: 1.08rem; color: var(--lx-text-2); }
+html.lx-reads .block-title, html.lx-cinema .cast-header, html.lx-cinema .trailer-title, html.lx-cinema .section-micro-header { font-family: var(--lx-engr); color: var(--lx-accent); letter-spacing: .18em; }
+html.lx-reads .btn-action, html.lx-reads .btn-wiki, html.lx-cinema .btn-watch-stream, html.lx-cinema .btn-wiki-link, html.lx-cinema .btn-action, html.lx-cinema .btn-stream-hero, html.lx-cinema .btn-watchlist-hero { border-radius: 999px; font: 700 .72rem var(--lx-engr); letter-spacing: .14em; text-transform: uppercase; }
+html.lx-reads .btn-link, html.lx-reads .btn-wiki, html.lx-cinema .btn-watch-stream, html.lx-cinema .btn-stream, html.lx-cinema .btn-stream-hero { color: var(--lx-on-btn); border: 0; background: var(--lx-btn); box-shadow: var(--lx-btn-shadow); }
+html.lx-reads .btn-like, html.lx-reads .btn-readlist, html.lx-cinema .btn-wiki-link, html.lx-cinema .btn-like, html.lx-cinema .btn-watchlist, html.lx-cinema .btn-watchlist-hero { color: var(--lx-ghost); border: 1.5px solid var(--lx-tint-line); background: var(--lx-tint); }
+html.lx-reads .modal-close-btn, html.lx-cinema .modal-close-btn { color: var(--lx-hbtn-ink); border: 1.5px solid transparent; background: var(--lx-hbtn-bg) padding-box, var(--lx-rim) border-box; }
+html.lx-reads .meta-tag, html.lx-reads .modal-tag-chip, html.lx-reads .author-badge, html.lx-cinema .cast-badge, html.lx-cinema .modal-cat-tag, html.lx-cinema .modal-year-tag { font-family: var(--lx-engr); letter-spacing: .05em; border-color: var(--lx-tint-line); background: var(--lx-tint); color: var(--lx-text); }
+html.lx-reads .library-footer, html.lx-cinema .app-footer { border-top: 1px solid var(--lx-panel-line); background: var(--lx-panel); color: var(--lx-text); }
+html.lx-reads .footer-title, html.lx-cinema .footer-festo { font: var(--lx-title-font); color: var(--lx-accent); }
+@media (max-width: 760px) { html.lx-reads .header-right { flex: 0 0 auto; width: 100%; max-width: none; } }
+/* phones: keep content clear of the frame garland */
+@media (max-width: 760px) { html.lx-reads body.bookshelf-body, html.lx-cinema body { padding-left: 20px; padding-right: 20px; box-sizing: border-box; } html.lx-reads .bookshelf-vault, html.lx-cinema .main-vault { padding-left: 12px; padding-right: 12px; } }
+
+/* ==========================================================================
+   CINEMA (the film vault pages)
+   ========================================================================== */
+html.lx-cinema body { font-family: var(--lx-prose); background: var(--lx-bg); color: var(--lx-text); }
+html.lx-cinema .navbar { background: var(--lx-panel); border-bottom: 1px solid var(--lx-panel-line); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 30px -12px rgba(0,0,0,.35); }
+html.lx-cinema .hero-banner { position: relative; margin: 18px auto 0; width: calc(100% - 44px); max-width: 1200px; padding: clamp(20px, 4vw, 40px) clamp(18px, 4vw, 40px); border-radius: 24px; border: 2px solid transparent; background: var(--lx-card); box-shadow: var(--lx-card-shadow); color: var(--lx-text); }
+html.lx-cinema .hero-stats { flex-wrap: wrap; gap: 12px 18px; }
+html.lx-cinema .stat-box, html.lx-cinema .stat-pill { background: var(--lx-tint); border-color: var(--lx-tint-line); }
+html.lx-cinema .stat-box strong, html.lx-cinema .stat-meta strong { font-family: var(--lx-engr); background: var(--lx-gilt); -webkit-background-clip: text; background-clip: text; color: transparent; }
+html.lx-cinema .stat-box span, html.lx-cinema .stat-meta span { font-family: var(--lx-engr); letter-spacing: .16em; color: var(--lx-muted); }
+html.lx-cinema .category-title { font-family: var(--lx-engr); letter-spacing: .05em; color: var(--lx-head); border-left: 0; padding-left: 26px; position: relative; text-shadow: none; }
+html.lx-cinema .category-title::before { content: ""; position: absolute; left: 0; top: 50%; width: 18px; height: 14px; margin-top: -7px; background: var(--lx-rule) center / contain no-repeat; }
+html.lx-cinema .movie-card { border: 2px solid transparent; border-radius: 12px; background: var(--lx-card-grain) padding-box, var(--lx-surface) padding-box, var(--lx-rim) border-box; box-shadow: 0 16px 26px -14px rgba(0,0,0,.5); }
+html.lx-cinema .movie-card:hover { box-shadow: 0 22px 34px -14px rgba(0,0,0,.55), 0 0 24px rgba(var(--lx-glow), .35); border-color: transparent; }
+html.lx-cinema .card-title { font-family: var(--lx-engr); font-size: .86rem; color: var(--lx-head); }
+html.lx-cinema .card-meta { font-family: var(--lx-prose); font-size: .95rem; color: var(--lx-muted); }
+html.lx-cinema .card-btn-hint { color: var(--lx-accent); font-family: var(--lx-engr); font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; }
+html.lx-cinema .card-rating-badge, html.lx-cinema .modal-rating-badge { font-family: var(--lx-engr); }
+html.lx-cinema .empty-results h3 { font-family: var(--lx-engr); color: var(--lx-accent); }
+html.lx-cinema .modal-poster-wrapper { box-shadow: 0 0 0 2px var(--lx-surface-edge, #fff), 0 0 0 3px rgba(var(--lx-glow), .6), 0 20px 30px -12px rgba(0,0,0,.5); }
+
+@media (prefers-reduced-motion: reduce) { html.lx * { scroll-behavior: auto; } }
