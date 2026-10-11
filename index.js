@@ -9,17 +9,30 @@ Festo.dom.ready(function () {
   var d = F.now(), post = d.toLocaleDateString('en-US', { month: 'short' }).toUpperCase() + ' ' + d.getDate();
   var order = [start].concat(I.order.filter(function (x) { return x !== start; })), rots = [0, -5, 4, -2];
   var cards = {}, rows = {}, layers = {};
+  /* real photographs: the postcard picture and the full-screen backdrop behind it for every season */
+  var PHOTO = {
+    halloween: { card: 'shared/img/season/halloween-card.jpg', bg: 'shared/img/season/halloween-backdrop.jpg' },
+    summer: { card: 'shared/img/season/summer-card.jpg', bg: 'shared/img/season/summer-backdrop.jpg' },
+    christmas: { card: 'shared/img/season/christmas-card.jpg', bg: 'shared/img/season/christmas-backdrop.jpg' },
+    spring: { card: 'shared/img/season/spring-card.jpg', bg: 'shared/img/season/spring-backdrop.jpg' }
+  };
+  function photo(id, which) {
+    var el = h('div', { class: 'in-scene in-art home-pic', 'aria-hidden': 'true' });
+    el.style.backgroundImage = 'url("' + PHOTO[id][which] + '")';
+    return el;
+  }
+  function art(id, which) { return PHOTO[id] ? photo(id, which) : I.art(id); }
 
   /* ----- backdrop: the selected season's poster, softly darkened ----- */
   var bg = h('div', { class: 'home-bg', 'aria-hidden': 'true' });
-  I.order.forEach(function (id) { layers[id] = I.art(id); layers[id].classList.add('home-layer'); bg.appendChild(layers[id]); });
+  I.order.forEach(function (id) { layers[id] = art(id, 'bg'); layers[id].classList.add('home-layer'); bg.appendChild(layers[id]); });
 
   /* ----- postcards ----- */
   var stage = h('div', { class: 'home-stage', 'aria-label': 'Season postcards' });
   I.order.forEach(function (id) {
     var inf = I.info(id);
     cards[id] = h('article', { class: 'home-card', 'data-id': id, style: vars(id), 'aria-label': inf.name },
-      h('div', { class: 'home-photo' }, I.art(id),
+      h('div', { class: 'home-photo' }, art(id, 'card'),
         h('span', { class: 'home-post', 'aria-hidden': 'true' }, h('b', null, 'Festo'), h('i', null, post)),
         id === rec ? h('span', { class: 'home-sug' }, I.ico('star'), I.suggestLabel()) : null,
         id === mine ? h('span', { class: 'home-mine' }, I.ico('house'), 'Your home') : null),
@@ -32,7 +45,7 @@ Festo.dom.ready(function () {
   I.order.forEach(function (id) {
     var inf = I.info(id);
     rows[id] = h('button', { class: 'home-row', type: 'button', role: 'radio', 'aria-checked': 'false', style: vars(id), onclick: function () { select(id); } },
-      h('span', { class: 'home-thumb' }, I.art(id)),
+      h('span', { class: 'home-thumb' }, art(id, 'card')),
       h('span', { class: 'home-rtext' }, h('b', { class: 'f-' + id }, inf.short), h('small', null, I.countdown(id))));
     list.appendChild(rows[id]);
   });
