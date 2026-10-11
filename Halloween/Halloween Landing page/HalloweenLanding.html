@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@500;600;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../shared/festo-core.css">
-  <link rel="stylesheet" href="HalloweenLanding.css?v=gothic3">
+  <link rel="stylesheet" href="HalloweenLanding.css?v=gothic5">
 </head>
 <body class="gh">
 <a class="skip" href="#realm">Skip to content</a>
@@ -64,6 +64,8 @@
     <symbol id="i-pumpkin" viewBox="0 0 24 24"><path d="M12 7c-5 0-8 3-8 7s3 6 8 6 8-2 8-6-3-7-8-7zM12 7V4l2-1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
     <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
     <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 8.5l-2 5-5 2 2-5z" fill="currentColor"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M6.5 10l5.5 5.5 5.5-5.5M4 20h16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-desktop" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="12.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8.5 20.5h7M12 16.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 5h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
   </defs>
 </svg>
@@ -282,6 +284,18 @@
       </div>
       <div class="roll" style="margin-top:-2px"></div>
     </div>
+    <div class="rule rv"><h2>The Wallpaper Vault</h2></div>
+
+    <section class="gc c-walls rv" data-frame aria-labelledby="wallT">
+      <div class="walls-head">
+        <div><h2 class="gc-title gilt" id="wallT">The Wallpaper Vault</h2><p class="gc-sub">Summon eerie twilight scenes for your mobile lockscreen or desktop.</p></div>
+        <div class="seg" role="radiogroup" aria-label="Wallpaper size">
+          <button type="button" role="radio" aria-checked="true" data-dev="phone"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Phone<small>9:16 · 1080×1920</small></span></button>
+          <button type="button" role="radio" aria-checked="false" data-dev="desktop"><svg aria-hidden="true"><use href="#i-desktop"/></svg><span>Desktop<small>16:9 · 1920×1080</small></span></button>
+        </div>
+      </div>
+      <div class="walls" id="walls" data-device="phone"></div>
+    </section>
   </main>
 
   <footer class="foot">
@@ -300,6 +314,7 @@
   <button class="tab" id="dockMore" aria-haspopup="dialog"><svg><use href="#i-grid"/></svg>More</button>
 </nav>
 <div class="sheet-bg" id="sheetBg"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <section class="gc launcher" data-frame id="launcher" role="dialog" aria-modal="true" aria-label="All Halloween pages">
   <h2>Halloween Hollow</h2>
   <div class="lgrid">
@@ -321,6 +336,6 @@
 <script src="../../shared/engines/covers.js"></script>
 <script src="../Spectral%20Map/map-data.js"></script>
 <script src="../../shared/seasons/halloween.facts.js"></script>
-<script src="HalloweenLanding.js?v=gothic3"></script>
+<script src="HalloweenLanding.js?v=gothic5"></script>
 </body>
 </html>

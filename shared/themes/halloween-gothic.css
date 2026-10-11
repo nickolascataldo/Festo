@@ -1,0 +1,208 @@
+/* ==========================================================================
+   HALLOWEEN HOLLOW · GOTHIC LAYER for every Halloween page (pairs with halloween-gothic.js)
+   Loaded after a page's own CSS. <html> carries gh-theme plus gh-shell, gh-reads or gh-cinema.
+   Brass rims, filigree corners (CSS background images, so dynamic lists get them too), iron frame,
+   embers, Cinzel / Cormorant / UnifrakturMaguntia type. Everything is scoped to html.gh-theme.
+   ========================================================================== */
+:root {
+  --gh-fil-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fbe3a0'/%3E%3Cstop offset='.32' stop-color='%23b8862f'/%3E%3Cstop offset='.58' stop-color='%23f6d98e'/%3E%3Cstop offset='1' stop-color='%237a5218'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg%3E%3Cpath d='M3 57 V14 Q3 3 14 3 H57' fill='none' stroke='url(%23g)' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M9 47 V17 Q9 9 17 9 H47' fill='none' stroke='url(%23g)' stroke-width='1.1' opacity='.85'/%3E%3Cpath d='M17 9 C 26 9 31 15 27 20 C 24 24 19 21 21 17 C 22 15 25 16 24 18' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M9 17 C 9 26 15 31 20 27 C 24 24 21 19 17 21 C 15 22 16 25 18 24' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M6 6 l5 -1 l-2 5 z' fill='url(%23g)'/%3E%3Cpath d='M8 8 l7 7' stroke='url(%23g)' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='16.5' cy='16.5' r='2.6' fill='%239a6c34' stroke='%232a1806' stroke-width='.6'/%3E%3Cpath d='M34 3 l2 -3 l2 3 M48 3 l2 -3 l2 3 M3 34 l-3 2 l3 2 M3 48 l-3 2 l3 2' fill='url(%23g)'/%3E%3Cpath d='M38 9 c3 -4 7 -4 9 -1 c-3 3 -6 3 -9 1z M9 38 c-4 3 -4 7 -1 9 c3 -3 3 -6 1 -9z' fill='%237a4a1a'/%3E%3C/g%3E%3C/svg%3E");
+  --gh-fil-tr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fbe3a0'/%3E%3Cstop offset='.32' stop-color='%23b8862f'/%3E%3Cstop offset='.58' stop-color='%23f6d98e'/%3E%3Cstop offset='1' stop-color='%237a5218'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='matrix(-1 0 0 1 60 0)'%3E%3Cpath d='M3 57 V14 Q3 3 14 3 H57' fill='none' stroke='url(%23g)' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M9 47 V17 Q9 9 17 9 H47' fill='none' stroke='url(%23g)' stroke-width='1.1' opacity='.85'/%3E%3Cpath d='M17 9 C 26 9 31 15 27 20 C 24 24 19 21 21 17 C 22 15 25 16 24 18' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M9 17 C 9 26 15 31 20 27 C 24 24 21 19 17 21 C 15 22 16 25 18 24' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M6 6 l5 -1 l-2 5 z' fill='url(%23g)'/%3E%3Cpath d='M8 8 l7 7' stroke='url(%23g)' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='16.5' cy='16.5' r='2.6' fill='%239a6c34' stroke='%232a1806' stroke-width='.6'/%3E%3Cpath d='M34 3 l2 -3 l2 3 M48 3 l2 -3 l2 3 M3 34 l-3 2 l3 2 M3 48 l-3 2 l3 2' fill='url(%23g)'/%3E%3Cpath d='M38 9 c3 -4 7 -4 9 -1 c-3 3 -6 3 -9 1z M9 38 c-4 3 -4 7 -1 9 c3 -3 3 -6 1 -9z' fill='%237a4a1a'/%3E%3C/g%3E%3C/svg%3E");
+  --gh-fil-bl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fbe3a0'/%3E%3Cstop offset='.32' stop-color='%23b8862f'/%3E%3Cstop offset='.58' stop-color='%23f6d98e'/%3E%3Cstop offset='1' stop-color='%237a5218'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='matrix(1 0 0 -1 0 60)'%3E%3Cpath d='M3 57 V14 Q3 3 14 3 H57' fill='none' stroke='url(%23g)' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M9 47 V17 Q9 9 17 9 H47' fill='none' stroke='url(%23g)' stroke-width='1.1' opacity='.85'/%3E%3Cpath d='M17 9 C 26 9 31 15 27 20 C 24 24 19 21 21 17 C 22 15 25 16 24 18' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M9 17 C 9 26 15 31 20 27 C 24 24 21 19 17 21 C 15 22 16 25 18 24' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M6 6 l5 -1 l-2 5 z' fill='url(%23g)'/%3E%3Cpath d='M8 8 l7 7' stroke='url(%23g)' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='16.5' cy='16.5' r='2.6' fill='%239a6c34' stroke='%232a1806' stroke-width='.6'/%3E%3Cpath d='M34 3 l2 -3 l2 3 M48 3 l2 -3 l2 3 M3 34 l-3 2 l3 2 M3 48 l-3 2 l3 2' fill='url(%23g)'/%3E%3Cpath d='M38 9 c3 -4 7 -4 9 -1 c-3 3 -6 3 -9 1z M9 38 c-4 3 -4 7 -1 9 c3 -3 3 -6 1 -9z' fill='%237a4a1a'/%3E%3C/g%3E%3C/svg%3E");
+  --gh-fil-br: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23fbe3a0'/%3E%3Cstop offset='.32' stop-color='%23b8862f'/%3E%3Cstop offset='.58' stop-color='%23f6d98e'/%3E%3Cstop offset='1' stop-color='%237a5218'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='matrix(-1 0 0 -1 60 60)'%3E%3Cpath d='M3 57 V14 Q3 3 14 3 H57' fill='none' stroke='url(%23g)' stroke-width='3.2' stroke-linecap='round'/%3E%3Cpath d='M9 47 V17 Q9 9 17 9 H47' fill='none' stroke='url(%23g)' stroke-width='1.1' opacity='.85'/%3E%3Cpath d='M17 9 C 26 9 31 15 27 20 C 24 24 19 21 21 17 C 22 15 25 16 24 18' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M9 17 C 9 26 15 31 20 27 C 24 24 21 19 17 21 C 15 22 16 25 18 24' fill='none' stroke='url(%23g)' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M6 6 l5 -1 l-2 5 z' fill='url(%23g)'/%3E%3Cpath d='M8 8 l7 7' stroke='url(%23g)' stroke-width='1.4' stroke-linecap='round'/%3E%3Ccircle cx='16.5' cy='16.5' r='2.6' fill='%239a6c34' stroke='%232a1806' stroke-width='.6'/%3E%3Cpath d='M34 3 l2 -3 l2 3 M48 3 l2 -3 l2 3 M3 34 l-3 2 l3 2 M3 48 l-3 2 l3 2' fill='url(%23g)'/%3E%3Cpath d='M38 9 c3 -4 7 -4 9 -1 c-3 3 -6 3 -9 1z M9 38 c-4 3 -4 7 -1 9 c3 -3 3 -6 1 -9z' fill='%237a4a1a'/%3E%3C/g%3E%3C/svg%3E");
+  --gh-ink: #07060a;
+  --gh-text: #f1e6d2;
+  --gh-muted: #b7a991;
+  --gh-amber: #ffb347;
+  --gh-slime: #4dffb0;
+  --gh-gold: linear-gradient(135deg, #6e4f1b 0%, #f7e7ad 18%, #c9973f 36%, #fff3c8 50%, #a97c2c 66%, #f1d48a 82%, #5e4214 100%);
+  --gh-rim: linear-gradient(145deg, #f3d58a 0%, #7a5520 26%, #e8c46f 48%, #5b3b12 72%, #d8ae5e 100%);
+  --gh-surface: radial-gradient(130% 90% at 50% 0%, #2a1d33 0%, #16101c 55%, #0c0a10 100%);
+  --gh-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --gh-wood: repeating-linear-gradient(92deg, rgba(0,0,0,.18) 0 1px, transparent 1px 7px, rgba(255,210,160,.04) 7px 8px, transparent 8px 19px), repeating-linear-gradient(88deg, rgba(0,0,0,.1) 0 2px, transparent 2px 31px);
+  --gh-display: 'UnifrakturMaguntia', 'Cinzel', serif;
+  --gh-engr: 'Cinzel', 'Times New Roman', serif;
+  --gh-prose: 'Cormorant Garamond', Georgia, serif;
+  --gh-ease: cubic-bezier(.2, .8, .2, 1);
+  --gh-shadow: 0 0 0 1px #050407, inset 0 1px 0 rgba(255,225,170,.16), inset 0 0 0 1px rgba(0,0,0,.6), inset 0 -14px 28px rgba(0,0,0,.5), 0 22px 34px -16px rgba(0,0,0,.95);
+  --gh-card: var(--gh-fil-tl) top left / 32px 32px no-repeat border-box, var(--gh-fil-tr) top right / 32px 32px no-repeat border-box, var(--gh-fil-bl) bottom left / 32px 32px no-repeat border-box, var(--gh-fil-br) bottom right / 32px 32px no-repeat border-box, var(--gh-grain) padding-box, var(--gh-surface) padding-box, var(--gh-rim) border-box;
+}
+
+/* ==========================================================================
+   ATMOSPHERE (added by halloween-gothic.js): street backdrop, iron frame, embers
+   ========================================================================== */
+html.gh-theme body { background: radial-gradient(120% 70% at 50% 0%, #1d1426 0%, #0c0910 45%, #060508 100%) fixed, #07060a; }
+html.gh-theme { scrollbar-color: #6e5226 #0c0910; }
+html.gh-theme ::selection { background: rgba(255,179,71,.35); color: #fff; }
+.gh-street { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.gh-street svg { position: absolute; left: 50%; bottom: 0; width: max(100vw, 1600px); height: auto; transform: translateX(-50%); opacity: .5; }
+.gh-street::before, .gh-street::after { content: ""; position: absolute; left: -20%; right: -20%; bottom: 0; height: 46%; background: radial-gradient(ellipse at 50% 100%, rgba(180,192,220,.18), transparent 66%); filter: blur(18px); animation: gh-fog 46s ease-in-out infinite alternate; }
+.gh-street::after { bottom: 6%; height: 30%; opacity: .7; animation-duration: 62s; animation-direction: alternate-reverse; }
+@keyframes gh-fog { from { transform: translateX(-6%); } to { transform: translateX(6%); } }
+.gh-street .gh-vig { position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 45%, rgba(6,5,8,.3) 0%, rgba(6,5,8,.88) 100%); }
+.gh-veil { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: var(--gh-grain); opacity: .14; mix-blend-mode: overlay; }
+.gh-iron { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
+.gh-iron .rail { position: absolute; inset: 5px; border-radius: 30px; box-shadow: inset 0 0 0 3px #08070a, inset 0 0 0 4px #4a4150, inset 0 0 0 6px #0b090d, inset 0 0 0 7px rgba(170,140,90,.22), inset 0 0 50px 14px rgba(0,0,0,.55); }
+.gh-iron .vine { position: absolute; top: 70px; bottom: 70px; width: 26px; background-repeat: repeat-y; background-size: 26px 150px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='150' viewBox='0 0 26 150'%3E%3Cdefs%3E%3ClinearGradient id='i' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23060508'/%3E%3Cstop offset='.5' stop-color='%23463c4c'/%3E%3Cstop offset='1' stop-color='%23060508'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M9 0 C 17 18, 1 34, 9 52 S 17 88, 9 104 S 1 136, 9 150' fill='none' stroke='url(%23i)' stroke-width='2.6'/%3E%3Cpath d='M11 22 l5 -3 M7 44 l-5 -2 M11 70 l6 -1 M7 96 l-5 3 M11 122 l5 -3 M7 140 l-4 -3' stroke='%2318131b' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M12 30 c6 -6 12 -4 13 2 c-6 4 -11 4 -13 -2z' fill='%237a3f19'/%3E%3Cpath d='M6 82 c-5 -6 -4 -12 1 -14 c3 6 3 10 -1 14z' fill='%235a2a12'/%3E%3Cpath d='M12 112 c7 -3 12 1 12 7 c-7 2 -11 0 -12 -7z' fill='%23964f1c'/%3E%3Ccircle cx='17' cy='58' r='1.6' fill='%237d1a1a'/%3E%3Ccircle cx='3' cy='128' r='1.4' fill='%237d1a1a'/%3E%3C/svg%3E"); }
+.gh-iron .vine.l { left: 3px; } .gh-iron .vine.r { right: 3px; transform: scaleX(-1); }
+.gh-iron svg.medal { position: absolute; width: 44px; height: 44px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.9)); }
+.gh-iron .tl { left: 2px; top: 2px; } .gh-iron .tr { right: 2px; top: 2px; } .gh-iron .bl { left: 2px; bottom: 2px; } .gh-iron .br { right: 2px; bottom: 2px; }
+#gh-embers { position: fixed; inset: 0; z-index: 61; width: 100%; height: 100%; pointer-events: none; }
+@media (max-width: 640px) { .gh-iron .vine { opacity: .7; } .gh-iron svg.medal { width: 36px; height: 36px; } }
+
+/* ==========================================================================
+   SHELL PAGES (Wheel, Pumpkin, Map, Shop, Music, Weather)
+   ========================================================================== */
+html.gh-shell[data-season="halloween"] {
+  --fx-bg: #07060a;
+  --fx-surface: #16101c;
+  --fx-surface-solid: #120d16;
+  --fx-surface-2: #1d1426;
+  --fx-line: rgba(201,162,90,.55);
+  --fx-line-soft: rgba(241,212,138,.14);
+  --fx-text: #f1e6d2;
+  --fx-muted: #b7a991;
+  --fx-accent: #ffb347;
+  --fx-accent-2: #4dffb0;
+  --fx-accent-3: #9d7bff;
+  --fx-on-accent: #1d1005;
+  --fx-glow: 255, 170, 70;
+  --fx-font-body: 'Cormorant Garamond', Georgia, serif;
+  --fx-font-display: 'Cinzel', 'Times New Roman', serif;
+  --fx-title-font: 400 2.3rem 'UnifrakturMaguntia', 'Cinzel', serif;
+  --fx-radius: 18px;
+  --fx-card-bg: var(--gh-grain), var(--gh-surface);
+  --fx-card-border: 1.5px solid rgba(201,162,90,.6);
+  --fx-card-shadow: var(--gh-shadow);
+  --fx-btn-bg: linear-gradient(180deg, #ffd27a, #e8901f);
+  --fx-btn-color: #1d1005;
+  --fx-btn-radius: 999px;
+  --fx-btn-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 6px 16px -6px rgba(255,143,31,.8);
+  --fx-btn-font: 700 0.74rem 'Cinzel', serif;
+  --fx-btn-case: uppercase;
+  --fx-btn-track: 0.14em;
+  --fx-frame-bg: rgba(10,8,13,.55);
+  --fx-frame-line: transparent;
+  --fx-frame-shadow: none;
+  --fx-appbar-bg: linear-gradient(180deg, rgba(8,6,11,.96), rgba(8,6,11,.7) 75%, transparent);
+  --fx-tabs-bg: linear-gradient(180deg, rgba(40,30,46,.6), rgba(14,10,18,.78));
+}
+html.gh-shell .fx-body { font-size: 1.06rem; background: transparent; }
+html.gh-shell .fx-scene > * { display: none; }
+html.gh-shell .fx-scene { background: transparent; }
+html.gh-shell .fx-card, html.gh-shell .fx-modal-card, html.gh-shell .fx-feature { border: 2px solid transparent; background: var(--gh-card); box-shadow: var(--gh-shadow); }
+html.gh-shell .fx-tile, html.gh-shell .fx-listcard, html.gh-shell .fx-sheet-tile { border: 1.5px solid rgba(201,162,90,.45); background: var(--gh-grain), linear-gradient(180deg, #1f1528, #120d16); box-shadow: inset 0 1px 0 rgba(255,225,170,.1), 0 10px 18px -10px #000; }
+html.gh-shell .fx-tile, html.gh-shell .fx-sheet-tile, html.gh-shell .fx-tab, html.gh-shell .fx-eyebrow, html.gh-shell .fx-sec-title, html.gh-shell .fx-pill, html.gh-shell .fx-badge, html.gh-shell .fx-sidebar-title { font-family: 'Cinzel', serif; }
+html.gh-shell .fx-tile > i, html.gh-shell .fx-sheet-tile i { color: #ffcf7a; filter: drop-shadow(0 0 8px rgba(255,170,70,.55)); }
+html.gh-shell .fx-appbar { border-bottom: 1px solid rgba(201,162,90,.18); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+html.gh-shell .fx-apptitle { font: 400 clamp(1.9rem, 5vw, 2.6rem) var(--gh-display); letter-spacing: 0.01em; }
+html.gh-shell .fx-apptitle > span { background: linear-gradient(180deg, #fff6d6 0%, #ffc768 38%, #e27b12 70%, #8a3a06 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; filter: drop-shadow(0 0 12px rgba(255,150,40,.5)) drop-shadow(0 2px 0 #2a1304); }
+html.gh-shell .fx-mascot { color: #e8b65a; font-size: 1.15rem; }
+html.gh-shell .fx-circle-btn { color: #f1d48a; border: 1.5px solid transparent; background: radial-gradient(circle at 40% 30%, #3a2c40, #120d16 70%) padding-box, var(--gh-rim) border-box; box-shadow: inset 0 2px 3px rgba(255,230,180,.12), inset 0 -3px 6px rgba(0,0,0,.6), 0 6px 14px -4px #000; }
+html.gh-shell .fx-circle-btn:hover { box-shadow: inset 0 2px 3px rgba(255,230,180,.16), inset 0 -3px 6px rgba(0,0,0,.6), 0 8px 18px -4px #000, 0 0 16px rgba(255,170,70,.3); }
+html.gh-shell .fx-h2 { font: 700 clamp(1.25rem, 3vw, 1.7rem) 'Cinzel', serif; letter-spacing: 0.04em; background: var(--gh-gold); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 0; filter: drop-shadow(0 1px 0 rgba(0,0,0,.8)) drop-shadow(0 0 10px rgba(255,180,80,.22)); }
+html.gh-shell .fx-eyebrow { color: #e8b65a; letter-spacing: 0.26em; font-weight: 700; }
+html.gh-shell .fx-sec-title { color: #e8cf98; letter-spacing: 0.24em; font-weight: 700; text-shadow: none; }
+html.gh-shell .fx-muted { color: #b7a991; }
+html.gh-shell .fx-btn:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 10px 22px -6px rgba(255,143,31,.95); }
+html.gh-shell .fx-btn--ghost { color: #f1d48a; border: 1.5px solid rgba(241,212,138,.45); background: rgba(255,200,120,.06); box-shadow: none; }
+html.gh-shell .fx-btn--ghost:hover { background: rgba(255,200,120,.14); box-shadow: 0 0 16px rgba(255,170,70,.25); }
+html.gh-shell .fx-pill { border: 1.5px solid rgba(201,162,90,.4); color: #e6d6b8; background: rgba(255,200,120,.04); letter-spacing: 0.08em; }
+html.gh-shell .fx-pill.is-active { color: #1d1005; border-color: transparent; background: linear-gradient(180deg, #ffd27a, #e8901f); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 4px 12px -4px rgba(255,143,31,.8); }
+html.gh-shell .fx-input, html.gh-shell .fx-select { border: 1.5px solid rgba(201,162,90,.45); background: rgba(8,6,11,.72); border-radius: 14px; font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 600; font-size: 1rem; }
+html.gh-shell .fx-input:focus, html.gh-shell .fx-select:focus { border-color: #ffb347; box-shadow: 0 0 0 3px rgba(255,179,71,.15), 0 0 16px rgba(255,170,70,.3); outline: none; }
+html.gh-shell .fx-badge { background: rgba(77,255,176,.1); color: #8fe8c0; box-shadow: inset 0 0 0 1px rgba(77,255,176,.3); }
+html.gh-shell .fx-switch input:checked + span { background: #e8901f; box-shadow: 0 0 12px rgba(255,170,70,.6); }
+html.gh-shell .fx-feature-art, html.gh-shell .fx-listcard-art { background: radial-gradient(circle at 50% 45%, rgba(255,170,70,.35), rgba(12,9,16,.95) 78%); border: 1px solid rgba(201,162,90,.35); }
+html.gh-shell .fx-catcard { background: var(--gh-grain), #170f1d; }
+html.gh-shell .fx-tabs { left: 50%; right: auto; bottom: max(12px, env(safe-area-inset-bottom)); width: min(calc(100% - 24px), 560px); transform: translateX(-50%); height: var(--fx-tabs-h); padding: 0 6px; border: 0; border-radius: 26px; -webkit-backdrop-filter: blur(18px) saturate(1.5); backdrop-filter: blur(18px) saturate(1.5); box-shadow: inset 0 1px 0 rgba(255,230,190,.16), inset 0 0 0 1px rgba(241,212,138,.22), 0 18px 34px -10px rgba(0,0,0,.95); }
+html.gh-shell .fx-tab { color: #9b8f7d; font-weight: 700; letter-spacing: 0.14em; }
+html.gh-shell .fx-tab.is-active { color: #ffd88f; }
+html.gh-shell .fx-tab.is-active i { filter: drop-shadow(0 0 6px rgba(255,170,70,.8)); }
+html.gh-shell .fx-fab { margin-bottom: 26px; }
+html.gh-shell .fx-fab::before { background: radial-gradient(circle, #1a1220 62%, transparent 64%); border-top: 1.5px solid rgba(241,212,138,.5); }
+html.gh-shell .fx-app-frame { padding-bottom: calc(var(--fx-tabs-h) + 44px + env(safe-area-inset-bottom, 0px)); }
+html.gh-shell .fx-sheet-card { border: 2px solid transparent; border-bottom: 0; background: var(--gh-fil-tl) top left / 32px 32px no-repeat border-box, var(--gh-fil-tr) top right / 32px 32px no-repeat border-box, var(--gh-grain) padding-box, var(--gh-surface) padding-box, var(--gh-rim) border-box; box-shadow: 0 -16px 50px rgba(0,0,0,.7); }
+html.gh-shell .fx-sheet-tile:hover, html.gh-shell .fx-sheet-tile.is-active { border-color: #e8b65a; box-shadow: 0 0 18px rgba(255,170,70,.3); }
+html.gh-shell .fx-rail { background: var(--gh-grain), linear-gradient(180deg, #1f1528, #0e0a12); border: 1.5px solid rgba(201,162,90,.55); box-shadow: 0 0 22px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,225,170,.12); }
+html.gh-shell .fx-rail-btn.is-active { background: linear-gradient(180deg, #ffd27a, #e8901f); color: #1d1005; }
+
+/* ==========================================================================
+   SPOOKY READS (custom page)
+   ========================================================================== */
+html.gh-reads body.bookshelf-body { background: radial-gradient(120% 70% at 50% 0%, #1d1426 0%, #0c0910 45%, #060508 100%) fixed, #07060a; font-family: var(--gh-prose); }
+html.gh-reads .haunted-manor-bg, html.gh-reads .blood-moon-glow, html.gh-reads .spooky-border { display: none; }
+html.gh-reads .drifting-fog-layer { opacity: .6; }
+html.gh-reads .library-header { background: rgba(8,6,11,.9); border-bottom: 1px solid rgba(201,162,90,.35); box-shadow: 0 1px 0 rgba(0,0,0,.8), 0 10px 30px rgba(0,0,0,.7); }
+html.gh-reads .btn-portal, html.gh-cinema .btn-return { color: #f1d48a; border: 1.5px solid transparent; border-radius: 999px; background: radial-gradient(circle at 40% 30%, #3a2c40, #120d16 70%) padding-box, var(--gh-rim) border-box; box-shadow: inset 0 2px 3px rgba(255,230,180,.12), 0 6px 14px -4px #000; font: 700 0.72rem var(--gh-engr); letter-spacing: 0.16em; text-transform: uppercase; }
+html.gh-reads .btn-portal:hover, html.gh-cinema .btn-return:hover { background: radial-gradient(circle at 40% 30%, #4a3650, #1a1220 70%) padding-box, var(--gh-rim) border-box; box-shadow: 0 0 18px rgba(255,170,70,.35); border-color: transparent; }
+html.gh-reads .btn-portal .icon, html.gh-cinema .btn-return .icon { color: #ffcf7a; }
+html.gh-reads .brand-title, html.gh-cinema .brand-title { font: 900 clamp(1.25rem, 2.8vw, 1.9rem) var(--gh-engr); letter-spacing: 0.08em; background: linear-gradient(180deg, #fff6d6 0%, #ffc768 38%, #e27b12 70%, #8a3a06 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 12px rgba(255,150,40,.5)) drop-shadow(0 2px 0 #2a1304); }
+html.gh-reads #searchInput, html.gh-cinema #searchInput { background: rgba(8,6,11,.75); border: 1.5px solid rgba(201,162,90,.45); color: #f1e6d2; font-family: var(--gh-prose); font-size: 1rem; font-weight: 600; }
+html.gh-reads #searchInput:focus, html.gh-cinema #searchInput:focus { border-color: #ffb347; box-shadow: 0 0 0 3px rgba(255,179,71,.15), 0 0 16px rgba(255,170,70,.3); }
+html.gh-reads .search-icon, html.gh-cinema .search-icon { color: #c9a25a; }
+html.gh-reads .hero-plaque { border: 2px solid transparent; border-radius: 20px; background: var(--gh-card); box-shadow: var(--gh-shadow); }
+html.gh-reads .plaque-badge, html.gh-cinema .spooky-badge { color: #ffcf7a; background: rgba(255,170,70,.1); border: 1px solid rgba(255,170,70,.4); font-family: var(--gh-engr); letter-spacing: 0.2em; font-weight: 700; }
+html.gh-reads .hero-title, html.gh-cinema .hero-heading { font-family: var(--gh-engr); font-weight: 900; letter-spacing: 0.04em; background: var(--gh-gold); -webkit-background-clip: text; background-clip: text; color: transparent; text-shadow: none; filter: drop-shadow(0 2px 0 rgba(0,0,0,.7)) drop-shadow(0 0 14px rgba(255,180,80,.25)); }
+html.gh-reads .hero-desc, html.gh-cinema .hero-subtext { font-family: var(--gh-prose); font-size: clamp(1.02rem, 1.9vw, 1.2rem); color: #d8ccb6; }
+html.gh-reads .counter-box { border: 2px solid transparent; background: var(--gh-grain) padding-box, linear-gradient(160deg, #c49a62, #8a6034 38%, #b88a52 58%, #6e4a26) padding-box, linear-gradient(145deg, #c9a26a, #3a2512 30%, #a87c45 55%, #2a170a 80%, #8e6a3a) border-box; box-shadow: inset 0 2px 1px rgba(255,220,170,.25), inset 0 -3px 6px rgba(0,0,0,.55), 0 10px 18px -8px #000; }
+html.gh-reads .counter-num { font-family: var(--gh-engr); color: #1c0e04; text-shadow: 0 1px 0 rgba(255,214,150,.38), 0 -1px 0 rgba(0,0,0,.6); }
+html.gh-reads .counter-label { font-family: var(--gh-engr); color: #2a1709; letter-spacing: 0.16em; }
+html.gh-reads .pill-btn { background: rgba(255,200,120,.05); border: 1.5px solid rgba(201,162,90,.4); color: #e6d6b8; font-family: var(--gh-engr); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+html.gh-reads .pill-btn:hover { background: rgba(255,200,120,.14); border-color: #e8b65a; }
+html.gh-reads .pill-btn.active { color: #1d1005; border-color: transparent; background: linear-gradient(180deg, #ffd27a, #e8901f); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 4px 14px -4px rgba(255,143,31,.8); }
+html.gh-reads .shelf-jump { font-family: var(--gh-engr); font-size: 0.78rem; letter-spacing: 0.12em; color: #e8cf98; }
+html.gh-reads #categoryJumpSelect { background: rgba(8,6,11,.85); border: 1.5px solid rgba(201,162,90,.5); font-family: var(--gh-prose); font-size: 1rem; }
+html.gh-reads .shelf-label { font-family: var(--gh-engr); letter-spacing: 0.06em; color: #f3e2b9; }
+html.gh-reads .shelf-count { color: #e8b65a; font-family: var(--gh-engr); letter-spacing: 0.1em; }
+html.gh-reads .shelf-book-slider { scrollbar-color: #8a6234 transparent; }
+html.gh-reads .shelf-book-slider::-webkit-scrollbar-thumb { background: #8a6234; }
+html.gh-reads .shelf-plank { background: var(--gh-wood), linear-gradient(180deg, #6b3f1f 0%, #4a2a13 30%, #2b170a 100%); border-top: 1px solid rgba(255,200,140,.35); box-shadow: inset 0 -2px 4px rgba(0,0,0,.6), 0 14px 20px -6px rgba(0,0,0,.95); }
+html.gh-reads .book-volume-card { border-left: 7px solid #4a0e12; border-radius: 3px 8px 8px 3px; box-shadow: inset 3px 0 0 rgba(255,220,170,.18), -4px 8px 16px rgba(0,0,0,.85); background: #ecdcb6; }
+html.gh-reads .book-volume-card:hover { box-shadow: inset 3px 0 0 rgba(255,220,170,.18), -8px 16px 26px rgba(0,0,0,.95), 0 0 24px rgba(255,170,70,.35); }
+html.gh-reads .book-details { background: var(--gh-grain), linear-gradient(180deg, #ecdcb6, #dcc392); background-blend-mode: multiply, normal; border-top: 1px solid rgba(90,55,15,.35); }
+html.gh-reads .book-title { font-family: var(--gh-engr); font-size: 0.86rem; color: #2b1b0e; }
+html.gh-reads .book-author-meta { font-family: var(--gh-prose); font-size: 0.92rem; color: #5e4022; }
+html.gh-reads .book-tag-chip { font-family: var(--gh-engr); background: rgba(90,55,15,.1); border-color: rgba(90,55,15,.3); color: #4a2c10; }
+html.gh-reads .book-price-tag, html.gh-reads .book-rating-badge { background: rgba(8,5,4,.82); border: 1px solid rgba(232,182,90,.5); color: #ffd27a; font-family: var(--gh-engr); }
+html.gh-reads .modal-card, html.gh-cinema .modal-card { border: 2px solid transparent; background: var(--gh-card); box-shadow: 0 30px 80px rgba(0,0,0,.85), 0 0 40px rgba(255,170,70,.12); color: #f1e6d2; }
+html.gh-reads .modal-title, html.gh-cinema .modal-title { font-family: var(--gh-engr); color: #f6e7c4; letter-spacing: 0.03em; }
+html.gh-reads .modal-author, html.gh-reads .book-synopsis, html.gh-cinema .modal-desc { font-family: var(--gh-prose); font-size: 1.05rem; color: #d8ccb6; }
+html.gh-reads .block-title, html.gh-cinema .cast-header, html.gh-cinema .trailer-title { font-family: var(--gh-engr); color: #e8b65a; letter-spacing: 0.18em; }
+html.gh-reads .btn-action, html.gh-reads .btn-wiki, html.gh-cinema .btn-watch-stream, html.gh-cinema .btn-wiki-link { border-radius: 999px; font: 700 0.72rem var(--gh-engr); letter-spacing: 0.14em; text-transform: uppercase; }
+html.gh-reads .btn-link, html.gh-reads .btn-wiki, html.gh-cinema .btn-watch-stream { color: #1d1005; border: 0; background: linear-gradient(180deg, #ffd27a, #e8901f); box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 6px 16px -6px rgba(255,143,31,.8); }
+html.gh-reads .btn-like, html.gh-reads .btn-readlist, html.gh-cinema .btn-wiki-link { color: #f1d48a; border: 1.5px solid rgba(241,212,138,.45); background: rgba(255,200,120,.06); }
+html.gh-reads .modal-close-btn, html.gh-cinema .modal-close-btn { color: #f1d48a; border: 1.5px solid transparent; background: radial-gradient(circle at 40% 30%, #3a2c40, #120d16 70%) padding-box, var(--gh-rim) border-box; }
+html.gh-reads .meta-tag, html.gh-reads .modal-tag-chip, html.gh-reads .author-badge, html.gh-cinema .cast-badge, html.gh-cinema .modal-cat-tag, html.gh-cinema .modal-year-tag { font-family: var(--gh-engr); letter-spacing: 0.06em; border-color: rgba(201,162,90,.4); background: rgba(255,200,120,.06); color: #e6d6b8; }
+html.gh-reads .library-footer, html.gh-cinema .app-footer { border-top: 1px solid rgba(201,162,90,.25); background: rgba(8,6,11,.7); }
+html.gh-reads .footer-title { font-family: var(--gh-display); color: #e8b65a; }
+
+/* on phones the header stacks into a column, where the search box's 280px flex-basis became 280px of height */
+@media (max-width: 760px) { html.gh-reads .header-right { flex: 0 0 auto; width: 100%; max-width: none; } }
+
+/* ==========================================================================
+   MIDNIGHT CINEMA (custom page)
+   ========================================================================== */
+html.gh-cinema body { font-family: var(--gh-prose); background: radial-gradient(120% 70% at 50% 0%, #1d1426 0%, #0c0910 45%, #060508 100%) fixed, #07060a; }
+html.gh-cinema .fog-overlay { opacity: .55; }
+html.gh-cinema .navbar { background: rgba(8,6,11,.9); border-bottom: 1px solid rgba(201,162,90,.35); box-shadow: 0 10px 30px rgba(0,0,0,.7); }
+html.gh-cinema .hero-banner { border-bottom: 1px solid rgba(201,162,90,.18); }
+html.gh-cinema .hero-backdrop-glow { background: radial-gradient(circle, rgba(255,170,70,.14) 0%, rgba(90,40,120,.06) 60%, transparent 80%); }
+html.gh-cinema .stat-box strong { font-family: var(--gh-engr); background: var(--gh-gold); -webkit-background-clip: text; background-clip: text; color: transparent; }
+html.gh-cinema .stat-box span { font-family: var(--gh-engr); letter-spacing: 0.18em; color: #b7a991; }
+html.gh-cinema .category-title { font-family: var(--gh-engr); letter-spacing: 0.06em; color: #f3e2b9; border-left: 0; padding-left: 26px; position: relative; text-shadow: none; }
+html.gh-cinema .category-title::before { content: ""; position: absolute; left: 0; top: 50%; width: 14px; height: 14px; margin-top: -7px; transform: rotate(45deg); background: var(--gh-gold); box-shadow: 0 0 10px rgba(255,180,80,.4); }
+html.gh-cinema .movie-slider { scrollbar-color: #8a6234 transparent; }
+html.gh-cinema .movie-card { border: 2px solid transparent; border-radius: 10px; background: var(--gh-grain) padding-box, linear-gradient(180deg, #1a1220, #0d0a10) padding-box, var(--gh-rim) border-box; box-shadow: 0 16px 26px -12px #000; }
+html.gh-cinema .movie-card:hover { box-shadow: 0 22px 34px -12px #000, 0 0 24px rgba(255,170,70,.35); border-color: transparent; }
+html.gh-cinema .poster-box { background: radial-gradient(circle, #231a24 0%, #0d0b0f 100%); }
+html.gh-cinema .card-title { font-family: var(--gh-engr); font-size: 0.86rem; color: #f3e2b9; }
+html.gh-cinema .card-meta { font-family: var(--gh-prose); font-size: 0.92rem; color: #b7a991; }
+html.gh-cinema .card-btn-hint { color: #ffb347; font-family: var(--gh-engr); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; }
+html.gh-cinema .card-rating-badge, html.gh-cinema .modal-rating-badge { font-family: var(--gh-engr); color: #ffd27a; border-color: rgba(232,182,90,.5); background: rgba(8,5,4,.82); }
+html.gh-cinema .empty-results h3 { font-family: var(--gh-engr); color: #e8b65a; }
+html.gh-cinema .modal-poster-wrapper { box-shadow: 0 0 0 2px #050302, 0 0 0 3px #b98d47, 0 20px 30px -12px #000; }
+html.gh-cinema .video-container { box-shadow: 0 0 0 2px #050302, 0 0 0 3px #6e4b1d; }
+html.gh-cinema .footer-festo { font-family: var(--gh-display); color: #e8b65a; }
+
+@media (prefers-reduced-motion: reduce) { .gh-street::before, .gh-street::after { animation: none; } }
