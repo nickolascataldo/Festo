@@ -40,6 +40,10 @@ body.gh { margin: 0; min-height: 100vh; background: radial-gradient(120% 70% at 
 .street svg { position: absolute; left: 50%; bottom: 0; width: max(100vw, 1600px); height: auto; transform: translateX(-50%); }
 #streetFog { position: absolute; inset: 0; width: 100%; height: 100%; }
 .street::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 60% at 50% 45%, rgba(6,5,8,.35) 0%, rgba(6,5,8,.85) 100%); }
+/* the backdrop photo (same as the intro page), with the drifting fog still on top */
+.street { opacity: 1; background: #07060a url("../../shared/img/season/halloween-backdrop.jpg") center / cover no-repeat; }
+.street svg { display: none; }
+.street::after { background: radial-gradient(70% 60% at 50% 45%, rgba(6,5,8,.2) 0%, rgba(6,5,8,.72) 100%); }
 .grain-veil { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: var(--grain); opacity: .18; mix-blend-mode: overlay; }
 /* the frame wraps the whole page (it scrolls with it), not the screen */
 body.gh { position: relative; }

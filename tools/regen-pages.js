@@ -25,7 +25,7 @@ function layer(season) {
   };
   return {
     cls: 'lx lx-shell',
-    head: [PRE, '<link href="https://fonts.googleapis.com/css2?' + LUXE_FONTS[season] + '&display=swap" rel="stylesheet" data-lx-fonts>', '<link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=2">', '<link rel="stylesheet" href="../../shared/luxe/luxe-pages.css?v=2">', '<link rel="stylesheet" href="../../shared/luxe/' + season + '.css?v=2">'],
+    head: [PRE, '<link href="https://fonts.googleapis.com/css2?' + LUXE_FONTS[season] + '&display=swap" rel="stylesheet" data-lx-fonts>', '<link rel="stylesheet" href="../../shared/luxe/luxe-base.css?v=3">', '<link rel="stylesheet" href="../../shared/luxe/luxe-pages.css?v=2">', '<link rel="stylesheet" href="../../shared/luxe/' + season + '.css?v=2">'],
     tail: ['<script src="../../shared/luxe/' + season + '.js?v=2"></script>', '<script src="../../shared/luxe/luxe-atmos.js?v=2"></script>', '<script src="../../shared/radio/stations.js?v=1"></script>', '<script src="../../shared/radio/radio.js?v=1"></script>']
   };
 }

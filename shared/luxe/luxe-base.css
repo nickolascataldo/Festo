@@ -20,6 +20,15 @@ html.lx body { background: var(--lx-bg); }
 .lx-back { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
 .lx-back > svg { position: absolute; left: 50%; bottom: 0; width: max(100vw, 1600px); height: auto; min-height: 100%; transform: translateX(-50%); opacity: var(--lx-back-op, .6); }
 .lx-back .lx-vig { position: absolute; inset: 0; background: var(--lx-vig, none); }
+/* landings use the season's backdrop photo (the same one as the intro page) instead of the drawn scene */
+html.lx-landing .lx-back { background: center / cover no-repeat; }
+html.lx-landing .lx-back > svg { display: none; }
+html.lx-landing[data-season="christmas"] .lx-back { background-image: url("../img/season/christmas-backdrop.jpg"); }
+html.lx-landing[data-season="summer"] .lx-back { background-image: url("../img/season/summer-backdrop.jpg"); }
+html.lx-landing[data-season="spring"] .lx-back { background-image: url("../img/season/spring-backdrop.jpg"); }
+html.lx-landing[data-season="christmas"] .lx-back .lx-vig { background: radial-gradient(75% 65% at 50% 40%, rgba(5,12,20,.15) 0%, rgba(5,12,20,.7) 100%); }
+html.lx-landing[data-season="summer"] .lx-back .lx-vig { background: linear-gradient(180deg, rgba(30,30,70,.35) 0%, rgba(30,30,70,.1) 35%, rgba(20,30,40,.35) 100%); }
+html.lx-landing[data-season="spring"] .lx-back .lx-vig { background: linear-gradient(180deg, rgba(255,250,246,.35) 0%, rgba(255,250,246,.15) 40%, rgba(255,250,246,.4) 100%); }
 .lx-back .drift { animation: lx-drift 60s ease-in-out infinite alternate; }
 .lx-back .drift.b { animation-duration: 84s; animation-direction: alternate-reverse; }
 .lx-back .twinkle { animation: lx-twinkle 3.2s ease-in-out infinite alternate; }
